@@ -26,7 +26,6 @@ export default function App() {
             sx={{
               height: 50,
             }}
-            alt="The house from the offer."
             src={logo}
           />
           </div>
