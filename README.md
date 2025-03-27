@@ -27,5 +27,5 @@ npm i
 ## Starting the project
 1. To preview the project: In a terminal window run the following:
 ```bash
-npm run
+npm start
 ```
