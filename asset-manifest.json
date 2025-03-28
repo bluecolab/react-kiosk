@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-kiosk/static/css/main.441edb08.css",
+    "main.js": "/react-kiosk/static/js/main.7f1ac013.js",
+    "static/media/background.mp4": "/react-kiosk/static/media/background.3e7dbb36e4fe8aec42a7.mp4",
+    "static/media/jeopardy.jpg": "/react-kiosk/static/media/jeopardy.18a705ba63aabb90bee7.jpg",
+    "static/media/splashyfish.jpg": "/react-kiosk/static/media/splashyfish.df966d0c34ad8d7f6de4.jpg",
+    "static/media/logo512.png": "/react-kiosk/static/media/logo512.a63e019cfa19379b4a91.png",
+    "static/media/cronincruise.jpg": "/react-kiosk/static/media/cronincruise.b1987f9f4438bf6ab868.jpg",
+    "static/media/PondWaterData.png": "/react-kiosk/static/media/PondWaterData.9477a45ea199e698c35f.png",
+    "static/media/RTK.png": "/react-kiosk/static/media/RTK.77d8ea7f462992d337d1.png",
+    "static/media/revicons.eot": "/react-kiosk/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/react-kiosk/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/react-kiosk/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/react-kiosk/index.html",
+    "main.441edb08.css.map": "/react-kiosk/static/css/main.441edb08.css.map",
+    "main.7f1ac013.js.map": "/react-kiosk/static/js/main.7f1ac013.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.441edb08.css",
+    "static/js/main.7f1ac013.js"
+  ]
+}
