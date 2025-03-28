@@ -24,8 +24,10 @@ cd react-kiosk
 npm i
 ```
 
-## Starting the project
+## Starting the project locally
 1. To preview the project: In a terminal window run the following:
 ```bash
 npm start
 ```
+### Build and deploy
+Pushing to main automatically start the deployment process. This will take a few minutes. Once ready your changes will be visible here: https://bluecolab.github.io/react-kiosk/
