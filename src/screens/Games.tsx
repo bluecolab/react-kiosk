@@ -65,7 +65,8 @@ export default function Games() {
                 width: "100%",
                 background: "#000080"
             }}>
-                <iframe height="167" frameBorder="0" src="https://itch.io/embed/2699888" width="552"><a href="https://bluecolab.itch.io/cronin-cruise">Cronin Cruise by BlueColab</a></iframe>            </Box>
+<iframe frameBorder="0" src="https://itch.io/embed-upload/10391777?color=333333" width="1280" height="740"><a href="https://bluecolab.itch.io/cronin-cruise">Play Cronin Cruise on itch.io</a></iframe>
+</Box>
         },
         {
             name: 'Splashy Fish',
@@ -78,8 +79,8 @@ export default function Games() {
                 width: "100%",
                 background: "#000080"
             }}>
-                <iframe frameBorder="0" src="https://itch.io/embed/2699916" width="552" height="167"><a href="https://bluecolab.itch.io/splashy-fish">Splashy Fish by BlueColab</a></iframe>
-            </Box>
+<iframe  src="https://itch.io/embed-upload/10391857?color=333333"  width="1280" height="740"><a href="https://bluecolab.itch.io/splashy-fish">Play Splashy Fish on itch.io</a></iframe>    
+        </Box>
         }
     ]
 
