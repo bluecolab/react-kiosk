@@ -15,8 +15,8 @@ A basic Kiosk demo for Blue CoLab.
 
 1. Clone this repo: In a terminal window run the following:
 ```bash
-git clone https://github.com/OkayKenji/bluecolabkiosk.git
-cd bluecolabkiosk
+git clone https://github.com/bluecolab/react-kiosk
+cd react-kiosk
 ```
 
 2. Install needed dependencies (they help the project run): In a terminal window run the following:
