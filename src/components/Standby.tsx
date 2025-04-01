@@ -40,6 +40,7 @@ export default function Standby({ onStart, fadeOut }: { onStart: () => void , fa
             {/* Current Time in Bottom Right */}
             <Box className="absolute bottom-4 right-4">
                 <CurrentTime />
+                <Typography color="white">v2025.4.1.1034</Typography>
             </Box>
         </Box>
     );
