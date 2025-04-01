@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-kiosk/static/css/main.441edb08.css",
-    "main.js": "/react-kiosk/static/js/main.065bb3dd.js",
+    "main.js": "/react-kiosk/static/js/main.f7ef8721.js",
     "static/media/Blue-CoLab.mp4": "/react-kiosk/static/media/Blue-CoLab.6fd6cf4993deeda7d049.mp4",
     "static/media/background.mp4": "/react-kiosk/static/media/background.3e7dbb36e4fe8aec42a7.mp4",
     "static/media/fellowship.webm": "/react-kiosk/static/media/fellowship.7d1be80c93b30aac07ea.webm",
@@ -16,10 +16,10 @@
     "static/media/revicons.woff": "/react-kiosk/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/react-kiosk/index.html",
     "main.441edb08.css.map": "/react-kiosk/static/css/main.441edb08.css.map",
-    "main.065bb3dd.js.map": "/react-kiosk/static/js/main.065bb3dd.js.map"
+    "main.f7ef8721.js.map": "/react-kiosk/static/js/main.f7ef8721.js.map"
   },
   "entrypoints": [
     "static/css/main.441edb08.css",
-    "static/js/main.065bb3dd.js"
+    "static/js/main.f7ef8721.js"
   ]
 }
