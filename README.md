@@ -15,8 +15,8 @@ A basic Kiosk demo for Blue CoLab.
 
 1. Clone this repo: In a terminal window run the following:
 ```bash
-git clone https://github.com/OkayKenji/bluecolabkiosk.git
-cd bluecolabkiosk
+git clone https://github.com/bluecolab/react-kiosk
+cd react-kiosk
 ```
 
 2. Install needed dependencies (they help the project run): In a terminal window run the following:
@@ -24,8 +24,10 @@ cd bluecolabkiosk
 npm i
 ```
 
-## Starting the project
+## Starting the project locally
 1. To preview the project: In a terminal window run the following:
 ```bash
-npm run
+npm start
 ```
+### Build and deploy
+Pushing to main automatically start the deployment process. This will take a few minutes. Once ready your changes will be visible here: https://bluecolab.github.io/react-kiosk/

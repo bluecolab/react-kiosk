@@ -3,6 +3,6 @@ import * as React from 'react';
 
 export default function AboutUs() {
     return (<Box sx={{ textAlign: 'center', p: 2 }}>
-        <p>Learn more about Blue CoLab.</p>
+        <p>Learn more about Blue CoLab. Test edit to trigger a build.</p>
     </Box>)
 }
