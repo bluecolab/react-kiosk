@@ -40,14 +40,23 @@ export default function App() {
 
   // Listen for user intatcion
   useEffect(() => {
-    const defaultEvents = [
+    {/*const defaultEvents = [
       "mousedown",
       "touchstart",
       "keydown",
       "wheel",
       "resize",
     ];
-    
+    */}
+  // This should fix the double click I dont know why it is happening but hey if works it works 🙏 (By that i mean if u do something here u might break it DONOTTOUCH)
+    const defaultEvents = [
+      "touchstart",
+      "resize",
+      "moousedown",
+      "wheel",
+      "keydown",
+    ];
+
     // Add event listeners to reset inactivity timer
     defaultEvents.forEach((event) => {
       window.addEventListener(event, resetInactivity);
