@@ -1,17 +1,16 @@
 import * as React from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import mobileapp from '../assets/icons/Mobile.png';
-import games from '../assets/icons/games.png';
-import datatomusic from '../assets/icons/Data_to_Music.png';
-import photogal from '../assets/icons/Photo_Gal.png';
-import pond_data from '../assets/icons/PondWaterData.png';
-import rtk from '../assets/icons/RTK.png';
-import videos from '../assets/icons/videos.png';
-import weather from '../assets/icons/weather.png';
-import CardForCarousel from './CardForCarousel';
-import about from '../assets/icons/about-00605be862d7b603.png';
-import waterreports from '../assets/icons/waterreports-23ea9c613afdb295.png';
+import mobileapp from '../assets/icons/MobileIcon.png';
+import games from '../assets/icons/GamesIcon.png';
+import datatomusic from '../assets/icons/SonificationIcon.png';
+import photogal from '../assets/icons/PhotoGalleryIcon.png';
+import pond_data from '../assets/icons/PondWaterDataIcon.png';
+import rtk from '../assets/icons/RTKIcon.png';
+import videos from '../assets/icons/VideosIcon.png';
+import weather from '../assets/icons/WeatherIcon.png';
+import about from '../assets/icons/AboutIcon.png';
+import waterreports from '../assets/icons/WaterReportsIcon.png';
 import PondWaterData from '../screens/PondWaterData';
 import Weather from '../screens/Weather';
 import DataToMusic from '../screens/DataToMusic';
@@ -22,6 +21,7 @@ import PhotoGallery from '../screens/PhotoGallery';
 import MobileApp from '../screens/MobileApp';
 import WaterReport from '../screens/WaterReports';
 import RightToKnow from '../screens/RightToKnow';
+import CardForCarousel from './CardForCarousel';
 
 export default function ScrollingCarousel() {
     const responsive = {
@@ -44,7 +44,7 @@ export default function ScrollingCarousel() {
             title: 'Weather',
             image: weather,
             children: (
-              <Weather />  
+                <Weather />
             ),
         },
         {
@@ -58,7 +58,7 @@ export default function ScrollingCarousel() {
             title: 'Games',
             image: games,
             children: (
-               <Games />
+                <Games />
             ),
         },
         {
@@ -84,7 +84,7 @@ export default function ScrollingCarousel() {
             title: 'Photo Gallery',
             image: photogal,
             children: (
-               <PhotoGallery />
+                <PhotoGallery />
             ),
         },
         {

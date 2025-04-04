@@ -15,6 +15,8 @@ export default function MobileApp() {
             <p>Access our research data and information on the go.</p>
             <p>Stay updated with real-time notifications.</p>
             <p>Download our mobile app for better access.</p>
+                  <NotFound />
+
         </div>
     </Box>)
 }   
