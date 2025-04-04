@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/react-kiosk/static/css/main.441edb08.css",
-    "main.js": "/react-kiosk/static/js/main.4c3322e8.js",
+    "main.js": "/react-kiosk/static/js/main.821b9739.js",
     "static/media/Blue-CoLab.mp4": "/react-kiosk/static/media/Blue-CoLab.6fd6cf4993deeda7d049.mp4",
     "static/media/background.mp4": "/react-kiosk/static/media/background.3e7dbb36e4fe8aec42a7.mp4",
     "static/media/Clearwater sails.mp4": "/react-kiosk/static/media/Clearwater sails.ae1179b64490239faf66.mp4",
     "static/media/fellowship.webm": "/react-kiosk/static/media/fellowship.7d1be80c93b30aac07ea.webm",
     "static/media/Choate Pond Sonification, Pace 1080.mp4": "/react-kiosk/static/media/Choate Pond Sonification, Pace 1080.0fe97b6307b5b2b3e82c.mp4",
     "static/media/Crotter_Construction.png": "/react-kiosk/static/media/Crotter_Construction.898a48cc6122f4ff7d28.png",
+    "static/media/MobileNewUI.png": "/react-kiosk/static/media/MobileNewUI.018c7632f12bdf92b67e.png",
     "static/media/jeopardy.jpg": "/react-kiosk/static/media/jeopardy.18a705ba63aabb90bee7.jpg",
     "static/media/splashyfish.jpg": "/react-kiosk/static/media/splashyfish.df966d0c34ad8d7f6de4.jpg",
     "static/media/logo512.png": "/react-kiosk/static/media/logo512.a63e019cfa19379b4a91.png",
@@ -19,10 +20,10 @@
     "static/media/revicons.woff": "/react-kiosk/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/react-kiosk/index.html",
     "main.441edb08.css.map": "/react-kiosk/static/css/main.441edb08.css.map",
-    "main.4c3322e8.js.map": "/react-kiosk/static/js/main.4c3322e8.js.map"
+    "main.821b9739.js.map": "/react-kiosk/static/js/main.821b9739.js.map"
   },
   "entrypoints": [
     "static/css/main.441edb08.css",
-    "static/js/main.4c3322e8.js"
+    "static/js/main.821b9739.js"
   ]
 }
