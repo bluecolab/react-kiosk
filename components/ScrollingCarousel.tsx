@@ -1,15 +1,8 @@
 import * as React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Animated, { interpolate, Extrapolation, useAnimatedStyle, SharedValue } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
-import { BlurView as _BlurView } from 'expo-blur';
-
-const BlurView = Animated.createAnimatedComponent(_BlurView);
-
-const PAGE_WIDTH = 1500;
-const itemSize = 175;
-const centerOffset = PAGE_WIDTH / 2 - itemSize / 2;
 
 interface Widget {
     title: string;
@@ -31,6 +24,14 @@ const widgets: Widget[] = [
 
 
 export default function ScrollingCarousel() {
+
+
+    const { width, height } = useWindowDimensions();
+
+    const PAGE_WIDTH = width;
+    const itemSize = 175;
+    const centerOffset = PAGE_WIDTH / 2 - itemSize / 2;
+
     const animationStyle: TAnimationStyle = React.useCallback(
         (value: number) => {
             'worklet';
@@ -53,7 +54,7 @@ export default function ScrollingCarousel() {
                 ],
             };
         },
-        []
+        [centerOffset]
     );
 
     interface CustomItemProps {
@@ -62,55 +63,45 @@ export default function ScrollingCarousel() {
     }
 
     const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
-        const blurStyle = useAnimatedStyle(() => {
+        const fadeStyle = useAnimatedStyle(() => {
             const opacity = interpolate(
                 animationValue.value,
-                [-3, -2, -1, 0, 1, 2, 3],
-                [0.75, 0.5, 0.25, 0, 0.25, .5, .75],
+                [-4,-3, -2, -1, 0, 1, 2, 3, 4],
+                [0.05,0.25, 0.5, 0.75, 1, 0.75, 0.5, 0.25, 0.05],  // Adjust these values for more or less fading
                 Extrapolation.CLAMP,
             );
-
+    
             return {
                 opacity,
             };
         }, [animationValue]);
-
+    
         return (
             <View style={{
                 width: '100%',
                 height: '100%',
-            }}
-            >
-                <Text style={{
+            }}>
+                <Animated.Text style={[{
                     alignSelf: 'center',
                     color: 'white',
                     fontWeight: 'bold',
-                }}>
+                }, fadeStyle]}>
                     {item.title}
-                </Text>
-
-                <Image
+                </Animated.Text>
+    
+                <Animated.Image
                     source={item.image}
-                    style={{
+                    style={[{
                         width: '100%',
                         height: '100%',
                         resizeMode: 'contain',
-                    }}
+                    }, fadeStyle]}
                     borderRadius={50}
                 />
-
-                <BlurView
-                    intensity={25}
-                    tint="dark"
-                    pointerEvents="none"
-                    // borderRadius={50}
-                    style={[StyleSheet.absoluteFill, blurStyle, {height: "110%"}]}
-                />
-
-                
             </View>
         );
     };
+    
 
     return (
         <View id="carousel-component">
@@ -119,7 +110,7 @@ export default function ScrollingCarousel() {
                 height={itemSize}
                 style={{
                     width: PAGE_WIDTH,
-                    height: PAGE_WIDTH / 2,
+                    height: height*0.35,
                 }}
                 loop
                 data={widgets}
