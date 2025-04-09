@@ -37,7 +37,7 @@
     "homepage": "https://okaykenji.github.io/bluecolabkiosk",
     "experiments": {
       "typedRoutes": true,
-      "baseURL" : "bluecolabkiosk"
+      "baseURL": "bluecolabkiosk"
     }
   }
 }
