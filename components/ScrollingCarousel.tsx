@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Animated, { interpolate, Extrapolation, useAnimatedStyle, SharedValue } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
@@ -24,12 +24,12 @@ const widgets: Widget[] = [
 
 
 export default function ScrollingCarousel() {
+    const height = Dimensions.get('window').height;
+    const width = Dimensions.get('window').width;
 
-
-    const { width, height } = useWindowDimensions();
 
     const PAGE_WIDTH = width;
-    const itemSize = 175;
+    const itemSize = 150;
     const centerOffset = PAGE_WIDTH / 2 - itemSize / 2;
 
     const animationStyle: TAnimationStyle = React.useCallback(
@@ -110,7 +110,7 @@ export default function ScrollingCarousel() {
                 height={itemSize}
                 style={{
                     width: PAGE_WIDTH,
-                    height: height*0.35,
+                    height: height*0.4,
                 }}
                 loop
                 data={widgets}

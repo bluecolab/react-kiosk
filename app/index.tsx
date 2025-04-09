@@ -1,12 +1,11 @@
 import ScrollingCarousel from "@/components/ScrollingCarousel";
 import Head from "expo-router/head";
-import { View, useWindowDimensions } from "react-native";
+import { View, Dimensions } from "react-native";
 
 const assetId = require('../assets/videos/background.mp4');
 
 export default function Index() {
-  const {height} = useWindowDimensions();
-
+  const height = Dimensions.get('window').height;
 
   return (
     <>
@@ -35,7 +34,7 @@ export default function Index() {
         <View
           style={{
             position: 'absolute',
-            top: 0.65*height,
+            top: 0.6*height,
             left: 0,
             right: 0,
             // bottom: 0,
