@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Animated, { interpolate, Extrapolation, useAnimatedStyle, SharedValue } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
@@ -21,12 +21,13 @@ const widgets: Widget[] = [
     { title: 'Videos', image: require('../assets/images/icons/VideosIcon.png') },
     { title: 'About Us', image: require('../assets/images/icons/AboutIcon.png') },
 ];
-
-
-export default function ScrollingCarousel() {
-    const height = Dimensions.get('window').height;
-    const width = Dimensions.get('window').width;
-
+// Define the types for the props
+interface ScrollingCarouselProps {
+    height: number;
+    width: number;
+  }
+  
+const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) => {
 
     const PAGE_WIDTH = width;
     const itemSize = 150;
@@ -131,3 +132,5 @@ export default function ScrollingCarousel() {
         </View>
     );
 }
+
+export default ScrollingCarousel;
