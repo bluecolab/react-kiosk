@@ -1,5 +1,6 @@
+import ScrollingCarousel from "@/components/ScrollingCarousel";
 import Head from "expo-router/head";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
 const assetId = require('../assets/videos/background.mp4');
 
@@ -41,7 +42,7 @@ export default function Index() {
             opacity: 1, // You can adjust the opacity for a fade effect
           }}
         >
-          <Text>Test</Text>
+          <ScrollingCarousel />
         </View>
       </View>
     </>
