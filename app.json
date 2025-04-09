@@ -1,22 +1,13 @@
 {
   "expo": {
-    "name": "StickerSmash",
-    "slug": "StickerSmash",
+    "name": "bluecolabkiosk",
+    "slug": "bluecolabkiosk",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "horizontal",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -34,14 +25,13 @@
         }
       ]
     ],
+    "homepage": "https://okaykenji.github.io/bluecolabkiosk",
     "experiments": {
       "typedRoutes": true,
       "baseUrl": "/bluecolabkiosk"
     },
-    "homepage": "https://okaykenji.github.io/bluecolabkiosk",
     "assetBundlePatterns": [
       "**/*"
     ]
-    
   }
 }
