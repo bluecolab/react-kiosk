@@ -1,22 +1,13 @@
 {
   "expo": {
-    "name": "react-kiosk",
-    "slug": "react-kiosk",
+    "name": "bluecolabkiosk",
+    "slug": "bluecolabkiosk",
     "version": "1.0.0",
     "orientation": "horizontal",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -38,6 +29,9 @@
     "experiments": {
       "typedRoutes": true,
       "baseURL": "/bluecolabkiosk"
-    }
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
   }
 }
