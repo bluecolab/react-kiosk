@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import Animated, { interpolate, Extrapolation, useAnimatedStyle, SharedValue } from 'react-native-reanimated';
+import  { interpolate } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
+import CarouselItem from './CarouselItem';
 
 interface Widget {
     title: string;
@@ -30,16 +30,21 @@ interface ScrollingCarouselProps {
 const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) => {
 
     const PAGE_WIDTH = width;
-    const itemSize = 150;
+    const itemSize = 200;
     const centerOffset = PAGE_WIDTH / 2 - itemSize / 2;
 
     const animationStyle: TAnimationStyle = React.useCallback(
         (value: number) => {
             'worklet';
-            console.log(value);
-            const itemGap = interpolate(value,[-3, -2, -1, 0, 1, 2, 3], [-30, -15, 0, 0, 0, 15, 30]);
-            const translateX = interpolate(value, [-1, 0, 1], [-itemSize, 0, itemSize]) + centerOffset - 0;
-            const translateY = interpolate(value, [-1, -0.5, 0, 0.5, 1], [90, 45, 40, 45, 90]);
+
+            const itemGap = interpolate(
+                value,
+                [-3, -2, -1, 0, 1, 2, 3],
+                [-30, -15, 0, 0, 0, 15, 30],
+            );
+
+            const translateX = interpolate(value, [-1, 0, 1], [-itemSize, 0, itemSize]) + centerOffset - itemGap;
+            const translateY = interpolate(value, [-1, -0.5, 0, 0.5, 1], [25, 15, 10, 15, 25]);
             const scale = interpolate(value, [-1, -0.5, 0, 0.5, 1], [0.8, 0.85, 1.1, 0.85, 0.8]);
 
             return {
@@ -53,50 +58,6 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) 
         [centerOffset]
     );
 
-    interface CustomItemProps {
-        item: Widget;
-        animationValue: SharedValue<number>;
-    }
-
-    const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
-        const fadeStyle = useAnimatedStyle(() => {
-            const opacity = interpolate(
-                animationValue.value,
-                [-5, -4,-3, -2, -1, 0, 1, 2, 3, 4, 5],
-                [0.01, 0.05,0.25, 0.5, 0.75, 1, 0.75, 0.5, 0.25, 0.05, 0.01], 
-                Extrapolation.CLAMP,
-            );
-    
-            return {
-                opacity,
-            };
-        }, [animationValue]);
-    
-        return (
-            <View style={{
-                width: '100%',
-                height: '100%',
-            }}>
-                <Animated.Text style={[{
-                    alignSelf: 'center',
-                    color: 'white',
-                    fontWeight: 'bold',
-                }, fadeStyle]}>
-                    {item.title}
-                </Animated.Text>
-    
-                <Animated.Image
-                    source={item.image}
-                    style={[{
-                        width: '100%',
-                        height: '100%',
-                        resizeMode: 'contain',
-                    }, fadeStyle]}
-                    borderRadius={50}
-                />
-            </View>
-        );
-    };
     
 
     return (
@@ -106,21 +67,12 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) 
                 height={itemSize}
                 style={{
                     width: PAGE_WIDTH,
-                    height: height*0.4,
+                    height: height*0.25,
                 }}
                 loop
                 data={widgets}
                 renderItem={({ index, animationValue }) => (
-                    <TouchableWithoutFeedback
-                        key={index}
-                        onPress={() => {
-                            console.log(index);
-                        }}
-                        containerStyle={{ flex: 1 }}
-                        style={{ flex: 1 }}
-                    >
-                        <CustomItem item={widgets[index]} animationValue={animationValue} />
-                    </TouchableWithoutFeedback>
+                   <CarouselItem widgets={widgets} index={index} animationValue={animationValue} />
                 )}
                 customAnimation={animationStyle}
             />

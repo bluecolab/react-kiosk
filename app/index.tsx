@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ScrollingCarousel from "@/components/ScrollingCarousel";
 import Head from "expo-router/head";
 import { View } from "react-native";
+// import useGetAPIData from "../hooks/use-get-api-data";
 
 const assetId = require('../assets/videos/background.mp4');
 
@@ -60,7 +61,7 @@ export default function Index() {
         <View
           style={{
             position: 'absolute',
-            top: height * 0.6, // Adjusted position based on height
+            top: height * 0.75, // Adjusted position based on height
             left: 0,
             right: 0,
             zIndex: 10, // Ensure carousel is on top of video
