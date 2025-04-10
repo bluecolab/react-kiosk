@@ -36,15 +36,10 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) 
     const animationStyle: TAnimationStyle = React.useCallback(
         (value: number) => {
             'worklet';
-
-            const itemGap = interpolate(
-                value,
-                [-3, -2, -1, 0, 1, 2, 3],
-                [-30, -15, 0, 0, 0, 15, 30],
-            );
-
-            const translateX = interpolate(value, [-1, 0, 1], [-itemSize, 0, itemSize]) + centerOffset - itemGap;
-            const translateY = interpolate(value, [-1, -0.5, 0, 0.5, 1], [65, 45, 40, 45, 65]);
+            console.log(value);
+            const itemGap = interpolate(value,[-3, -2, -1, 0, 1, 2, 3], [-30, -15, 0, 0, 0, 15, 30]);
+            const translateX = interpolate(value, [-1, 0, 1], [-itemSize, 0, itemSize]) + centerOffset - 0;
+            const translateY = interpolate(value, [-1, -0.5, 0, 0.5, 1], [90, 45, 40, 45, 90]);
             const scale = interpolate(value, [-1, -0.5, 0, 0.5, 1], [0.8, 0.85, 1.1, 0.85, 0.8]);
 
             return {
@@ -67,8 +62,8 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) 
         const fadeStyle = useAnimatedStyle(() => {
             const opacity = interpolate(
                 animationValue.value,
-                [-4,-3, -2, -1, 0, 1, 2, 3, 4],
-                [0.05,0.25, 0.5, 0.75, 1, 0.75, 0.5, 0.25, 0.05],  // Adjust these values for more or less fading
+                [-5, -4,-3, -2, -1, 0, 1, 2, 3, 4, 5],
+                [0.01, 0.05,0.25, 0.5, 0.75, 1, 0.75, 0.5, 0.25, 0.05, 0.01], 
                 Extrapolation.CLAMP,
             );
     
