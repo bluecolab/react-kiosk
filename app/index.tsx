@@ -112,16 +112,18 @@ export default function Index() {
           right: 0,
           bottom: 0,
           alignItems: 'center',
-          // zIndex: 1,
+          width: "100%"
         }}>
           <Animated.View style={[{
             padding: 15,
             alignItems: 'center',
+            paddingBottom: 30,
+            width: "100%"
           }, viewAreaHeightStyle]
           }>
             <ScrollView
               style={{
-                // overflowY: 'scroll',
+                width: "100%"
               }}
               contentContainerStyle={{ alignItems: 'center' }}
               showsVerticalScrollIndicator={true}
