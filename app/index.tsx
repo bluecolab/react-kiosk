@@ -12,6 +12,19 @@ interface Widget {
   image: number;
 }
 
+const widgets: Widget[] = [
+  { title: 'Pond Water Data', image: require('../assets/images/icons/PondWaterDataIcon.png') },
+  { title: 'Weather', image: require('../assets/images/icons/WeatherIcon.png') },
+  { title: 'Data to Music', image: require('../assets/images/icons/SonificationIcon.png') },
+  { title: 'Games', image: require('../assets/images/icons/GamesIcon.png') },
+  { title: 'Right to Know', image: require('../assets/images/icons/RTKIcon.png') },
+  { title: 'Water Reports', image: require('../assets/images/icons/WaterReportsIcon.png') },
+  { title: 'Mobile App', image: require('../assets/images/icons/MobileIcon.png') },
+  { title: 'Photo Gallery', image: require('../assets/images/icons/PhotoGalleryIcon.png') },
+  { title: 'Videos', image: require('../assets/images/icons/VideosIcon.png') },
+  { title: 'About Us', image: require('../assets/images/icons/AboutIcon.png') },
+];
+
 export default function Index() {
   const [windowDimensions, setWindowDimensions] = useState<
     {
@@ -19,6 +32,7 @@ export default function Index() {
       height: number | undefined
     }>({ width: undefined, height: undefined });
   const [index, setIndex] = useState<number>(0);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,18 +56,6 @@ export default function Index() {
 
   const { height, width } = windowDimensions;
 
-  const widgets: Widget[] = [
-    { title: 'Pond Water Data', image: require('../assets/images/icons/PondWaterDataIcon.png') },
-    { title: 'Weather', image: require('../assets/images/icons/WeatherIcon.png') },
-    { title: 'Data to Music', image: require('../assets/images/icons/SonificationIcon.png') },
-    { title: 'Games', image: require('../assets/images/icons/GamesIcon.png') },
-    { title: 'Right to Know', image: require('../assets/images/icons/RTKIcon.png') },
-    { title: 'Water Reports', image: require('../assets/images/icons/WaterReportsIcon.png') },
-    { title: 'Mobile App', image: require('../assets/images/icons/MobileIcon.png') },
-    { title: 'Photo Gallery', image: require('../assets/images/icons/PhotoGalleryIcon.png') },
-    { title: 'Videos', image: require('../assets/images/icons/VideosIcon.png') },
-    { title: 'About Us', image: require('../assets/images/icons/AboutIcon.png') },
-  ];
 
   const config = useMemo(() => ({
     duration: 500,
@@ -135,6 +137,34 @@ export default function Index() {
               fontWeight: 'bold'
             }}>{widgets[index].title}</Text>
           </Animated.View>
+
+
+          <View style={{
+            position: 'relative',
+            bottom: 40,
+            padding: 10,
+            borderRadius: 10,
+            zIndex: 100,
+            width: "98%"
+          }}>
+
+            <TouchableOpacity
+              onPress={() => {
+                if (height && !isExpanded) {
+                  carouselLocation.value = withTiming(height * 1.05, config); // Move it off screen
+                  viewAreaHeight.value = withTiming(height * 0.95, config); // Move it off screen
+                  setIsExpanded(!isExpanded);
+                } else if (height && isExpanded) {
+                  carouselLocation.value = withTiming(height * 0.75, config); // Move it back screen
+                  viewAreaHeight.value = withTiming(height * 0.73, config); // Move it back screen
+                  setIsExpanded(!isExpanded);
+                }
+              }}
+
+            >
+              <Text style={{ color: 'white', alignContent: 'center', justifyContent: 'center', textAlign: 'center' }}>{isExpanded ? "△ Shrink △" : "▽ Expand ▽"}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <Animated.View
@@ -150,47 +180,6 @@ export default function Index() {
         >
           <ScrollingCarousel widgets={widgets} height={height} width={width} setIndex={setIndex} />
         </Animated.View>
-
-        <TouchableOpacity
-          onPress={() => {
-            if (height) {
-              carouselLocation.value = withTiming(height * 1.05, config); // Move it off screen
-              viewAreaHeight.value = withTiming(height*0.95, config); // Move it off screen
-            }
-          }}
-          style={{
-            position: 'absolute',
-            top: 40,
-            right: 20,
-            backgroundColor: 'white',
-            padding: 10,
-            borderRadius: 10,
-            zIndex: 100,
-          }}
-        >
-          <Text style={{ color: 'black' }}>Move Out</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {
-            if (height) {
-              carouselLocation.value = withTiming(height * 0.75, config); // Move it back screen
-              viewAreaHeight.value = withTiming(height * 0.73, config); // Move it back screen
-
-            }
-          }}
-          style={{
-            position: 'absolute',
-            top: 80,
-            right: 20,
-            backgroundColor: 'white',
-            padding: 10,
-            borderRadius: 10,
-            zIndex: 100,
-          }}
-        >
-          <Text style={{ color: 'black' }}>Move in</Text>
-        </TouchableOpacity>
       </View>}
     </>
   );
