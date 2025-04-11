@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import ScrollingCarousel from "@/components/ScrollingCarousel";
 import Head from "expo-router/head";
-import { View } from "react-native";
+import { View, Text, Easing, TouchableOpacity } from "react-native";
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 // import useGetAPIData from "../hooks/use-get-api-data";
 
 const assetId = require('../assets/videos/background.mp4');
 
-export default function Index() {
-  const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
+interface Widget {
+  title: string;
+  image: number;
+}
 
-  // Update window size dynamically
+export default function Index() {
+  const [windowDimensions, setWindowDimensions] = useState<
+    {
+      width: number | undefined,
+      height: number | undefined
+    }>({ width: undefined, height: undefined });
+  const [index, setIndex] = useState<number>(0);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowDimensions({
@@ -32,13 +42,55 @@ export default function Index() {
 
   const { height, width } = windowDimensions;
 
+  const widgets: Widget[] = [
+    { title: 'Pond Water Data', image: require('../assets/images/icons/PondWaterDataIcon.png') },
+    { title: 'Weather', image: require('../assets/images/icons/WeatherIcon.png') },
+    { title: 'Data to Music', image: require('../assets/images/icons/SonificationIcon.png') },
+    { title: 'Games', image: require('../assets/images/icons/GamesIcon.png') },
+    { title: 'Right to Know', image: require('../assets/images/icons/RTKIcon.png') },
+    { title: 'Water Reports', image: require('../assets/images/icons/WaterReportsIcon.png') },
+    { title: 'Mobile App', image: require('../assets/images/icons/MobileIcon.png') },
+    { title: 'Photo Gallery', image: require('../assets/images/icons/PhotoGalleryIcon.png') },
+    { title: 'Videos', image: require('../assets/images/icons/VideosIcon.png') },
+    { title: 'About Us', image: require('../assets/images/icons/AboutIcon.png') },
+  ];
+
+  const config = useMemo(() => ({
+    duration: 500,
+    easing: Easing.bezier(0.5, 0.01, 0, 1),
+  }), []);
+
+  const carouselLocation = useSharedValue(0); // Start at 0 (off-screen or hidden)
+  const viewAreaHeight = useSharedValue(0); // Start at 0 (off-screen or hidden)
+
+  useEffect(() => {
+    if (height) {
+      // Animate it in when height is available
+      carouselLocation.value = withTiming(height * 0.75, config);
+      viewAreaHeight.value = withTiming(height * 0.73, config);
+    }
+  }, [config, height, carouselLocation, viewAreaHeight]);
+
+  const carouselLocationStyle = useAnimatedStyle(() => {
+    return {
+      top: carouselLocation.value,
+    };
+  });
+
+  const viewAreaHeightStyle = useAnimatedStyle(() => {
+    return {
+      height: viewAreaHeight.value,
+    };
+  });
+
   return (
     <>
       <Head>
         <title>Blue CoLab Kiosk</title>
         <meta name="description" content="Blue CoLab Kiosk" />
       </Head>
-      <View style={{ flex: 1, position: 'relative' }}>
+
+      {height && width && <View style={{ flex: 1, position: 'relative' }}>
         {/* Background Video */}
         <video
           style={{
@@ -57,22 +109,89 @@ export default function Index() {
           <source src={assetId} type="video/mp4" />
         </video>
 
-        {/* Scrolling Carousel */}
-        <View
-          style={{
+        <View style={{
+          position: 'absolute',
+          top: 10,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          alignItems: 'center',
+          zIndex: 1,
+        }}>
+          <Animated.View style={[{
+            backgroundColor: '#111111dd',
+            borderRadius: 20,
+            padding: 15,
+            alignItems: 'center',
+            width: "98%",
+            // height: 300
+          }, viewAreaHeightStyle]
+          }>
+            <Text style={{
+              marginBottom: 15,
+              textAlign: 'center',
+              color: 'white',
+              fontSize: 20,
+              fontWeight: 'bold'
+            }}>{widgets[index].title}</Text>
+          </Animated.View>
+        </View>
+
+        <Animated.View
+          style={[carouselLocationStyle, {
             position: 'absolute',
-            top: height * 0.75, // Adjusted position based on height
             left: 0,
             right: 0,
-            zIndex: 10, // Ensure carousel is on top of video
+            zIndex: 10,
             justifyContent: 'center',
             alignItems: 'center',
-            opacity: 1, // Adjust opacity for a fade effect if needed
+            opacity: 1,
+          }]}
+        >
+          <ScrollingCarousel widgets={widgets} height={height} width={width} setIndex={setIndex} />
+        </Animated.View>
+
+        <TouchableOpacity
+          onPress={() => {
+            if (height) {
+              carouselLocation.value = withTiming(height * 1.05, config); // Move it off screen
+              viewAreaHeight.value = withTiming(height*0.95, config); // Move it off screen
+            }
+          }}
+          style={{
+            position: 'absolute',
+            top: 40,
+            right: 20,
+            backgroundColor: 'white',
+            padding: 10,
+            borderRadius: 10,
+            zIndex: 100,
           }}
         >
-          <ScrollingCarousel height={height} width={width}/>
-        </View>
-      </View>
+          <Text style={{ color: 'black' }}>Move Out</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            if (height) {
+              carouselLocation.value = withTiming(height * 0.75, config); // Move it back screen
+              viewAreaHeight.value = withTiming(height * 0.73, config); // Move it back screen
+
+            }
+          }}
+          style={{
+            position: 'absolute',
+            top: 80,
+            right: 20,
+            backgroundColor: 'white',
+            padding: 10,
+            borderRadius: 10,
+            zIndex: 100,
+          }}
+        >
+          <Text style={{ color: 'black' }}>Move in</Text>
+        </TouchableOpacity>
+      </View>}
     </>
   );
 }

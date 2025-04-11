@@ -1,36 +1,26 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import  { interpolate } from 'react-native-reanimated';
+import { interpolate } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
 import CarouselItem from './CarouselItem';
+
 
 interface Widget {
     title: string;
     image: number;
 }
 
-const widgets: Widget[] = [
-    { title: 'Pond Water Data', image: require('../assets/images/icons/PondWaterDataIcon.png') },
-    { title: 'Weather', image: require('../assets/images/icons/WeatherIcon.png') },
-    { title: 'Data to Music', image: require('../assets/images/icons/SonificationIcon.png') },
-    { title: 'Games', image: require('../assets/images/icons/GamesIcon.png') },
-    { title: 'Right to Know (RTK)', image: require('../assets/images/icons/RTKIcon.png') },
-    { title: 'Water Reports', image: require('../assets/images/icons/WaterReportsIcon.png') },
-    { title: 'Mobile App', image: require('../assets/images/icons/MobileIcon.png') },
-    { title: 'Photo Gallery', image: require('../assets/images/icons/PhotoGalleryIcon.png') },
-    { title: 'Videos', image: require('../assets/images/icons/VideosIcon.png') },
-    { title: 'About Us', image: require('../assets/images/icons/AboutIcon.png') },
-];
 // Define the types for the props
 interface ScrollingCarouselProps {
     height: number;
     width: number;
-  }
-  
-const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) => {
+    setIndex: (index: number) => void;
+    widgets: Widget[]
+}
 
+const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width, setIndex, widgets }) => {
     const PAGE_WIDTH = width;
-    const itemSize = 200;
+    const itemSize = height * 0.185; // size of icons is 18.5% of the height
     const centerOffset = PAGE_WIDTH / 2 - itemSize / 2;
 
     const animationStyle: TAnimationStyle = React.useCallback(
@@ -55,10 +45,8 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) 
                 ],
             };
         },
-        [centerOffset]
+        [centerOffset, itemSize]
     );
-
-    
 
     return (
         <View id="carousel-component">
@@ -67,13 +55,20 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width }) 
                 height={itemSize}
                 style={{
                     width: PAGE_WIDTH,
-                    height: height*0.25,
+                    height: height * 0.25,
                 }}
                 loop
                 data={widgets}
-                renderItem={({ index, animationValue }) => (
-                   <CarouselItem widgets={widgets} index={index} animationValue={animationValue} />
-                )}
+                renderItem={({ index, animationValue }) => {
+                    return (
+                        <CarouselItem
+                            widgets={widgets}
+                            index={index}
+                            animationValue={animationValue}
+                            setIndex={setIndex}
+                        />
+                    );
+                }}
                 customAnimation={animationStyle}
             />
         </View>
