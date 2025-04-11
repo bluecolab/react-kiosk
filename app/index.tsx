@@ -1,31 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import ScrollingCarousel from "@/components/ScrollingCarousel";
 import Head from "expo-router/head";
-import { View, Text, Easing, TouchableOpacity } from "react-native";
+import { View, Text, Easing, TouchableOpacity, ScrollView} from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-// import useGetAPIData from "../hooks/use-get-api-data";
+import { useWidgets } from '@/hooks/useWidgets';
 
 const assetId = require('../assets/videos/background.mp4');
 
-interface Widget {
-  title: string;
-  image: number;
-}
-
-const widgets: Widget[] = [
-  { title: 'Pond Water Data', image: require('../assets/images/icons/PondWaterDataIcon.png') },
-  { title: 'Weather', image: require('../assets/images/icons/WeatherIcon.png') },
-  { title: 'Data to Music', image: require('../assets/images/icons/SonificationIcon.png') },
-  { title: 'Games', image: require('../assets/images/icons/GamesIcon.png') },
-  { title: 'Right to Know', image: require('../assets/images/icons/RTKIcon.png') },
-  { title: 'Water Reports', image: require('../assets/images/icons/WaterReportsIcon.png') },
-  { title: 'Mobile App', image: require('../assets/images/icons/MobileIcon.png') },
-  { title: 'Photo Gallery', image: require('../assets/images/icons/PhotoGalleryIcon.png') },
-  { title: 'Videos', image: require('../assets/images/icons/VideosIcon.png') },
-  { title: 'About Us', image: require('../assets/images/icons/AboutIcon.png') },
-];
-
 export default function Index() {
+  const widgets = useWidgets();
+
   const [windowDimensions, setWindowDimensions] = useState<
     {
       width: number | undefined,
@@ -64,17 +48,17 @@ export default function Index() {
 
   const carouselLocation = useSharedValue(0); // Start at 0 (off-screen or hidden)
   const viewAreaHeight = useSharedValue(0); // Start at 0 (off-screen or hidden)
-  const viewAreaOpacity = useSharedValue(0.8);
+  const viewAreaColor = useSharedValue("#efefefdd");
   const viewAreaWidth = useSharedValue(0);
   const viewAreaBorderRadius = useSharedValue(15);
-  const viewAreaMarginTop =  useSharedValue(10);
+  const viewAreaMarginTop = useSharedValue(10);
 
   useEffect(() => {
     if (height && width) {
       // Animate it in when height is available
       carouselLocation.value = withTiming(height * 0.75, config);
       viewAreaHeight.value = withTiming(height * 0.73, config);
-      viewAreaWidth.value =  withTiming(width * 0.98, config);
+      viewAreaWidth.value = withTiming(width * 0.98, config);
     }
   }, [config, height, carouselLocation, viewAreaHeight, viewAreaWidth, width]);
 
@@ -87,7 +71,7 @@ export default function Index() {
   const viewAreaHeightStyle = useAnimatedStyle(() => {
     return {
       height: viewAreaHeight.value,
-      opacity: viewAreaOpacity.value,
+      backgroundColor: viewAreaColor.value,
       width: viewAreaWidth.value,
       borderRadius: viewAreaBorderRadius.value,
       marginTop: viewAreaMarginTop.value
@@ -128,25 +112,32 @@ export default function Index() {
           right: 0,
           bottom: 0,
           alignItems: 'center',
-          zIndex: 1,
+          // zIndex: 1,
         }}>
           <Animated.View style={[{
-            backgroundColor: '#111111',
             padding: 15,
             alignItems: 'center',
-
-            width: width*0.98,
-            borderRadius: 15,
-            marginTop: 10,
           }, viewAreaHeightStyle]
           }>
-            <Text style={{
-              marginBottom: 15,
-              textAlign: 'center',
-              color: 'white',
-              fontSize: 20,
-              fontWeight: 'bold'
-            }}>{widgets[index].title}</Text>
+            <ScrollView
+              style={{
+                // overflowY: 'scroll',
+              }}
+              contentContainerStyle={{ alignItems: 'center' }}
+              showsVerticalScrollIndicator={true}
+              persistentScrollbar={true}
+            >
+              <Text style={{
+                textAlign: 'center',
+                color: 'black',
+                fontSize: 25,
+                fontWeight: 'bold',
+                marginBottom: 10
+              }}>
+                {widgets[index].title}
+              </Text>
+              {widgets[index].screen}
+            </ScrollView>
           </Animated.View>
 
 
@@ -155,7 +146,7 @@ export default function Index() {
             bottom: 40,
             padding: 10,
             borderRadius: 10,
-            zIndex: 100,
+            zIndex: 15,
             width: "98%"
           }}>
 
@@ -164,7 +155,7 @@ export default function Index() {
                 if (height && !isExpanded) {
                   carouselLocation.value = withTiming(height * 1.05, config); // Move it off screen
                   viewAreaHeight.value = withTiming(height, config); // Move it off screen
-                  viewAreaOpacity.value = withTiming(0.95, config); // Move it off screen
+                  viewAreaColor.value = withTiming("#efefefff", config); // Move it off screen
                   viewAreaWidth.value = withTiming(width, config);
                   viewAreaBorderRadius.value = withTiming(0, config);
                   viewAreaMarginTop.value = withTiming(0, config);
@@ -172,8 +163,8 @@ export default function Index() {
                 } else if (height && isExpanded) {
                   carouselLocation.value = withTiming(height * 0.75, config); // Move it back screen
                   viewAreaHeight.value = withTiming(height * 0.73, config); // Move it back screen
-                  viewAreaOpacity.value = withTiming(0.8, config); // Move it off screen
-                  viewAreaWidth.value = withTiming(width*0.98, config);
+                  viewAreaColor.value = withTiming("#efefefdd", config); // Move it off screen
+                  viewAreaWidth.value = withTiming(width * 0.98, config);
                   viewAreaBorderRadius.value = withTiming(15, config);
                   viewAreaMarginTop.value = withTiming(10, config);
                   setIsExpanded(!isExpanded);
@@ -181,7 +172,7 @@ export default function Index() {
               }}
 
             >
-              <Text style={{ color: 'white', alignContent: 'center', justifyContent: 'center', textAlign: 'center' }}>{isExpanded ? "△ Shrink △" : "▽ Expand ▽"}</Text>
+              <Text style={{ color: 'black', alignContent: 'center', justifyContent: 'center', textAlign: 'center', fontSize: 18 }}>{isExpanded ? "△ Shrink △" : "▽ Expand ▽"}</Text>
             </TouchableOpacity>
           </View>
         </View>}
@@ -199,7 +190,7 @@ export default function Index() {
         >
           <ScrollingCarousel widgets={widgets} height={height} width={width} setIndex={setIndex} />
         </Animated.View>}
-      
+
       </View>
     </>
   );

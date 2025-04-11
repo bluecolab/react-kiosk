@@ -3,12 +3,7 @@ import { View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
 import CarouselItem from './CarouselItem';
-
-
-interface Widget {
-    title: string;
-    image: number;
-}
+import { Widget } from '@/hooks/useWidgets';
 
 // Define the types for the props
 interface ScrollingCarouselProps {
@@ -62,7 +57,7 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({ height, width, se
                 renderItem={({ index, animationValue }) => {
                     return (
                         <CarouselItem
-                            widgets={widgets}
+                            widgets={widgets as Widget[]}
                             index={index}
                             animationValue={animationValue}
                             setIndex={setIndex}

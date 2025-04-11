@@ -1,12 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import Animated, { Extrapolation, interpolate, SharedValue, useAnimatedStyle,   useAnimatedReaction, runOnJS, } from "react-native-reanimated";
-
-
-interface Widget {
-    title: string;
-    image: number;
-} // make this a global import?
+import { Widget } from "@/hooks/useWidgets";
 
 interface CustomItemProps {
     item: Widget;
