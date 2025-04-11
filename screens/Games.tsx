@@ -7,11 +7,9 @@ import {
   Modal,
   Pressable,
   Image,
-//   Dimensions
+  Platform,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
-
-// const { width, height } = Dimensions.get('window');
 
 const games = [
   {
@@ -64,17 +62,30 @@ export default function Games() {
       </View>
 
       <Modal visible={modalVisible} animationType="slide">
-        <View style={styles.modalHeader}>
-          <Pressable onPress={() => setModalVisible(false)}>
-            <Text style={styles.backText}>← Back</Text>
-          </Pressable>
-          <Text style={styles.modalTitle}>{currentGame.name}</Text>
+        <View style={{ flex: 1 }}>
+          <View style={styles.modalHeader}>
+            <Pressable onPress={() => setModalVisible(false)}>
+              <Text style={styles.backText}>← Back</Text>
+            </Pressable>
+            <Text style={styles.modalTitle}>{currentGame.name}</Text>
+          </View>
+
+          {Platform.OS === 'web' ? (
+            <View style={styles.iframeContainer}>
+              <iframe
+                src={currentGame.url}
+                style={styles.iframe}
+                allowFullScreen
+              />
+            </View>
+          ) : (
+            <WebView
+              source={{ uri: currentGame.url }}
+              style={styles.webview}
+              allowsFullscreenVideo
+            />
+          )}
         </View>
-        <WebView
-          source={{ uri: currentGame.url }}
-          style={styles.webview}
-          allowsFullscreenVideo
-        />
       </Modal>
     </View>
   );
@@ -85,6 +96,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#eee',
     flex: 1,
+    width: '100%',
   },
   header: {
     fontSize: 18,
@@ -161,5 +173,16 @@ const styles = StyleSheet.create({
   },
   webview: {
     flex: 1,
+  },
+  iframeContainer: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  iframe: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    // border: 'none',
   },
 });
