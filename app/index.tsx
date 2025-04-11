@@ -64,14 +64,19 @@ export default function Index() {
 
   const carouselLocation = useSharedValue(0); // Start at 0 (off-screen or hidden)
   const viewAreaHeight = useSharedValue(0); // Start at 0 (off-screen or hidden)
+  const viewAreaOpacity = useSharedValue(0.8);
+  const viewAreaWidth = useSharedValue(0);
+  const viewAreaBorderRadius = useSharedValue(15);
+  const viewAreaMarginTop =  useSharedValue(10);
 
   useEffect(() => {
-    if (height) {
+    if (height && width) {
       // Animate it in when height is available
       carouselLocation.value = withTiming(height * 0.75, config);
       viewAreaHeight.value = withTiming(height * 0.73, config);
+      viewAreaWidth.value =  withTiming(width * 0.98, config);
     }
-  }, [config, height, carouselLocation, viewAreaHeight]);
+  }, [config, height, carouselLocation, viewAreaHeight, viewAreaWidth, width]);
 
   const carouselLocationStyle = useAnimatedStyle(() => {
     return {
@@ -82,6 +87,10 @@ export default function Index() {
   const viewAreaHeightStyle = useAnimatedStyle(() => {
     return {
       height: viewAreaHeight.value,
+      opacity: viewAreaOpacity.value,
+      width: viewAreaWidth.value,
+      borderRadius: viewAreaBorderRadius.value,
+      marginTop: viewAreaMarginTop.value
     };
   });
 
@@ -92,7 +101,7 @@ export default function Index() {
         <meta name="description" content="Blue CoLab Kiosk" />
       </Head>
 
-      {height && width && <View style={{ flex: 1, position: 'relative' }}>
+      <View style={{ flex: 1, position: 'relative' }}>
         {/* Background Video */}
         <video
           style={{
@@ -111,9 +120,10 @@ export default function Index() {
           <source src={assetId} type="video/mp4" />
         </video>
 
-        <View style={{
+
+        {height && width && <View style={{
           position: 'absolute',
-          top: 10,
+          top: 0,
           left: 0,
           right: 0,
           bottom: 0,
@@ -121,12 +131,13 @@ export default function Index() {
           zIndex: 1,
         }}>
           <Animated.View style={[{
-            backgroundColor: '#111111dd',
-            borderRadius: 20,
+            backgroundColor: '#111111',
             padding: 15,
             alignItems: 'center',
-            width: "98%",
-            // height: 300
+
+            width: width*0.98,
+            borderRadius: 15,
+            marginTop: 10,
           }, viewAreaHeightStyle]
           }>
             <Text style={{
@@ -152,11 +163,19 @@ export default function Index() {
               onPress={() => {
                 if (height && !isExpanded) {
                   carouselLocation.value = withTiming(height * 1.05, config); // Move it off screen
-                  viewAreaHeight.value = withTiming(height * 0.95, config); // Move it off screen
+                  viewAreaHeight.value = withTiming(height, config); // Move it off screen
+                  viewAreaOpacity.value = withTiming(0.95, config); // Move it off screen
+                  viewAreaWidth.value = withTiming(width, config);
+                  viewAreaBorderRadius.value = withTiming(0, config);
+                  viewAreaMarginTop.value = withTiming(0, config);
                   setIsExpanded(!isExpanded);
                 } else if (height && isExpanded) {
                   carouselLocation.value = withTiming(height * 0.75, config); // Move it back screen
                   viewAreaHeight.value = withTiming(height * 0.73, config); // Move it back screen
+                  viewAreaOpacity.value = withTiming(0.8, config); // Move it off screen
+                  viewAreaWidth.value = withTiming(width*0.98, config);
+                  viewAreaBorderRadius.value = withTiming(15, config);
+                  viewAreaMarginTop.value = withTiming(10, config);
                   setIsExpanded(!isExpanded);
                 }
               }}
@@ -165,9 +184,9 @@ export default function Index() {
               <Text style={{ color: 'white', alignContent: 'center', justifyContent: 'center', textAlign: 'center' }}>{isExpanded ? "△ Shrink △" : "▽ Expand ▽"}</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </View>}
 
-        <Animated.View
+        {height && width && <Animated.View
           style={[carouselLocationStyle, {
             position: 'absolute',
             left: 0,
@@ -179,8 +198,9 @@ export default function Index() {
           }]}
         >
           <ScrollingCarousel widgets={widgets} height={height} width={width} setIndex={setIndex} />
-        </Animated.View>
-      </View>}
+        </Animated.View>}
+      
+      </View>
     </>
   );
 }
