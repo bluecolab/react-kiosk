@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Image } from "react-native";
 
 export default function StoryScreen() {
   return (
-    <ScrollView className="p-5 bg-gray-100 dark:bg-gray-900">
+    <ScrollView style={{ padding: 20, }} showsVerticalScrollIndicator={false}>
       {/* Title */}
       <Text style={{fontSize:24, fontWeight:'bold' , textAlign:'center', color:'#002D72', marginBottom:20,}}>
         At Seidenberg School, we believe students can make a difference today,
