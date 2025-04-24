@@ -3,48 +3,48 @@ import { View, Text, ScrollView, Image } from "react-native";
 
 export default function StoryScreen() {
   return (
-    <ScrollView className="p-5 bg-gray-100 dark:bg-gray-900">
+    <ScrollView style={{ padding: 20, }} showsVerticalScrollIndicator={false}>
       {/* Title */}
-      <Text className="text-2xl font-bold text-center text-blue-800 mb-5 dark:text-white">
+      <Text style={{fontSize:24, fontWeight:'bold' , textAlign:'center', color:'#002D72', marginBottom:20,}}>
         At Seidenberg School, we believe students can make a difference today,
         before they launch their careers of tomorrow.
       </Text>
 
       {/* Top Image */}
       <Image
-        source={require("../assets/images/general/Three-labs-copy.jpg")}   
-        className=" w-full h-[100px] rounded-md mb-4"
+        source={require("../assets/images/general/Three-labs.jpg")}   
+        style={{ width: '100%', height: 300, borderRadius: 8, marginBottom: 16 }}
         resizeMode="cover"
       />
 
       {/* Content Sections */}
-      <Text className="text-lg font-bold mb-2 dark:text-[#57ADBF]">
+      <Text style = {{fontSize: 18 , fontWeight:'bold' , marginBottom:20 , color:'#002D72'}}>
         Do you know if your water is safe before you drink it?
       </Text>
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         Let us answer that for you: No. We aim to change that.
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         We are a team of students, interns, graduate assistants, faculty, and
         staff who work to advance the technology, information, and warning
         systems that will bring you that information.
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         At our technology lab overlooking the Hudson River, our Choate Pond lab
         on campus, and our data lab in the Goldstein Academic Center, Blue CoLab
         is dedicated to the proposition that you have the{" "}
-        <Text className="font-bold">right-to-know</Text> the quality of your
+        <Text style = {{fontWeight:'bold'}}>right-to-know</Text> the quality of your
         water before you drink it, swim in it, fish it, or even swamp your canoe.
       </Text>
 
       {/* Section Titles */}
-      <Text className="text-xl font-semibold text-blue-800 mt-5 mb-2 dark:text-[#57ADBF] ">
+      <Text style = {{fontSize: 20, fontWeight:'bold', marginBottom:8 ,color:'#002D72'}}>
         Water Contamination Risks
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         Chances are the water you use is safe, but millions have found out too
         late that is not the case. Just one sip of water contaminated with
         pathogens, such as bacteria, viruses, or parasites, can cause severe
@@ -53,46 +53,46 @@ export default function StoryScreen() {
         taken weekly, or less.
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
-        In <Text className="font-bold">Milwaukee (1993)</Text>, 400,000 residents
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
+        In <Text style = {{fontWeight:'bold'}}>Milwaukee (1993)</Text>, 400,000 residents
         were made ill and 100 died due to drinking water contaminated with
-        cryptosporidium. Residents in <Text className="font-bold">Hoosick Falls</Text> and{" "}
-        <Text className="font-bold">Newburgh, NY</Text> were exposed to highly
+        cryptosporidium. Residents in <Text style = {{fontWeight:'bold'}}>Hoosick Falls</Text> and{" "}
+        <Text style = {{fontWeight:'bold'}}>Newburgh, NY</Text> were exposed to highly
         toxic PFAS and may have been for years without knowing it.
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         Water contamination is endemic across the planet, making hundreds of
         millions of people ill, including tens of millions in the United States.
         The best defense against this threat are innovations that enable{" "}
-        <Text className="font-bold">real-time</Text>, technological detection of
+        <Text style = {{fontWeight:'bold'}}>real-time</Text>, technological detection of
         water contaminants before they can reach our taps or recreational
         waters.
       </Text>
 
       {/* Blue CoLab's Approach */}
-      <Text className="text-xl font-semibold text-blue-800 mt-5 mb-2 dark:text-[#57ADBF] ">
+      <Text style ={{fontSize: 20, fontWeight:'bold', marginBottom:20 ,color:'#002D72'}}>
         Blue CoLab's Hands-On Approach
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         To advance these innovations, Blue CoLab is decidedly{" "}
-        <Text className="font-bold">“hands-on.”</Text> Our students dive into:
+        <Text style = {{fontWeight:'bold'}}>“hands-on.”</Text> Our students dive into:
       </Text>
 
-      <View className="mb-4 dark:text-white ">
-        <Text className="text-base text-gray-700 dark:text-white ">• Operation of real-time sensors and instruments</Text>
-        <Text className="text-base text-gray-700 dark:text-white ">• Management, visualization, and sonification of data</Text>
-        <Text className="text-base text-gray-700 dark:text-white ">• UX, web, GIS, and app development</Text>
-        <Text className="text-base text-gray-700 dark:text-white ">• System cybersecurity</Text>
+      <View style={{ marginBottom: 16 }}>
+        <Text style= {{fontSize:16 , color: '#374151'}} >• Operation of real-time sensors and instruments</Text>
+        <Text style= {{fontSize:16 , color: '#374151'}} >• Management, visualization, and sonification of data</Text>
+        <Text style= {{fontSize:16 , color: '#374151'}} >• UX, web, GIS, and app development</Text>
+        <Text style= {{fontSize:16 , color: '#374151'}} >• System cybersecurity</Text>
       </View>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
-        They work in a <Text className="font-bold">team-based environment</Text>,
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
+        They work in a <Text style = {{fontWeight:'bold'}}>team-based environment</Text>,
         using our own labs, instruments, equipment, and servers.
       </Text>
 
-      <Text className="text-base text-gray-700 mb-4 dark:text-white ">
+      <Text style = {{fontSize: 16 , marginBottom:16 , color:'#374151'}}>
         Blue CoLab stands for everything that makes Seidenberg School a special
         place — harnessing innovation on behalf of society, and providing
         students with skill-based experiences that lead to a career meaningful
@@ -100,10 +100,10 @@ export default function StoryScreen() {
       </Text>
 
       {/* Closing Statement */}
-      <Text className="text-lg italic text-center text-gray-600 mt-5 dark:text-white ">
+      <Text style={{fontSize: 18, textAlign: 'center', marginTop: 20, color: '#4B5563', fontStyle:'italic'}}>
         "All of us at Blue CoLab look forward to seeing you on the team."
       </Text>
-      <Text className="text-lg italic text-center text-gray-600 mb-20 pb-10 dark:text-white ">
+      <Text style={{fontSize: 18, textAlign: 'center', marginTop: 20, color: '#4B5563', fontStyle:'italic'}}>
         — John Cronin, Blue CoLab Director
       </Text>
     </ScrollView>
