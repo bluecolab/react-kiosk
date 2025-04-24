@@ -24,14 +24,14 @@ const games = [
     description: 'The one and only Cronin hops over sharks. Based off of Google Chrome dinosaur game.',
     creator: 'Daniel White & Jack Sullivan',
     img: require('../assets/images/general/cronincruise.jpg'),
-    url: 'https://itch.io/embed-upload/10391777?color=333333',
+    url: 'https://bluecolab.github.io/Games/Dinosaur%20Game%20Build/',
   },
   {
     name: 'Splashy Fish',
     description: 'Flappy bird remake.',
     creator: 'Daniel White & Jack Sullivan',
     img: require('../assets/images/general/splashyfish.jpg'),
-    url: 'https://itch.io/embed-upload/10391857?color=333333',
+    url: 'https://bluecolab.github.io/Games/Flappy%20Game%20Build/',
   },
 ];
 
