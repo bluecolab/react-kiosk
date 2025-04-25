@@ -1,5 +1,5 @@
 {
-  "name": "bluecolabkiosk",
+  "name": "react-kiosk",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -56,6 +56,6 @@
     "react-test-renderer": "18.3.1",
     "typescript": "^5.3.3"
   },
-  "homepage": "https://okaykenji.github.io/bluecolabkiosk",
+  "homepage": "https://bluecolab.github.io/react-kiosk",
   "private": false
 }
