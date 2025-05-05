@@ -16,8 +16,8 @@ export default function DataToMusic() {
         >
           <iframe
             src="http://127.0.0.1:5000/"
-            width="2000"
-            height="1000"
+            width="1000"
+            height="750"
             style={{
               border: 'none',
               borderRadius: 8,
