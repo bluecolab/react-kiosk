@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bluecolabkiosk",
-    "slug": "bluecolabkiosk",
+    "name": "react-kiosk",
+    "slug": "react-kiosk",
     "version": "1.0.0",
     "orientation": "horizontal",
     "icon": "./assets/images/icon.png",
@@ -25,10 +25,10 @@
         }
       ]
     ],
-    "homepage": "https://okaykenji.github.io/bluecolabkiosk",
+    "homepage": "https://bluecolab.github.io/react-kiosk",
     "experiments": {
       "typedRoutes": true,
-      "baseUrl": "/bluecolabkiosk"
+      "baseUrl": "/react-kiosk"
     },
     "assetBundlePatterns": [
       "**/*"

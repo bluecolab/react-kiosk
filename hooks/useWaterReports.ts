@@ -10,13 +10,34 @@ import Report2022 from '../assets/waterReport/Annual-Water-Quality-Report-for-20
 import Report2023 from '../assets/waterReport/Annual-Water-Quality-Report-for-2023.pdf';
 
 export const useWaterReports = () => {
-  return useMemo(() => ({
-    2017: Report2017,
-    2018: Report2018,
-    2019: Report2019,
-    2020: Report2020,
-    2021: Report2021,
-    2022: Report2022,
-    2023: Report2023,
-  }), []);
+  return useMemo(() => ([
+    {
+      title: 'Annual Water Quality Report for 2017',
+      url: Report2017,
+    },
+    {
+      title: 'Annual Water Quality Report for 2018',
+      url: Report2018,
+    },
+    {
+      title: 'Annual Water Quality Report for 2019',
+      url: Report2019,
+    },
+    {
+      title: 'Annual Water Quality Report for 2020',
+      url: Report2020,
+    },
+    {
+      title: 'Annual Water Quality Report for 2021',
+      url: Report2021,
+    },
+    {
+      title: 'Annual Water Quality Report for 2022',
+      url: Report2022,
+    },
+    {
+      title: 'Annual Water Quality Report for 2023',
+      url: Report2023,
+    },
+  ]), []);
 };
