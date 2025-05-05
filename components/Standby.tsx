@@ -3,6 +3,7 @@ import { View, Text, Image, Animated } from 'react-native';
 import { useRef } from 'react';
 const BCLogo = require('../assets/images/logo512.png');
 
+
 // Current Time Hook for Standby Screen
 const CurrentTime = () => {
   const [time, setTime] = React.useState(new Date());
@@ -31,7 +32,7 @@ export default function Standby({
 }) {
   const pulseAnim = useRef(new Animated.Value(1)).current;
 
-  React.useEffect(() => {
+  React.useEffect(() => { 
     Animated.loop(
       Animated.sequence([
         Animated.timing(pulseAnim, {

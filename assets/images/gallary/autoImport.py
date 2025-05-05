@@ -19,7 +19,7 @@ for file in gallery_list:
 
 # Step 4: Filter the list to include only image files
 # - Check extensions: .jpg, .jpeg, .png, .gif, etc.
-valid_extensions = ['.jpg', '.jpeg', '.png', '.gif']
+valid_extensions = ['.jpg', '.jpeg', '.png']
 gallery_list = [file for file in gallery_list if any(file.endswith(ext) for ext in valid_extensions)]
 print(gallery_list)
 ## Would be nice to have a way to extract them in order (Look for import Pillow)- V
