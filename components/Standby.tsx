@@ -69,7 +69,7 @@ export default function Standby({
       <Image source={BCLogo} style={{ width: 700, height: 700, marginBottom: 20 }} />
 
       <Text style={{ fontSize: 60, color: 'white'}}>
-        What do you know about water?
+        What do you know about your water?
       </Text>
 
       <Animated.Text
