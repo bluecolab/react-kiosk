@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, Image, Animated } from 'react-native';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 const BCLogo = require('../assets/images/logo512.png');
 
 
@@ -47,7 +47,7 @@ export default function Standby({
         }),
       ])
     ).start();
-  }, []);
+  }, [pulseAnim]);
 
   return (
     <Animated.View
