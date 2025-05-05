@@ -6,7 +6,7 @@ export default function DataToMusic() {
     return (    <View
           style={{
             width: '100%',
-            maxWidth: 2050,
+            maxWidth: 1750,
             backgroundColor: '#fff',
             borderRadius: 12,
             padding: 20,
@@ -16,7 +16,7 @@ export default function DataToMusic() {
         >
           <iframe
             src="http://127.0.0.1:5000/"
-            width="1000"
+            width="1500"
             height="750"
             style={{
               border: 'none',
