@@ -50,15 +50,26 @@ export default function RightToKnow() {
         <Image source={currentItem.img} style={styles.image} resizeMode="contain" />
         <Text style={styles.description}>{currentItem.students}</Text>
       </View>
+
+      {/* Center the QR Code */}
+      <View style={styles.qrContainer}>
+      <Text style={styles.title}>Follow R2K on Instagram!</Text>
+        <Image
+          source={require('../assets/images/general/R2KQRCode.jpg')}
+          style={styles.qrImage}
+          resizeMode="contain"
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    width: '100%',
     padding: 16,
     backgroundColor: '#f0f0f0',
-    flex: 1,
   },
   header: {
     fontSize: 20,
@@ -106,5 +117,13 @@ const styles = StyleSheet.create({
   image: {
     width: 400,
     height: 250,
+  },
+  qrContainer: {
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  qrImage: {
+    width: 200,
+    height: 200,
   },
 });

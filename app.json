@@ -23,7 +23,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "homepage": "https://bluecolab.github.io/react-kiosk",
     "experiments": {
