@@ -87,7 +87,7 @@ export default function Standby({
       {/* Current Time and Version Bottom Right */}
       <View style={{ position: 'absolute', bottom: 16, right: 16, alignItems: 'flex-end' }}>
         <CurrentTime />
-        <Text style={{ color: 'white' }}>v2025.4.1.1034</Text>
+        <Text style={{ color: 'white' }}>v2025.5.9.1301</Text>
       </View>
     </Animated.View>
   );
