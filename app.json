@@ -3,7 +3,7 @@
     "name": "react-kiosk",
     "slug": "react-kiosk",
     "version": "1.0.0",
-    "orientation": "horizontal",
+    "orientation": "landscape",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -27,7 +27,6 @@
       "expo-font",
       "expo-web-browser"
     ],
-    "homepage": "https://bluecolab.github.io/react-kiosk",
     "experiments": {
       "typedRoutes": true,
       "baseUrl": "/react-kiosk"
