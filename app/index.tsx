@@ -7,7 +7,7 @@ import { useWidgets } from '@/hooks/useWidgets';
 import Standby from "@/components/Standby"; 
 
 
-const assetId = require('../assets/videos/background.mp4');
+const assetId = require('@/assets/videos/background.mp4');
 
 export default function Index() {
   const widgets = useWidgets();

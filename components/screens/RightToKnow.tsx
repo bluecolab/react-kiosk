@@ -12,13 +12,13 @@ const infoItems = [
     title: '2023 Team',
     description: 'Right to Know - 2023',
     students: 'Left to right, from the top: Cece Porter, Lilah McCormack, Louisa Moquete, Sasha Palmer, Meryl Mizell, Sasha Breygina.',
-    img: require('../assets/images/general/R2K2023.jpg'),
+    img: require('@/assets/images/general/R2K2023.jpg'),
   },
   {
     title: '2024 Team',
     description: 'Right to Know - 2024',
     students: 'Left to right, from the top: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.',
-    img: require('../assets/images/general/R2K2024.jpg'),
+    img: require('@/assets/images/general/R2K2024.jpg'),
   },
 ];
 
@@ -55,7 +55,7 @@ export default function RightToKnow() {
       <View style={styles.qrContainer}>
       <Text style={styles.title}>Follow R2K on Instagram!</Text>
         <Image
-          source={require('../assets/images/general/R2KQRCode.jpg')}
+          source={require('@/assets/images/general/R2KQRCode.jpg')}
           style={styles.qrImage}
           resizeMode="contain"
         />

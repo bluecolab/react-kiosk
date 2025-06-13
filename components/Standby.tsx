@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, Image, Animated } from 'react-native';
 import { useRef } from 'react';
-const BCLogo = require('../assets/images/logo512.png');
+const BCLogo = require('@/assets/images/logo512.png');
 
 
 // Current Time Hook for Standby Screen

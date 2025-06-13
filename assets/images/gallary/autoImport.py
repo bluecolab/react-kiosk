@@ -38,7 +38,7 @@ for f in files:
     base  = os.path.splitext(fname)[0]
     alt   = re.sub(r'[-_]+', ' ', base).title()
     lines.append(
-        f"  {{ source: require('../assets/images/gallary/{fname}'), alt: '{alt}' }},"
+        f"  {{ source: require('@/assets/images/gallary/{fname}'), alt: '{alt}' }},"
     )
 
 lines.append("];")

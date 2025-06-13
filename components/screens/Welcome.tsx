@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 
 export default function Welcome() {
-    let Cronin = require('../assets/images/crotters/Crotter.png');
-    let gif = require('../assets/images/general/Scroll.gif');
+    let Cronin = require('@/assets/images/crotters/Crotter.png');
+    let gif = require('@/assets/images/general/Scroll.gif');
 
     return (
         <View>

@@ -1,6 +1,5 @@
 // Please do check the dimentionns on the Kiosk - V
 import React from 'react';
-import InProgress from '@/components/InProgress';
 import { View, Text } from 'react-native';
 
 

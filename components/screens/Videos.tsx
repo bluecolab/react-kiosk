@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import About from '../assets/videos/Blue-CoLab.mp4';
-import Fellowship from '../assets/videos/fellowship.webm';
-import Sonification from '../assets/videos/Choate Pond Sonification, Pace 1080.mp4';
-import ClearWaterSail from '../assets/videos/Clearwater sails.mp4';
+import About from '@/assets/videos/Blue-CoLab.mp4';
+import Fellowship from '@/assets/videos/fellowship.webm';
+import Sonification from '@/assets/videos/Choate Pond Sonification, Pace 1080.mp4';
+import ClearWaterSail from '@/assets/videos/Clearwater sails.mp4';
 
 const videos = [
   { src: About, type: 'video/mp4', title: 'Blue CoLab Intro' },

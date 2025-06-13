@@ -9,7 +9,7 @@ export default function MobileApp() {
             <View style={{ flex: 1, alignItems: 'center' }}>
                 <Image 
                     style={{ width: 300, height: 600 }} 
-                    source={require("../assets/images/icons/MobileNewUI.png")} 
+                    source={require("@/assets/images/icons/MobileNewUI.png")} 
                     alt="Mobile App" 
                 />
             </View>

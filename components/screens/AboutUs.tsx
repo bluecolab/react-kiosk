@@ -12,7 +12,7 @@ export default function StoryScreen() {
 
       {/* Top Image */}
       <Image
-        source={require("../assets/images/general/Three-labs.jpg")}   
+        source={require("@/assets/images/general/Three-labs.jpg")}   
         style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
         resizeMode="cover"
       />
