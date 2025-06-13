@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import ScrollingCarousel from "@/components/ScrollingCarousel";
 import Head from "expo-router/head";
 import { View, Text, Easing, TouchableOpacity, ScrollView} from "react-native";
@@ -21,7 +21,7 @@ export default function Index() {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    const setInitialWindowDimensions = () => {
       setWindowDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -29,15 +29,7 @@ export default function Index() {
     };
 
     // Set initial dimensions
-    handleResize();
-
-    // Add resize event listener
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup the event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    setInitialWindowDimensions();
   }, []);
 
   const { height, width } = windowDimensions;
@@ -62,12 +54,12 @@ export default function Index() {
   const[lastActivity, setLastActivity] = useState(Date.now());
   const[standbyTime] = useState(300000); //  300000 = 5 minutes 4000 = 4 seconds (for testing)
 
-  const resetInactivity = () => {
+  const resetInactivity = useCallback(() => {
     setLastActivity(Date.now());
     if (isStandby) {
       setIsStandby(false);
     }
-  };
+  },[isStandby]);
 
   useEffect(() => {
     const checkInactivity = setInterval(() => {
@@ -98,7 +90,7 @@ export default function Index() {
         window.removeEventListener(event, resetInactivity);
       });
     };
-  }, []);
+  }, [resetInactivity]);
 
   const handleStart = () => {
     setFadeOut(true);
