@@ -79,10 +79,13 @@ Check it out here: https://bluecolab.github.io/react-kiosk/ !
     ```
 4. Hit the 'W' key to start building the web-version of the kiosk.
 
-### Build and deploy
+## Build and deploy
 
 Pushing to main automatically start the deployment process. This will take a few minutes. Once ready your changes will be visible here: https://bluecolab.github.io/react-kiosk/
 
+## Wiki (technical breakdown)
+
+For a technical info see our [wiki](https://github.com/bluecolab/BlueColab_MobileDataViz/wiki/).
 
 ## File structure
 
