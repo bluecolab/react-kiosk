@@ -93,7 +93,7 @@ We use [file-based navigation](https://docs.expo.dev/router/basics/core-concepts
 Please follow this structure when creating new files:
 
 ```
-aquawatch_mobile_app - Parent folder, for all sob-directories and config files
+react-kiosk - Parent folder, for all sob-directories and config files
 ├───.github - The files for workflows for GitHub Actions and the pull request template.
 ├───.vscode -  The files to configure VS Code setting such that all developers share common settings
 ├───app - For all app pages and navigation related files
