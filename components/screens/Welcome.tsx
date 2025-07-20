@@ -12,14 +12,11 @@ export default function Welcome() {
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                <Image
-                    source={Cronin}
-                    style={{ height: 600, flex: 1 }}
-                    resizeMode="contain"
-                />
+                <Image source={Cronin} style={{ height: 600, flex: 1 }} resizeMode="contain" />
 
                 <View style={{ flex: 1 }}>
-                <Text style={{ marginTop: 0, fontSize: 16, color: '#333', textAlign: 'center' }}>
+                    <Text
+                        style={{ marginTop: 0, fontSize: 16, color: '#333', textAlign: 'center' }}>
                         Scroll the bottom icons to learn more!
                     </Text>
                     <Image
@@ -27,7 +24,6 @@ export default function Welcome() {
                         style={{ height: 600, width: '100%' }}
                         resizeMode="contain"
                     />
-                    
                 </View>
             </View>
         </View>
