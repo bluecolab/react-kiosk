@@ -1,57 +1,84 @@
 # Blue CoLab Kiosk
 
-A basic Kiosk demo for Blue CoLab.
+<div align="center">
+<img src="./assets/images/crotters/Crotter.png" height="250px" style="padding:10px;">
+ 
+<br>
 
-## Perquisites
-1. Install [git](https://git-scm.com/downloads).
-   1. Git helps manage the versions of the kiosk. For us it also helps as a way to collaborate and share the code.
-2. Install [nodejs](https://nodejs.org/en).
-   1. Node is used to run [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) outside your browser. For us we use as node installs [npm](https://www.npmjs.com/) as well. npm is a way to download prewritten code by others that helps the project run.
-      1. If you're familiar with python, npm is like [pip](https://pypi.org/project/pip/).
-3. Install code editor of your choice.
-   1. Suggested [VS Code](https://code.visualstudio.com/).
+<a href="https://www.typescriptlang.org/">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff" alt="TypeScript">
+</a>
+<a href="https://eslint.org/">
+  <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint">
+</a>
+<a href="https://prettier.io/">
+  <img src="https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black"
+  alt="Prettier">
+</a>
+<a href="https://react.dev/">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+</a>
+<a href="https://expo.dev/">
+  <img src="https://img.shields.io/badge/Expo-000000?logo=Expo&logoColor=white" alt="Expo">
+</a>
+<h2>React Kiosk for Blue CoLab!</h2>
+</div>
 
-## Getting Started
+## About the Project
 
-1. Clone this repo: In a terminal window run the following:
-```bash
-git clone https://github.com/bluecolab/react-kiosk
-cd react-kiosk
-```
+React version of Blue CoLab kiosk.
 
-2. Install needed dependencies (they help the project run): In a terminal window run the following:
-```bash
-npm i
-```
+### Features
 
-## Starting the project locally
-1. To preview the project: In a terminal window run the following:
-```bash
-npx expo start
-```
+Check it out here: https://bluecolab.github.io/react-kiosk/ !
 
-In the output, you'll find options to open the app in a
+## Required Software
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [git](https://git-scm.com/) - version control. For installing git, please see the [git website](https://git-scm.com/).
+- [npm](https://www.npmjs.com/) - package manager. For installing npm, please see [npm docs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+- Testing:
+    - Please use Google Chrome/Chromium based Browsers
+- All other prerequisites will be downloaded from the `package.json`. To install them see 'Getting Started'.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Recommended Software
 
-## Learn more
+- [VS Code](https://code.visualstudio.com/) - code editor
+    - Please download the recommended extensions if prompted.
+    - Recommended Extensions (look up @recommended in Extensions tab):
+        - Prettier - Code formatter
+        - ESLint
+        - Prettier ESLint
+        - Tailwind CSS
+        - Code Spell Checker
+        - GitHub Pull Requests
+- [GitHub CLI](https://cli.github.com/) - CLI for GitHub
 
-To learn more about developing your project with Expo, look at the following resources:
+## Getting Started (one-time steps)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Install all the software above.
+2. Clone the repo by running:
+    ```bash
+    git clone https://github.com/bluecolab/react-kiosk.git
+    ```
+3. Navigate in your terminal to the `react-kiosk`:
+    ```bash
+    cd /react-kiosk/
+    ```
+4. Install the dependencies by running:
+    ```bash
+    npm i
+    ```
 
-## Join the community
+## Running locally on computer via Expo Go
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Open a terminal window.
+2. Make sure you are in the `react-kiosk`.
+3. In the terminal start the app by running:
+    ```bash
+    npx expo start
+    ```
+4. Hit the 'W' key to start building the web-version of the kiosk.
 
 ### Build and deploy
+
 Pushing to main automatically start the deployment process. This will take a few minutes. Once ready your changes will be visible here: https://bluecolab.github.io/react-kiosk/
