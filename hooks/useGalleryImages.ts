@@ -27,7 +27,7 @@ export const images: GalleryImage[] = [
     },
     {
         source: require('@/assets/images/gallery/BluCo-group-Ossining-2000.jpg'),
-        alt: 'Bluco Group Ossining 2000',
+        alt: 'Blue CoLab Group Ossining 2000',
     },
     {
         source: require('@/assets/images/gallery/Blue-CoLab-Hat-Day-copy.jpg'),
@@ -46,7 +46,7 @@ export const images: GalleryImage[] = [
     { source: require('@/assets/images/gallery/GE-delivery.jpeg'), alt: 'Ge Delivery' },
     {
         source: require('@/assets/images/gallery/Happly-Holiday-from-Blue-CoLab.jpeg'),
-        alt: 'Happly Holiday From Blue Colab',
+        alt: 'Happy Holiday From Blue Colab',
     },
     {
         source: require('@/assets/images/gallery/High-school-workshop-copy.jpg'),

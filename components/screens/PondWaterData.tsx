@@ -1,4 +1,4 @@
-// Please do check the dimentionns on the Kiosk - V
+// Please do check the dimensions on the Kiosk - V
 import React from 'react';
 import { View, Text } from 'react-native';
 
