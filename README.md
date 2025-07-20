@@ -82,3 +82,26 @@ Check it out here: https://bluecolab.github.io/react-kiosk/ !
 ### Build and deploy
 
 Pushing to main automatically start the deployment process. This will take a few minutes. Once ready your changes will be visible here: https://bluecolab.github.io/react-kiosk/
+
+
+## File structure
+
+### High level overview:
+
+We use [file-based navigation](https://docs.expo.dev/router/basics/core-concepts/) provided via the [Expo Router](https://docs.expo.dev/router/introduction/) for navigation.
+
+Please follow this structure when creating new files:
+
+```
+aquawatch_mobile_app - Parent folder, for all sob-directories and config files
+├───.github - The files for workflows for GitHub Actions and the pull request template.
+├───.vscode -  The files to configure VS Code setting such that all developers share common settings
+├───app - For all app pages and navigation related files
+├───assets - For all images, icons, and fonts
+├───components - For all of the custom components (building blocks of pages)
+├───hooks - For all of the custom hooks (reusable logic for state, data fetching, etc.)
+└───types - For all custom TypeScript type definitions
+```
+
+Each of the above directories may be organized even further, grouped by similar functionality.
+
