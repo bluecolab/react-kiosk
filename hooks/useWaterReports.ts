@@ -8,6 +8,7 @@ import Report2020 from '@/assets/waterReport/Annual-Water-Quality-Report-for-202
 import Report2021 from '@/assets/waterReport/Annual-Water-Quality-Report-for-2021.pdf';
 import Report2022 from '@/assets/waterReport/Annual-Water-Quality-Report-for-2022.pdf';
 import Report2023 from '@/assets/waterReport/Annual-Water-Quality-Report-for-2023.pdf';
+import Report2024 from '@/assets/waterReport/Annual-Water-Quality-Report-for-2024.pdf';
 
 export const useWaterReports = () => {
     return useMemo(
@@ -39,6 +40,10 @@ export const useWaterReports = () => {
             {
                 title: 'Annual Water Quality Report for 2023',
                 url: Report2023,
+            },
+            {
+                title: 'Annual Water Quality Report for 2024',
+                url: Report2024,
             },
         ],
         []
