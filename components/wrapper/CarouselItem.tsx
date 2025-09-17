@@ -6,8 +6,9 @@ import Animated, {
     SharedValue,
     useAnimatedStyle,
     useAnimatedReaction,
-    runOnJS,
 } from 'react-native-reanimated';
+import { scheduleOnRN } from 'react-native-worklets';
+
 import { Widget } from '@/hooks/useWidgets';
 
 interface CustomItemProps {
@@ -80,7 +81,12 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
         () => animationValue.value,
         (current, prev) => {
             if (current === 0 && prev !== 0 && setIndex) {
-                runOnJS(setIndex)(index);
+                scheduleOnRN(() => {
+                    console.log('Allowed', current, prev, index);
+                    setIndex(index);
+                });
+            } else {
+                console.log('Aborted', current, prev, index);
             }
         },
         [animationValue]
