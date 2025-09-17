@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 interface ScreenWrapperContentProps {
     title: string;
     screen: React.ReactNode;
-    viewAreaHeightStyle: {
+    contentAreaHeightStyle: {
         height: number;
         backgroundColor: string;
         width: number;
@@ -16,7 +16,7 @@ interface ScreenWrapperContentProps {
 export default function ScreenWrapperContent({
     title,
     screen,
-    viewAreaHeightStyle,
+    contentAreaHeightStyle,
 }: ScreenWrapperContentProps) {
     return (
         <Animated.View
@@ -27,7 +27,7 @@ export default function ScreenWrapperContent({
                     paddingBottom: 30,
                     width: '100%',
                 },
-                viewAreaHeightStyle,
+                contentAreaHeightStyle,
             ]}>
             <ScrollView
                 style={{ width: '100%' }}

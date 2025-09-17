@@ -32,7 +32,7 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
             const itemGap = interpolate(
                 value,
                 [-3, -2, -1, 0, 1, 2, 3],
-                [-30, -15, 0, 0, 0, 15, 30]
+                [-25, -15, 0, 0, 0, 15, 25]
             );
 
             const translateX =
@@ -71,13 +71,13 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
                     }}
                     loop
                     data={widgets}
+                    onSnapToItem={setIndex}
                     renderItem={({ index, animationValue }) => {
                         return (
                             <CarouselItem
                                 widgets={widgets as Widget[]}
-                                index={index}
                                 animationValue={animationValue}
-                                setIndex={setIndex}
+                                index={index}
                             />
                         );
                     }}
