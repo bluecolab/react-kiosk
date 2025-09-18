@@ -31,12 +31,12 @@ export default function Standby({ onStart, fadeOut }: { onStart: () => void; fad
                 Animated.timing(pulseAnim, {
                     toValue: 0.4,
                     duration: 800,
-                    useNativeDriver: true,
+                    useNativeDriver: false,
                 }),
                 Animated.timing(pulseAnim, {
                     toValue: 1,
                     duration: 800,
-                    useNativeDriver: true,
+                    useNativeDriver: false,
                 }),
             ])
         ).start();

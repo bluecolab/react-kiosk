@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { interpolate } from 'react-native-reanimated';
+import Animated, { interpolate } from 'react-native-reanimated';
 import Carousel, { TAnimationStyle } from 'react-native-reanimated-carousel';
 import CarouselItem from './CarouselItem';
 import { Widget } from '@/hooks/useWidgets';
 
 // Define the types for the props
 interface ScrollingCarouselProps {
+    carouselLocationStyle: { top: number };
     height: number;
     width: number;
     setIndex: (index: number) => void;
@@ -14,6 +15,7 @@ interface ScrollingCarouselProps {
 }
 
 const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
+    carouselLocationStyle,
     height,
     width,
     setIndex,
@@ -30,7 +32,7 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
             const itemGap = interpolate(
                 value,
                 [-3, -2, -1, 0, 1, 2, 3],
-                [-30, -15, 0, 0, 0, 15, 30]
+                [-25, -15, 0, 0, 0, 15, 25]
             );
 
             const translateX =
@@ -46,29 +48,43 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
     );
 
     return (
-        <View id="carousel-component">
-            <Carousel
-                width={itemSize}
-                height={itemSize}
-                style={{
-                    width: PAGE_WIDTH,
-                    height: height * 0.25,
-                }}
-                loop
-                data={widgets}
-                renderItem={({ index, animationValue }) => {
-                    return (
-                        <CarouselItem
-                            widgets={widgets as Widget[]}
-                            index={index}
-                            animationValue={animationValue}
-                            setIndex={setIndex}
-                        />
-                    );
-                }}
-                customAnimation={animationStyle}
-            />
-        </View>
+        <Animated.View
+            style={[
+                carouselLocationStyle,
+                {
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    opacity: 1,
+                },
+            ]}>
+            <View id="carousel-component">
+                <Carousel
+                    width={itemSize}
+                    height={itemSize}
+                    style={{
+                        width: PAGE_WIDTH,
+                        height: height * 0.25,
+                    }}
+                    loop
+                    data={widgets}
+                    onSnapToItem={setIndex}
+                    renderItem={({ index, animationValue }) => {
+                        return (
+                            <CarouselItem
+                                widgets={widgets as Widget[]}
+                                animationValue={animationValue}
+                                index={index}
+                            />
+                        );
+                    }}
+                    customAnimation={animationStyle}
+                />
+            </View>
+        </Animated.View>
     );
 };
 

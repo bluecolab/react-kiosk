@@ -5,9 +5,8 @@ import Animated, {
     interpolate,
     SharedValue,
     useAnimatedStyle,
-    useAnimatedReaction,
-    runOnJS,
 } from 'react-native-reanimated';
+
 import { Widget } from '@/hooks/useWidgets';
 
 interface CustomItemProps {
@@ -67,25 +66,9 @@ interface CarouselItemProps {
     index: number;
     widgets: Widget[];
     animationValue: SharedValue<number>;
-    setIndex: (index: number) => void;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({
-    index,
-    widgets,
-    animationValue,
-    setIndex,
-}) => {
-    useAnimatedReaction(
-        () => animationValue.value,
-        (current, prev) => {
-            if (current === 0 && prev !== 0 && setIndex) {
-                runOnJS(setIndex)(index);
-            }
-        },
-        [animationValue]
-    );
-
+const CarouselItem: React.FC<CarouselItemProps> = ({ index, widgets, animationValue }) => {
     return (
         <View style={{ flex: 1 }}>
             <CustomItem item={widgets[index]} animationValue={animationValue} />
