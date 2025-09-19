@@ -3,16 +3,18 @@ import Head from 'expo-router/head';
 import { View } from 'react-native';
 import Standby from '@/components/Standby';
 import ScreensWrapper from '@/components/wrapper/ScreensWrapper';
+import { useConfigs } from '@/hooks/useConfigs';
 
 const assetId = require('@/assets/videos/background.mp4');
 
 export default function Index() {
+    const { MAX_IDLE_TIME } = useConfigs();
+
     // Standby screen
     const [isStandby, setIsStandby] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
     const [lastActivity, setLastActivity] = useState(Date.now());
-    const [standbyTime] = useState(300000); //  300000 = 5 minutes 4000 = 4 seconds (for testing)
-
+    const [standbyTime] = useState(MAX_IDLE_TIME);
     const resetInactivity = useCallback(() => {
         setLastActivity(Date.now());
         if (isStandby) {

@@ -14,36 +14,37 @@ export const useWaterReports = () => {
     return useMemo(
         () => [
             {
-                title: 'Annual Water Quality Report for 2017',
-                url: Report2017,
-            },
-            {
-                title: 'Annual Water Quality Report for 2018',
-                url: Report2018,
-            },
-            {
-                title: 'Annual Water Quality Report for 2019',
-                url: Report2019,
-            },
-            {
-                title: 'Annual Water Quality Report for 2020',
-                url: Report2020,
-            },
-            {
-                title: 'Annual Water Quality Report for 2021',
-                url: Report2021,
-            },
-            {
-                title: 'Annual Water Quality Report for 2022',
-                url: Report2022,
+                title: 'Annual Water Quality Report for 2024',
+                url: Report2024,
             },
             {
                 title: 'Annual Water Quality Report for 2023',
                 url: Report2023,
             },
             {
-                title: 'Annual Water Quality Report for 2024',
-                url: Report2024,
+                title: 'Annual Water Quality Report for 2022',
+                url: Report2022,
+            },
+
+            {
+                title: 'Annual Water Quality Report for 2021',
+                url: Report2021,
+            },
+            {
+                title: 'Annual Water Quality Report for 2020',
+                url: Report2020,
+            },
+            {
+                title: 'Annual Water Quality Report for 2019',
+                url: Report2019,
+            },
+            {
+                title: 'Annual Water Quality Report for 2018',
+                url: Report2018,
+            },
+            {
+                title: 'Annual Water Quality Report for 2017',
+                url: Report2017,
             },
         ],
         []

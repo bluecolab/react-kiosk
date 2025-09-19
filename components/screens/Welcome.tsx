@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native';
 
 export default function Welcome() {
     let Cronin = require('@/assets/images/crotters/Crotter.png');
-    let gif = require('@/assets/images/general/Scroll.gif');
+    // let gif = require('@/assets/images/general/Scroll.gif');
 
     return (
         <View>
@@ -12,19 +12,28 @@ export default function Welcome() {
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                <Image source={Cronin} style={{ height: 600, flex: 1 }} resizeMode="contain" />
-
-                <View style={{ flex: 1 }}>
-                    <Text
-                        style={{ marginTop: 0, fontSize: 16, color: '#333', textAlign: 'center' }}>
-                        Scroll the bottom icons to learn more!
-                    </Text>
-                    <Image
-                        source={gif}
-                        style={{ height: 600, width: '100%' }}
-                        resizeMode="contain"
-                    />
+                {/* <Pressable
+                    onPress={() => {
+                        console.log('Crotter Mode Enabled');
+                        localStorage.setItem('crotterMode', 'true');
+                    }}> */}
+                <View
+                    style={{ height: 500, flex: 1 }}
+                    onStartShouldSetResponder={() => true}
+                    onResponderRelease={() => {
+                        if (localStorage.getItem('crotterMode') === 'true') {
+                            console.log('Crotter Mode Disabled :(');
+                            localStorage.setItem('crotterMode', 'false');
+                            window.location.reload();
+                        } else {
+                            console.log('Crotter Mode Enabled');
+                            localStorage.setItem('crotterMode', 'true');
+                            window.location.reload();
+                        }
+                    }}>
+                    <Image source={Cronin} style={{ height: 500, width: '100%' }} />
                 </View>
+                {/* </Pressable> */}
             </View>
         </View>
     );
