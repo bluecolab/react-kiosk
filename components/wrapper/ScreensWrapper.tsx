@@ -12,7 +12,7 @@ import AllScreensModal from './AllScreensModal';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
-    const { SHRUNKEN, EXPANDED } = useConfigs();
+    const { SHRUNKEN, EXPANDED, secret } = useConfigs();
 
     const ref = useRef<ICarouselInstance>(null);
 
@@ -190,7 +190,7 @@ export default function ScreensWrapper() {
                 ref={ref}
             />
 
-            {!isExpanded && <FloatingButton setIsModalOpen={setIsModalOpen} />}
+            {!isExpanded && secret && <FloatingButton setIsModalOpen={setIsModalOpen} />}
 
             <AllScreensModal
                 isModalOpen={isModalOpen}

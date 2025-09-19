@@ -16,4 +16,5 @@ export const constants = {
         VIEW_AREA_MARGIN_TOP: 0,
         VIEW_AREA_COLOR: '#efefefff',
     },
+    secret: false,
 };
