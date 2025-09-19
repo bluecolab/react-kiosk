@@ -1,25 +1,30 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import ScrollingCarousel from '@/components/wrapper/ScrollingCarousel';
 import { View, Easing } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
+import { useConfigs } from '@/hooks/useConfigs';
+import { ICarouselInstance } from 'react-native-reanimated-carousel';
+import FloatingButton from '../FloatingButton';
+import AllScreensModal from './AllScreensModal';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
+    const { SHRUNKEN, EXPANDED } = useConfigs();
 
+    const ref = useRef<ICarouselInstance>(null);
+
+    const [index, setIndex] = useState<number>(0);
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [windowDimensions, setWindowDimensions] = useState<{
         width: number | undefined;
         height: number | undefined;
     }>({ width: undefined, height: undefined });
 
-    const [index, setIndex] = useState<number>(0);
-    const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
-    const { height, width } = windowDimensions;
-
-    const config = useMemo(
+    const defaultAnimationConfig = useMemo(
         () => ({
             duration: 500,
             easing: Easing.bezier(0.5, 0.01, 0, 1),
@@ -27,13 +32,13 @@ export default function ScreensWrapper() {
         []
     );
 
-    // Animation values
-    const carouselLocation = useSharedValue(0); // Start at 0 (off-screen or hidden)
-    const viewAreaHeight = useSharedValue(0); // Start at 0 (off-screen or hidden)
-    const viewAreaColor = useSharedValue('#efefefdd');
+    // Start location when height and width are not yet loaded
+    const carouselLocation = useSharedValue(0);
+    const viewAreaHeight = useSharedValue(0);
+    const viewAreaColor = useSharedValue(SHRUNKEN.VIEW_AREA_COLOR);
     const viewAreaWidth = useSharedValue(0);
-    const viewAreaBorderRadius = useSharedValue(15);
-    const viewAreaMarginTop = useSharedValue(10);
+    const viewAreaBorderRadius = useSharedValue(SHRUNKEN.VIEW_AREA_BORDER_RADIUS);
+    const viewAreaMarginTop = useSharedValue(SHRUNKEN.VIEW_AREA_MARGIN_TOP);
 
     const carouselLocationStyle = useAnimatedStyle(() => {
         return {
@@ -51,6 +56,8 @@ export default function ScreensWrapper() {
         };
     });
 
+    const { height, width } = windowDimensions;
+
     useEffect(() => {
         const setInitialWindowDimensions = () => {
             setWindowDimensions({
@@ -66,11 +73,30 @@ export default function ScreensWrapper() {
     useEffect(() => {
         if (height && width) {
             // Animate it in when height is available
-            carouselLocation.value = withTiming(height * 0.75, config);
-            viewAreaHeight.value = withTiming(height * 0.73, config);
-            viewAreaWidth.value = withTiming(width * 0.98, config);
+            carouselLocation.value = withTiming(
+                height * SHRUNKEN.CAROUSEL_LOCATION,
+                defaultAnimationConfig
+            );
+            viewAreaHeight.value = withTiming(
+                height * SHRUNKEN.VIEW_AREA_HEIGHT,
+                defaultAnimationConfig
+            );
+            viewAreaWidth.value = withTiming(
+                width * SHRUNKEN.VIEW_AREA_WIDTH,
+                defaultAnimationConfig
+            );
         }
-    }, [config, height, carouselLocation, viewAreaHeight, viewAreaWidth, width]);
+    }, [
+        defaultAnimationConfig,
+        height,
+        carouselLocation,
+        viewAreaHeight,
+        viewAreaWidth,
+        width,
+        SHRUNKEN.CAROUSEL_LOCATION,
+        SHRUNKEN.VIEW_AREA_HEIGHT,
+        SHRUNKEN.VIEW_AREA_WIDTH,
+    ]);
 
     // Fallback until height and width are available
     if (!height || !width) {
@@ -98,21 +124,57 @@ export default function ScreensWrapper() {
                 <ExpandButton
                     isExpanded={isExpanded}
                     onPress={() => {
-                        if (height && !isExpanded) {
-                            carouselLocation.value = withTiming(height * 1.05, config);
-                            viewAreaHeight.value = withTiming(height, config);
-                            viewAreaColor.value = withTiming('#efefefff', config);
-                            viewAreaWidth.value = withTiming(width, config);
-                            viewAreaBorderRadius.value = withTiming(0, config);
-                            viewAreaMarginTop.value = withTiming(0, config);
+                        if (isExpanded) {
+                            carouselLocation.value = withTiming(
+                                height * SHRUNKEN.CAROUSEL_LOCATION,
+                                defaultAnimationConfig
+                            );
+                            viewAreaHeight.value = withTiming(
+                                height * SHRUNKEN.VIEW_AREA_HEIGHT,
+                                defaultAnimationConfig
+                            );
+                            viewAreaColor.value = withTiming(
+                                SHRUNKEN.VIEW_AREA_COLOR,
+                                defaultAnimationConfig
+                            );
+                            viewAreaWidth.value = withTiming(
+                                width * SHRUNKEN.VIEW_AREA_WIDTH,
+                                defaultAnimationConfig
+                            );
+                            viewAreaBorderRadius.value = withTiming(
+                                SHRUNKEN.VIEW_AREA_BORDER_RADIUS,
+                                defaultAnimationConfig
+                            );
+                            viewAreaMarginTop.value = withTiming(
+                                SHRUNKEN.VIEW_AREA_MARGIN_TOP,
+                                defaultAnimationConfig
+                            );
                             setIsExpanded(!isExpanded);
-                        } else if (height && isExpanded) {
-                            carouselLocation.value = withTiming(height * 0.75, config);
-                            viewAreaHeight.value = withTiming(height * 0.73, config);
-                            viewAreaColor.value = withTiming('#efefefdd', config);
-                            viewAreaWidth.value = withTiming(width * 0.98, config);
-                            viewAreaBorderRadius.value = withTiming(15, config);
-                            viewAreaMarginTop.value = withTiming(10, config);
+                        } else {
+                            carouselLocation.value = withTiming(
+                                height * EXPANDED.CAROUSEL_LOCATION,
+                                defaultAnimationConfig
+                            );
+                            viewAreaHeight.value = withTiming(
+                                height * EXPANDED.VIEW_AREA_HEIGHT,
+                                defaultAnimationConfig
+                            );
+                            viewAreaColor.value = withTiming(
+                                EXPANDED.VIEW_AREA_COLOR,
+                                defaultAnimationConfig
+                            );
+                            viewAreaWidth.value = withTiming(
+                                width * EXPANDED.VIEW_AREA_WIDTH,
+                                defaultAnimationConfig
+                            );
+                            viewAreaBorderRadius.value = withTiming(
+                                EXPANDED.VIEW_AREA_BORDER_RADIUS,
+                                defaultAnimationConfig
+                            );
+                            viewAreaMarginTop.value = withTiming(
+                                EXPANDED.VIEW_AREA_MARGIN_TOP,
+                                defaultAnimationConfig
+                            );
                             setIsExpanded(!isExpanded);
                         }
                     }}
@@ -124,6 +186,16 @@ export default function ScreensWrapper() {
                 widgets={widgets}
                 height={height}
                 width={width}
+                setIndex={setIndex}
+                ref={ref}
+            />
+
+            {!isExpanded && <FloatingButton setIsModalOpen={setIsModalOpen} />}
+
+            <AllScreensModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                ref={ref}
                 setIndex={setIndex}
             />
         </View>
