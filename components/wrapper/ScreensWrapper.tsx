@@ -19,10 +19,6 @@ export default function ScreensWrapper() {
     const [index, setIndex] = useState<number>(0);
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [windowDimensions, setWindowDimensions] = useState<{
-        width: number | undefined;
-        height: number | undefined;
-    }>({ width: undefined, height: undefined });
 
     const defaultAnimationConfig = useMemo(
         () => ({
@@ -56,52 +52,51 @@ export default function ScreensWrapper() {
         };
     });
 
-    const { height, width } = windowDimensions;
-
     useEffect(() => {
-        const setInitialWindowDimensions = () => {
-            setWindowDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-
-        // Set initial dimensions
-        setInitialWindowDimensions();
-    }, []);
-
-    useEffect(() => {
-        if (height && width) {
+        if (window.innerHeight && window.innerWidth) {
             // Animate it in when height is available
             carouselLocation.value = withTiming(
-                height * SHRUNKEN.CAROUSEL_LOCATION,
+                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
                 defaultAnimationConfig
             );
             viewAreaHeight.value = withTiming(
-                height * SHRUNKEN.VIEW_AREA_HEIGHT,
+                window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                 defaultAnimationConfig
             );
             viewAreaWidth.value = withTiming(
-                width * SHRUNKEN.VIEW_AREA_WIDTH,
+                window.innerWidth * SHRUNKEN.VIEW_AREA_WIDTH,
+                defaultAnimationConfig
+            );
+            viewAreaHeight.value = withTiming(
+                window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
+                defaultAnimationConfig
+            );
+            viewAreaBorderRadius.value = withTiming(
+                SHRUNKEN.VIEW_AREA_BORDER_RADIUS,
+                defaultAnimationConfig
+            );
+            viewAreaMarginTop.value = withTiming(
+                SHRUNKEN.VIEW_AREA_MARGIN_TOP,
+                defaultAnimationConfig
+            );
+            viewAreaWidth.value = withTiming(
+                window.innerWidth * SHRUNKEN.VIEW_AREA_WIDTH,
                 defaultAnimationConfig
             );
         }
     }, [
         defaultAnimationConfig,
-        height,
         carouselLocation,
         viewAreaHeight,
         viewAreaWidth,
-        width,
         SHRUNKEN.CAROUSEL_LOCATION,
         SHRUNKEN.VIEW_AREA_HEIGHT,
         SHRUNKEN.VIEW_AREA_WIDTH,
+        SHRUNKEN.VIEW_AREA_BORDER_RADIUS,
+        SHRUNKEN.VIEW_AREA_MARGIN_TOP,
+        viewAreaBorderRadius,
+        viewAreaMarginTop,
     ]);
-
-    // Fallback until height and width are available
-    if (!height || !width) {
-        return <View style={{ flex: 1 }} />;
-    }
 
     return (
         <View style={{ flex: 1, position: 'relative' }}>
@@ -126,11 +121,11 @@ export default function ScreensWrapper() {
                     onPress={() => {
                         if (isExpanded) {
                             carouselLocation.value = withTiming(
-                                height * SHRUNKEN.CAROUSEL_LOCATION,
+                                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
                                 defaultAnimationConfig
                             );
                             viewAreaHeight.value = withTiming(
-                                height * SHRUNKEN.VIEW_AREA_HEIGHT,
+                                window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
                             );
                             viewAreaColor.value = withTiming(
@@ -138,7 +133,7 @@ export default function ScreensWrapper() {
                                 defaultAnimationConfig
                             );
                             viewAreaWidth.value = withTiming(
-                                width * SHRUNKEN.VIEW_AREA_WIDTH,
+                                window.innerWidth * SHRUNKEN.VIEW_AREA_WIDTH,
                                 defaultAnimationConfig
                             );
                             viewAreaBorderRadius.value = withTiming(
@@ -152,11 +147,11 @@ export default function ScreensWrapper() {
                             setIsExpanded(!isExpanded);
                         } else {
                             carouselLocation.value = withTiming(
-                                height * EXPANDED.CAROUSEL_LOCATION,
+                                window.innerHeight * EXPANDED.CAROUSEL_LOCATION,
                                 defaultAnimationConfig
                             );
                             viewAreaHeight.value = withTiming(
-                                height * EXPANDED.VIEW_AREA_HEIGHT,
+                                window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
                             );
                             viewAreaColor.value = withTiming(
@@ -164,7 +159,7 @@ export default function ScreensWrapper() {
                                 defaultAnimationConfig
                             );
                             viewAreaWidth.value = withTiming(
-                                width * EXPANDED.VIEW_AREA_WIDTH,
+                                window.innerWidth * EXPANDED.VIEW_AREA_WIDTH,
                                 defaultAnimationConfig
                             );
                             viewAreaBorderRadius.value = withTiming(
@@ -184,8 +179,8 @@ export default function ScreensWrapper() {
             <ScrollingCarousel
                 carouselLocationStyle={carouselLocationStyle}
                 widgets={widgets}
-                height={height}
-                width={width}
+                height={window.innerHeight}
+                width={window.innerWidth}
                 setIndex={setIndex}
                 ref={ref}
             />
