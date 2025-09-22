@@ -64,7 +64,7 @@ export default function PhotoGallery() {
                             onSnapToItem={(index) => setSelectedIndex(index)} // Update selectedIndex when swiped
                             loop
                             autoPlay={secret ? true : false}
-                            autoPlayInterval={secret ? 5000 : undefined}
+                            autoPlayInterval={secret ? 2500 : undefined}
                         />
 
                         <TouchableOpacity onPress={next} style={styles.navButton}>
