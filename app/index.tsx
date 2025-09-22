@@ -11,7 +11,7 @@ export default function Index() {
     const { MAX_IDLE_TIME } = useConfigs();
 
     // Standby screen
-    const [isStandby, setIsStandby] = useState(true);
+    const [isStandby, setIsStandby] = useState(false);
     const [fadeOut, setFadeOut] = useState(false);
     const [lastActivity, setLastActivity] = useState(Date.now());
     const [standbyTime] = useState(MAX_IDLE_TIME);
