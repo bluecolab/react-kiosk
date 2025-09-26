@@ -22,7 +22,7 @@ const CurrentTime = () => {
     );
 };
 
-export default function Standby({ onStart, fadeOut }: { onStart: () => void; fadeOut: boolean }) {
+export default function Standby({ onStart }: { onStart: () => void }) {
     const pulseAnim = useRef(new Animated.Value(1)).current;
 
     React.useEffect(() => {
@@ -54,8 +54,7 @@ export default function Standby({ onStart, fadeOut }: { onStart: () => void; fad
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                opacity: fadeOut ? 0 : 1,
-                pointerEvents: fadeOut ? 'none' : 'auto',
+                pointerEvents: 'auto',
             }}
             onTouchStart={onStart} // <--- works cross-platform
         >
