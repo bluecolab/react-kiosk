@@ -22,7 +22,7 @@ const CurrentTime = () => {
     );
 };
 
-export default function Standby({ onStart }: { onStart: () => void }) {
+export default function Standby() {
     const pulseAnim = useRef(new Animated.Value(1)).current;
 
     React.useEffect(() => {
@@ -55,9 +55,7 @@ export default function Standby({ onStart }: { onStart: () => void }) {
                 justifyContent: 'center',
                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 pointerEvents: 'auto',
-            }}
-            onTouchStart={onStart} // <--- works cross-platform
-        >
+            }}>
             <Image source={BCLogo} style={{ width: 700, height: 700, marginBottom: 20 }} />
 
             <Text style={{ fontSize: 60, color: 'white' }}>What do you know about your water?</Text>
@@ -86,8 +84,6 @@ export default function Standby({ onStart }: { onStart: () => void }) {
 
   - isStandby: (true/false) — shows standby screen or main content
 
-  - fadeOut: (true/false) — controls fading animation
-
   - lastActivity: (timestamp) — tracks last user interaction
 
   - standbyTime: (ms) — how long until it goes to standby
@@ -95,7 +91,5 @@ export default function Standby({ onStart }: { onStart: () => void }) {
   - resetInactivity(): when user touches/clicks/presses anything, reset the timer
 
   - checkInactivity: every second, check if user is inactive
-
-  - handleStart(): when tapping "Start", fades out standby screen and enters main app
 
 */
