@@ -13,7 +13,7 @@ export default function PondWaterData() {
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/28b52eaadf8041d490b3bca36f16101c',
         },
     };
-    const [state, setState] = React.useState(water_sensors.alan); // default to Alan
+    const [state, setState] = React.useState(water_sensors.alan); // default to Alan sensor
 
     return (
         <View>
@@ -53,12 +53,12 @@ export default function PondWaterData() {
                     borderRadius: 12,
                     padding: 20,
                     zIndex: 1,
-                    alignItems: 'center', // ensures iframe is centered inside
+                    alignItems: 'center', // ensures iframe is centered inside the container
                 }}>
                 <iframe
                     src={state.URL}
                     width="1080"
-                    height="750"
+                    height="700"
                     style={{
                         border: 'none',
                         borderRadius: 8,

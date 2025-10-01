@@ -57,12 +57,12 @@ export default function Standby({ onStart, fadeOut }: { onStart: () => void; fad
                 opacity: fadeOut ? 0 : 1,
                 pointerEvents: fadeOut ? 'none' : 'auto',
             }}
-            onTouchStart={onStart} // <--- works cross-platform
+            onTouchStart={onStart} // <--- works cross-platform (tap/click/press) to start app
         >
-            <Image source={BCLogo} style={{ width: 700, height: 700, marginBottom: 20 }} />
-
+            <Image source={BCLogo} style={{ width: 700, height: 700, marginBottom: 20 }} />{' '}
+            {/* Logo */}
+            {/* Main Text */}
             <Text style={{ fontSize: 60, color: 'white' }}>What do you know about your water?</Text>
-
             <Animated.Text
                 style={{
                     fontSize: 28,
@@ -73,7 +73,6 @@ export default function Standby({ onStart, fadeOut }: { onStart: () => void; fad
                 }}>
                 Tap to Start
             </Animated.Text>
-
             {/* Current Time and Version Bottom Right */}
             <View style={{ position: 'absolute', bottom: 16, right: 16, alignItems: 'flex-end' }}>
                 <CurrentTime />
