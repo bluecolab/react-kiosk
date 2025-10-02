@@ -38,7 +38,7 @@ export default function WelcomeScreen() {
                             window.location.reload(); // Reload to apply changes
                         }
                     }}>
-                    <Image source={Cronin} style={{ height: 450, width: '100%' }} />
+                    <Image source={Cronin} style={{ height: 490, width: '100%' }} />
                 </View>
                 {/* </Pressable> */} {/* Left Side with Image */}
             </View>

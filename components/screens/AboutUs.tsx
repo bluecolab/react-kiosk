@@ -19,7 +19,13 @@ export default function StoryScreen() {
 
             {/* Top Image */}
             <Image
-                source={require('@/assets/images/general/Three-labs.jpg')}
+                source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
+                style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
+                resizeMode="cover"
+            />
+            {/* Bottom Image */}
+            <Image
+                source={require('@/assets/images/gallery/GE-delivery.jpeg')}
                 style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
                 resizeMode="cover"
             />
