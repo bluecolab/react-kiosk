@@ -12,7 +12,6 @@ export default function Index() {
 
     // Standby screen
     const [isStandby, setIsStandby] = useState(true);
-    const [fadeOut, setFadeOut] = useState(false);
     const [lastActivity, setLastActivity] = useState(Date.now());
     const [standbyTime] = useState(MAX_IDLE_TIME);
     const resetInactivity = useCallback(() => {
@@ -47,14 +46,6 @@ export default function Index() {
         };
     }, [resetInactivity]);
 
-    const handleStart = () => {
-        setFadeOut(true);
-        setTimeout(() => {
-            setIsStandby(false);
-            resetInactivity();
-        }, 500);
-    };
-
     return (
         <>
             <Head>
@@ -80,11 +71,7 @@ export default function Index() {
                     <source src={assetId} type="video/mp4" />
                 </video>
 
-                {isStandby ? (
-                    <Standby onStart={handleStart} fadeOut={fadeOut} />
-                ) : (
-                    <ScreensWrapper />
-                )}
+                {isStandby ? <Standby /> : <ScreensWrapper />}
             </View>
         </>
     );
