@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native'; //, Pressable for future use o
 
 export default function WelcomeScreen() {
     let Cronin = require('@/assets/images/crotters/Crotter.png');
-    // let gif = require('@/assets/images/general/Scroll.gif'); // Future use for scroll prompt
+    // let gif = require('@/assets/images/general/Scroll.gif');
 
     return (
         <View>

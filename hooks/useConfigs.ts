@@ -8,8 +8,8 @@ export const useConfigs = () => {
 
     if (!constants.secret) {
         // Normal Mode
-        constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.8; // Default height for view area
-        constants.SHRUNKEN.CAROUSEL_LOCATION = 0.8; // Default position for carousel
+        constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.73; // Default height for view area
+        constants.SHRUNKEN.CAROUSEL_LOCATION = 0.75; // Default position for carousel
     } else {
         // Crotter Mode Enabled - more space for Crotter image - V for Victory :)
         constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.73; // Lowered to make room for Crotter image

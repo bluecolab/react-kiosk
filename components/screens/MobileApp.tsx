@@ -28,12 +28,10 @@ export default function MobileApp() {
                     paddingLeft: 20,
                     marginRight: 220, // Added to prevent text overlap with QR code
                 }}>
-                <Text style={{ fontSize: 40, marginBottom: 20 }}>
+                <Text style={{ fontSize: 40 }}>
                     Access our research data and information on the go.
                 </Text>
-                <Text style={{ fontSize: 20, marginBottom: 10 }}>
-                    Stay updated with real-time notifications.
-                </Text>
+                <Text style={{ fontSize: 20 }}>Stay updated with real-time data.</Text>
                 <Text style={{ fontSize: 20 }}>Download our mobile app for better access.</Text>
             </View>
             <View style={{ position: 'absolute', bottom: 20, right: 20 }}>
