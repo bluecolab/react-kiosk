@@ -16,7 +16,7 @@ export default function PondWaterData() {
 
         piermont: {
             label: 'Piermont Pier',
-            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/61951a2f584f49f690969a23c349f43e?orgId=1&from=now-2d&to=now&refresh=15m'
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/61951a2f584f49f690969a23c349f43e?orgId=1&from=now-2d&to=now&refresh=15m',
         },
 
         poughkeepsie: {
@@ -27,8 +27,7 @@ export default function PondWaterData() {
         albany: {
             label: 'Albany',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/1ca141bf9a394c86b9103c1812ec9b28?orgId=1&from=now-2d&to=now&refresh=15m',
-        }
-
+        },
     };
     const [state, setState] = React.useState(water_sensors.alan); // default to Alan
 
