@@ -1,7 +1,7 @@
 // Yes Yes work in progress - V
 import React from 'react';
-import { View, Image, Text } from 'react-native';
-const QRPlaceholder = require('@/assets/images/QR Placeholder.png');
+import { View, Image, Text } from 'react-native'; //, Pressable
+const QRPlaceholder = require('@/assets/images/QR Placeholder.png'); // Placeholder image for QR code
 
 export default function MobileApp() {
     return (
@@ -11,6 +11,7 @@ export default function MobileApp() {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
+                position: 'relative', // Added for absolute positioning context
             }}>
             <View style={{ flex: 1, alignItems: 'center' }}>
                 <Image
@@ -25,18 +26,17 @@ export default function MobileApp() {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     paddingLeft: 20,
+                    marginRight: 220, // Added to prevent text overlap with QR code
                 }}>
                 <Text style={{ fontSize: 40 }}>
                     Access our research data and information on the go.
                 </Text>
-                <Text style={{ fontSize: 20 }}>Stay updated with real-time notifications.</Text>
+                <Text style={{ fontSize: 20 }}>Stay updated with real-time data.</Text>
                 <Text style={{ fontSize: 20 }}>Download our mobile app for better access.</Text>
             </View>
-            {/* Gotta add the QR Place holder here somewhere for Apple and Android -V*/}
-            <Image
-                style={{ width: 200, height: 200, position: 'absolute', bottom: 0, right: 0 }}
-                source={QRPlaceholder}
-            />
+            <View style={{ position: 'absolute', bottom: 20, right: 20 }}>
+                <Image style={{ width: 200, height: 200 }} source={QRPlaceholder} />
+            </View>
         </View>
     );
 }

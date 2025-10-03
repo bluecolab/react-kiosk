@@ -17,12 +17,14 @@ export default function PondWaterData() {
             <View
                 style={{
                     width: '100%',
-                    maxWidth: 2050,
-                    backgroundColor: '#fff',
-                    borderRadius: 12,
+                    maxWidth: 2050, // Max width for larger screens - V
+                    backgroundColor: '#100ddb81', // Dark blue background with transparency #100ddb81
+                    marginTop: 20,
+                    borderRadius: 12, // Rounded corners for the container box - V
+                    overflow: 'hidden', // Ensures content respects border radius
                     padding: 20,
                     zIndex: 1,
-                    alignItems: 'center', // ensures iframe is centered inside
+                    alignItems: 'center', // ensures iframe is centered inside the container
                 }}>
                 <iframe
                     src={state.URL}

@@ -1,21 +1,28 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image } from 'react-native'; //, Pressable for future use of Pressable component
 
-export default function Welcome() {
+export default function WelcomeScreen() {
     let Cronin = require('@/assets/images/crotters/Crotter.png');
     // let gif = require('@/assets/images/general/Scroll.gif');
 
     return (
         <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 20 }}>
-                Welcome to Blue CoLab's Kiosk!
+            <Text
+                style={{
+                    textAlign: 'center',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    marginVertical: 30,
+                }}>
+                Welcome to Blue CoLab's Kiosk!{' '}
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                 {/* <Pressable
                     onPress={() => {
                         console.log('Crotter Mode Enabled');
-                        localStorage.setItem('crotterMode', 'true');
+                        localStorage.setItem('crotterMode', 'true'); // Enable Crotter Mode on press
+                        window.location.reload(); // Reload to apply changes
                     }}> */}
                 <View
                     style={{ height: 500, flex: 1 }}
@@ -28,12 +35,12 @@ export default function Welcome() {
                         } else {
                             console.log('Crotter Mode Enabled');
                             localStorage.setItem('crotterMode', 'true');
-                            window.location.reload();
+                            window.location.reload(); // Reload to apply changes
                         }
                     }}>
-                    <Image source={Cronin} style={{ height: 500, width: '100%' }} />
+                    <Image source={Cronin} style={{ height: 490, width: '100%' }} />
                 </View>
-                {/* </Pressable> */}
+                {/* </Pressable> */} {/* Left Side with Image */}
             </View>
         </View>
     );

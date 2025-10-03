@@ -10,13 +10,13 @@ export default function FloatingButton({ setIsModalOpen, close }: FloatingButton
         <View
             style={{
                 position: 'absolute',
-                bottom: 30,
+                bottom: 15,
                 padding: 5,
                 left: '50%',
                 transform: [{ translateX: '-50%' }],
                 borderRadius: 20,
                 zIndex: 15,
-                width: '15%',
+                width: '10%',
                 backgroundColor: close ? 'rgba(255, 70, 70, 0.38)' : 'rgba(255,255,255,0.6)', // glassy white
                 shadowOpacity: 0.15,
                 shadowRadius: 20,

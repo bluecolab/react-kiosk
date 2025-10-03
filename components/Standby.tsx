@@ -59,7 +59,6 @@ export default function Standby() {
             <Image source={BCLogo} style={{ width: 700, height: 700, marginBottom: 20 }} />
 
             <Text style={{ fontSize: 60, color: 'white' }}>What do you know about your water?</Text>
-
             <Animated.Text
                 style={{
                     fontSize: 28,
@@ -70,7 +69,6 @@ export default function Standby() {
                 }}>
                 Tap to Start
             </Animated.Text>
-
             {/* Current Time and Version Bottom Right */}
             <View style={{ position: 'absolute', bottom: 16, right: 16, alignItems: 'flex-end' }}>
                 <CurrentTime />

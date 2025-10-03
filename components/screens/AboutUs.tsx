@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native'; //, Pressable
 
 export default function StoryScreen() {
     return (
@@ -10,7 +10,7 @@ export default function StoryScreen() {
                     fontSize: 24,
                     fontWeight: 'bold',
                     textAlign: 'center',
-                    color: '#002D72',
+                    color: '#0d21d1ff',
                     marginBottom: 20,
                 }}>
                 At Seidenberg School, we believe students can make a difference today, before they
@@ -19,16 +19,22 @@ export default function StoryScreen() {
 
             {/* Top Image */}
             <Image
-                source={require('@/assets/images/general/Three-labs.jpg')}
+                source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
+                style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
+                resizeMode="cover"
+            />
+            {/* Bottom Image */}
+            <Image
+                source={require('@/assets/images/gallery/GE-delivery.jpeg')}
                 style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
                 resizeMode="cover"
             />
 
             {/* Content Sections */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002d72' }}>
                 Do you know if your water is safe before you drink it?
             </Text>
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
+            <Text style={{ fontSize: 16, marginBottom: 16, color: '#002d72' }}>
                 Let us answer that for you: No. We aim to change that.
             </Text>
 
@@ -47,36 +53,37 @@ export default function StoryScreen() {
             </Text>
 
             {/* Section Titles */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 8, color: '#002D72' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 8, color: '#002d72' }}>
                 Water Contamination Risks
             </Text>
 
             <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                Chances are the water you use is safe, but millions have found out too late that is
-                not the case. Just one sip of water contaminated with pathogens, such as bacteria,
-                viruses, or parasites, can cause severe illness in a matter of hours. Yet, still
-                today, a conventional lab requires 24 - 48 hours to report analyses of samples that
-                may only be taken weekly, or less.
+                Chances are the water you use is safe, however, millions have found out too late
+                that this is not the case. One sip of water contaminated with pathogens, such as
+                bacteria, viruses, or parasites, can cause severe illness in a matter of hours. Yet,
+                conventional labs require from 24 - 48 hours to provide reports analyzing samples
+                that may only be taken weekly, or less.
             </Text>
 
             <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                In <Text style={{ fontWeight: 'bold' }}>Milwaukee (1993)</Text>, 400,000 residents
-                were made ill and 100 died due to drinking water contaminated with cryptosporidium.
-                Residents in <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
+                In <Text style={{ fontWeight: 'bold' }}>Milwaukee Wisconsin (1993)</Text>, 400,000
+                residents were made ill and 100 died due to contaminated drinking water such as
+                cryptosporidium. Residents in{' '}
+                <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
                 <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to highly
                 toxic PFAS and may have been for years without knowing it.
             </Text>
 
             <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                Water contamination is endemic across the planet, making hundreds of millions of
-                people ill, including tens of millions in the United States. The best defense
-                against this threat are innovations that enable{' '}
+                Water contamination is endemic across the planet, making our United States
+                population ill, including tens of millions in other countries as well. The best
+                defense against this threat are innovations that enable{' '}
                 <Text style={{ fontWeight: 'bold' }}>real-time</Text>, technological detection of
                 water contaminants before they can reach our taps or recreational waters.
             </Text>
 
             {/* Blue CoLab's Approach */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002d72' }}>
                 Blue CoLab's Hands-On Approach
             </Text>
 
@@ -87,15 +94,15 @@ export default function StoryScreen() {
 
             <View style={{ marginBottom: 16 }}>
                 <Text style={{ fontSize: 16, color: '#374151' }}>
-                    • Operation of real-time sensors and instruments
+                    • Operation of Real-Time Sensors and Instruments
                 </Text>
                 <Text style={{ fontSize: 16, color: '#374151' }}>
-                    • Management, visualization, and sonification of data
+                    • Management, Visualization, and Sonification of Data
                 </Text>
                 <Text style={{ fontSize: 16, color: '#374151' }}>
-                    • UX, web, GIS, and app development
+                    • UX, Web, GIS, and App Development
                 </Text>
-                <Text style={{ fontSize: 16, color: '#374151' }}>• System cybersecurity</Text>
+                <Text style={{ fontSize: 16, color: '#374151' }}>• System Cybersecurity</Text>
             </View>
 
             <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
@@ -115,7 +122,7 @@ export default function StoryScreen() {
                     fontSize: 18,
                     textAlign: 'center',
                     marginTop: 20,
-                    color: '#4B5563',
+                    color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
                 "All of us at Blue CoLab look forward to seeing you on the team."
@@ -125,7 +132,7 @@ export default function StoryScreen() {
                     fontSize: 18,
                     textAlign: 'center',
                     marginTop: 20,
-                    color: '#4B5563',
+                    color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
                 — John Cronin, Blue CoLab Director
