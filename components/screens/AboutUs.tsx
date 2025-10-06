@@ -7,44 +7,97 @@ export default function StoryScreen() {
             {/* Title */}
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 30,
                     fontWeight: 'bold',
                     textAlign: 'center',
                     color: '#002D72',
-                    marginBottom: 20,
+                    marginBottom: 60,
                 }}>
                 At Seidenberg School, we believe students can make a difference today, before they
                 launch their careers of tomorrow.
             </Text>
 
-            {/* Top Image */}
-            <Image
-                source={require('@/assets/images/general/Three-labs.jpg')}
-                style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
-                resizeMode="cover"
-            />
+            <View
+                style={{
+                    flexDirection: "row-reverse",
+                    alignItems: "flex-start",
+                    marginBottom: 30,
+                }}
+            >
+                {/* Left Image */}
+                <Image
+                    source={require('@/assets/images/gallery/GE-delivery.jpeg')}
+                    style={{ width: "45%", height: 400, borderRadius: 10, marginBottom: 16, marginLeft: 50, marginRight: 15 }}
+                    resizeMode="cover"
 
-            {/* Content Sections */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
-                Do you know if your water is safe before you drink it?
-            </Text>
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                Let us answer that for you: No. We aim to change that.
-            </Text>
+                />
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                We are a team of students, interns, graduate assistants, faculty, and staff who work
-                to advance the technology, information, and warning systems that will bring you that
-                information.
-            </Text>
+                {/* Content Sections */}
+                <View style={{flex:1}}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+                        Do you know if your water is safe before you drink it?
+                    </Text>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                At our technology lab overlooking the Hudson River, our Choate Pond lab on campus,
-                and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the
-                proposition that you have the{' '}
-                <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of your water
-                before you drink it, swim in it, fish it, or even swamp your canoe.
-            </Text>
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        Let us answer that for you: No. We aim to change that.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        We are a team of students, interns, graduate assistants, faculty, and staff who work
+                        to advance the technology, information, and warning systems that will bring you that
+                        information.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        At our technology lab overlooking the Hudson River, our Choate Pond lab on campus,
+                        and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the
+                        proposition that you have the{' '}
+                        <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of your water
+                        before you drink it, swim in it, fish it, or even swamp your canoe.
+                    </Text>
+                </View>
+            </View>
+
+                        <View
+                style={{
+                    flexDirection: "row",
+                    alignItems: "flex-start",
+                    marginBottom: 30,
+                }}
+            >
+                {/* Left Image */}
+                <Image
+                    source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
+                    style={{ width: "45%", height: 400, borderRadius: 10, marginBottom: 16, marginLeft: 15, marginRight: 50 }}
+                    resizeMode="cover"
+
+                />
+
+                {/* Content Sections */}
+                <View style={{flex:1}}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+                        Do you know if your water is safe before you drink it?
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        Let us answer that for you: No. We aim to change that.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        We are a team of students, interns, graduate assistants, faculty, and staff who work
+                        to advance the technology, information, and warning systems that will bring you that
+                        information.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        At our technology lab overlooking the Hudson River, our Choate Pond lab on campus,
+                        and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the
+                        proposition that you have the{' '}
+                        <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of your water
+                        before you drink it, swim in it, fish it, or even swamp your canoe.
+                    </Text>
+                </View>
+            </View>
 
             {/* Section Titles */}
             <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 8, color: '#002D72' }}>
@@ -108,7 +161,8 @@ export default function StoryScreen() {
                 harnessing innovation on behalf of society, and providing students with skill-based
                 experiences that lead to a career meaningful to them, and to society.
             </Text>
-
+                
+            
             {/* Closing Statement */}
             <Text
                 style={{
