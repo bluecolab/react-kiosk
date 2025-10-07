@@ -75,7 +75,7 @@ export default function StoryScreen() {
 
                 {/* Content Sections */}
                 <View style={{flex:1}}>
-                    <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 8, color: '#002D72' }}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
                         Water Contamination Risks
                     </Text>
 
@@ -138,8 +138,7 @@ export default function StoryScreen() {
                 harnessing innovation on behalf of society, and providing students with skill-based
                 experiences that lead to a career meaningful to them, and to society.
             </Text>
-                
-            
+
             {/* Closing Statement */}
             <Text
                 style={{
