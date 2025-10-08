@@ -10,11 +10,8 @@ import {
     Dimensions,
 } from 'react-native';
 import { images } from '@/hooks/useGalleryImages';
-import Carousel from 'react-native-reanimated-carousel';
-import { useConfigs } from '@/hooks/useConfigs';
 
 export default function PhotoGallery() {
-    const { secret } = useConfigs();
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const { width: W, height: H } = Dimensions.get('window');
 
@@ -49,22 +46,10 @@ export default function PhotoGallery() {
                             <Text style={styles.navText}>‹</Text>
                         </TouchableOpacity>
 
-                        <Carousel
-                            data={images}
-                            width={W * 0.8}
-                            height={H * 0.8}
-                            defaultIndex={selectedIndex !== null ? selectedIndex : 0}
-                            renderItem={({ item }) => (
-                                <Image
-                                    source={item.source}
-                                    style={[styles.fullImage, { width: W * 0.8, height: H * 0.8 }]}
-                                    resizeMode="contain"
-                                />
-                            )}
-                            onSnapToItem={(index) => setSelectedIndex(index)} // Update selectedIndex when swiped
-                            loop
-                            autoPlay={secret ? true : false}
-                            autoPlayInterval={secret ? 5000 : undefined}
+                        <Image
+                            source={images[selectedIndex !== null ? selectedIndex : 0].source}
+                            style={[styles.fullImage, { width: W * 0.8, height: H * 0.8 }]}
+                            resizeMode="contain"
                         />
 
                         <TouchableOpacity onPress={next} style={styles.navButton}>

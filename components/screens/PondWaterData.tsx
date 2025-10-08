@@ -8,12 +8,28 @@ export default function PondWaterData() {
             label: 'Alan',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/841327a5d5fa493b8f14d638ffe2041e',
         },
-        ada: {
-            label: 'Ada',
-            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/28b52eaadf8041d490b3bca36f16101c',
+
+        pier25: {
+            label: 'Hudson River Pier 25',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/42fc4d25035b449c81f3d8ecb3f08e83?orgId=1',
+        },
+
+        piermont: {
+            label: 'Piermont Pier',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/61951a2f584f49f690969a23c349f43e?orgId=1&from=now-2d&to=now&refresh=15m',
+        },
+
+        poughkeepsie: {
+            label: 'Poughkeepsie',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/fa0d20863be848119bc21d7807f20b56?orgId=1&from=now-2d&to=now&refresh=15m',
+        },
+
+        albany: {
+            label: 'Albany',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/1ca141bf9a394c86b9103c1812ec9b28?orgId=1&from=now-2d&to=now&refresh=15m',
         },
     };
-    const [state, setState] = React.useState(water_sensors.alan); // default to Alan
+    const [state, setState] = React.useState(water_sensors.alan); // default to Alan sensor
 
     return (
         <View>
@@ -53,12 +69,12 @@ export default function PondWaterData() {
                     borderRadius: 12,
                     padding: 20,
                     zIndex: 1,
-                    alignItems: 'center', // ensures iframe is centered inside
+                    alignItems: 'center', // ensures iframe is centered inside the container
                 }}>
                 <iframe
                     src={state.URL}
                     width="1080"
-                    height="750"
+                    height="700"
                     style={{
                         border: 'none',
                         borderRadius: 8,

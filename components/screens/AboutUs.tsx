@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native'; //, Pressable
 
 export default function StoryScreen() {
     return (
@@ -19,22 +19,33 @@ export default function StoryScreen() {
 
             <View
                 style={{
-                    flexDirection: "row-reverse",
-                    alignItems: "flex-start",
+                    flexDirection: 'row-reverse',
+                    alignItems: 'flex-start',
                     marginBottom: 30,
-                }}
-            >
+                }}>
                 {/* Left Image */}
                 <Image
                     source={require('@/assets/images/gallery/GE-delivery.jpeg')}
-                    style={{ width: "45%", height: 400, borderRadius: 10, marginBottom: 16, marginLeft: 50, marginRight: 15 }}
+                    style={{
+                        width: '45%',
+                        height: 400,
+                        borderRadius: 10,
+                        marginBottom: 16,
+                        marginLeft: 50,
+                        marginRight: 15,
+                    }}
                     resizeMode="cover"
-
                 />
 
                 {/* Content Sections */}
-                <View style={{flex:1}}>
-                    <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+                <View style={{ flex: 1 }}>
+                    <Text
+                        style={{
+                            fontSize: 27,
+                            fontWeight: 'bold',
+                            marginBottom: 20,
+                            color: '#002D72',
+                        }}>
                         Do you know if your water is safe before you drink it?
                     </Text>
 
@@ -43,64 +54,78 @@ export default function StoryScreen() {
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        We are a team of students, interns, graduate assistants, faculty, and staff who work
-                        to advance the technology, information, and warning systems that will bring you that
-                        information.
+                        We are a team of students, interns, graduate assistants, faculty, and staff
+                        who work to advance the technology, information, and warning systems that
+                        will bring you that information.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        At our technology lab overlooking the Hudson River, our Choate Pond lab on campus,
-                        and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the
-                        proposition that you have the{' '}
-                        <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of your water
-                        before you drink it, swim in it, fish it, or even swamp your canoe.
+                        At our technology lab overlooking the Hudson River, our Choate Pond lab on
+                        campus, and our data lab in the Goldstein Academic Center, Blue CoLab is
+                        dedicated to the proposition that you have the{' '}
+                        <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of
+                        your water before you drink it, swim in it, fish it, or even swamp your
+                        canoe.
                     </Text>
                 </View>
             </View>
 
-                        <View
+            <View
                 style={{
-                    flexDirection: "row",
-                    alignItems: "flex-start",
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
                     marginBottom: 30,
-                }}
-            >
+                }}>
                 {/* Left Image */}
                 <Image
                     source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
-                    style={{ width: "45%", height: 400, borderRadius: 10, marginBottom: 16, marginLeft: 15, marginRight: 50 }}
+                    style={{
+                        width: '45%',
+                        height: 400,
+                        borderRadius: 10,
+                        marginBottom: 16,
+                        marginLeft: 15,
+                        marginRight: 50,
+                    }}
                     resizeMode="cover"
-
                 />
 
                 {/* Content Sections */}
-                <View style={{flex:1}}>
-                    <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+                <View style={{ flex: 1 }}>
+                    <Text
+                        style={{
+                            fontSize: 27,
+                            fontWeight: 'bold',
+                            marginBottom: 20,
+                            color: '#002D72',
+                        }}>
                         Water Contamination Risks
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        Chances are the water you use is safe, but millions have found out too late that is
-                        not the case. Just one sip of water contaminated with pathogens, such as bacteria,
-                        viruses, or parasites, can cause severe illness in a matter of hours. Yet, still
-                        today, a conventional lab requires 24 - 48 hours to report analyses of samples that
-                        may only be taken weekly, or less.
+                        Chances are the water you use is safe, but millions have found out too late
+                        that is not the case. Just one sip of water contaminated with pathogens,
+                        such as bacteria, viruses, or parasites, can cause severe illness in a
+                        matter of hours. Yet, still today, a conventional lab requires 24 - 48 hours
+                        to report analyses of samples that may only be taken weekly, or less.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        In <Text style={{ fontWeight: 'bold' }}>Milwaukee (1993)</Text>, 400,000 residents
-                        were made ill and 100 died due to drinking water contaminated with cryptosporidium.
-                        Residents in <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
-                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to highly
-                        toxic PFAS and may have been for years without knowing it.
+                        In <Text style={{ fontWeight: 'bold' }}>Milwaukee (1993)</Text>, 400,000
+                        residents were made ill and 100 died due to drinking water contaminated with
+                        cryptosporidium. Residents in{' '}
+                        <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
+                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to
+                        highly toxic PFAS and may have been for years without knowing it.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        Water contamination is endemic across the planet, making hundreds of millions of
-                        people ill, including tens of millions in the United States. The best defense
-                        against this threat are innovations that enable{' '}
-                        <Text style={{ fontWeight: 'bold' }}>real-time</Text>, technological detection of
-                        water contaminants before they can reach our taps or recreational waters.
+                        Water contamination is endemic across the planet, making hundreds of
+                        millions of people ill, including tens of millions in the United States. The
+                        best defense against this threat are innovations that enable{' '}
+                        <Text style={{ fontWeight: 'bold' }}>real-time</Text>, technological
+                        detection of water contaminants before they can reach our taps or
+                        recreational waters.
                     </Text>
                 </View>
             </View>
@@ -145,7 +170,7 @@ export default function StoryScreen() {
                     fontSize: 18,
                     textAlign: 'center',
                     marginTop: 20,
-                    color: '#4B5563',
+                    color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
                 "All of us at Blue CoLab look forward to seeing you on the team."
@@ -155,7 +180,7 @@ export default function StoryScreen() {
                     fontSize: 18,
                     textAlign: 'center',
                     marginTop: 20,
-                    color: '#4B5563',
+                    color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
                 — John Cronin, Blue CoLab Director
