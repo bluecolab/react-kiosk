@@ -18,7 +18,7 @@ export default function PondWaterData() {
                 style={{
                     width: '100%',
                     maxWidth: 2050, // Max width for larger screens - V
-                    backgroundColor: '#100ddb81', // Dark blue background with transparency #100ddb81
+                    backgroundColor: '#efeff381', // Silver background with transparency #efeff381
                     marginTop: 20,
                     borderRadius: 12, // Rounded corners for the container box - V
                     overflow: 'hidden', // Ensures content respects border radius
@@ -28,7 +28,7 @@ export default function PondWaterData() {
                 }}>
                 <iframe
                     src={state.URL}
-                    width="1000"
+                    width="1200"
                     height="750"
                     style={{
                         border: 'none',
