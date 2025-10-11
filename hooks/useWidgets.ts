@@ -25,7 +25,7 @@ export const useWidgets = (): Widget[] => {
             screen: React.createElement(Welcome),
         },
         {
-            title: 'Pond Water Data',
+            title: 'Water Data',
             image: require('@/assets/images/icons/PondWaterDataIcon.png'),
             screen: React.createElement(PondWaterData),
         },

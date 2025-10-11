@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import ScrollingCarousel from '@/components/wrapper/ScrollingCarousel';
+import ScrollingCarousel from '@/components/wrapper/carousel/ScrollingCarousel';
 import { View, Easing } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
@@ -8,11 +8,13 @@ import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import { ICarouselInstance } from 'react-native-reanimated-carousel';
 import FloatingButton from '../FloatingButton';
-import AllScreensModal from './AllScreensModal';
+import AllScreensModal from './modal/AllScreensModal';
+import { UIType } from '@/hooks/constants/constants';
+import Dock from './dock/Dock';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
-    const { SHRUNKEN, EXPANDED, secret } = useConfigs();
+    const { SHRUNKEN, EXPANDED, mode } = useConfigs();
 
     const ref = useRef<ICarouselInstance>(null);
 
@@ -176,16 +178,29 @@ export default function ScreensWrapper() {
                 />
             </View>
 
-            <ScrollingCarousel
-                carouselLocationStyle={carouselLocationStyle}
-                widgets={widgets}
-                height={window.innerHeight}
-                width={window.innerWidth}
-                setIndex={setIndex}
-                ref={ref}
-            />
+            {(mode === UIType.MIXED || mode === UIType.CAROUSEL) && (
+                <ScrollingCarousel
+                    carouselLocationStyle={carouselLocationStyle}
+                    widgets={widgets}
+                    height={window.innerHeight}
+                    width={window.innerWidth}
+                    setIndex={setIndex}
+                    ref={ref}
+                />
+            )}
 
-            {!isExpanded && secret && <FloatingButton setIsModalOpen={setIsModalOpen} />}
+            {!isExpanded && (mode === UIType.MIXED || mode === UIType.MODAL) && (
+                <FloatingButton setIsModalOpen={setIsModalOpen} />
+            )}
+
+            {mode === UIType.DOCK && (
+                <Dock
+                    carouselLocationStyle={carouselLocationStyle}
+                    height={window.innerHeight}
+                    setIndex={setIndex}
+                    widgets={widgets}
+                />
+            )}
 
             <AllScreensModal
                 isModalOpen={isModalOpen}

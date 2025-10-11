@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Animated, {
     Extrapolation,
     interpolate,
@@ -8,6 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Widget } from '@/hooks/useWidgets';
+import { ICarouselInstance } from 'react-native-reanimated-carousel';
 
 interface CustomItemProps {
     item: Widget;
@@ -66,12 +67,27 @@ interface CarouselItemProps {
     index: number;
     widgets: Widget[];
     animationValue: SharedValue<number>;
+    setIndex: (index: number) => void;
+    ref: React.RefObject<ICarouselInstance | null>;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({ index, widgets, animationValue }) => {
+const CarouselItem: React.FC<CarouselItemProps> = ({
+    index,
+    widgets,
+    animationValue,
+    setIndex,
+    ref,
+}) => {
     return (
         <View style={{ flex: 1 }}>
-            <CustomItem item={widgets[index]} animationValue={animationValue} />
+            <Pressable
+                onPress={() => {
+                    ref.current?.scrollTo({ index, animated: true });
+                    setIndex(index);
+                }}
+                style={{ flex: 1 }}>
+                <CustomItem item={widgets[index]} animationValue={animationValue} />
+            </Pressable>
         </View>
     );
 };

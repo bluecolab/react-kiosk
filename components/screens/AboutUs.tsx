@@ -7,110 +7,158 @@ export default function StoryScreen() {
             {/* Title */}
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 30,
                     fontWeight: 'bold',
                     textAlign: 'center',
-                    color: '#0d21d1ff',
-                    marginBottom: 20,
+                    color: '#002D72',
+                    marginBottom: 60,
                 }}>
                 At Seidenberg School, we believe students can make a difference today, before they
                 launch their careers of tomorrow.
             </Text>
 
-            {/* Top Image */}
-            <Image
-                source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
-                style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
-                resizeMode="cover"
-            />
-            {/* Bottom Image */}
-            <Image
-                source={require('@/assets/images/gallery/GE-delivery.jpeg')}
-                style={{ width: '100%', height: 400, borderRadius: 8, marginBottom: 16 }}
-                resizeMode="cover"
-            />
+            <View
+                style={{
+                    flexDirection: 'row-reverse',
+                    alignItems: 'flex-start',
+                    marginBottom: 30,
+                }}>
+                {/* Left Image */}
+                <Image
+                    source={require('@/assets/images/gallery/GE-delivery.jpeg')}
+                    style={{
+                        width: '45%',
+                        height: 400,
+                        borderRadius: 10,
+                        marginBottom: 16,
+                        marginLeft: 50,
+                        marginRight: 15,
+                    }}
+                    resizeMode="cover"
+                />
 
-            {/* Content Sections */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002d72' }}>
-                Do you know if your water is safe before you drink it?
-            </Text>
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#002d72' }}>
-                Let us answer that for you: No. We aim to change that.
-            </Text>
+                {/* Content Sections */}
+                <View style={{ flex: 1 }}>
+                    <Text
+                        style={{
+                            fontSize: 27,
+                            fontWeight: 'bold',
+                            marginBottom: 20,
+                            color: '#002D72',
+                        }}>
+                        Do you know if your water is safe before you drink it?
+                    </Text>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                We are a team of students, interns, graduate assistants, faculty, and staff who work
-                to advance the technology, information, and warning systems that will bring you that
-                information.
-            </Text>
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        Let us answer that for you: No. We aim to change that.
+                    </Text>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                At our technology lab overlooking the Hudson River, our Choate Pond lab on campus,
-                and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the
-                proposition that you have the{' '}
-                <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of your water
-                before you drink it, swim in it, fish it, or even swamp your canoe.
-            </Text>
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        We are a team of students, interns, graduate assistants, faculty, and staff
+                        who work to advance the technology, information, and warning systems that
+                        will bring you that information.
+                    </Text>
 
-            {/* Section Titles */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 8, color: '#002d72' }}>
-                Water Contamination Risks
-            </Text>
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        At our technology lab overlooking the Hudson River, our Choate Pond lab on
+                        campus, and our data lab in the Goldstein Academic Center, Blue CoLab is
+                        dedicated to the proposition that you have the{' '}
+                        <Text style={{ fontWeight: 'bold' }}>right-to-know</Text> the quality of
+                        your water before you drink it, swim in it, fish it, or even swamp your
+                        canoe.
+                    </Text>
+                </View>
+            </View>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                Chances are the water you use is safe, however, millions have found out too late
-                that this is not the case. One sip of water contaminated with pathogens, such as
-                bacteria, viruses, or parasites, can cause severe illness in a matter of hours. Yet,
-                conventional labs require from 24 - 48 hours to provide reports analyzing samples
-                that may only be taken weekly, or less.
-            </Text>
+            <View
+                style={{
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
+                    marginBottom: 30,
+                }}>
+                {/* Left Image */}
+                <Image
+                    source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
+                    style={{
+                        width: '45%',
+                        height: 400,
+                        borderRadius: 10,
+                        marginBottom: 16,
+                        marginLeft: 15,
+                        marginRight: 50,
+                    }}
+                    resizeMode="cover"
+                />
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                In <Text style={{ fontWeight: 'bold' }}>Milwaukee Wisconsin (1993)</Text>, 400,000
-                residents were made ill and 100 died due to contaminated drinking water such as
-                cryptosporidium. Residents in{' '}
-                <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
-                <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to highly
-                toxic PFAS and may have been for years without knowing it.
-            </Text>
+                {/* Content Sections */}
+                <View style={{ flex: 1 }}>
+                    <Text
+                        style={{
+                            fontSize: 27,
+                            fontWeight: 'bold',
+                            marginBottom: 20,
+                            color: '#002D72',
+                        }}>
+                        Water Contamination Risks
+                    </Text>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
-                Water contamination is endemic across the planet, making our United States
-                population ill, including tens of millions in other countries as well. The best
-                defense against this threat are innovations that enable{' '}
-                <Text style={{ fontWeight: 'bold' }}>real-time</Text>, technological detection of
-                water contaminants before they can reach our taps or recreational waters.
-            </Text>
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        Chances are the water you use is safe, but millions have found out too late
+                        that is not the case. Just one sip of water contaminated with pathogens,
+                        such as bacteria, viruses, or parasites, can cause severe illness in a
+                        matter of hours. Yet, still today, a conventional lab requires 24 - 48 hours
+                        to report analyses of samples that may only be taken weekly, or less.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        In <Text style={{ fontWeight: 'bold' }}>Milwaukee (1993)</Text>, 400,000
+                        residents were made ill and 100 died due to drinking water contaminated with
+                        cryptosporidium. Residents in{' '}
+                        <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
+                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to
+                        highly toxic PFAS and may have been for years without knowing it.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        Water contamination is endemic across the planet, making hundreds of
+                        millions of people ill, including tens of millions in the United States. The
+                        best defense against this threat are innovations that enable{' '}
+                        <Text style={{ fontWeight: 'bold' }}>real-time</Text>, technological
+                        detection of water contaminants before they can reach our taps or
+                        recreational waters.
+                    </Text>
+                </View>
+            </View>
 
             {/* Blue CoLab's Approach */}
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, color: '#002d72' }}>
+            <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
                 Blue CoLab's Hands-On Approach
             </Text>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
+            <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
                 To advance these innovations, Blue CoLab is decidedly{' '}
                 <Text style={{ fontWeight: 'bold' }}>“hands-on.”</Text> Our students dive into:
             </Text>
 
             <View style={{ marginBottom: 16 }}>
-                <Text style={{ fontSize: 16, color: '#374151' }}>
-                    • Operation of Real-Time Sensors and Instruments
+                <Text style={{ fontSize: 20, color: '#374151' }}>
+                    • Operation of real-time sensors and instruments
                 </Text>
-                <Text style={{ fontSize: 16, color: '#374151' }}>
-                    • Management, Visualization, and Sonification of Data
+                <Text style={{ fontSize: 20, color: '#374151' }}>
+                    • Management, visualization, and sonification of data
                 </Text>
-                <Text style={{ fontSize: 16, color: '#374151' }}>
-                    • UX, Web, GIS, and App Development
+                <Text style={{ fontSize: 20, color: '#374151' }}>
+                    • UX, web, GIS, and app development
                 </Text>
-                <Text style={{ fontSize: 16, color: '#374151' }}>• System Cybersecurity</Text>
+                <Text style={{ fontSize: 20, color: '#374151' }}>• System cybersecurity</Text>
             </View>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
+            <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
                 They work in a <Text style={{ fontWeight: 'bold' }}>team-based environment</Text>,
                 using our own labs, instruments, equipment, and servers.
             </Text>
 
-            <Text style={{ fontSize: 16, marginBottom: 16, color: '#374151' }}>
+            <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
                 Blue CoLab stands for everything that makes Seidenberg School a special place —
                 harnessing innovation on behalf of society, and providing students with skill-based
                 experiences that lead to a career meaningful to them, and to society.
