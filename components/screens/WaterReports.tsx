@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     modalHeader: {
-        backgroundColor: '#000080',
+        backgroundColor: '#6299ffff',
         padding: 16,
         flexDirection: 'row',
         alignItems: 'center',

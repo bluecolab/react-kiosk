@@ -61,7 +61,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
         <Pressable onPress={() => setIndex(index)}>
             <Animated.View
                 style={[
-                    { marginHorizontal: 10, marginBottom: 30, alignSelf: 'flex-end' },
+                    { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },
                     sizeStyle,
                 ]}>
                 {/* White glow effect for selected item */}
@@ -73,7 +73,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                         fontWeight: 'bold',
                         width: '100%',
                         textAlign: 'center',
-                        fontSize: 12,
+                        fontSize: 10,
                         paddingBottom: 5,
                     }}>
                     {item.title}

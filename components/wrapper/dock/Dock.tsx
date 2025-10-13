@@ -9,15 +9,15 @@ import { Platform, View } from 'react-native';
 const GROWTH_RADIUS = 0.5; // how many neighbors are affected
 
 interface DockProps {
-    carouselLocationStyle: { top: number };
-    height: number;
+    carouselLocationStyle: { bottom: number };
+    width: number;
     setIndex: (index: number) => void;
     widgets: Widget[];
 }
 
-const Dock = ({ carouselLocationStyle, height, setIndex, widgets }: DockProps) => {
+const Dock = ({ carouselLocationStyle, width, setIndex, widgets }: DockProps) => {
     const [selectedIndex, setSelectedIndex] = React.useState(0);
-    const itemSize = height * 0.12;
+    const itemSize = (width / widgets.length) * 0.8; // 80% of the space allocated
 
     return (
         <Animated.View
@@ -56,6 +56,7 @@ const Dock = ({ carouselLocationStyle, height, setIndex, widgets }: DockProps) =
                     }),
                 }}
             />
+
             <FlatList
                 data={widgets}
                 keyExtractor={(_, index) => `spacer-${index}`}
