@@ -192,12 +192,14 @@ export default function ScreensWrapper() {
                 />
             )}
 
-            <AllScreensModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-                ref={ref}
-                setIndex={setIndex}
-            />
+            {(mode === UIType.MIXED || mode === UIType.MODAL) && (
+                <AllScreensModal
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    ref={ref}
+                    setIndex={setIndex}
+                />
+            )}
         </View>
     );
 }

@@ -56,6 +56,7 @@ const Dock = ({ carouselLocationStyle, width, setIndex, widgets }: DockProps) =>
                     }),
                 }}
             />
+
             <FlatList
                 data={widgets}
                 keyExtractor={(_, index) => `spacer-${index}`}
