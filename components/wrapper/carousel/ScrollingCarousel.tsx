@@ -9,7 +9,7 @@ import { UIType } from '@/hooks/constants/constants';
 
 // Define the types for the props
 interface ScrollingCarouselProps {
-    carouselLocationStyle: { top: number };
+    carouselLocationStyle: { bottom: number };
     height: number;
     width: number;
     setIndex: (index: number) => void;
