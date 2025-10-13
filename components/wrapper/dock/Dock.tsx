@@ -11,13 +11,15 @@ const GROWTH_RADIUS = 0.5; // how many neighbors are affected
 interface DockProps {
     carouselLocationStyle: { bottom: number };
     width: number;
+    height: number;
     setIndex: (index: number) => void;
     widgets: Widget[];
 }
 
-const Dock = ({ carouselLocationStyle, width, setIndex, widgets }: DockProps) => {
+const Dock = ({ carouselLocationStyle, width, height, setIndex, widgets }: DockProps) => {
     const [selectedIndex, setSelectedIndex] = React.useState(0);
-    const itemSize = (width / widgets.length) * 0.8; // 80% of the space allocated
+    const itemSizeWidth = (width / widgets.length) * 0.8; // 80% of the space allocated
+    const itemSizeHeight = height * 0.14; // 14% of the height allocated
 
     return (
         <Animated.View
@@ -29,7 +31,7 @@ const Dock = ({ carouselLocationStyle, width, setIndex, widgets }: DockProps) =>
                     bottom: 0,
                     right: 0,
                     zIndex: 10,
-                    height: 180, // or whatever height you want for the dock bar
+                    height: 250,
                     justifyContent: 'flex-end', // anchor children to bottom
                     alignItems: 'center',
                     opacity: 1,
@@ -64,6 +66,7 @@ const Dock = ({ carouselLocationStyle, width, setIndex, widgets }: DockProps) =>
                 contentContainerStyle={{
                     alignItems: 'flex-end', // anchor items to bottom of FlatList
                     height: '100%',
+                    paddingHorizontal: 20,
                 }}
                 renderItem={({ item, index }) => {
                     const distance = Math.abs(selectedIndex - index);
@@ -77,7 +80,9 @@ const Dock = ({ carouselLocationStyle, width, setIndex, widgets }: DockProps) =>
                                 setSelectedIndex(i);
                                 setIndex(i);
                             }}
-                            itemSize={itemSize}
+                            itemSize={
+                                itemSizeHeight < itemSizeWidth ? itemSizeHeight : itemSizeWidth
+                            }
                             animationValue={animationValue}
                         />
                     );
