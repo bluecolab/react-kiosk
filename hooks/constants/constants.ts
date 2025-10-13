@@ -7,7 +7,7 @@ export enum UIType {
 export const constants = {
     MAX_IDLE_TIME: 300000, //  300000 = 5 minutes 4000 = 4 seconds (for testing)
     SHRUNKEN: {
-        VIEW_AREA_HEIGHT: 0.73,
+        VIEW_AREA_HEIGHT: 0.78,
         VIEW_AREA_WIDTH: 0.98,
         VIEW_AREA_BORDER_RADIUS: 15,
         VIEW_AREA_MARGIN_TOP: 10,
@@ -20,5 +20,5 @@ export const constants = {
         VIEW_AREA_MARGIN_TOP: 0,
         VIEW_AREA_COLOR: '#efefefff',
     },
-    mode: UIType.CAROUSEL as UIType,
+    mode: UIType.DOCK as UIType,
 };

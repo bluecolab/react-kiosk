@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0f0f0',
     },
     header: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 16,
         textAlign: 'center',
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#0066cc',
     },
     tabText: {
+        fontSize: 25,
         color: '#000',
         fontWeight: 'bold',
     },
@@ -97,18 +98,17 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     title: {
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 8,
     },
     description: {
-        fontSize: 14,
+        fontSize: 25,
         textAlign: 'center',
         marginBottom: 10,
     },
     image: {
-        width: 400,
-        height: 250,
+        height: 400,
     },
     qrContainer: {
         alignItems: 'center',

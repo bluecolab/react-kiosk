@@ -187,6 +187,7 @@ export default function ScreensWrapper() {
                 <Dock
                     carouselLocationStyle={carouselLocationStyle}
                     width={window.innerWidth}
+                    height={window.innerHeight}
                     setIndex={setIndex}
                     widgets={widgets}
                 />

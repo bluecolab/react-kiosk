@@ -24,7 +24,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
     }, [animatedSize, animationValue]);
 
     const sizeStyle = useAnimatedStyle(() => {
-        const size = itemSize * (1 + 0.45 * animatedSize.value);
+        const size = itemSize * (1 + 0.25 * animatedSize.value);
         return {
             width: size,
             height: size,
@@ -64,7 +64,6 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                     { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },
                     sizeStyle,
                 ]}>
-                {/* White glow effect for selected item */}
                 <Animated.Text
                     ellipsizeMode="tail"
                     style={{
@@ -73,7 +72,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                         fontWeight: 'bold',
                         width: '100%',
                         textAlign: 'center',
-                        fontSize: 10,
+                        fontSize: 16,
                         paddingBottom: 5,
                     }}>
                     {item.title}
