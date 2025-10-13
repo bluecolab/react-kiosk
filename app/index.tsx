@@ -39,10 +39,16 @@ export default function Index() {
             window.addEventListener(event, resetInactivity);
         });
 
+        const preventDefault = (e: TouchEvent) => {
+            if (e.touches.length > 1) e.preventDefault();
+        };
+        window.addEventListener('touchmove', preventDefault, { passive: false });
+
         return () => {
             defaultEvents.forEach((event) => {
                 window.removeEventListener(event, resetInactivity);
             });
+            window.removeEventListener('touchmove', preventDefault);
         };
     }, [resetInactivity]);
 
