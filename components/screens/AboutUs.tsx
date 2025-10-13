@@ -13,8 +13,7 @@ export default function StoryScreen() {
                     color: '#002D72',
                     marginBottom: 60,
                 }}>
-                At Seidenberg School, we believe students can make a difference today, before they
-                launch their careers of tomorrow.
+                Ensuring The Right to Know What's In Our Water.
             </Text>
 
             <View
