@@ -1,8 +1,25 @@
 import React from 'react';
 // import InProgress from '@/components/InProgress';
-import { View } from 'react-native';
+import { ActivityIndicator, View, Text } from 'react-native';
 
 export default function DataToMusic() {
+    const [serverUp, setServerUp] = React.useState<boolean | null>(null);
+
+    React.useEffect(() => {
+        fetch('http://127.0.0.1:5000/', { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    setServerUp(true);
+                } else {
+                    setServerUp(false);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking server status:', error);
+                setServerUp(false);
+            });
+    }, []);
+
     return (
         <View
             style={{
@@ -14,6 +31,17 @@ export default function DataToMusic() {
                 zIndex: 1,
                 alignItems: 'center', // ensures iframe is centered inside
             }}>
+            {serverUp === null && <ActivityIndicator size="large" color="#888" />}
+            {serverUp === false && (
+                <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 20 }}>
+                    Server at http://127.0.0.1:5000/ is down. Please verify 'sonification-flask' is running locally.
+                </Text>
+            )}
+            {serverUp && (
+                <Text style={{ color: 'green', fontWeight: 'bold', fontSize: 20 }}>
+                    Server is up and running.
+                </Text>
+            )}
             <iframe
                 src="http://127.0.0.1:5000/"
                 width="1500"
