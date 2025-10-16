@@ -24,12 +24,23 @@ export default function DataToMusic() {
         <View
             style={{
                 width: '100%',
-                maxWidth: 1750,
-                backgroundColor: '#fff',
-                borderRadius: 12,
-                padding: 20,
-                zIndex: 1,
-                alignItems: 'center', // ensures iframe is centered inside
+                maxWidth: 1750, // Adjusted maxWidth to better fit the iframe
+                height: '100%', // Full height to accommodate iframe
+                justifyContent: 'center', // Center content vertically and horizontally
+                backgroundColor: '#fff', // White background for better visibility of iframe content
+                borderRadius: 12, // Rounded corners for the container to match iframe
+                shadowColor: '#000', // Shadow for better visual separation
+                shadowOffset: { width: 0, height: 2 }, // Shadow offset
+                shadowOpacity: 0.3, // Shadow opacity
+                shadowRadius: 4, // Shadow radius
+                elevation: 5, // Elevation for Android shadow effect
+                margin: 1, // Margin around the container
+                padding: 1, // Padding inside the container
+                overflow: 'hidden', // Ensures rounded corners are applied to iframe content as well (on iOS)
+                zIndex: 1, // Ensures the container is above other elements
+                display: 'flex', // Ensures flexbox layout is applied
+                flexDirection: 'column', // Stack children vertically
+                alignItems: 'center', // ensures iframe is centered inside the container horizontally
             }}>
             {serverUp === null && <ActivityIndicator size="large" color="#888" />} {/* Loading indicator while checking server status */}
             {serverUp === false && (
@@ -43,12 +54,13 @@ export default function DataToMusic() {
                 </Text>
             )}
             <iframe
-                src="http://127.0.0.1:5000/"
-                width="1500"
-                height="750"
+                src="http://127.0.0.1:5000/" // Ensure this matches your Flask server address
+                width="1500" // Adjust width as needed
+                height="750" // Adjust height as needed
                 style={{
-                    border: 'none',
-                    borderRadius: 8,
+                    border: 'none', // No border for the iframe
+                    borderRadius: 8, // Rounded corners for the iframe to match the container
+                    marginTop: 20, // Space between the status message and the iframe
                 }}
             />
         </View>
