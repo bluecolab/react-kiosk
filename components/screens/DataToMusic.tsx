@@ -1,22 +1,22 @@
 import React from 'react';
-// import InProgress from '@/components/InProgress';
+// import InProgress from '@/components/InProgress'; // Placeholder import, not used in final code
 import { ActivityIndicator, View, Text } from 'react-native';
 
 export default function DataToMusic() {
-    const [serverUp, setServerUp] = React.useState<boolean | null>(null);
+    const [serverUp, setServerUp] = React.useState<boolean | null>(null); // null = unknown, true = up, false = down
 
     React.useEffect(() => {
         fetch('http://127.0.0.1:5000/', { method: 'HEAD' })
             .then(response => {
                 if (response.ok) {
-                    setServerUp(true);
+                    setServerUp(true); // Server is up
                 } else {
-                    setServerUp(false);
+                    setServerUp(false); // Server responded but with an error status
                 }
             })
             .catch(error => {
                 console.error('Error checking server status:', error);
-                setServerUp(false);
+                setServerUp(false); // Network error or server is down
             });
     }, []);
 
@@ -31,7 +31,7 @@ export default function DataToMusic() {
                 zIndex: 1,
                 alignItems: 'center', // ensures iframe is centered inside
             }}>
-            {serverUp === null && <ActivityIndicator size="large" color="#888" />}
+            {serverUp === null && <ActivityIndicator size="large" color="#888" />} {/* Loading indicator while checking server status */}
             {serverUp === false && (
                 <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 20 }}>
                     Server at http://127.0.0.1:5000/ is down. Please verify 'sonification-flask' is running locally.
