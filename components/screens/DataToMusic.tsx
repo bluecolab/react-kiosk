@@ -6,10 +6,10 @@ export default function DataToMusic() {
     const [serverUp, setServerUp] = React.useState<boolean | null>(null); // null = unknown, true = up, false = down
 
     React.useEffect(() => {
-        fetch('http://127.0.0.1:5000/', { method: 'HEAD' })
+        fetch('http://127.0.0.1:5000/', { method: 'HEAD' }) // Using HEAD to just check if the server is reachable
             .then(response => {
                 if (response.ok) {
-                    setServerUp(true); // Server is up
+                    setServerUp(true); // Server is up and reachable
                 } else {
                     setServerUp(false); // Server responded but with an error status
                 }
