@@ -11,7 +11,8 @@ export default function StoryScreen() {
                     fontWeight: 'bold',
                     textAlign: 'center',
                     color: '#002D72',
-                    marginBottom: 60,
+                    marginBottom: 70,
+                    marginTop: 20,
                 }}>
                 Ensuring The Right to Know What's In Our Water.
             </Text>
@@ -25,10 +26,10 @@ export default function StoryScreen() {
                 <Image
                     source={require('@/assets/images/gallery/GE-delivery.jpeg')}
                     style={{
-                        width: '45%',
+                        width: '47%',
                         height: 400,
                         borderRadius: 10,
-                        marginBottom: 16,
+                        marginBottom: 60,
                         marginLeft: 50,
                         marginRight: 15,
                     }}
@@ -39,12 +40,12 @@ export default function StoryScreen() {
                 <View style={{ flex: 1 }}>
                     <Text
                         style={{
-                            fontSize: 27,
+                            fontSize: 30,
                             fontWeight: 'bold',
                             marginBottom: 20,
                             color: '#002D72',
                         }}>
-                        Do you know if your water is safe before you drink it?
+                        Is your water safe to drink?
                     </Text>
 
                     <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
@@ -77,11 +78,11 @@ export default function StoryScreen() {
                 <Image
                     source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
                     style={{
-                        width: '45%',
+                        width: '48%',
                         height: 400,
                         borderRadius: 10,
-                        marginBottom: 16,
-                        marginLeft: 15,
+                        marginBottom: 60,
+                        marginLeft: 0,
                         marginRight: 50,
                     }}
                     resizeMode="cover"
@@ -112,8 +113,8 @@ export default function StoryScreen() {
                         residents were made ill and 100 died due to drinking water contaminated with
                         cryptosporidium. Residents in{' '}
                         <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
-                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to
-                        highly toxic PFAS and may have been for years without knowing it.
+                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> may have been
+                        unknowingly exposed to highly toxic PFAS.
                     </Text>
 
                     <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
@@ -156,7 +157,7 @@ export default function StoryScreen() {
             </View>
             <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
                 They work in a <Text style={{ fontWeight: 'bold' }}>team-based environment</Text>,
-                using our own labs, instruments, equipment, and servers.
+                using Blue CoLab’s dedicated labs, instruments, equipment, and servers.
             </Text>
             <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
                 Blue CoLab stands for everything that makes Seidenberg School a special place —
@@ -164,25 +165,28 @@ export default function StoryScreen() {
                 experiences that lead to a career meaningful to them, and to society.
             </Text>
             {/* Closing Statement */}
+
             <Text
                 style={{
                     fontSize: 25,
                     textAlign: 'center',
-                    marginTop: 20,
+                    marginTop: 30,
                     color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
-                "All of us at Blue CoLab look forward to seeing you on the team."
+                <Text style={{ fontWeight: 'bold' }}>
+                    "All of us at Blue CoLab look forward to seeing you on the team."
+                </Text>
             </Text>
             <Text
                 style={{
                     fontSize: 25,
                     textAlign: 'center',
-                    marginTop: 20,
+                    marginTop: 15,
                     color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
-                — John Cronin, Blue CoLab Director
+                — <Text style={{ fontWeight: 'bold' }}>John Cronin, Blue CoLab Director</Text> —
             </Text>
         </ScrollView>
     );
