@@ -51,7 +51,7 @@ export default function StoryScreen() {
                     </Text>
 
                     <Text style={{ fontSize: 25, marginBottom: 25, color: '#002D72' }}>
-                        We belive you have the right to know.
+                        We believe you have the right to know.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
