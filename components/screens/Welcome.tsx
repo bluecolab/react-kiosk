@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native'; //, Pressable for future use of Pressable component
 
 export default function WelcomeScreen() {
-    let Cronin = require('@/assets/images/crotters/Crotter.png');
+    let Cronin = require('@/assets/images/general/fall2025team.jpg');
 
     return (
         <View>
@@ -17,10 +17,7 @@ export default function WelcomeScreen() {
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                <View style={{ height: 500, flex: 1 }}>
-                    <Image source={Cronin} style={{ height: 490, width: '100%' }} />
-                </View>
-                {/* </Pressable> */} {/* Left Side with Image */}
+                <Image source={Cronin} style={{ width: 1857 * 0.75, height: 1080 * 0.75 }} />
             </View>
         </View>
     );
