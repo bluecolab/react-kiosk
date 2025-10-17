@@ -7,7 +7,7 @@ export default function WelcomeScreen() {
  return ( 
      <View> 
          <Text 
-             style={{ 
+             style={{
                  textAlign: 'center', 
                  fontSize: 24, 
                  fontWeight: 'bold', 
