@@ -45,7 +45,7 @@ export default function StoryScreen() {
                             marginBottom: 20,
                             color: '#002D72',
                         }}>
-                        Is your water safe to drink? 
+                        Is your water safe to drink?
                     </Text>
 
                     <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
@@ -89,8 +89,7 @@ export default function StoryScreen() {
                 />
 
                 {/* Content Sections */}
-                <View 
-                style={{ flex: 1 }}>
+                <View style={{ flex: 1 }}>
                     <Text
                         style={{
                             fontSize: 27,
@@ -114,7 +113,8 @@ export default function StoryScreen() {
                         residents were made ill and 100 died due to drinking water contaminated with
                         cryptosporidium. Residents in{' '}
                         <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
-                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> may have been unknowingly exposed to highly toxic PFAS.
+                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> may have been
+                        unknowingly exposed to highly toxic PFAS.
                     </Text>
 
                     <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
@@ -165,7 +165,7 @@ export default function StoryScreen() {
                 experiences that lead to a career meaningful to them, and to society.
             </Text>
             {/* Closing Statement */}
-                
+
             <Text
                 style={{
                     fontSize: 25,
@@ -174,7 +174,9 @@ export default function StoryScreen() {
                     color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
-                <Text style={{ fontWeight: 'bold' }}>"All of us at Blue CoLab look forward to seeing you on the team."</Text>
+                <Text style={{ fontWeight: 'bold' }}>
+                    "All of us at Blue CoLab look forward to seeing you on the team."
+                </Text>
             </Text>
             <Text
                 style={{
@@ -183,7 +185,6 @@ export default function StoryScreen() {
                     marginTop: 15,
                     color: '#4b5563',
                     fontStyle: 'italic',
-                    
                 }}>
                 — <Text style={{ fontWeight: 'bold' }}>John Cronin, Blue CoLab Director</Text> —
             </Text>
