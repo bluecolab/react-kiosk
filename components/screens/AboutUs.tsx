@@ -15,7 +15,6 @@ export default function StoryScreen() {
                 }}>
                 Ensuring The Right to Know What's In Our Water.
             </Text>
-
             <View
                 style={{
                     flexDirection: 'row-reverse',
@@ -68,7 +67,6 @@ export default function StoryScreen() {
                     </Text>
                 </View>
             </View>
-
             <View
                 style={{
                     flexDirection: 'row',
@@ -128,17 +126,22 @@ export default function StoryScreen() {
                     </Text>
                 </View>
             </View>
-
             {/* Blue CoLab's Approach */}
+
+            {/* Added missing closing tag */}
+
             <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
                 Blue CoLab's Hands-On Approach
             </Text>
-
+            <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
+                At Blue CoLab, we are working to develop and deploy innovative technologies that can
+                detect water contaminants in real-time, providing communities with the information
+                they need to protect their health and well-being.
+            </Text>
             <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
                 To advance these innovations, Blue CoLab is decidedly{' '}
                 <Text style={{ fontWeight: 'bold' }}>“hands-on.”</Text> Our students dive into:
             </Text>
-
             <View style={{ marginBottom: 16 }}>
                 <Text style={{ fontSize: 25, color: '#374151' }}>
                     • Operation of real-time sensors and instruments
@@ -151,18 +154,15 @@ export default function StoryScreen() {
                 </Text>
                 <Text style={{ fontSize: 25, color: '#374151' }}>• System cybersecurity</Text>
             </View>
-
             <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
                 They work in a <Text style={{ fontWeight: 'bold' }}>team-based environment</Text>,
                 using our own labs, instruments, equipment, and servers.
             </Text>
-
             <Text style={{ fontSize: 25, marginBottom: 16, color: '#374151' }}>
                 Blue CoLab stands for everything that makes Seidenberg School a special place —
                 harnessing innovation on behalf of society, and providing students with skill-based
                 experiences that lead to a career meaningful to them, and to society.
             </Text>
-
             {/* Closing Statement */}
             <Text
                 style={{
