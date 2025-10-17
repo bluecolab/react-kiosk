@@ -11,7 +11,8 @@ export default function StoryScreen() {
                     fontWeight: 'bold',
                     textAlign: 'center',
                     color: '#002D72',
-                    marginBottom: 60,
+                    marginBottom: 70,
+                    marginTop: 20,
                 }}>
                 At Seidenberg School, we believe students can make a difference today, before they
                 launch their careers of tomorrow.
@@ -27,10 +28,10 @@ export default function StoryScreen() {
                 <Image
                     source={require('@/assets/images/gallery/GE-delivery.jpeg')}
                     style={{
-                        width: '45%',
+                        width: '47%',
                         height: 400,
                         borderRadius: 10,
-                        marginBottom: 16,
+                        marginBottom: 60,
                         marginLeft: 50,
                         marginRight: 15,
                     }}
@@ -41,22 +42,23 @@ export default function StoryScreen() {
                 <View style={{ flex: 1 }}>
                     <Text
                         style={{
-                            fontSize: 27,
+                            fontSize: 30,
                             fontWeight: 'bold',
                             marginBottom: 20,
                             color: '#002D72',
                         }}>
-                        Do you know if your water is safe before you drink it?
+                        Is your water safe to drink? 
+                    </Text>
+                    
+                    <Text style={{ fontSize: 25, marginBottom: 25, color: '#002D72' }}>
+                        We belive you have the right to know.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        Let us answer that for you: No. We aim to change that.
-                    </Text>
-
-                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        We are a team of students, interns, graduate assistants, faculty, and staff
-                        who work to advance the technology, information, and warning systems that
-                        will bring you that information.
+                        At <Text style={{ fontWeight: "bold"}}> Blue Colab </Text>, we're working to ensure you have the critical information you 
+                        need about your water quality. Our dedicated team of students, interns, graduate 
+                        assistants, faculty, and staff are advancing technology, information, and warning 
+                        systems to make this a reality.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
@@ -80,18 +82,19 @@ export default function StoryScreen() {
                 <Image
                     source={require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg')}
                     style={{
-                        width: '45%',
+                        width: '48%',
                         height: 400,
                         borderRadius: 10,
-                        marginBottom: 16,
-                        marginLeft: 15,
+                        marginBottom: 60,
+                        marginLeft: 0,
                         marginRight: 50,
                     }}
                     resizeMode="cover"
                 />
 
                 {/* Content Sections */}
-                <View style={{ flex: 1 }}>
+                <View 
+                style={{ flex: 1 }}>
                     <Text
                         style={{
                             fontSize: 27,
@@ -103,87 +106,99 @@ export default function StoryScreen() {
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        Chances are the water you use is safe, but millions have found out too late
-                        that is not the case. Just one sip of water contaminated with pathogens,
-                        such as bacteria, viruses, or parasites, can cause severe illness in a
-                        matter of hours. Yet, still today, a conventional lab requires 24 - 48 hours
-                        to report analyses of samples that may only be taken weekly, or less.
+                        Chances are the water you use is safe, but millions have unfortunately found otherwise. 
+                        In a matter of hours, a single sip of pathogen-contaminated water can result in serious illness. 
+                        Currently labs require 24 - 48 hours to report analyses of samples taken weekly, or less.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        In <Text style={{ fontWeight: 'bold' }}>Milwaukee (1993)</Text>, 400,000
-                        residents were made ill and 100 died due to drinking water contaminated with
-                        cryptosporidium. Residents in{' '}
+                        • In <Text style={{ fontWeight: 'bold' }}>Milwaukee (1993)</Text>, 400,000
+                        residents became ill and 100 died after drinking water contaminated with cryptosporidium.
+                    </Text>
+
+                    <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+                        • For years, residents of {' '}
                         <Text style={{ fontWeight: 'bold' }}>Hoosick Falls</Text> and{' '}
-                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> were exposed to
-                        highly toxic PFAS and may have been for years without knowing it.
+                        <Text style={{ fontWeight: 'bold' }}>Newburgh, NY</Text> may have been unknowingly exposed to highly toxic PFAS.
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        Water contamination is endemic across the planet, making hundreds of
-                        millions of people ill, including tens of millions in the United States. The
-                        best defense against this threat are innovations that enable{' '}
-                        <Text style={{ fontWeight: 'bold' }}>real-time</Text>, technological
-                        detection of water contaminants before they can reach our taps or
-                        recreational waters.
+                        Water contamination is a global problem, making millions of people ill. {' '}
+                        <Text style={{ fontWeight: 'bold' }}>Real-time</Text>, technological detection of water contaminants is the best defense. 
                     </Text>
                 </View>
             </View>
 
             {/* Blue CoLab's Approach */}
-            <Text style={{ fontSize: 27, fontWeight: 'bold', marginBottom: 20, color: '#002D72' }}>
+            <Text 
+                style={{
+                fontSize: 30,
+                textAlign: 'center',
+                fontWeight: 'bold',
+                marginTop: 0,
+                color: '#002D72',
+                }}>
                 Blue CoLab's Hands-On Approach
             </Text>
 
-            <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                To advance these innovations, Blue CoLab is decidedly{' '}
-                <Text style={{ fontWeight: 'bold' }}>“hands-on.”</Text> Our students dive into:
+            <Text 
+                style={{
+                fontSize: 22,
+                textAlign: 'center',
+                marginTop: 30,
+                color: '#374151',
+                }}>
+                Blue CoLab emphasizes a "hands-on" approach to foster innovation. Students gain 
+                practical experience operating real-time sensors and instruments, managing and 
+                visualizing data (including sonification), and developing UX, web, GIS, and app solutions.
             </Text>
 
-            <View style={{ marginBottom: 16 }}>
-                <Text style={{ fontSize: 20, color: '#374151' }}>
-                    • Operation of real-time sensors and instruments
-                </Text>
-                <Text style={{ fontSize: 20, color: '#374151' }}>
-                    • Management, visualization, and sonification of data
-                </Text>
-                <Text style={{ fontSize: 20, color: '#374151' }}>
-                    • UX, web, GIS, and app development
-                </Text>
-                <Text style={{ fontSize: 20, color: '#374151' }}>• System cybersecurity</Text>
-            </View>
-
-            <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+            <Text
+                style={{
+                fontSize: 22,
+                textAlign: 'center',
+                marginTop: 20,
+                color: '#374151',
+                }}>
                 They work in a <Text style={{ fontWeight: 'bold' }}>team-based environment</Text>,
-                using our own labs, instruments, equipment, and servers.
+                using Blue CoLab’s dedicated labs, instruments, equipment, and servers.
             </Text>
 
-            <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
+            <Text 
+                style={{
+                fontSize: 22,
+                textAlign: 'center',
+                marginTop: 20,
+                marginBottom: 40,
+                color: '#374151',
+                }}>
                 Blue CoLab stands for everything that makes Seidenberg School a special place —
                 harnessing innovation on behalf of society, and providing students with skill-based
                 experiences that lead to a career meaningful to them, and to society.
             </Text>
 
             {/* Closing Statement */}
+                
             <Text
                 style={{
-                    fontSize: 18,
+                    fontSize: 20,
                     textAlign: 'center',
-                    marginTop: 20,
+                    marginTop: 30,
                     color: '#4b5563',
                     fontStyle: 'italic',
                 }}>
-                "All of us at Blue CoLab look forward to seeing you on the team."
+                <Text style={{ fontWeight: 'bold' }}>"All of us at Blue CoLab look forward to seeing you on the team."</Text>
             </Text>
             <Text
                 style={{
-                    fontSize: 18,
+                    fontSize: 20,
                     textAlign: 'center',
-                    marginTop: 20,
+                    marginTop: 15,
                     color: '#4b5563',
                     fontStyle: 'italic',
+                    
                 }}>
-                — John Cronin, Blue CoLab Director
+                — <Text style={{ fontWeight: 'bold' }}>John Cronin, Blue CoLab Director</Text> —
             </Text>
         </ScrollView>
     );
