@@ -17,10 +17,7 @@ export default function WelcomeScreen() {
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                <View style={{ height: 500, flex: 1 }}>
-                    <Image source={Cronin} style={{ height: 500, width: '100%' }} />
-                </View>
-                {/* </Pressable> */} {/* Left Side with Image */}
+                <Image source={Cronin} style={{ width: 1857 * 0.75, height: 1080 * 0.75 }} />
             </View>
         </View>
     );
