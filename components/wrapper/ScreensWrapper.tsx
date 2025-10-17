@@ -40,7 +40,7 @@ export default function ScreensWrapper() {
 
     const carouselLocationStyle = useAnimatedStyle(() => {
         return {
-            top: carouselLocation.value,
+            bottom: carouselLocation.value,
         };
     });
 
@@ -57,10 +57,7 @@ export default function ScreensWrapper() {
     useEffect(() => {
         if (window.innerHeight && window.innerWidth) {
             // Animate it in when height is available
-            carouselLocation.value = withTiming(
-                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
-                defaultAnimationConfig
-            );
+            carouselLocation.value = withTiming(0, defaultAnimationConfig);
             viewAreaHeight.value = withTiming(
                 window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                 defaultAnimationConfig
@@ -91,7 +88,6 @@ export default function ScreensWrapper() {
         carouselLocation,
         viewAreaHeight,
         viewAreaWidth,
-        SHRUNKEN.CAROUSEL_LOCATION,
         SHRUNKEN.VIEW_AREA_HEIGHT,
         SHRUNKEN.VIEW_AREA_WIDTH,
         SHRUNKEN.VIEW_AREA_BORDER_RADIUS,
@@ -122,10 +118,7 @@ export default function ScreensWrapper() {
                     isExpanded={isExpanded}
                     onPress={() => {
                         if (isExpanded) {
-                            carouselLocation.value = withTiming(
-                                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
-                                defaultAnimationConfig
-                            );
+                            carouselLocation.value = withTiming(0, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -148,10 +141,7 @@ export default function ScreensWrapper() {
                             );
                             setIsExpanded(!isExpanded);
                         } else {
-                            carouselLocation.value = withTiming(
-                                window.innerHeight * EXPANDED.CAROUSEL_LOCATION,
-                                defaultAnimationConfig
-                            );
+                            carouselLocation.value = withTiming(-500, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -196,18 +186,21 @@ export default function ScreensWrapper() {
             {mode === UIType.DOCK && (
                 <Dock
                     carouselLocationStyle={carouselLocationStyle}
+                    width={window.innerWidth}
                     height={window.innerHeight}
                     setIndex={setIndex}
                     widgets={widgets}
                 />
             )}
 
-            <AllScreensModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-                ref={ref}
-                setIndex={setIndex}
-            />
+            {(mode === UIType.MIXED || mode === UIType.MODAL) && (
+                <AllScreensModal
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    ref={ref}
+                    setIndex={setIndex}
+                />
+            )}
         </View>
     );
 }

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     heading: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 20,
         textAlign: 'center',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     videoTitle: {
         marginTop: 8,
-        fontSize: 14,
+        fontSize: 22,
         textAlign: 'center',
     },
 });
