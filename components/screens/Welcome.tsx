@@ -4,15 +4,44 @@ import { View, Text, Image, TouchableOpacity, Modal, TextInput } from 'react-nat
 export default function WelcomeScreen() {
     const [isFeedbackVisible, setIsFeedbackVisible] = useState(false); // State to control feedback modal visibility
     const [feedback, setFeedback] = useState(''); // State to hold feedback text
+    const [showSuccess, setShowSuccess] = useState(false); // State to show success message
     let localStorage = window.localStorage; // Access localStorage for Crotter Mode
     let Cronin = require('@/assets/images/crotters/Crotter.png'); // Crotter Image
     // let gif = require('@/assets/images/general/Scroll.gif'); // Future use for scroll indicator
 
     const handleSubmitFeedback = () => {
-        // Here you would typically send the feedback to a server or store it
-        console.log('Feedback submitted:', feedback);
+        if (!feedback.trim()) {
+            alert('Please enter some feedback before submitting.');
+            return;
+        }
+
+        // Get existing feedback from localStorage
+        const existingFeedback = localStorage.getItem('kioskFeedback');
+        const feedbackArray = existingFeedback ? JSON.parse(existingFeedback) : [];
+
+        // Add new feedback with timestamp
+        const newFeedback = {
+            text: feedback,
+            timestamp: new Date().toISOString(),
+            date: new Date().toLocaleString(),
+        };
+        feedbackArray.push(newFeedback);
+
+        // Save back to localStorage
+        localStorage.setItem('kioskFeedback', JSON.stringify(feedbackArray));
+
+        console.log('Feedback submitted:', newFeedback);
+        console.log('All feedback:', feedbackArray);
+
+        // Show success message
+        setShowSuccess(true);
         setFeedback('');
-        setIsFeedbackVisible(false); // Close the modal after submission
+
+        // Close modal after a short delay
+        setTimeout(() => {
+            setIsFeedbackVisible(false);
+            setShowSuccess(false);
+        }, 2000);
     };
 
     return (
@@ -55,9 +84,33 @@ export default function WelcomeScreen() {
                             width: '100%',
                             maxWidth: 500,
                         }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', marginRight: 20, marginBottom: 20 }}>
+                        <Text
+                            style={{
+                                fontSize: 20,
+                                fontWeight: 'bold',
+                                marginRight: 20,
+                                marginBottom: 20,
+                            }}>
                             Provide Your Feedback
                         </Text>
+                        {showSuccess && (
+                            <View
+                                style={{
+                                    backgroundColor: '#4CAF50',
+                                    padding: 10,
+                                    borderRadius: 5,
+                                    marginBottom: 15,
+                                }}>
+                                <Text
+                                    style={{
+                                        color: 'white',
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                    }}>
+                                    Thank you! Your feedback has been saved.
+                                </Text>
+                            </View>
+                        )}
                         <TextInput
                             value={feedback}
                             onChangeText={setFeedback}
