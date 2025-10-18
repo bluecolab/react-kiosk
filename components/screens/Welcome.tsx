@@ -51,9 +51,9 @@ export default function WelcomeScreen() {
                     onPress={() => setIsFeedbackVisible(true)} // Open feedback modal
                     style={{
                         backgroundColor: '#007AFF',
-                        padding: 8,
+                        padding: 10,
                         borderRadius: 10,
-                        marginTop: 5,
+                        marginTop: 0,
                         marginBottom: 50,
                         marginLeft: 10,
                         marginRight: 10,
