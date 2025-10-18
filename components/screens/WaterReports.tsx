@@ -31,7 +31,7 @@ export default function WaterReport() {
                     style={styles.bookBackground}
                 />
                 <View style={styles.yearSelector}>
-                    <Text style={styles.bookTitle}>Water Quality Reports</Text>
+                    <Text style={styles.bookTitle}>Water Quality Reports</Text> {/* Updated title for clarity */}
                     <View style={styles.yearGrid}>
                         {waterReports.map((report, index) => {
                             const year = report.title.match(/\d{4}/)?.[0];
