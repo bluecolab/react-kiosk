@@ -3,7 +3,7 @@ export const constants = {
     SHRUNKEN: {
         CAROUSEL_LOCATION: 0.7, // set as percentage of height
         VIEW_AREA_HEIGHT: 0.67,
-        VIEW_AREA_WIDTH: 0.98,
+        VIEW_AREA_WIDTH: 0.99,
         VIEW_AREA_BORDER_RADIUS: 15,
         VIEW_AREA_MARGIN_TOP: 10,
         VIEW_AREA_COLOR: '#efefefdd',

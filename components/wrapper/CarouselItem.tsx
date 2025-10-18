@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Pressable } from 'react-native';
 import Animated, {
     Extrapolation,
     interpolate,
@@ -11,7 +11,7 @@ import { Widget } from '@/hooks/useWidgets';
 
 interface CustomItemProps {
     item: Widget;
-    animationValue: SharedValue<number>;
+    animationValue: SharedValue<number>; // Shared animated value for interpolation
 }
 
 const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
@@ -29,10 +29,15 @@ const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
     }, [animationValue]);
 
     return (
-        <View
+        <Pressable
             style={{
                 width: '100%',
                 height: '100%',
+            }}
+            onPress={() => {
+                if (item.onPress) {
+                    item.onPress();
+                }
             }}>
             <Animated.Text
                 style={[
@@ -58,7 +63,7 @@ const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
                 ]}
                 borderRadius={50}
             />
-        </View>
+        </Pressable>
     );
 };
 

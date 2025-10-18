@@ -1,4 +1,4 @@
-// Utility functions for managing feedback storage
+// Utility functions for managing feedback storage in localStorage
 
 export interface FeedbackItem {
     text: string;
@@ -7,7 +7,7 @@ export interface FeedbackItem {
 }
 
 export const saveFeedback = (feedbackText: string): void => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return; // Ensure code runs only in browser environment
 
     const localStorage = window.localStorage;
     const existingFeedback = localStorage.getItem('kioskFeedback');
