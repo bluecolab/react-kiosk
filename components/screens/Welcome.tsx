@@ -3,9 +3,9 @@ import { View, Text, Image, TouchableOpacity, Modal, TextInput } from 'react-nat
 
 export default function WelcomeScreen() {
     const [isFeedbackVisible, setIsFeedbackVisible] = useState(false); // State to control feedback modal visibility
-    const [feedback, setFeedback] = useState(''); // State to hold feedback text
-    const [showSuccess, setShowSuccess] = useState(false); // State to show success message
-    let localStorage = window.localStorage; // Access localStorage for Crotter Mode
+    const [feedback, setFeedback] = useState(''); // State to hold feedback text input by user
+    const [showSuccess, setShowSuccess] = useState(false); // State to show success message after feedback submission
+    let localStorage = window.localStorage; // Access localStorage for Crotter Mode and feedback storage
     let Cronin = require('@/assets/images/crotters/Crotter.png'); // Crotter Image
     // let gif = require('@/assets/images/general/Scroll.gif'); // Future use for scroll indicator
 
@@ -15,11 +15,11 @@ export default function WelcomeScreen() {
             return;
         }
 
-        // Get existing feedback from localStorage
+        // Get existing feedback from localStorage (if any) and parse it as JSON array
         const existingFeedback = localStorage.getItem('kioskFeedback');
         const feedbackArray = existingFeedback ? JSON.parse(existingFeedback) : [];
 
-        // Add new feedback with timestamp
+        // Add new feedback with timestamp and date to the array
         const newFeedback = {
             text: feedback,
             timestamp: new Date().toISOString(),
