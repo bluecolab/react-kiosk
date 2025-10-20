@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     bookContainer: {
         width: '80%',
         maxWidth: 800,
-        height: 600,
+        height: 500,
         position: 'relative',
         backgroundColor: '#fff',
         borderRadius: 10,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 5 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
-        elevation: 10,
+        elevation: 20,
         overflow: 'hidden',
     },
     bookBackground: {
