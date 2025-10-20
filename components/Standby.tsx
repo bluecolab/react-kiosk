@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { View, Text, Image, Animated } from 'react-native';
+import { View, Text, Animated } from 'react-native';
 import { useRef } from 'react';
 const assetId = require('@/assets/videos/Blue Colab Attraction Loop.mp4');
-
 
 // Current Time Hook for Standby Screen
 const CurrentTime = () => {
@@ -57,21 +56,20 @@ export default function Standby() {
                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 pointerEvents: 'auto',
             }}>
-                
             <video
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        zIndex: -1,
-                    }}
-                    autoPlay
-                    loop
-                    muted>
-                    <source src={assetId} type="video/mp4" />
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    zIndex: -1,
+                }}
+                autoPlay
+                loop
+                muted>
+                <source src={assetId} type="video/mp4" />
             </video>
 
             {/* Current Time and Version Bottom Right */}
