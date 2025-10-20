@@ -54,9 +54,9 @@ export default function WelcomeScreen() {
                         padding: 10,
                         borderRadius: 10,
                         marginTop: 0,
-                        marginBottom: 50,
-                        marginLeft: 10,
-                        marginRight: 10,
+                        marginBottom: 0,
+                        marginLeft: 0,
+                        marginRight: 0,
                     }}>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>
                         Feedback

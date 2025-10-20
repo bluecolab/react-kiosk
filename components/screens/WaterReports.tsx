@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     },
     yearButton: {
         backgroundColor: '#f0f0f0',
-        padding: 15,
+        padding: 16,
         borderRadius: 8,
         minWidth: 100,
         alignItems: 'center',
