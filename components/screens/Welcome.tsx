@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Modal, TextInput } from 'react-native'; //, Pressable for future use of Pressable component to toggle Crotter Mode
+import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native'; //, Pressable for future use of Pressable component to toggle Crotter Mode
+import FeedbackViewer from '../FeedbackViewer';
 
 export default function WelcomeScreen() {
     const [isFeedbackVisible, setIsFeedbackVisible] = useState(false); // State to control feedback modal visibility
     const [feedback, setFeedback] = useState(''); // State to hold feedback text input by user
+    const [showFeedbackViewer, setShowFeedbackViewer] = useState(false); // State to control feedback viewer modal visibility
     const [showSuccess, setShowSuccess] = useState(false); // State to show success message after feedback submission
     const Cronin = require('@/assets/images/general/fall2025team.jpg');
+    const crotter = require('@/assets/images/crotters/Crotter.png');
+    let localStorage = window.localStorage; // Access localStorage for Crotter Mode and feedback storage
 
     const handleSubmitFeedback = () => {
         if (!feedback.trim()) {
@@ -45,7 +49,7 @@ export default function WelcomeScreen() {
     return (
         <View>
             <View style={{ position: 'absolute', top: 0, right: 0, zIndex: 1000 }}>
-                <TouchableOpacity
+                <Pressable
                     onPress={() => setIsFeedbackVisible(true)} // Open feedback modal
                     style={{
                         backgroundColor: '#007AFF',
@@ -59,7 +63,7 @@ export default function WelcomeScreen() {
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>
                         Feedback
                     </Text>
-                </TouchableOpacity>
+                </Pressable>
             </View>
 
             <Modal
@@ -148,6 +152,16 @@ export default function WelcomeScreen() {
                 </View>
             </Modal>
 
+            <Modal
+                visible={showFeedbackViewer}
+                transparent={true}
+                animationType="slide"
+                onRequestClose={() => setShowFeedbackViewer(false)}>
+                <View>
+                    <FeedbackViewer setShowFeedbackViewer={setShowFeedbackViewer} />
+                </View>
+            </Modal>
+
             <Text
                 style={{
                     textAlign: 'center',
@@ -162,6 +176,13 @@ export default function WelcomeScreen() {
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                 <Image source={Cronin} style={{ width: 1857 * 0.75, height: 1080 * 0.75 }} />
             </View>
+
+            <Pressable onPress={() => setShowFeedbackViewer(true)}>
+                <Image
+                    source={crotter}
+                    style={{ width: 50, height: 50, alignSelf: 'center', marginTop: 20 }}
+                />
+            </Pressable>
         </View>
     );
 }
