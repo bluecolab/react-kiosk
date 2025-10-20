@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         color: '#000080',
     },
     modalHeader: {
-        backgroundColor: '#000080',
+        backgroundColor: '#6299ffff',
         padding: 16,
         flexDirection: 'row',
         alignItems: 'center',

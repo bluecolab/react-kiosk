@@ -5,9 +5,7 @@ export default function WelcomeScreen() {
     const [isFeedbackVisible, setIsFeedbackVisible] = useState(false); // State to control feedback modal visibility
     const [feedback, setFeedback] = useState(''); // State to hold feedback text input by user
     const [showSuccess, setShowSuccess] = useState(false); // State to show success message after feedback submission
-    let localStorage = window.localStorage; // Access localStorage for Crotter Mode and feedback storage
-    let Cronin = require('@/assets/images/crotters/Crotter.png'); // Crotter Image
-    // let gif = require('@/assets/images/general/Scroll.gif'); // Future use for scroll indicator
+    const Cronin = require('@/assets/images/general/fall2025team.jpg');
 
     const handleSubmitFeedback = () => {
         if (!feedback.trim()) {
