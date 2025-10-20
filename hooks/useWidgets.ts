@@ -15,6 +15,7 @@ export interface Widget {
     title: string;
     image: number;
     screen: React.ReactNode;
+    onPress?: () => void;
 }
 
 export const useWidgets = (): Widget[] => {
