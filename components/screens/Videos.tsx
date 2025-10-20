@@ -10,6 +10,16 @@ const videos = [
     { src: Fellowship, type: 'video/webm', title: 'Fellowship Video' },
     { src: Sonification, type: 'video/mp4', title: 'Pond Sonification' },
     { src: ClearWaterSail, type: 'video/mp4', title: 'Clearwater Sail' },
+    {
+        src: 'http://localhost:9999/BlueCoLabCommunityImpactFinal.mov',
+        type: 'video/quicktime',
+        title: 'Blue CoLab Community Impact',
+    },
+    {
+        src: 'http://localhost:9999/ChoateTimelapse.mp4',
+        type: 'video/mp4',
+        title: 'Choate Timelapse',
+    },
 ];
 
 const VideoComponent: React.FC<{ src: string; type: string }> = ({ src, type }) => (
