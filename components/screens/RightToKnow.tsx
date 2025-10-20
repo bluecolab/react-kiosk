@@ -4,17 +4,25 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 const infoItems = [
     {
         title: '2023 Team',
-        description: 'Right to Know - 2023',
+        description: 'Right to Know H2O - 2023',
         students:
             'Left to right, from the top: Cece Porter, Lilah McCormack, Louisa Moquete, Sasha Palmer, Meryl Mizell, Sasha Breygina.',
         img: require('@/assets/images/general/R2K2023.jpg'),
     },
     {
         title: '2024 Team',
-        description: 'Right to Know - 2024',
+        description: 'Right to Know H2O - 2024',
         students:
             'Left to right, from the top: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.',
         img: require('@/assets/images/general/R2K2024.jpg'),
+    },
+    {
+        title: '2025 Team',
+        description: 'Right to Know H2O - 2025',
+        students:
+            'Team members left to right, from the top: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Prof Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof John Cronin, Dillon Talactac, Caroline Zanuto-Winter, and Noor Huda.  Not pictured: Graig Decembre, Nailah Brown, Skyler Flynn.',
+        img: require('@/assets/images/general/R2K2025.jpg'),
+        text: "In October 2025, 34 Pace University students were selected—out of over 60,000 global applicants—to join the United Nations Millennium Fellowship, representing a record high for Pace. This year’s cohort stands out not only for its size but also for its international reach: for the first time, Pace’s Blue CoLab partnered with students from Finland’s Häme University of Applied Sciences, forming a 19-member team focused on SDG 6: Clean Water and Sanitation. Their goal: to develop a bilateral action plan to promote the “right to know what’s in our water,” culminating in a joint proposal presented at the United Nations during the Finnish delegation’s visit to Pace. This cohort works across over 13 countries, tackling issues from environmental justice to education, health equity, and renewable systems through student-led projects. ",
     },
 ];
 
@@ -40,18 +48,11 @@ export default function RightToKnow() {
                 <Text style={styles.title}>{currentItem.title}</Text>
                 <Text style={styles.description}>{currentItem.description}</Text>
                 <Image source={currentItem.img} style={styles.image} resizeMode="contain" />
-                <Text style={styles.description}>{currentItem.students}</Text>
+                <Text style={styles.students}>{currentItem.students}</Text>
+                <Text style={styles.text}>{currentItem.text}</Text>
             </View>
 
-            {/* Center the QR Code */}
-            <View style={styles.qrContainer}>
-                <Text style={styles.title}>Follow R2K on Instagram!</Text>
-                <Image
-                    source={require('@/assets/images/general/R2KQRCode.jpg')}
-                    style={styles.qrImage}
-                    resizeMode="contain"
-                />
-            </View>
+
         </View>
     );
 }
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0f0f0',
     },
     header: {
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 16,
         textAlign: 'center',
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         margin: 4,
     },
     activeTab: {
-        backgroundColor: '#0066cc',
+        backgroundColor: '#55aaffff',
     },
     tabText: {
         fontSize: 25,
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     title: {
-        fontSize: 25,
+        fontSize: 40,
         fontWeight: 'bold',
         marginBottom: 8,
     },
@@ -108,14 +109,16 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     image: {
-        height: 400,
+        height: 500,
+        marginBottom: 20,
+        marginTop: 20,
     },
-    qrContainer: {
-        alignItems: 'center',
-        marginTop: 16,
+    students:{
+        fontSize: 20,
+        textAlign: 'center',
     },
-    qrImage: {
-        width: 200,
-        height: 200,
+    text: {
+        fontSize: 20,
+        marginTop: 50,
     },
 });
