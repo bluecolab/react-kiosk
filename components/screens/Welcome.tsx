@@ -160,30 +160,7 @@ export default function WelcomeScreen() {
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                {/* <Pressable
-                    onPress={() => {
-                        console.log('Crotter Mode Enabled');
-                        localStorage.setItem('crotterMode', 'true'); // Enable Crotter Mode on press
-                        window.location.reload(); // Reload to apply changes
-                    }}>
-                </Pressable> */}
-                <View
-                    style={{ height: 500, flex: 1 }}
-                    onStartShouldSetResponder={() => true}
-                    onResponderRelease={() => {
-                        if (localStorage.getItem('crotterMode') === 'true') {
-                            console.log('Crotter Mode Disabled :(');
-                            localStorage.setItem('crotterMode', 'false');
-                            window.location.reload();
-                        } else {
-                            console.log('Crotter Mode Enabled');
-                            localStorage.setItem('crotterMode', 'true');
-                            window.location.reload(); // Reload to apply changes
-                        }
-                    }}>
-                    <Image source={Cronin} style={{ height: 490, width: '100%' }} />
-                </View>
-                {/* </Pressable> */} {/* Left Side with Image */}
+                <Image source={Cronin} style={{ width: 1857 * 0.75, height: 1080 * 0.75 }} />
             </View>
         </View>
     );
