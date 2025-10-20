@@ -11,8 +11,8 @@ const videos = [
     { src: Sonification, type: 'video/mp4', title: 'Pond Sonification' },
     { src: ClearWaterSail, type: 'video/mp4', title: 'Clearwater Sail' },
     {
-        src: 'http://localhost:9999/BlueCoLabCommunityImpactFinal.mov',
-        type: 'video/quicktime',
+        src: 'http://localhost:9999/BlueCoLabCommunityImpactFinal.mp4',
+        type: 'video/mp4',
         title: 'Blue CoLab Community Impact',
     },
     {
