@@ -1,125 +1,402 @@
 import type { ImageSourcePropType } from 'react-native';
 
 export interface GalleryImage {
-  source: ImageSourcePropType;
-  alt: string;
+    source: ImageSourcePropType;
+    alt: string;
 }
+// cspell:ignore Bluco
 
 export const images: GalleryImage[] = [
-  { source: require('@/assets/images/gallery/PXL_20240905_185118287.RAW-01.COVER.jpg'), alt: 'Pxl 20240905 185118287.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/2025 GEC Team copy.jpg'), alt: '2025 Gec Team Copy' },
-  { source: require('@/assets/images/gallery/PXL_20250912_210655425.RAW-01.COVER.jpg'), alt: 'Pxl 20250912 210655425.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20251015_200154317.RAW-01.COVER.jpg'), alt: 'Pxl 20251015 200154317.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250919_181307756.RAW-01.COVER.jpg'), alt: 'Pxl 20250919 181307756.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/Crotter Skyler copy.jpg'), alt: 'Crotter Skyler Copy' },
-  { source: require('@/assets/images/gallery/original_a941db8d-379a-4dfe-adf5-9dd136bf8010_PXL_20251003_184924169.RAW-01.COVER.jpg'), alt: 'Original A941Db8D 379A 4Dfe Adf5 9Dd136Bf8010 Pxl 20251003 184924169.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250807_165906491.RAW-01.COVER.jpg'), alt: 'Pxl 20250807 165906491.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250411_174108771.RAW-01.MP.COVER.jpg'), alt: 'Pxl 20250411 174108771.Raw 01.Mp.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250324_175945743.RAW-01.COVER.jpg'), alt: 'Pxl 20250324 175945743.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241004_184946664.RAW-01.COVER.jpg'), alt: 'Pxl 20241004 184946664.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250926_185038202.RAW-01.COVER.jpg'), alt: 'Pxl 20250926 185038202.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241025_173344823.RAW-01.MP.COVER.jpg'), alt: 'Pxl 20241025 173344823.Raw 01.Mp.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20240716_143831193.RAW-01.MP.COVER-EDIT.jpg'), alt: 'Pxl 20240716 143831193.Raw 01.Mp.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20240927_172615932.RAW-01.MP.COVER.jpg'), alt: 'Pxl 20240927 172615932.Raw 01.Mp.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250407_182820452.RAW-01.COVER.jpg'), alt: 'Pxl 20250407 182820452.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241025_193241698.RAW-01.COVER.jpg'), alt: 'Pxl 20241025 193241698.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241004_182413666.RAW-01.MP.COVER.jpg'), alt: 'Pxl 20241004 182413666.Raw 01.Mp.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241018_183426097.RAW-01.COVER.jpg'), alt: 'Pxl 20241018 183426097.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20251003_180210674.RAW-01.COVER.jpg'), alt: 'Pxl 20251003 180210674.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250407_184316567.RAW-01.COVER.jpg'), alt: 'Pxl 20250407 184316567.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241004_184038366.RAW-01.MP.COVER.jpg'), alt: 'Pxl 20241004 184038366.Raw 01.Mp.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241025_175323985.RAW-01.COVER.jpg'), alt: 'Pxl 20241025 175323985.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241025_173724692.RAW-01.MP.COVER-EDIT.jpg'), alt: 'Pxl 20241025 173724692.Raw 01.Mp.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20250912_203625954.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20250912 203625954.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20241018_180445538.RAW-01.COVER.jpg'), alt: 'Pxl 20241018 180445538.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20251003_183245209.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20251003 183245209.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20250724_173604514.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20250724 173604514.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20241025_181441897.RAW-01.MP.COVER.jpg'), alt: 'Pxl 20241025 181441897.Raw 01.Mp.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20240810_142054495.RAW-01.COVER.jpg'), alt: 'Pxl 20240810 142054495.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20241025_164018940.RAW-01.COVER.jpg'), alt: 'Pxl 20241025 164018940.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250529_164846061.RAW-01.COVER.jpg'), alt: 'Pxl 20250529 164846061.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250724_181946501.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20250724 181946501.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20240801_151857894.RAW-01.COVER.jpg'), alt: 'Pxl 20240801 151857894.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20251015_190149691.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20251015 190149691.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20251003_183200073.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20251003 183200073.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20250724_155408201.RAW-01.COVER.jpg'), alt: 'Pxl 20250724 155408201.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250722_161258960.RAW-01.MP.COVER-EDIT.jpg'), alt: 'Pxl 20250722 161258960.Raw 01.Mp.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20250926_182242928.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20250926 182242928.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/PXL_20251015_151859241.RAW-01.COVER.jpg'), alt: 'Pxl 20251015 151859241.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20250529_163317009.RAW-01.COVER.jpg'), alt: 'Pxl 20250529 163317009.Raw 01.Cover' },
-  { source: require('@/assets/images/gallery/PXL_20251003_184245765.RAW-01.COVER-EDIT.jpg'), alt: 'Pxl 20251003 184245765.Raw 01.Cover Edit' },
-  { source: require('@/assets/images/gallery/trio-at-colab.jpg'), alt: 'Trio At Colab' },
-  { source: require('@/assets/images/gallery/original_474c2995-edb8-46db-87b4-947ea9e4e7c4_PXL_202403_002.jpg'), alt: 'Original 474C2995 Edb8 46Db 87B4 947Ea9E4E7C4 Pxl 202403 002' },
-  { source: require('@/assets/images/gallery/laser-sensor.jpeg'), alt: 'Laser Sensor' },
-  { source: require('@/assets/images/gallery/justin-kyle-.jpg'), alt: 'Justin Kyle ' },
-  { source: require('@/assets/images/gallery/inspecting-platforms.jpeg'), alt: 'Inspecting Platforms' },
-  { source: require('@/assets/images/gallery/bc5-1.jpeg'), alt: 'Bc5 1' },
-  { source: require('@/assets/images/gallery/bc56.jpeg'), alt: 'Bc56' },
-  { source: require('@/assets/images/gallery/bc8.jpeg'), alt: 'Bc8' },
-  { source: require('@/assets/images/gallery/bc2.jpeg'), alt: 'Bc2' },
-  { source: require('@/assets/images/gallery/bc1-1.jpg'), alt: 'Bc1 1' },
-  { source: require('@/assets/images/gallery/andrew-demonstrating-sonde.jpeg'), alt: 'Andrew Demonstrating Sonde' },
-  { source: require('@/assets/images/gallery/Xander-ossining-lab-2.jpg'), alt: 'Xander Ossining Lab 2' },
-  { source: require('@/assets/images/gallery/Xander-et-al.jpg'), alt: 'Xander Et Al' },
-  { source: require('@/assets/images/gallery/Water-story-teammates.jpeg'), alt: 'Water Story Teammates' },
-  { source: require('@/assets/images/gallery/Vinni-Matt.jpg'), alt: 'Vinni Matt' },
-  { source: require('@/assets/images/gallery/Shay-hand-raised-1000.jpg'), alt: 'Shay Hand Raised 1000' },
-  { source: require('@/assets/images/gallery/Shay-and-pizza-bernie-copy.jpg'), alt: 'Shay And Pizza Bernie Copy' },
-  { source: require('@/assets/images/gallery/Screenshot-2024-05-10-at-10.21.29 AM-a42a98e7e91dda65.png'), alt: 'Screenshot 2024 05 10 At 10.21.29 Am A42A98E7E91Dda65' },
-  { source: require('@/assets/images/gallery/Screen-Shot-2022-02-25-at-12.44.30-PM.png'), alt: 'Screen Shot 2022 02 25 At 12.44.30 Pm' },
-  { source: require('@/assets/images/gallery/Rowing-Choate-Leanne2.jpg'), alt: 'Rowing Choate Leanne2' },
-  { source: require('@/assets/images/gallery/Rowing-Ada-4.jpg'), alt: 'Rowing Ada 4' },
-  { source: require('@/assets/images/gallery/RTKH2O-2024-co-2-copy-270457eab6f10d5c.jpg'), alt: 'Rtkh2O 2024 Co 2 Copy 270457Eab6F10D5C' },
-  { source: require('@/assets/images/gallery/RED-NOSE-NYC.jpeg'), alt: 'Red Nose Nyc' },
-  { source: require('@/assets/images/gallery/RED-NOSE-CoLab-PLV.jpg'), alt: 'Red Nose Colab Plv' },
-  { source: require('@/assets/images/gallery/Pizza-baby.jpg'), alt: 'Pizza Baby' },
-  { source: require('@/assets/images/gallery/PXL_20240503_191414386.RAW-01.COVER_-2d56c847ef5c120d.jpg'), alt: 'Pxl 20240503 191414386.Raw 01.Cover 2D56C847Ef5C120D' },
-  { source: require('@/assets/images/gallery/PXL_20240322_172735643.RAW-01.MP_.COVER_-501c4eb8506b64c3.jpg'), alt: 'Pxl 20240322 172735643.Raw 01.Mp .Cover 501C4Eb8506B64C3' },
-  { source: require('@/assets/images/gallery/PXL_20240315_190127488.RAW-01.MP_.COVER_-04375fb59af58716.jpg'), alt: 'Pxl 20240315 190127488.Raw 01.Mp .Cover 04375Fb59Af58716' },
-  { source: require('@/assets/images/gallery/PXL_20240315_181204662.RAW-01.COVER_-e70dcfea995cbff5.jpg'), alt: 'Pxl 20240315 181204662.Raw 01.Cover E70Dcfea995Cbff5' },
-  { source: require('@/assets/images/gallery/PXL_20240315_171828283.RAW-02.ORIGINAL-e330527a29b542bc.jpg'), alt: 'Pxl 20240315 171828283.Raw 02.Original E330527A29B542Bc' },
-  { source: require('@/assets/images/gallery/PXL_20240314_194959388.RAW-01.COVER_-f9908fc912088b8c.jpg'), alt: 'Pxl 20240314 194959388.Raw 01.Cover F9908Fc912088B8C' },
-  { source: require('@/assets/images/gallery/PXL_20240308_202652778.RAW-01.MP_.COVER2_-2ca03ba937aed458.jpg'), alt: 'Pxl 20240308 202652778.Raw 01.Mp .Cover2 2Ca03Ba937Aed458' },
-  { source: require('@/assets/images/gallery/PXL_20231027_164407718-1-8b68903a90d82664.jpg'), alt: 'Pxl 20231027 164407718 1 8B68903A90D82664' },
-  { source: require('@/assets/images/gallery/PXL_20231011_205711485-f829d06684228e79.jpg'), alt: 'Pxl 20231011 205711485 F829D06684228E79' },
-  { source: require('@/assets/images/gallery/PXL_20231004_201227968-af8f8ff2b2b9fc63.jpg'), alt: 'Pxl 20231004 201227968 Af8F8Ff2B2B9Fc63' },
-  { source: require('@/assets/images/gallery/PXL_20231004_200709889-c4a7f33ac1d0e326.jpg'), alt: 'Pxl 20231004 200709889 C4A7F33Ac1D0E326' },
-  { source: require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg'), alt: 'Pxl 20231004 1831536302 1B78496645A2D75F' },
-  { source: require('@/assets/images/gallery/PXL_20230921_201033596.PORTRAIT-cdd58cbc93304568.jpg'), alt: 'Pxl 20230921 201033596.Portrait Cdd58Cbc93304568' },
-  { source: require('@/assets/images/gallery/PXL_20230831_171322091-e9e582efe66dfd11.jpg'), alt: 'Pxl 20230831 171322091 E9E582Efe66Dfd11' },
-  { source: require('@/assets/images/gallery/PXL_20230809_162320979.MP_-f1f62d2675ffc622.jpg'), alt: 'Pxl 20230809 162320979.Mp F1F62D2675Ffc622' },
-  { source: require('@/assets/images/gallery/PXL_20230505_191146685-7a0723585cae14e8.jpg'), alt: 'Pxl 20230505 191146685 7A0723585Cae14E8' },
-  { source: require('@/assets/images/gallery/PXL_20230505_191046238-8bc44fc47c3889e5.jpg'), alt: 'Pxl 20230505 191046238 8Bc44Fc47C3889E5' },
-  { source: require('@/assets/images/gallery/PXL_20230428_184441317-6506762d7a69c963.jpg'), alt: 'Pxl 20230428 184441317 6506762D7A69C963' },
-  { source: require('@/assets/images/gallery/PXL_20230427_182817254.MP_-c57148e1bd363f27.jpg'), alt: 'Pxl 20230427 182817254.Mp C57148E1Bd363F27' },
-  { source: require('@/assets/images/gallery/PXL_20230331_194053814-ae8c3c933a85d657.jpg'), alt: 'Pxl 20230331 194053814 Ae8C3C933A85D657' },
-  { source: require('@/assets/images/gallery/PXL_20230331_175623199-a4b218a9891b8c35.jpg'), alt: 'Pxl 20230331 175623199 A4B218A9891B8C35' },
-  { source: require('@/assets/images/gallery/PXL_20230328_203926833.MP_-94ec21793bff3eb5.jpg'), alt: 'Pxl 20230328 203926833.Mp 94Ec21793Bff3Eb5' },
-  { source: require('@/assets/images/gallery/PXL_20230325_152844734-9468d4f344d07c33.jpg'), alt: 'Pxl 20230325 152844734 9468D4F344D07C33' },
-  { source: require('@/assets/images/gallery/PXL_20230324_162905870-2f90272d5304e1e6.jpg'), alt: 'Pxl 20230324 162905870 2F90272D5304E1E6' },
-  { source: require('@/assets/images/gallery/Lounge-Leanne-forehead.jpeg'), alt: 'Lounge Leanne Forehead' },
-  { source: require('@/assets/images/gallery/Leanne-teach.jpg'), alt: 'Leanne Teach' },
-  { source: require('@/assets/images/gallery/Kyle-hand.jpg'), alt: 'Kyle Hand' },
-  { source: require('@/assets/images/gallery/Justin-demonstrating-Ossining-2000.jpg'), alt: 'Justin Demonstrating Ossining 2000' },
-  { source: require('@/assets/images/gallery/Justin-and-Ada-382d6957b4040022.jpg'), alt: 'Justin And Ada 382D6957B4040022' },
-  { source: require('@/assets/images/gallery/JD-lab.jpeg'), alt: 'Jd Lab' },
-  { source: require('@/assets/images/gallery/JD-building.jpeg'), alt: 'Jd Building' },
-  { source: require('@/assets/images/gallery/JD-and-Justing-weather.jpg'), alt: 'Jd And Justing Weather' },
-  { source: require('@/assets/images/gallery/JD-and-Justin-weather-1500-45a6467fa130bd66.jpg'), alt: 'Jd And Justin Weather 1500 45A6467Fa130Bd66' },
-  { source: require('@/assets/images/gallery/JD-Ossining-lab-2.jpg'), alt: 'Jd Ossining Lab 2' },
-  { source: require('@/assets/images/gallery/High-school-workshop-copy.jpg'), alt: 'High School Workshop Copy' },
-  { source: require('@/assets/images/gallery/Happly-Holiday-from-Blue-CoLab.jpeg'), alt: 'Happly Holiday From Blue Colab' },
-  { source: require('@/assets/images/gallery/GE-delivery.jpeg'), alt: 'Ge Delivery' },
-  { source: require('@/assets/images/gallery/CoLab-team-screenshot.jpg'), alt: 'Colab Team Screenshot' },
-  { source: require('@/assets/images/gallery/CoLab-team-boat.jpg'), alt: 'Colab Team Boat' },
-  { source: require('@/assets/images/gallery/CoLab-office-group-4-1080.jpg'), alt: 'Colab Office Group 4 1080' },
-  { source: require('@/assets/images/gallery/CoLab-315.jpeg'), alt: 'Colab 315' },
-  { source: require('@/assets/images/gallery/BluCo-group-Ossining-2000.jpg'), alt: 'Bluco Group Ossining 2000' },
-  { source: require('@/assets/images/gallery/Blue-CoLab-Hat-Day-copy.jpg'), alt: 'Blue Colab Hat Day Copy' },
-  { source: require('@/assets/images/gallery/Bernie-CoLab-office-2-copy.jpg'), alt: 'Bernie Colab Office 2 Copy' },
-  { source: require('@/assets/images/gallery/Andrew-teaching-1.jpg'), alt: 'Andrew Teaching 1' },
-  { source: require('@/assets/images/gallery/Andreea-Cern.jpg'), alt: 'Andreea Cern' },
-  { source: require('@/assets/images/gallery/Ada_-monitoring-Choate-Pond.jpg'), alt: 'Ada Monitoring Choate Pond' },
-  { source: require('@/assets/images/gallery/Ada-roving-office.jpg'), alt: 'Ada Roving Office' },
-  { source: require('@/assets/images/gallery/Ada-reflected-autumn-1000.jpg'), alt: 'Ada Reflected Autumn 1000' },
+    {
+        source: require('@/assets/images/gallery/PXL_20240905_185118287.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20240905 185118287.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/2025 GEC Team copy.jpg'),
+        alt: '2025 Gec Team Copy',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250912_210655425.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250912 210655425.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251015_200154317.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20251015 200154317.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250919_181307756.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250919 181307756.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/Crotter Skyler copy.jpg'),
+        alt: 'Crotter Skyler Copy',
+    },
+    {
+        source: require('@/assets/images/gallery/original_a941db8d-379a-4dfe-adf5-9dd136bf8010_PXL_20251003_184924169.RAW-01.COVER.jpg'),
+        alt: 'Original A941Db8D 379A 4Dfe Adf5 9Dd136Bf8010 Pxl 20251003 184924169.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250807_165906491.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250807 165906491.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250411_174108771.RAW-01.MP.COVER.jpg'),
+        alt: 'Pxl 20250411 174108771.Raw 01.Mp.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250324_175945743.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250324 175945743.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241004_184946664.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20241004 184946664.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250926_185038202.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250926 185038202.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241025_173344823.RAW-01.MP.COVER.jpg'),
+        alt: 'Pxl 20241025 173344823.Raw 01.Mp.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240716_143831193.RAW-01.MP.COVER-EDIT.jpg'),
+        alt: 'Pxl 20240716 143831193.Raw 01.Mp.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240927_172615932.RAW-01.MP.COVER.jpg'),
+        alt: 'Pxl 20240927 172615932.Raw 01.Mp.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250407_182820452.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250407 182820452.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241025_193241698.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20241025 193241698.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241004_182413666.RAW-01.MP.COVER.jpg'),
+        alt: 'Pxl 20241004 182413666.Raw 01.Mp.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241018_183426097.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20241018 183426097.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251003_180210674.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20251003 180210674.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250407_184316567.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250407 184316567.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241004_184038366.RAW-01.MP.COVER.jpg'),
+        alt: 'Pxl 20241004 184038366.Raw 01.Mp.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241025_175323985.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20241025 175323985.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241025_173724692.RAW-01.MP.COVER-EDIT.jpg'),
+        alt: 'Pxl 20241025 173724692.Raw 01.Mp.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250912_203625954.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20250912 203625954.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241018_180445538.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20241018 180445538.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251003_183245209.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20251003 183245209.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250724_173604514.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20250724 173604514.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241025_181441897.RAW-01.MP.COVER.jpg'),
+        alt: 'Pxl 20241025 181441897.Raw 01.Mp.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240810_142054495.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20240810 142054495.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20241025_164018940.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20241025 164018940.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250529_164846061.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250529 164846061.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250724_181946501.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20250724 181946501.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240801_151857894.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20240801 151857894.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251015_190149691.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20251015 190149691.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251003_183200073.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20251003 183200073.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250724_155408201.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250724 155408201.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250722_161258960.RAW-01.MP.COVER-EDIT.jpg'),
+        alt: 'Pxl 20250722 161258960.Raw 01.Mp.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250926_182242928.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20250926 182242928.Raw 01.Cover Edit',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251015_151859241.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20251015 151859241.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20250529_163317009.RAW-01.COVER.jpg'),
+        alt: 'Pxl 20250529 163317009.Raw 01.Cover',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20251003_184245765.RAW-01.COVER-EDIT.jpg'),
+        alt: 'Pxl 20251003 184245765.Raw 01.Cover Edit',
+    },
+    { source: require('@/assets/images/gallery/trio-at-colab.jpg'), alt: 'Trio At Colab' },
+    {
+        source: require('@/assets/images/gallery/original_474c2995-edb8-46db-87b4-947ea9e4e7c4_PXL_202403_002.jpg'),
+        alt: 'Original 474C2995 Edb8 46Db 87B4 947Ea9E4E7C4 Pxl 202403 002',
+    },
+    { source: require('@/assets/images/gallery/laser-sensor.jpeg'), alt: 'Laser Sensor' },
+    { source: require('@/assets/images/gallery/justin-kyle-.jpg'), alt: 'Justin Kyle ' },
+    {
+        source: require('@/assets/images/gallery/inspecting-platforms.jpeg'),
+        alt: 'Inspecting Platforms',
+    },
+    { source: require('@/assets/images/gallery/bc5-1.jpeg'), alt: 'Bc5 1' },
+    { source: require('@/assets/images/gallery/bc56.jpeg'), alt: 'Bc56' },
+    { source: require('@/assets/images/gallery/bc8.jpeg'), alt: 'Bc8' },
+    { source: require('@/assets/images/gallery/bc2.jpeg'), alt: 'Bc2' },
+    { source: require('@/assets/images/gallery/bc1-1.jpg'), alt: 'Bc1 1' },
+    {
+        source: require('@/assets/images/gallery/andrew-demonstrating-sonde.jpeg'),
+        alt: 'Andrew Demonstrating Sonde',
+    },
+    {
+        source: require('@/assets/images/gallery/Xander-ossining-lab-2.jpg'),
+        alt: 'Xander Ossining Lab 2',
+    },
+    { source: require('@/assets/images/gallery/Xander-et-al.jpg'), alt: 'Xander Et Al' },
+    {
+        source: require('@/assets/images/gallery/Water-story-teammates.jpeg'),
+        alt: 'Water Story Teammates',
+    },
+    { source: require('@/assets/images/gallery/Vinni-Matt.jpg'), alt: 'Vinni Matt' },
+    {
+        source: require('@/assets/images/gallery/Shay-hand-raised-1000.jpg'),
+        alt: 'Shay Hand Raised 1000',
+    },
+    {
+        source: require('@/assets/images/gallery/Shay-and-pizza-bernie-copy.jpg'),
+        alt: 'Shay And Pizza Bernie Copy',
+    },
+    {
+        source: require('@/assets/images/gallery/Screenshot-2024-05-10-at-10.21.29 AM-a42a98e7e91dda65.png'),
+        alt: 'Screenshot 2024 05 10 At 10.21.29 Am A42A98E7E91Dda65',
+    },
+    {
+        source: require('@/assets/images/gallery/Screen-Shot-2022-02-25-at-12.44.30-PM.png'),
+        alt: 'Screen Shot 2022 02 25 At 12.44.30 Pm',
+    },
+    {
+        source: require('@/assets/images/gallery/Rowing-Choate-Leanne2.jpg'),
+        alt: 'Rowing Choate Leanne2',
+    },
+    { source: require('@/assets/images/gallery/Rowing-Ada-4.jpg'), alt: 'Rowing Ada 4' },
+    {
+        source: require('@/assets/images/gallery/RTKH2O-2024-co-2-copy-270457eab6f10d5c.jpg'),
+        alt: 'Rtkh2O 2024 Co 2 Copy 270457Eab6F10D5C',
+    },
+    { source: require('@/assets/images/gallery/RED-NOSE-NYC.jpeg'), alt: 'Red Nose Nyc' },
+    {
+        source: require('@/assets/images/gallery/RED-NOSE-CoLab-PLV.jpg'),
+        alt: 'Red Nose Colab Plv',
+    },
+    { source: require('@/assets/images/gallery/Pizza-baby.jpg'), alt: 'Pizza Baby' },
+    {
+        source: require('@/assets/images/gallery/PXL_20240503_191414386.RAW-01.COVER_-2d56c847ef5c120d.jpg'),
+        alt: 'Pxl 20240503 191414386.Raw 01.Cover 2D56C847Ef5C120D',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240322_172735643.RAW-01.MP_.COVER_-501c4eb8506b64c3.jpg'),
+        alt: 'Pxl 20240322 172735643.Raw 01.Mp .Cover 501C4Eb8506B64C3',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240315_190127488.RAW-01.MP_.COVER_-04375fb59af58716.jpg'),
+        alt: 'Pxl 20240315 190127488.Raw 01.Mp .Cover 04375Fb59Af58716',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240315_181204662.RAW-01.COVER_-e70dcfea995cbff5.jpg'),
+        alt: 'Pxl 20240315 181204662.Raw 01.Cover E70Dcfea995Cbff5',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240315_171828283.RAW-02.ORIGINAL-e330527a29b542bc.jpg'),
+        alt: 'Pxl 20240315 171828283.Raw 02.Original E330527A29B542Bc',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240314_194959388.RAW-01.COVER_-f9908fc912088b8c.jpg'),
+        alt: 'Pxl 20240314 194959388.Raw 01.Cover F9908Fc912088B8C',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20240308_202652778.RAW-01.MP_.COVER2_-2ca03ba937aed458.jpg'),
+        alt: 'Pxl 20240308 202652778.Raw 01.Mp .Cover2 2Ca03Ba937Aed458',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20231027_164407718-1-8b68903a90d82664.jpg'),
+        alt: 'Pxl 20231027 164407718 1 8B68903A90D82664',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20231011_205711485-f829d06684228e79.jpg'),
+        alt: 'Pxl 20231011 205711485 F829D06684228E79',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20231004_201227968-af8f8ff2b2b9fc63.jpg'),
+        alt: 'Pxl 20231004 201227968 Af8F8Ff2B2B9Fc63',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20231004_200709889-c4a7f33ac1d0e326.jpg'),
+        alt: 'Pxl 20231004 200709889 C4A7F33Ac1D0E326',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20231004_1831536302-1b78496645a2d75f.jpg'),
+        alt: 'Pxl 20231004 1831536302 1B78496645A2D75F',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230921_201033596.PORTRAIT-cdd58cbc93304568.jpg'),
+        alt: 'Pxl 20230921 201033596.Portrait Cdd58Cbc93304568',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230831_171322091-e9e582efe66dfd11.jpg'),
+        alt: 'Pxl 20230831 171322091 E9E582Efe66Dfd11',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230809_162320979.MP_-f1f62d2675ffc622.jpg'),
+        alt: 'Pxl 20230809 162320979.Mp F1F62D2675Ffc622',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230505_191146685-7a0723585cae14e8.jpg'),
+        alt: 'Pxl 20230505 191146685 7A0723585Cae14E8',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230505_191046238-8bc44fc47c3889e5.jpg'),
+        alt: 'Pxl 20230505 191046238 8Bc44Fc47C3889E5',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230428_184441317-6506762d7a69c963.jpg'),
+        alt: 'Pxl 20230428 184441317 6506762D7A69C963',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230427_182817254.MP_-c57148e1bd363f27.jpg'),
+        alt: 'Pxl 20230427 182817254.Mp C57148E1Bd363F27',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230331_194053814-ae8c3c933a85d657.jpg'),
+        alt: 'Pxl 20230331 194053814 Ae8C3C933A85D657',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230331_175623199-a4b218a9891b8c35.jpg'),
+        alt: 'Pxl 20230331 175623199 A4B218A9891B8C35',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230328_203926833.MP_-94ec21793bff3eb5.jpg'),
+        alt: 'Pxl 20230328 203926833.Mp 94Ec21793Bff3Eb5',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230325_152844734-9468d4f344d07c33.jpg'),
+        alt: 'Pxl 20230325 152844734 9468D4F344D07C33',
+    },
+    {
+        source: require('@/assets/images/gallery/PXL_20230324_162905870-2f90272d5304e1e6.jpg'),
+        alt: 'Pxl 20230324 162905870 2F90272D5304E1E6',
+    },
+    {
+        source: require('@/assets/images/gallery/Lounge-Leanne-forehead.jpeg'),
+        alt: 'Lounge Leanne Forehead',
+    },
+    { source: require('@/assets/images/gallery/Leanne-teach.jpg'), alt: 'Leanne Teach' },
+    { source: require('@/assets/images/gallery/Kyle-hand.jpg'), alt: 'Kyle Hand' },
+    {
+        source: require('@/assets/images/gallery/Justin-demonstrating-Ossining-2000.jpg'),
+        alt: 'Justin Demonstrating Ossining 2000',
+    },
+    {
+        source: require('@/assets/images/gallery/Justin-and-Ada-382d6957b4040022.jpg'),
+        alt: 'Justin And Ada 382D6957B4040022',
+    },
+    { source: require('@/assets/images/gallery/JD-lab.jpeg'), alt: 'Jd Lab' },
+    { source: require('@/assets/images/gallery/JD-building.jpeg'), alt: 'Jd Building' },
+    {
+        source: require('@/assets/images/gallery/JD-and-Justing-weather.jpg'),
+        alt: 'Jd And Justing Weather',
+    },
+    {
+        source: require('@/assets/images/gallery/JD-and-Justin-weather-1500-45a6467fa130bd66.jpg'),
+        alt: 'Jd And Justin Weather 1500 45A6467Fa130Bd66',
+    },
+    { source: require('@/assets/images/gallery/JD-Ossining-lab-2.jpg'), alt: 'Jd Ossining Lab 2' },
+    {
+        source: require('@/assets/images/gallery/High-school-workshop-copy.jpg'),
+        alt: 'High School Workshop Copy',
+    },
+    {
+        source: require('@/assets/images/gallery/Happly-Holiday-from-Blue-CoLab.jpeg'),
+        alt: 'Happly Holiday From Blue Colab',
+    },
+    { source: require('@/assets/images/gallery/GE-delivery.jpeg'), alt: 'Ge Delivery' },
+    {
+        source: require('@/assets/images/gallery/CoLab-team-screenshot.jpg'),
+        alt: 'Colab Team Screenshot',
+    },
+    { source: require('@/assets/images/gallery/CoLab-team-boat.jpg'), alt: 'Colab Team Boat' },
+    {
+        source: require('@/assets/images/gallery/CoLab-office-group-4-1080.jpg'),
+        alt: 'Colab Office Group 4 1080',
+    },
+    { source: require('@/assets/images/gallery/CoLab-315.jpeg'), alt: 'Colab 315' },
+    {
+        source: require('@/assets/images/gallery/BluCo-group-Ossining-2000.jpg'),
+        alt: 'Bluco Group Ossining 2000',
+    },
+    {
+        source: require('@/assets/images/gallery/Blue-CoLab-Hat-Day-copy.jpg'),
+        alt: 'Blue Colab Hat Day Copy',
+    },
+    {
+        source: require('@/assets/images/gallery/Bernie-CoLab-office-2-copy.jpg'),
+        alt: 'Bernie Colab Office 2 Copy',
+    },
+    { source: require('@/assets/images/gallery/Andrew-teaching-1.jpg'), alt: 'Andrew Teaching 1' },
+    { source: require('@/assets/images/gallery/Andreea-Cern.jpg'), alt: 'Andreea Cern' },
+    {
+        source: require('@/assets/images/gallery/Ada_-monitoring-Choate-Pond.jpg'),
+        alt: 'Ada Monitoring Choate Pond',
+    },
+    { source: require('@/assets/images/gallery/Ada-roving-office.jpg'), alt: 'Ada Roving Office' },
+    {
+        source: require('@/assets/images/gallery/Ada-reflected-autumn-1000.jpg'),
+        alt: 'Ada Reflected Autumn 1000',
+    },
 ];
