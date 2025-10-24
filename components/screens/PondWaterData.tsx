@@ -1,6 +1,7 @@
 // Please do check the dimensions on the Kiosk - V
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
+import MyMap from '../maps/Map';
 
 export default function PondWaterData() {
     const water_sensors = {
@@ -28,12 +29,20 @@ export default function PondWaterData() {
             label: 'Albany',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/1ca141bf9a394c86b9103c1812ec9b28?orgId=1&from=now-2d&to=now&refresh=15m',
         },
+
+        content: {
+            label: 'Content',
+            content: (
+                <div style={{ width: 1080, height: 400, marginBottom: 20, zIndex: 299 }}>
+                    <MyMap />
+                </div>
+            ),
+        },
     };
-    const [state, setState] = React.useState(water_sensors.alan); // default to Alan sensor
+    const [state, setState] = useState<any>(water_sensors.alan); // default to Alan sensor
 
     return (
         <View>
-            {/* Tabs container */}
             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', zIndex: 1 }}>
                 {Object.entries(water_sensors).map(([key, value]) => {
                     const isActive = state.label === value.label;
@@ -64,22 +73,26 @@ export default function PondWaterData() {
             <View
                 style={{
                     width: '100%',
-                    maxWidth: 1100,
+                    maxWidth: 1200,
                     backgroundColor: '#fff',
                     borderRadius: 12,
                     padding: 20,
                     zIndex: 1,
                     alignItems: 'center', // ensures iframe is centered inside the container
                 }}>
-                <iframe
-                    src={state.URL}
-                    width="1080"
-                    height="700"
-                    style={{
-                        border: 'none',
-                        borderRadius: 8,
-                    }}
-                />
+                {typeof state.URL === 'string' ? (
+                    <iframe
+                        src={state.URL}
+                        width="1080"
+                        height="700"
+                        style={{
+                            border: 'none',
+                            borderRadius: 8,
+                        }}
+                    />
+                ) : (
+                    state.content
+                )}
             </View>
         </View>
     );

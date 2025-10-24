@@ -50,18 +50,18 @@ export default function DataToMusic() {
                     running locally.
                 </Text>
             )}
-            {serverUp && (
-                <iframe
-                    src="http://127.0.0.1:5000/" // Ensure this matches your Flask server address
-                    width="1500" // Adjust width as needed
-                    height="750" // Adjust height as needed
-                    style={{
-                        border: 'none', // No border for the iframe
-                        borderRadius: 8, // Rounded corners for the iframe to match the container
-                        marginTop: 20, // Space between the status message and the iframe
-                    }}
-                />
-            )}
+            (
+            <iframe
+                src="http://127.0.0.1:5000/" // Ensure this matches your Flask server address
+                width="1500" // Adjust width as needed
+                height="750" // Adjust height as needed
+                style={{
+                    border: 'none', // No border for the iframe
+                    borderRadius: 8, // Rounded corners for the iframe to match the container
+                    marginTop: 20, // Space between the status message and the iframe
+                }}
+            />
+            )
         </View>
     );
 }

@@ -61,6 +61,7 @@ export default function Index() {
                     name="viewport"
                     content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                 />
+                <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
             </Head>
 
             <View style={{ flex: 1, position: 'relative' }}>
