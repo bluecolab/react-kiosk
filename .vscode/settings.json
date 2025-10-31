@@ -21,4 +21,5 @@
         "editor.formatOnSave": true,
         "prettier.useTabs": false
     },
+    "githubPullRequests.remotes": ["origin"]
 }
