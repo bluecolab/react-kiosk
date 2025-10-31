@@ -17,15 +17,15 @@ A Flask web application for visualizing USGS water quality data in a clean, orga
 
 2. **Install dependencies**:
 
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
+    ```bash
+    python -m pip install -r requirements.txt
+    ```
 
 3. **Run the application**:
 
-   ```bash
-   python app.py
-   ```
+    ```bash
+    python app.py
+    ```
 
 4. **Open your browser** to: `http://127.0.0.1:5000`
 
