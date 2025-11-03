@@ -31,8 +31,8 @@ export default function MobileApp() {
                 <Text style={{ fontSize: 40 }}>
                     Access our research data and information on the go.
                 </Text>
-                <Text style={{ fontSize: 20 }}>Stay updated with real-time data.</Text>
-                <Text style={{ fontSize: 20 }}>Download our mobile app for better access.</Text>
+                <Text style={{ fontSize: 22 }}>Stay updated with real-time data.</Text>
+                <Text style={{ fontSize: 22 }}>Download our mobile app for better access.</Text>
             </View>
             <View style={{ position: 'absolute', bottom: 20, right: 20 }}>
                 <Image style={{ width: 200, height: 200 }} source={QRPlaceholder} />

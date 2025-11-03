@@ -1,6 +1,6 @@
 import { useWidgets } from '@/hooks/useWidgets';
 import { Modal, Pressable, View, Image, Text, FlatList, Dimensions } from 'react-native';
-import FloatingButton from '../FloatingButton';
+import FloatingButton from '../../FloatingButton';
 
 interface AllScreensModalProps {
     isModalOpen: boolean;
