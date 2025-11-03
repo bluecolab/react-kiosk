@@ -93,8 +93,6 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
                                 widgets={widgets as Widget[]}
                                 animationValue={animationValue}
                                 index={index}
-                                ref={ref}
-                                setIndex={setIndex}
                             />
                         );
                     }}
