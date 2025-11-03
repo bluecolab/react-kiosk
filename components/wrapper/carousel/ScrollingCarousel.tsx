@@ -81,6 +81,7 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
                     height={itemSize}
                     style={{
                         width: PAGE_WIDTH,
+                        marginTop: 20,
                         height: mode === UIType.MIXED ? height * 0.3 : height * 0.25,
                     }}
                     loop
