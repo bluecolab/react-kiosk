@@ -14,7 +14,7 @@ export default function DataToMusic() {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
 
-            const response = await fetch('http://127.0.0.1:5000/health', {
+            const response = await fetch('http://127.0.0.1:5000', {
                 method: 'GET',
                 signal: controller.signal,
                 headers: {
