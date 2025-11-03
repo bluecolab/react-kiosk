@@ -31,8 +31,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
 
     // Calculate responsive font size
     const getFontSize = () => {
-        console.log('screenWidth:', screenWidth);
-        if (screenWidth < 1200) return 10; // Tablet
+        if (screenWidth < 1200) return 12; // Tablet
         return 14; // Desktop/Kiosk
     };
 
