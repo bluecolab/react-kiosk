@@ -8,12 +8,12 @@ interface ExpandButtonProps {
 export default function ExpandButton({ isExpanded, onPress }: ExpandButtonProps) {
     return (
         <View
-        style={{
-        height: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        }}>
+            style={{
+                height: 0,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+            }}>
             <TouchableOpacity onPress={onPress}>
                 <Text
                     style={{

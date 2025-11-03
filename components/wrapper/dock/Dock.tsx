@@ -31,7 +31,8 @@ const Dock = ({ carouselLocationStyle, width, height, setIndex, widgets }: DockP
                     bottom: 0,
                     right: 0,
                     zIndex: 10,
-                    height: itemSizeHeight < itemSizeWidth ? itemSizeHeight * 1.5 : itemSizeWidth * 1.5,
+                    height:
+                        itemSizeHeight < itemSizeWidth ? itemSizeHeight * 1.5 : itemSizeWidth * 1.5,
                     justifyContent: 'flex-end', // anchor children to bottom
                     alignItems: 'center',
                     opacity: 1,
