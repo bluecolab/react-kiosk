@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     header: {
-        fontSize: 18,
+        fontSize: 25,
         marginBottom: 16,
         textAlign: 'center',
         fontWeight: 'bold',
@@ -124,21 +124,20 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     title: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 'bold',
     },
     subTitle: {
-        fontSize: 16,
+        fontSize: 25,
         marginVertical: 4,
     },
     description: {
-        fontSize: 14,
+        fontSize: 25,
         marginBottom: 10,
         textAlign: 'center',
     },
     image: {
-        width: 200,
-        height: 200,
+        height: 400,
         marginBottom: 10,
     },
     button: {
@@ -153,14 +152,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     modalHeader: {
-        backgroundColor: '#000080',
+        backgroundColor: '#6299ffff',
         padding: 16,
         flexDirection: 'row',
         alignItems: 'center',
     },
     backText: {
         color: '#fff',
-        fontSize: 18,
+        fontSize: 25,
         marginRight: 12,
     },
     modalTitle: {

@@ -38,7 +38,7 @@ export default function ScreenWrapperContent({
                     style={{
                         textAlign: 'center',
                         color: 'black',
-                        fontSize: 25,
+                        fontSize: 45,
                         fontWeight: 'bold',
                         marginBottom: 10,
                     }}>

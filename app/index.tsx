@@ -39,10 +39,16 @@ export default function Index() {
             window.addEventListener(event, resetInactivity);
         });
 
+        const preventDefault = (e: TouchEvent) => {
+            if (e.touches.length > 1) e.preventDefault();
+        };
+        window.addEventListener('touchmove', preventDefault, { passive: false });
+
         return () => {
             defaultEvents.forEach((event) => {
                 window.removeEventListener(event, resetInactivity);
             });
+            window.removeEventListener('touchmove', preventDefault);
         };
     }, [resetInactivity]);
 
@@ -51,6 +57,11 @@ export default function Index() {
             <Head>
                 <title>Blue CoLab Kiosk</title>
                 <meta name="description" content="Blue CoLab Kiosk" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+                />
+                <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
             </Head>
 
             <View style={{ flex: 1, position: 'relative' }}>

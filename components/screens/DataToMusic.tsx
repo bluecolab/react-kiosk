@@ -141,19 +141,18 @@ export default function DataToMusic() {
                     </View>
                 </View>
             )}
-            {serverUp && (
-                <iframe
-                    src="http://127.0.0.1:5000/"
-                    width="1500"
-                    height="750"
-                    style={{
-                        border: 'none',
-                        borderRadius: 8,
-                        marginTop: 20,
-                    }}
-                    title="Sonification Interface"
-                />
-            )}
+
+            <iframe
+                src="http://127.0.0.1:5000/"
+                width="1500"
+                height="750"
+                style={{
+                    border: 'none',
+                    borderRadius: 8,
+                    marginTop: 20,
+                }}
+                title="Sonification Interface"
+            />
         </View>
     );
 }

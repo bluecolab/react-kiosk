@@ -1,19 +1,26 @@
-// useKioskConstants.js - Manages application configurations based on user preferences, specifically for "Crotter Mode".
+// useKioskConstants.js - Manages application configurations based on user preferences depending on the UI type specified in the URL.
 
-import { constants } from './constants/constants';
+import { constants, UIType } from './constants/constants';
 
 export const useConfigs = () => {
-    constants.secret = localStorage.getItem('crotterMode') === 'true'; // Check if Crotter Mode is enabled
-    // Adjust view area height and carousel location based on Crotter Mode status
-
-    if (!constants.secret) {
-        // Normal Mode
-        constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.73; // Default height for view area
-        constants.SHRUNKEN.CAROUSEL_LOCATION = 0.75; // Default position for carousel
-    } else {
-        // Crotter Mode Enabled - more space for Crotter image - V for Victory :)
-        constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.73; // Lowered to make room for Crotter image
-        constants.SHRUNKEN.CAROUSEL_LOCATION = 0.74; // Lowered to make room for Crotter image
+    const type = new URLSearchParams(window.location.search).get('uiType') ?? constants.mode;
+    switch (type) {
+        case UIType.DOCK:
+            constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.78;
+            constants.mode = UIType.DOCK;
+            break;
+        case UIType.MODAL:
+            constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.91;
+            constants.mode = UIType.MODAL;
+            break;
+        case UIType.MIXED:
+            constants.SHRUNKEN.VIEW_AREA_HEIGHT = 0.73;
+            constants.mode = UIType.MIXED;
+            break;
+        case UIType.CAROUSEL:
+            constants.mode = UIType.CAROUSEL;
+        default:
     }
+
     return constants;
 };

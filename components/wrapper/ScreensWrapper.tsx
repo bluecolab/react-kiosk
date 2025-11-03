@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import ScrollingCarousel from '@/components/wrapper/ScrollingCarousel';
+import ScrollingCarousel from '@/components/wrapper/carousel/ScrollingCarousel';
 import { View, Easing } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
@@ -8,11 +8,13 @@ import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import { ICarouselInstance } from 'react-native-reanimated-carousel';
 import FloatingButton from '../FloatingButton';
-import AllScreensModal from './AllScreensModal';
+import AllScreensModal from './modal/AllScreensModal';
+import { UIType } from '@/hooks/constants/constants';
+import Dock from './dock/Dock';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
-    const { SHRUNKEN, EXPANDED, secret } = useConfigs();
+    const { SHRUNKEN, EXPANDED, mode } = useConfigs();
 
     const ref = useRef<ICarouselInstance>(null);
 
@@ -38,7 +40,7 @@ export default function ScreensWrapper() {
 
     const carouselLocationStyle = useAnimatedStyle(() => {
         return {
-            top: carouselLocation.value,
+            bottom: carouselLocation.value,
         };
     });
 
@@ -55,10 +57,7 @@ export default function ScreensWrapper() {
     useEffect(() => {
         if (window.innerHeight && window.innerWidth) {
             // Animate it in when height is available
-            carouselLocation.value = withTiming(
-                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
-                defaultAnimationConfig
-            );
+            carouselLocation.value = withTiming(0, defaultAnimationConfig);
             viewAreaHeight.value = withTiming(
                 window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                 defaultAnimationConfig
@@ -89,7 +88,6 @@ export default function ScreensWrapper() {
         carouselLocation,
         viewAreaHeight,
         viewAreaWidth,
-        SHRUNKEN.CAROUSEL_LOCATION,
         SHRUNKEN.VIEW_AREA_HEIGHT,
         SHRUNKEN.VIEW_AREA_WIDTH,
         SHRUNKEN.VIEW_AREA_BORDER_RADIUS,
@@ -120,10 +118,7 @@ export default function ScreensWrapper() {
                     isExpanded={isExpanded}
                     onPress={() => {
                         if (isExpanded) {
-                            carouselLocation.value = withTiming(
-                                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
-                                defaultAnimationConfig
-                            );
+                            carouselLocation.value = withTiming(0, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -146,10 +141,7 @@ export default function ScreensWrapper() {
                             );
                             setIsExpanded(!isExpanded);
                         } else {
-                            carouselLocation.value = withTiming(
-                                window.innerHeight * EXPANDED.CAROUSEL_LOCATION,
-                                defaultAnimationConfig
-                            );
+                            carouselLocation.value = withTiming(-500, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -176,23 +168,39 @@ export default function ScreensWrapper() {
                 />
             </View>
 
-            <ScrollingCarousel
-                carouselLocationStyle={carouselLocationStyle}
-                widgets={widgets}
-                height={window.innerHeight}
-                width={window.innerWidth}
-                setIndex={setIndex}
-                ref={ref}
-            />
+            {(mode === UIType.MIXED || mode === UIType.CAROUSEL) && (
+                <ScrollingCarousel
+                    carouselLocationStyle={carouselLocationStyle}
+                    widgets={widgets}
+                    height={window.innerHeight}
+                    width={window.innerWidth}
+                    setIndex={setIndex}
+                    ref={ref}
+                />
+            )}
 
-            {!isExpanded && secret && <FloatingButton setIsModalOpen={setIsModalOpen} />}
+            {!isExpanded && (mode === UIType.MIXED || mode === UIType.MODAL) && (
+                <FloatingButton setIsModalOpen={setIsModalOpen} />
+            )}
 
-            <AllScreensModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-                ref={ref}
-                setIndex={setIndex}
-            />
+            {mode === UIType.DOCK && (
+                <Dock
+                    carouselLocationStyle={carouselLocationStyle}
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    setIndex={setIndex}
+                    widgets={widgets}
+                />
+            )}
+
+            {(mode === UIType.MIXED || mode === UIType.MODAL) && (
+                <AllScreensModal
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    ref={ref}
+                    setIndex={setIndex}
+                />
+            )}
         </View>
     );
 }
