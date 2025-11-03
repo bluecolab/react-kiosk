@@ -8,7 +8,11 @@ import {
     FeedbackItem,
 } from '@/utils/feedbackStorage';
 
-export default function FeedbackViewer() {
+export default function FeedbackViewer({
+    setShowFeedbackViewer,
+}: {
+    setShowFeedbackViewer: (visible: boolean) => void;
+}) {
     const [feedbackList, setFeedbackList] = useState<FeedbackItem[]>([]);
     const [refreshKey, setRefreshKey] = useState(0);
 
@@ -70,6 +74,11 @@ export default function FeedbackViewer() {
                         style={[styles.button, styles.dangerButton]}
                         onPress={handleClearAll}>
                         <Text style={styles.buttonText}>Clear All</Text>
+                    </Pressable>
+                    <Pressable
+                        style={[styles.button, styles.dangerButton]}
+                        onPress={() => setShowFeedbackViewer(false)}>
+                        <Text style={styles.buttonText}>Close</Text>
                     </Pressable>
                 </View>
             </View>

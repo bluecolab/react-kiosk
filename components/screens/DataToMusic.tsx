@@ -7,14 +7,14 @@ export default function DataToMusic() {
 
     React.useEffect(() => {
         fetch('http://127.0.0.1:5000/', { method: 'HEAD' }) // Using HEAD to just check if the server is reachable
-            .then(response => {
+            .then((response) => {
                 if (response.ok) {
                     setServerUp(true); // Server is up and reachable
                 } else {
                     setServerUp(false); // Server responded but with an error status
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('Error checking server status:', error);
                 setServerUp(false); // Network error or server is down
             });
@@ -42,17 +42,15 @@ export default function DataToMusic() {
                 flexDirection: 'column', // Stack children vertically
                 alignItems: 'center', // ensures iframe is centered inside the container horizontally
             }}>
-            {serverUp === null && <ActivityIndicator size="large" color="#888" />} {/* Loading indicator while checking server status */}
+            {serverUp === null && <ActivityIndicator size="large" color="#888" />}{' '}
+            {/* Loading indicator while checking server status */}
             {serverUp === false && (
                 <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 20 }}>
-                    Server at http://127.0.0.1:5000/ is down. Please verify 'sonification-flask' is running locally.
+                    Server at http://127.0.0.1:5000/ is down. Please verify 'sonification-flask' is
+                    running locally.
                 </Text>
             )}
-            {serverUp && (
-                <Text style={{ color: 'green', fontWeight: 'bold', fontSize: 20 }}>
-                    Server is up and running.
-                </Text>
-            )}
+            (
             <iframe
                 src="http://127.0.0.1:5000/" // Ensure this matches your Flask server address
                 width="1500" // Adjust width as needed
@@ -63,6 +61,7 @@ export default function DataToMusic() {
                     marginTop: 20, // Space between the status message and the iframe
                 }}
             />
+            )
         </View>
     );
 }

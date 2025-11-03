@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Pressable, Dimensions } from 'react-native';
+import { Dimensions, Pressable, View } from 'react-native';
 import Animated, {
     Extrapolation,
     interpolate,
@@ -8,6 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Widget } from '@/hooks/useWidgets';
+import { ICarouselInstance } from 'react-native-reanimated-carousel';
 
 interface CustomItemProps {
     item: Widget;
@@ -48,9 +49,8 @@ const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
     return (
         <Pressable
             style={{
-                width: '90%', // Slightly reduced width to fit better within carousel
-                height: '90%', // Slightly reduced height to fit better within carousel
-                alignSelf: 'center', // Center the item within the carousel
+                width: '100%',
+                height: '100%',
             }}
             onPress={() => {
                 if (item.onPress) {
@@ -92,12 +92,27 @@ interface CarouselItemProps {
     index: number;
     widgets: Widget[];
     animationValue: SharedValue<number>;
+    setIndex: (index: number) => void;
+    ref: React.RefObject<ICarouselInstance | null>;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({ index, widgets, animationValue }) => {
+const CarouselItem: React.FC<CarouselItemProps> = ({
+    index,
+    widgets,
+    animationValue,
+    setIndex,
+    ref,
+}) => {
     return (
         <View style={{ flex: 1 }}>
-            <CustomItem item={widgets[index]} animationValue={animationValue} />
+            <Pressable
+                onPress={() => {
+                    ref.current?.scrollTo({ index, animated: true });
+                    setIndex(index);
+                }}
+                style={{ flex: 1 }}>
+                <CustomItem item={widgets[index]} animationValue={animationValue} />
+            </Pressable>
         </View>
     );
 };

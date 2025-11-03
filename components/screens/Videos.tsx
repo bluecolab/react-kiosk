@@ -10,6 +10,16 @@ const videos = [
     { src: Fellowship, type: 'video/webm', title: 'Fellowship Video' },
     { src: Sonification, type: 'video/mp4', title: 'Pond Sonification' },
     { src: ClearWaterSail, type: 'video/mp4', title: 'Clearwater Sail' },
+    {
+        src: 'http://localhost:9999/BlueCoLabCommunityImpactFinal.mp4',
+        type: 'video/mp4',
+        title: 'Blue CoLab Community Impact',
+    },
+    {
+        src: 'http://localhost:9999/ChoateTimelapse.mp4',
+        type: 'video/mp4',
+        title: 'Choate Timelapse',
+    },
 ];
 
 const VideoComponent: React.FC<{ src: string; type: string }> = ({ src, type }) => (
@@ -47,7 +57,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     heading: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 20,
         textAlign: 'center',
@@ -68,7 +78,7 @@ const styles = StyleSheet.create({
     },
     videoTitle: {
         marginTop: 8,
-        fontSize: 14,
+        fontSize: 22,
         textAlign: 'center',
     },
 });

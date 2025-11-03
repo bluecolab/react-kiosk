@@ -25,13 +25,10 @@ export default function WaterReport() {
     return (
         <View style={styles.container}>
             <View style={styles.bookContainer}>
-                <Image
-                    source={{
-                    }}
-                    style={styles.bookBackground}
-                />
+                <Image source={{}} style={styles.bookBackground} />
                 <View style={styles.yearSelector}>
-                    <Text style={styles.bookTitle}>Water Quality Reports</Text> {/* Updated title for clarity */}
+                    <Text style={styles.bookTitle}>Water Quality Reports</Text>{' '}
+                    {/* Updated title for clarity */}
                     <View style={styles.yearGrid}>
                         {waterReports.map((report, index) => {
                             const year = report.title.match(/\d{4}/)?.[0];
@@ -97,7 +94,7 @@ const styles = StyleSheet.create({
     bookContainer: {
         width: '80%',
         maxWidth: 800,
-        height: 600,
+        height: 500,
         position: 'relative',
         backgroundColor: '#fff',
         borderRadius: 10,
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 5 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
-        elevation: 10,
+        elevation: 20,
         overflow: 'hidden',
     },
     bookBackground: {
@@ -154,7 +151,7 @@ const styles = StyleSheet.create({
         color: '#000080',
     },
     modalHeader: {
-        backgroundColor: '#000080',
+        backgroundColor: '#6299ffff',
         padding: 16,
         flexDirection: 'row',
         alignItems: 'center',
