@@ -14,10 +14,14 @@ export default function Index() {
     const [isStandby, setIsStandby] = useState(true);
     const [lastActivity, setLastActivity] = useState(Date.now());
     const [standbyTime] = useState(MAX_IDLE_TIME);
+    // index of screen to open when exiting standby (optional)
+    const [initialIndex, setInitialIndex] = useState<number | undefined>(undefined);
     const resetInactivity = useCallback(() => {
         setLastActivity(Date.now());
         if (isStandby) {
             setIsStandby(false);
+            // open the Welcome widget (it's at index 5 in useWidgets)
+            setInitialIndex(5);
         }
     }, [isStandby]);
 
@@ -82,7 +86,7 @@ export default function Index() {
                     <source src={assetId} type="video/mp4" />
                 </video>
 
-                {isStandby ? <Standby /> : <ScreensWrapper />}
+                {isStandby ? <Standby /> : <ScreensWrapper initialIndex={initialIndex} />}
             </View>
         </>
     );

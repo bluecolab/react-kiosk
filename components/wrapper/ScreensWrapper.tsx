@@ -12,13 +12,25 @@ import AllScreensModal from './modal/AllScreensModal';
 import { UIType } from '@/hooks/constants/constants';
 import Dock from './dock/Dock';
 
-export default function ScreensWrapper() {
+type Props = Readonly<{
+    /** optional index to open (0-based). When provided/changed, the carousel will jump to this index */
+    initialIndex?: number;
+}>;
+
+export default function ScreensWrapper({ initialIndex }: Props) {
     const widgets = useWidgets();
     const { SHRUNKEN, EXPANDED, mode } = useConfigs();
 
     const ref = useRef<ICarouselInstance>(null);
 
     const [index, setIndex] = useState<number>(0);
+
+    // If a parent requests a particular screen, respond to it
+    React.useEffect(() => {
+        if (typeof initialIndex === 'number' && initialIndex >= 0 && initialIndex < widgets.length) {
+            setIndex(initialIndex);
+        }
+    }, [initialIndex, widgets.length]);
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
