@@ -44,7 +44,7 @@ export const useWidgets = (): Widget[] => {
             title: 'Water Data',
             image: require('@/assets/images/icons/PondWaterDataIcon.png'),
             screen: React.createElement(PondWaterData),
-        },        
+        },
         {
             title: 'Welcome!',
             image: require('@/assets/images/icons/WelcomeIcon.png'),
@@ -54,7 +54,7 @@ export const useWidgets = (): Widget[] => {
             title: 'About Us',
             image: require('@/assets/images/icons/AboutIcon.png'),
             screen: React.createElement(AboutUs),
-        },        
+        },
         {
             title: 'Right to Know',
             image: require('@/assets/images/icons/RTKIcon.png'),

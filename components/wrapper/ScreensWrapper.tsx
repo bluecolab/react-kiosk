@@ -27,7 +27,11 @@ export default function ScreensWrapper({ initialIndex }: Props) {
 
     // If a parent requests a particular screen, respond to it
     React.useEffect(() => {
-        if (typeof initialIndex === 'number' && initialIndex >= 0 && initialIndex < widgets.length) {
+        if (
+            typeof initialIndex === 'number' &&
+            initialIndex >= 0 &&
+            initialIndex < widgets.length
+        ) {
             setIndex(initialIndex);
         }
     }, [initialIndex, widgets.length]);
