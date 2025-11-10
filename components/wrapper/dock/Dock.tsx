@@ -10,14 +10,14 @@ import { useState } from 'react';
 const GROWTH_RADIUS = 0.5; // how many neighbors are affected
 
 interface DockProps {
-    carouselLocationStyle: { bottom: number };
+    dockLocationStyle: { bottom: number };
     width: number;
     height: number;
     setIndex: (index: number) => void;
     widgets: Widget[];
 }
 
-const Dock = ({ carouselLocationStyle, width, height, setIndex, widgets }: DockProps) => {
+const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const itemSizeWidth = (width / widgets.length) * 0.8; // 80% of the space allocated
     const itemSizeHeight = height * 0.14; // 14% of the height allocated
@@ -25,7 +25,7 @@ const Dock = ({ carouselLocationStyle, width, height, setIndex, widgets }: DockP
     return (
         <Animated.View
             style={[
-                carouselLocationStyle,
+                dockLocationStyle,
                 {
                     position: 'absolute',
                     left: 0,
