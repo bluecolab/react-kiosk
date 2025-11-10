@@ -18,7 +18,7 @@ interface DockProps {
 }
 
 const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps) => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(5);
     const itemSizeWidth = (width / widgets.length) * 0.8; // 80% of the space allocated
     const itemSizeHeight = height * 0.14; // 14% of the height allocated
 

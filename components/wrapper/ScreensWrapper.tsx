@@ -7,27 +7,12 @@ import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import Dock from './dock/Dock';
 
-type Props = Readonly<{
-    /** optional index to open (0-based). When provided/changed, the dock will jump to this index */
-    initialIndex?: number;
-}>;
-
-export default function ScreensWrapper({ initialIndex }: Props) {
+export default function ScreensWrapper() {
     const widgets = useWidgets();
     const { SHRUNKEN, EXPANDED } = useConfigs();
 
     const [index, setIndex] = useState<number>(0);
 
-    // If a parent requests a particular screen, respond to it
-    useEffect(() => {
-        if (
-            typeof initialIndex === 'number' &&
-            initialIndex >= 0 &&
-            initialIndex < widgets.length
-        ) {
-            setIndex(initialIndex);
-        }
-    }, [initialIndex, widgets.length]);
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     const defaultAnimationConfig = useMemo(
