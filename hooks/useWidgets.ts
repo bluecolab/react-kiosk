@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import AboutUs from '@/components/screens/AboutUs';
 import DataToMusic from '@/components/screens/DataToMusic';
 import Games from '@/components/screens/Games';
@@ -14,7 +14,7 @@ import Welcome from '@/components/screens/Welcome';
 export interface Widget {
     title: string;
     image: number;
-    screen: React.ReactNode;
+    screen: ReactNode;
     onPress?: () => void;
 }
 

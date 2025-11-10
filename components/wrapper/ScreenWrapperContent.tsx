@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { ScrollView, Text } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 interface ScreenWrapperContentProps {
     title: string;
-    screen: React.ReactNode;
+    screen: ReactNode;
     contentAreaHeightStyle: {
         height: number;
         backgroundColor: string;
