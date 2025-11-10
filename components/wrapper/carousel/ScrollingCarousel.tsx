@@ -6,6 +6,7 @@ import CarouselItem from './CarouselItem';
 import { Widget } from '@/hooks/useWidgets';
 import { useConfigs } from '@/hooks/useConfigs';
 import { UIType } from '@/hooks/constants/constants';
+import { useCallback } from 'react';
 
 // Define the types for the props
 interface ScrollingCarouselProps {
@@ -30,7 +31,7 @@ const ScrollingCarousel: React.FC<ScrollingCarouselProps> = ({
     const itemSize = height * 0.185; // size of center icon is 18.5% of the height
     const centerOffset = PAGE_WIDTH / 2 - itemSize / 2;
 
-    const animationStyle: TAnimationStyle = React.useCallback(
+    const animationStyle: TAnimationStyle = useCallback(
         (value: number) => {
             'worklet';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Pressable, Dimensions } from 'react-native';
 import Animated, {
     Extrapolation,
@@ -15,9 +15,9 @@ interface CustomItemProps {
 }
 
 const CustomItem: React.FC<CustomItemProps> = ({ item, animationValue }) => {
-    const [screenWidth, setScreenWidth] = React.useState(Dimensions.get('window').width);
+    const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const subscription = Dimensions.addEventListener('change', ({ window }) => {
             setScreenWidth(window.width);
         });

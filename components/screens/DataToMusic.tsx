@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 // import InProgress from '@/components/InProgress'; // Placeholder import, not used in final code
 import { ActivityIndicator, View, Text } from 'react-native';
 
 export default function DataToMusic() {
-    const [serverUp, setServerUp] = React.useState<boolean | null>(null); // null = unknown, true = up, false = down
-    const [retryCount, setRetryCount] = React.useState(0);
+    const [serverUp, setServerUp] = useState<boolean | null>(null); // null = unknown, true = up, false = down
+    const [retryCount, setRetryCount] = useState(0);
     const MAX_RETRIES = 3;
     const RETRY_DELAY = 2000; // 2 seconds between retries
     const HEALTH_CHECK_INTERVAL = 30000; // Check every 30 seconds
 
-    const checkServerStatus = React.useCallback(async () => {
+    const checkServerStatus = useCallback(async () => {
         try {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
@@ -55,7 +55,7 @@ export default function DataToMusic() {
         }
     }, [retryCount]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         checkServerStatus();
 
         // Set up periodic health checks
