@@ -6,6 +6,7 @@ import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import Dock from './dock/Dock';
+import FloatingActionButton from '../FloatingActionButton';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
@@ -14,6 +15,7 @@ export default function ScreensWrapper() {
     const [index, setIndex] = useState<number>(0);
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const [isFloatingMenuExpanded, setIsFloatingMenuExpanded] = useState<boolean>(false);
 
     const defaultAnimationConfig = useMemo(
         () => ({
@@ -160,6 +162,77 @@ export default function ScreensWrapper() {
                     }}
                 />
             </View>
+
+            <FloatingActionButton
+                isExpanded={isFloatingMenuExpanded}
+                onToggle={() => setIsFloatingMenuExpanded(!isFloatingMenuExpanded)}
+                onMenuPress={() => {
+                    // Navigate to first widget (Welcome/Menu)
+                    setIndex(0);
+                }}
+                onWeatherPress={() => {
+                    // Navigate to Weather widget
+                    const weatherIndex = widgets.findIndex((w) => w.title === 'Weather');
+                    if (weatherIndex !== -1) {
+                        setIndex(weatherIndex);
+                    }
+                }}
+                onAboutUsPress={() => {
+                    // Navigate to About Us widget
+                    const aboutUsIndex = widgets.findIndex((w) => w.title === 'About Us');
+                    if (aboutUsIndex !== -1) {
+                        setIndex(aboutUsIndex);
+                    }
+                }}
+                onWaterReportsPress={() => {
+                    // Navigate to Water Reports widget
+                    const waterReportsIndex = widgets.findIndex((w) => w.title === 'Water Reports');
+                    if (waterReportsIndex !== -1) {
+                        setIndex(waterReportsIndex);
+                    }
+                }}
+                onWaterDataPress={() => {
+                    // Navigate to Water Data widget
+                    const waterDataIndex = widgets.findIndex((w) => w.title === 'Water Data');
+                    if (waterDataIndex !== -1) {
+                        setIndex(waterDataIndex);
+                    }
+                }}
+                onRightToKnowPress={() => {
+                    // Navigate to Right To Know
+                    const rightToKnowIndex = widgets.findIndex((w) => w.title === 'Right to Know');
+                    if (rightToKnowIndex !== -1) {
+                        setIndex(rightToKnowIndex);
+                    }
+                }}
+                onExpandKiosk={() => {
+                    // Expand the kiosk if not already expanded
+                    if (!isExpanded) {
+                        dockLocation.value = withTiming(-500, defaultAnimationConfig);
+                        viewAreaHeight.value = withTiming(
+                            window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
+                            defaultAnimationConfig
+                        );
+                        viewAreaColor.value = withTiming(
+                            EXPANDED.VIEW_AREA_COLOR,
+                            defaultAnimationConfig
+                        );
+                        viewAreaWidth.value = withTiming(
+                            window.innerWidth * EXPANDED.VIEW_AREA_WIDTH,
+                            defaultAnimationConfig
+                        );
+                        viewAreaBorderRadius.value = withTiming(
+                            EXPANDED.VIEW_AREA_BORDER_RADIUS,
+                            defaultAnimationConfig
+                        );
+                        viewAreaMarginTop.value = withTiming(
+                            EXPANDED.VIEW_AREA_MARGIN_TOP,
+                            defaultAnimationConfig
+                        );
+                        setIsExpanded(true);
+                    }
+                }}
+            />
 
             <Dock
                 dockLocationStyle={dockLocationStyle}
