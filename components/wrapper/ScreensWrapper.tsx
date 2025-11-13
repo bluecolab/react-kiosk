@@ -4,10 +4,11 @@ import { View, Easing } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
-import ExpandButton from './ExpandButton';
+import ExpandButton from './ExpandButton'; // Import the ExpandButton component
 import { useConfigs } from '@/hooks/useConfigs';
 import { ICarouselInstance } from 'react-native-reanimated-carousel';
 import FloatingButton from '../FloatingButton';
+import FloatingActionButton from '../FloatingActionButton';
 import AllScreensModal from './AllScreensModal';
 
 export default function ScreensWrapper() {
@@ -171,6 +172,99 @@ export default function ScreensWrapper() {
                                 defaultAnimationConfig
                             );
                             setIsExpanded(!isExpanded);
+                        }
+                    }}
+                />
+
+                <FloatingActionButton
+                    isExpanded={isExpanded}
+                    onToggle={() => {
+                        if (isExpanded) {
+                            carouselLocation.value = withTiming(
+                                window.innerHeight * SHRUNKEN.CAROUSEL_LOCATION,
+                                defaultAnimationConfig
+                            );
+                            viewAreaHeight.value = withTiming(
+                                window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
+                                defaultAnimationConfig
+                            );
+                            viewAreaColor.value = withTiming(
+                                SHRUNKEN.VIEW_AREA_COLOR,
+                                defaultAnimationConfig
+                            );
+                            viewAreaWidth.value = withTiming(
+                                window.innerWidth * SHRUNKEN.VIEW_AREA_WIDTH,
+                                defaultAnimationConfig
+                            );
+                            viewAreaBorderRadius.value = withTiming(
+                                SHRUNKEN.VIEW_AREA_BORDER_RADIUS,
+                                defaultAnimationConfig
+                            );
+                            viewAreaMarginTop.value = withTiming(
+                                SHRUNKEN.VIEW_AREA_MARGIN_TOP,
+                                defaultAnimationConfig
+                            );
+                            setIsExpanded(!isExpanded);
+                        } else {
+                            carouselLocation.value = withTiming(
+                                window.innerHeight * EXPANDED.CAROUSEL_LOCATION,
+                                defaultAnimationConfig
+                            );
+                            viewAreaHeight.value = withTiming(
+                                window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
+                                defaultAnimationConfig
+                            );
+                            viewAreaColor.value = withTiming(
+                                EXPANDED.VIEW_AREA_COLOR,
+                                defaultAnimationConfig
+                            );
+                            viewAreaWidth.value = withTiming(
+                                window.innerWidth * EXPANDED.VIEW_AREA_WIDTH,
+                                defaultAnimationConfig
+                            );
+                            viewAreaBorderRadius.value = withTiming(
+                                EXPANDED.VIEW_AREA_BORDER_RADIUS,
+                                defaultAnimationConfig
+                            );
+                            viewAreaMarginTop.value = withTiming(
+                                EXPANDED.VIEW_AREA_MARGIN_TOP,
+                                defaultAnimationConfig
+                            );
+                            setIsExpanded(!isExpanded);
+                        }
+                    }}
+                    onMenuPress={() => {
+                        // Open all screens modal
+                        setIsModalOpen(true);
+                    }}
+                    onWeatherPress={() => {
+                        // Navigate to Weather widget (index 7 based on useWidgets order)
+                        const weatherIndex = widgets.findIndex((w) => w.title === 'Weather');
+                        if (weatherIndex !== -1) {
+                            ref.current?.scrollTo({ index: weatherIndex, animated: true });
+                        }
+                    }}
+                    onWaterReportsPress={() => {
+                        // Navigate to Water Reports
+                        const waterReportsIndex = widgets.findIndex(
+                            (w) => w.title === 'Water Reports'
+                        );
+                        if (waterReportsIndex !== -1) {
+                            ref.current?.scrollTo({ index: waterReportsIndex, animated: true });
+                        }
+                    }}
+                    onAboutUsPress={() => {
+                        // Navigate to About Us (About Us/info screen, index 6)
+                        const aboutUsIndex = widgets.findIndex((w) => w.title === 'About Us');
+                        if (aboutUsIndex !== -1) {
+                            ref.current?.scrollTo({ index: aboutUsIndex, animated: true });
+                        }
+                    }}
+                    onWaterDataPress={() => {
+                        // Navigate to Water Data
+                        const waterDataIndex = widgets.findIndex((w) => w.title === 'Water Data');
+                        if (waterDataIndex !== -1) {
+                            ref.current?.scrollTo({ index: waterDataIndex, animated: true });
                         }
                     }}
                 />
