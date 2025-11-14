@@ -105,7 +105,6 @@ export default function FloatingActionButton({
         };
     });
 
-
     return (
         <View style={styles.mainContainer}>
             <View style={styles.buttonContainer}>
