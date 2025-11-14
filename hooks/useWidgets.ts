@@ -76,6 +76,11 @@ export const useWidgets = (): Widget[] => {
             image: require('@/assets/images/icons/VideosIcon.png'),
             screen: React.createElement(Videos),
         },
+        {
+            title: 'Credits',
+            image: require('@/assets/images/icons/Colab.png'),
+            screen: React.createElement(Credits),
+        },
     ];
 
     return widgets;
