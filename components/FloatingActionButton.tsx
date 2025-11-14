@@ -105,7 +105,6 @@ export default function FloatingActionButton({
         };
     });
 
-
     return (
         <View style={styles.mainContainer}>
             <View style={styles.buttonContainer}>
@@ -162,7 +161,7 @@ const mainButtonStyles = StyleSheet.create({
         height: 56,
         width: 56,
         borderRadius: 100,
-        backgroundColor: '#b58df1',
+        backgroundColor: '#2db0ecff',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -176,7 +175,7 @@ const mainButtonStyles = StyleSheet.create({
 const styles = StyleSheet.create({
     mainContainer: {
         position: 'absolute',
-        bottom: 20,
+        bottom: 86,
         right: 20,
         height: 380,
         width: 56,
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex: -2,
+        zIndex: 0,
         flexDirection: 'row',
     },
     buttonContainer: {

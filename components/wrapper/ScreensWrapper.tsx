@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { View, Easing } from 'react-native';
-import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { View, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
@@ -16,6 +16,7 @@ export default function ScreensWrapper() {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [isFloatingMenuExpanded, setIsFloatingMenuExpanded] = useState<boolean>(false);
+    const [isReachabilityActive, setIsReachabilityActive] = useState<boolean>(false);
 
     const defaultAnimationConfig = useMemo(
         () => ({
@@ -32,10 +33,12 @@ export default function ScreensWrapper() {
     const viewAreaWidth = useSharedValue(0);
     const viewAreaBorderRadius = useSharedValue(SHRUNKEN.VIEW_AREA_BORDER_RADIUS);
     const viewAreaMarginTop = useSharedValue(SHRUNKEN.VIEW_AREA_MARGIN_TOP);
+    const reachabilityOffset = useSharedValue(0);
 
     const dockLocationStyle = useAnimatedStyle(() => {
         return {
-            bottom: dockLocation.value,
+            bottom: dockLocation.value, // Animate dock position
+            transform: [{ translateY: reachabilityOffset.value }],
         };
     });
 
@@ -46,6 +49,12 @@ export default function ScreensWrapper() {
             width: viewAreaWidth.value,
             borderRadius: viewAreaBorderRadius.value,
             marginTop: viewAreaMarginTop.value,
+        };
+    });
+
+    const reachabilityStyle = useAnimatedStyle(() => {
+        return {
+            transform: [{ translateY: reachabilityOffset.value }],
         };
     });
 
@@ -91,18 +100,35 @@ export default function ScreensWrapper() {
         viewAreaMarginTop,
     ]);
 
+    const toggleReachability = () => {
+        if (isReachabilityActive) {
+            // Slide back up
+            reachabilityOffset.value = withTiming(0, { duration: 300 });
+            setIsReachabilityActive(true); // Fixes issue with button icon not updating
+        } else {
+            // Pull down UI by half screen height for easy top access
+            reachabilityOffset.value = withTiming(window.innerHeight * 0.5, { duration: 300 });
+            reachabilityOffset.value = withTiming(0, { duration: 300 });
+            setIsReachabilityActive(true);
+            setIsReachabilityActive(false);
+        }
+    };
+
     return (
         <View style={{ flex: 1, position: 'relative' }}>
-            <View
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    alignItems: 'center',
-                    width: '100%',
-                }}>
+            <Animated.View
+                style={[
+                    {
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        width: '100%',
+                    },
+                    reachabilityStyle,
+                ]}>
                 <ScreenWrapperContent
                     title={widgets[index].title}
                     screen={widgets[index].screen}
@@ -136,7 +162,7 @@ export default function ScreensWrapper() {
                             );
                             setIsExpanded(!isExpanded);
                         } else {
-                            dockLocation.value = withTiming(-500, defaultAnimationConfig);
+                            dockLocation.value = withTiming(500, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -161,11 +187,17 @@ export default function ScreensWrapper() {
                         }
                     }}
                 />
-            </View>
+            </Animated.View>
 
             <FloatingActionButton
                 isExpanded={isFloatingMenuExpanded}
-                onToggle={() => setIsFloatingMenuExpanded(!isFloatingMenuExpanded)}
+                onToggle={() => {
+                    setIsFloatingMenuExpanded(!isFloatingMenuExpanded);
+                    // Trigger Reachability when opening the menu
+                    if (!isFloatingMenuExpanded) {
+                        toggleReachability();
+                    }
+                }}
                 onMenuPress={() => {
                     // Navigate to first widget (Welcome/Menu)
                     setIndex(0);
@@ -208,7 +240,7 @@ export default function ScreensWrapper() {
                 onExpandKiosk={() => {
                     // Expand the kiosk if not already expanded
                     if (!isExpanded) {
-                        dockLocation.value = withTiming(-500, defaultAnimationConfig);
+                        dockLocation.value = withTiming(500, defaultAnimationConfig);
                         viewAreaHeight.value = withTiming(
                             window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                             defaultAnimationConfig
@@ -234,13 +266,60 @@ export default function ScreensWrapper() {
                 }}
             />
 
-            <Dock
-                dockLocationStyle={dockLocationStyle}
-                width={window.innerWidth}
-                height={window.innerHeight}
-                setIndex={setIndex}
-                widgets={widgets}
-            />
+            {/* Reachability Toggle Button */}
+            <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
+                <Text style={reachabilityStyles.toggleIcon}>
+                    {isReachabilityActive ? '^' : 'v'}
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
+                <Text style={reachabilityStyles.toggleIcon}>
+                    {isReachabilityActive ? 'v' : '^'}
+                </Text>
+            </TouchableOpacity>
+
+            {/* Dock Component with Reachability animation */}
+            <Animated.View
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    transform: [{ translateY: reachabilityOffset.value }],
+                }}>
+                <Dock
+                    dockLocationStyle={dockLocationStyle}
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    setIndex={setIndex}
+                    widgets={widgets}
+                />
+            </Animated.View>
         </View>
     );
 }
+
+const reachabilityStyles = StyleSheet.create({
+    toggleButton: {
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        width: 56,
+        height: 56,
+        borderRadius: 28,
+        backgroundColor: 'rgba(119, 205, 226, 0.9)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+        shadowColor: '#171717',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+    },
+    toggleIcon: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#f8f9ff',
+    },
+});
