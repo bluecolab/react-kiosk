@@ -8,6 +8,7 @@ const infoItems = [
         students:
             'Left to right, from the top: Cece Porter, Lilah McCormack, Louisa Moquete, Sasha Palmer, Meryl Mizell, Sasha Breygina.',
         img: require('@/assets/images/general/R2K2023.jpg'),
+        text: "The second-ever Right-to-Know H2O team is building on the foundation set by the 2023 cohort, advancing the belief that the human right to safe drinking water must include the right to know if campus water is safe. With over 270 million people relying on water at the world’s 25,000+ colleges and universities, the team aims to create a technology-driven model that campuses everywhere can adopt. Their work begins at Pace’s Pleasantville campus with a water-quality awareness campaign, a summit with local officials, an online learning hub, and a campus survey. Next, the team is developing a data-collection system, digital reporting tools, and an enhanced emergency alert feature for water issues. Supported by the Millennium Fellowship network, these Seidenberg students are preparing tools that other institutions can use to replicate the model."
     },
     {
         title: '2024 Team',
@@ -15,6 +16,7 @@ const infoItems = [
         students:
             'Left to right, from the top: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.',
         img: require('@/assets/images/general/R2K2024.jpg'),
+        text: "The first-ever Right-to-Know H2O team, led by Prof. John Cronin, is advancing SDG 6: Clean Water and Sanitation by promoting a simple principle: access to clean water is a human right—and so is the right to know if your water is safe. The team is developing a UN-focused petition, U.S. policy recommendations, and a Pace-based water information system to make water quality transparency a global standard."
     },
     {
         title: '2025 Team',
