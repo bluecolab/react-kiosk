@@ -10,6 +10,7 @@ import Videos from '@/components/screens/Videos';
 import WaterReports from '@/components/screens/WaterReports';
 import Weather from '@/components/screens/Weather';
 import Welcome from '@/components/screens/Welcome';
+import Credits from '@/components/screens/Credits';
 
 export interface Widget {
     title: string;
@@ -74,6 +75,11 @@ export const useWidgets = (): Widget[] => {
             title: 'About Us',
             image: require('@/assets/images/icons/AboutIcon.png'),
             screen: React.createElement(AboutUs),
+        },
+        {
+            title: 'Credits',
+            image: require('@/assets/images/icons/Colab.png'),
+            screen: React.createElement(Credits),
         },
     ];
 
