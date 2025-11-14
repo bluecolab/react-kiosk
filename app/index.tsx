@@ -14,6 +14,7 @@ export default function Index() {
     const [isStandby, setIsStandby] = useState(true);
     const [lastActivity, setLastActivity] = useState(Date.now());
     const [standbyTime] = useState(MAX_IDLE_TIME);
+    // index of screen to open when exiting standby (optional)
     const resetInactivity = useCallback(() => {
         setLastActivity(Date.now());
         if (isStandby) {
