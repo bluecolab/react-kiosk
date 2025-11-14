@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { View, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
@@ -6,7 +6,6 @@ import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import Dock from './dock/Dock';
-import FloatingActionButton from '../FloatingActionButton';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
@@ -15,8 +14,10 @@ export default function ScreensWrapper() {
     const [index, setIndex] = useState<number>(0);
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
-    const [isFloatingMenuExpanded, setIsFloatingMenuExpanded] = useState<boolean>(false);
     const [isReachabilityActive, setIsReachabilityActive] = useState<boolean>(false);
+
+    // Ref to store auto-hide timeout so we can clear it if user toggles manually
+    const reachTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const defaultAnimationConfig = useMemo(
         () => ({
@@ -101,18 +102,38 @@ export default function ScreensWrapper() {
     ]);
 
     const toggleReachability = () => {
+        // Clear any existing auto-hide timer
+        if (reachTimeoutRef.current) {
+            clearTimeout(reachTimeoutRef.current as any);
+            reachTimeoutRef.current = null;
+        }
+
         if (isReachabilityActive) {
-            // Slide back up
+            // Slide back up and mark as inactive
             reachabilityOffset.value = withTiming(0, { duration: 300 });
-            setIsReachabilityActive(true); // Fixes issue with button icon not updating
+            setIsReachabilityActive(false);
         } else {
             // Pull down UI by half screen height for easy top access
             reachabilityOffset.value = withTiming(window.innerHeight * 0.5, { duration: 300 });
-            reachabilityOffset.value = withTiming(0, { duration: 300 });
             setIsReachabilityActive(true);
-            setIsReachabilityActive(false);
+
+            // Auto-hide after 8s so it stays down longer; clear if toggled manually
+            reachTimeoutRef.current = setTimeout(() => {
+                reachabilityOffset.value = withTiming(0, { duration: 300 });
+                setIsReachabilityActive(false);
+                reachTimeoutRef.current = null;
+            }, 30000);
         }
     };
+
+    useEffect(() => {
+        return () => {
+            if (reachTimeoutRef.current) {
+                clearTimeout(reachTimeoutRef.current as any);
+                reachTimeoutRef.current = null;
+            }
+        };
+    }, []);
 
     return (
         <View style={{ flex: 1, position: 'relative' }}>
@@ -187,107 +208,6 @@ export default function ScreensWrapper() {
                         }
                     }}
                 />
-            </Animated.View>
-
-            <FloatingActionButton
-                isExpanded={isFloatingMenuExpanded}
-                onToggle={() => {
-                    setIsFloatingMenuExpanded(!isFloatingMenuExpanded);
-                    // Trigger Reachability when opening the menu
-                    if (!isFloatingMenuExpanded) {
-                        toggleReachability();
-                    }
-                }}
-                onMenuPress={() => {
-                    // Navigate to first widget (Welcome/Menu)
-                    setIndex(0);
-                }}
-                onWeatherPress={() => {
-                    // Navigate to Weather widget
-                    const weatherIndex = widgets.findIndex((w) => w.title === 'Weather');
-                    if (weatherIndex !== -1) {
-                        setIndex(weatherIndex);
-                    }
-                }}
-                onAboutUsPress={() => {
-                    // Navigate to About Us widget
-                    const aboutUsIndex = widgets.findIndex((w) => w.title === 'About Us');
-                    if (aboutUsIndex !== -1) {
-                        setIndex(aboutUsIndex);
-                    }
-                }}
-                onWaterReportsPress={() => {
-                    // Navigate to Water Reports widget
-                    const waterReportsIndex = widgets.findIndex((w) => w.title === 'Water Reports');
-                    if (waterReportsIndex !== -1) {
-                        setIndex(waterReportsIndex);
-                    }
-                }}
-                onWaterDataPress={() => {
-                    // Navigate to Water Data widget
-                    const waterDataIndex = widgets.findIndex((w) => w.title === 'Water Data');
-                    if (waterDataIndex !== -1) {
-                        setIndex(waterDataIndex);
-                    }
-                }}
-                onRightToKnowPress={() => {
-                    // Navigate to Right To Know
-                    const rightToKnowIndex = widgets.findIndex((w) => w.title === 'Right to Know');
-                    if (rightToKnowIndex !== -1) {
-                        setIndex(rightToKnowIndex);
-                    }
-                }}
-                onExpandKiosk={() => {
-                    // Expand the kiosk if not already expanded
-                    if (!isExpanded) {
-                        dockLocation.value = withTiming(500, defaultAnimationConfig);
-                        viewAreaHeight.value = withTiming(
-                            window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
-                            defaultAnimationConfig
-                        );
-                        viewAreaColor.value = withTiming(
-                            EXPANDED.VIEW_AREA_COLOR,
-                            defaultAnimationConfig
-                        );
-                        viewAreaWidth.value = withTiming(
-                            window.innerWidth * EXPANDED.VIEW_AREA_WIDTH,
-                            defaultAnimationConfig
-                        );
-                        viewAreaBorderRadius.value = withTiming(
-                            EXPANDED.VIEW_AREA_BORDER_RADIUS,
-                            defaultAnimationConfig
-                        );
-                        viewAreaMarginTop.value = withTiming(
-                            EXPANDED.VIEW_AREA_MARGIN_TOP,
-                            defaultAnimationConfig
-                        );
-                        setIsExpanded(true);
-                    }
-                }}
-            />
-
-            {/* Reachability Toggle Button */}
-            <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
-                <Text style={reachabilityStyles.toggleIcon}>
-                    {isReachabilityActive ? '^' : 'v'}
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
-                <Text style={reachabilityStyles.toggleIcon}>
-                    {isReachabilityActive ? 'v' : '^'}
-                </Text>
-            </TouchableOpacity>
-
-            {/* Dock Component with Reachability animation */}
-            <Animated.View
-                style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    transform: [{ translateY: reachabilityOffset.value }],
-                }}>
                 <Dock
                     dockLocationStyle={dockLocationStyle}
                     width={window.innerWidth}
@@ -296,9 +216,20 @@ export default function ScreensWrapper() {
                     widgets={widgets}
                 />
             </Animated.View>
+
+            {/* Reachability Toggle Button */}
+            <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
+                <Text style={reachabilityStyles.toggleIcon}>
+                    {isReachabilityActive ? '^' : 'v'}
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }
+
+// Clean up any pending timeout when component unmounts
+// (placed after component to keep function body focused)
+// Note: We use a separate effect above for declarative cleanup inside the component scope.
 
 const reachabilityStyles = StyleSheet.create({
     toggleButton: {
