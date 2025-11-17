@@ -235,7 +235,7 @@ const reachabilityStyles = StyleSheet.create({
         right: 20,
         width: 56,
         height: 56,
-        borderRadius: 27,
+        borderRadius: 28,
         backgroundColor: 'rgba(119, 205, 226, 0.9)',
         justifyContent: 'center',
         alignItems: 'center',
