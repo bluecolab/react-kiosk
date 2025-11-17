@@ -11,7 +11,7 @@ export default function ScreensWrapper() {
     const widgets = useWidgets();
     const { SHRUNKEN, EXPANDED } = useConfigs();
 
-    const [index, setIndex] = useState<number>(0);
+    const [index, setIndex] = useState<number>(5);
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [isReachabilityActive, setIsReachabilityActive] = useState<boolean>(false);
