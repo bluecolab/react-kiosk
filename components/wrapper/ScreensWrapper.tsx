@@ -183,7 +183,7 @@ export default function ScreensWrapper() {
                             );
                             setIsExpanded(!isExpanded);
                         } else {
-                            dockLocation.value = withTiming(500, defaultAnimationConfig);
+                            dockLocation.value = withTiming(-500, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -208,14 +208,16 @@ export default function ScreensWrapper() {
                         }
                     }}
                 />
-                <Dock
-                    dockLocationStyle={dockLocationStyle}
-                    width={window.innerWidth}
-                    height={window.innerHeight}
-                    setIndex={setIndex}
-                    widgets={widgets}
-                />
             </Animated.View>
+
+            {/* Dock Component */}
+            <Dock
+                dockLocationStyle={dockLocationStyle}
+                width={window.innerWidth}
+                height={window.innerHeight}
+                setIndex={setIndex}
+                widgets={widgets}
+            />
 
             {/* Reachability Toggle Button */}
             <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
