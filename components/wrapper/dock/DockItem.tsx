@@ -79,7 +79,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                 if (item.onPress) {
                     try {
                         item.onPress();
-                    } catch (e) {
+                    } catch {
                         // swallow: fallback to selecting index
                         setIndex(index);
                     }

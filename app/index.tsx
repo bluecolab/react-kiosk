@@ -25,13 +25,12 @@ export default function Index() {
     }, [isStandby]);
 
     useEffect(() => {
-        const showHandler = (e: Event) => {
+        const showHandler = () => {
             setShowCredits(true);
         };
 
-        const navHandler = (e: Event) => {
+        const navHandler = () => {
             try {
-                const detail = (e as CustomEvent).detail || {};
                 // hide credits when a navigation event occurs (e.g. Credits -> Welcome)
                 setShowCredits(false);
             } catch {
@@ -109,8 +108,7 @@ export default function Index() {
 
                 {isStandby ? (
                     <Standby />
-                ) : showCredits ? // when showing credits, hide the wrapper (carousel + dock)
-                null : (
+                ) : showCredits ? null : ( // when showing credits, hide the wrapper (carousel + dock)
                     <ScreensWrapper />
                 )}
 
