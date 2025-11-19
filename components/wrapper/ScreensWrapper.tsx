@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { View, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { View, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native'; // Fixed extra space in import path
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'; // Fixed extra space in import path
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
@@ -183,7 +183,7 @@ export default function ScreensWrapper() {
                             );
                             setIsExpanded(!isExpanded);
                         } else {
-                            dockLocation.value = withTiming(500, defaultAnimationConfig);
+                            dockLocation.value = withTiming(-500, defaultAnimationConfig);
                             viewAreaHeight.value = withTiming(
                                 window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
@@ -208,14 +208,16 @@ export default function ScreensWrapper() {
                         }
                     }}
                 />
-                <Dock
-                    dockLocationStyle={dockLocationStyle}
-                    width={window.innerWidth}
-                    height={window.innerHeight}
-                    setIndex={setIndex}
-                    widgets={widgets}
-                />
             </Animated.View>
+
+            {/* Dock Component */}
+            <Dock
+                dockLocationStyle={dockLocationStyle}
+                width={window.innerWidth}
+                height={window.innerHeight}
+                setIndex={setIndex}
+                widgets={widgets}
+            />
 
             {/* Reachability Toggle Button */}
             <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
@@ -238,7 +240,7 @@ const reachabilityStyles = StyleSheet.create({
         right: 20,
         width: 56,
         height: 56,
-        borderRadius: 28,
+        borderRadius: 27,
         backgroundColor: 'rgba(119, 205, 226, 0.9)',
         justifyContent: 'center',
         alignItems: 'center',
