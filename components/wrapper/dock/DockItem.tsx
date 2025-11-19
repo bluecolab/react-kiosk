@@ -74,7 +74,19 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
     });
 
     return (
-        <Pressable onPress={() => setIndex(index)}>
+        <Pressable
+            onPress={() => {
+                if (item.onPress) {
+                    try {
+                        item.onPress();
+                    } catch (e) {
+                        // swallow: fallback to selecting index
+                        setIndex(index);
+                    }
+                } else {
+                    setIndex(index);
+                }
+            }}>
             <Animated.View
                 style={[
                     { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },

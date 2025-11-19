@@ -3,8 +3,7 @@ import React, { useEffect, useRef } from 'react';
 // This component uses some plain HTML elements (video, div) so it renders as expected
 // on web builds. It will show a looping background water video, a side logo, and a
 // vertically-scrolling credits roll (CSS animation).
-export default function Credits() {
-    const videoSrc = require('@/assets/videos/background.mp4');
+export default function Credits({ durationSeconds = 15 }: { durationSeconds?: number } = {}) {
     const logoSrc = require('@/assets/images/icons/Blue-CoLab-500-blue.png');
     const rollRef = useRef<HTMLDivElement | null>(null);
 
@@ -102,24 +101,15 @@ export default function Credits() {
     ];
 
     return (
-        <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                src={videoSrc}
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    zIndex: 0,
-                }}
-            />
-
+        <div
+            style={{
+                position: 'fixed',
+                inset: 0,
+                width: '100%',
+                height: '100vh',
+                overflow: 'hidden',
+            }}>
+            {/* Keep a translucent overlay so the running background remains visible underneath */}
             <div
                 style={{
                     position: 'absolute',
@@ -129,6 +119,7 @@ export default function Credits() {
                     bottom: 0,
                     background: 'linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.6))',
                     zIndex: 1,
+                    pointerEvents: 'none',
                 }}
             />
 
@@ -148,7 +139,7 @@ export default function Credits() {
                     pointerEvents: 'auto',
                     cursor: 'pointer',
                 }}>
-                <div style={{ width: '60%', maxWidth: 900, minWidth: 320 }}>
+                <div style={{ width: '80%', maxWidth: 900, minWidth: 320 }}>
                     <div
                         ref={rollRef}
                         className="credits-roll"
@@ -156,16 +147,18 @@ export default function Credits() {
                             color: 'white',
                             textAlign: 'center',
                             fontFamily: 'sans-serif',
-                            fontSize: 22,
-                            lineHeight: '2.2rem',
+                            fontSize: 25,
+                            lineHeight: '1.5rem',
+                            // set CSS variable so animation duration can be customized
+                            ['--credits-duration' as any]: `${durationSeconds}s`,
                         }}>
-                        <div style={{ marginBottom: 40 }}>
-                            <h1 style={{ margin: 0, fontSize: 36 }}>Kiosk Contributors</h1>
+                        <div style={{ marginBottom: 20 }}>
+                            <h1 style={{ margin: 8, fontSize: 45 }}>Kiosk Contributors</h1>
                         </div>
 
                         {credits.map((section, i) => (
-                            <div key={i} style={{ marginBottom: 18 }}>
-                                <div style={{ fontWeight: 700, fontSize: 20, marginBottom: 8 }}>
+                            <div key={i} style={{ marginBottom: 10 }}>
+                                <div style={{ fontWeight: 700, fontSize: 30, marginBottom: 15 }}>
                                     {section.heading}
                                 </div>
                                 {section.items.map((it: string, k: number) => (

@@ -80,6 +80,8 @@ export const useWidgets = (): Widget[] => {
             title: 'Credits',
             image: require('@/assets/images/icons/Colab.png'),
             screen: React.createElement(Credits),
+            onPress: () =>
+                window.dispatchEvent(new CustomEvent('kiosk-show-credits', { detail: {} })),
         },
     ];
 
