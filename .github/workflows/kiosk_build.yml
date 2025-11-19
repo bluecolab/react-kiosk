@@ -33,8 +33,17 @@ jobs:
             - name: Deploy to GitHub Pages
               run: |
                   git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-                  DEPLOY_TAG="deploy-$(date -u +%Y%m%d-%H%M%SZ)-${GITHUB_SHA::7}"
-                  npx gh-pages --nojekyll -d dist -u "github-actions-bot <support+actions@github.com>" -g "$DEPLOY_TAG"
+                  npx gh-pages --nojekyll -d dist -u "github-actions-bot <support+actions@github.com>"
+
+                  SOURCE_SHA=${GITHUB_SHA}
+                  SHORT_SHA=${SOURCE_SHA:0:7}
+                  TAG="deploy-$(date -u +%Y%m%d-%H%M%SZ)-${SHORT_SHA}"
+                  git config user.name "github-actions-bot"
+                  git config user.email "support+actions@github.com"
+
+                  git tag -a "$TAG" "$SOURCE_SHA" -m "Deploy from main: $TAG"
+                  git push origin "$TAG"
+                  echo "deploy_tag=$TAG" >> $GITHUB_OUTPUT
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically provided by GitHub Actions
 
