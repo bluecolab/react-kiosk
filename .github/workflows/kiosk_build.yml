@@ -26,15 +26,6 @@ jobs:
               run: |
                   npm install
 
-            #     # Install node-fetch@2, undici, and stream-browserify to polyfill ReadableStream
-            #     npm install node-fetch@2 undici stream-browserify
-
-            # - name: Add polyfill to Node.js environment
-            #   run: |
-            #     # Polyfill ReadableStream using stream-browserify
-            #     echo "global.ReadableStream = require('stream-browserify').Readable;" > setup.js
-            #     node setup.js
-
             - name: Build the project
               run: |
                   npx expo export --platform web
@@ -43,6 +34,16 @@ jobs:
               run: |
                   git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
                   npx gh-pages --nojekyll -d dist -u "github-actions-bot <support+actions@github.com>"
+
+                  SOURCE_SHA=${GITHUB_SHA}
+                  SHORT_SHA=${SOURCE_SHA:0:7}
+                  TAG="deploy-$(date -u +%Y%m%d-%H%M%SZ)-${SHORT_SHA}"
+                  git config user.name "github-actions-bot"
+                  git config user.email "support+actions@github.com"
+
+                  git tag -a "$TAG" "$SOURCE_SHA" -m "Deploy from main: $TAG"
+                  git push origin "$TAG"
+                  echo "deploy_tag=$TAG" >> $GITHUB_OUTPUT
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically provided by GitHub Actions
 
