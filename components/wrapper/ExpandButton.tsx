@@ -27,7 +27,7 @@ export default function ExpandButton({ isExpanded, onPress }: ExpandButtonProps)
                         textAlign: 'center',
                         fontSize: 18,
                     }}>
-                    {isExpanded ? '△ Shrink △' : '▽ Expand ▽'}
+                    {isExpanded ? '△ Shrink △' : '▽ Expand on no this is a bug! ▽'}
                 </Text>
             </TouchableOpacity>
         </View>
