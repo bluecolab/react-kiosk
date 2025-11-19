@@ -6,6 +6,8 @@ on:
             - main # Trigger the workflow on push to the main branch (or change to your default branch)
     workflow_dispatch:
 
+run-name: Deploy — ${{ github.event_name }} — ${{ github.sha }}
+
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
@@ -41,7 +43,7 @@ jobs:
                   git config user.name "github-actions-bot"
                   git config user.email "support+actions@github.com"
 
-                  git tag -a "$TAG" "$SOURCE_SHA" -m "Deploy from main: $TAG"
+                  git tag -a "$TAG" "$SOURCE_SHA" -m "Deploy from ${SHORT_SHA}: $TAG"
                   git push origin "$TAG"
                   echo "deploy_tag=$TAG" >> $GITHUB_OUTPUT
               env:
