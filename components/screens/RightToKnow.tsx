@@ -32,7 +32,7 @@ export default function RightToKnow() {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Understand Your Right to Know About Water Quality</Text>
-
+            <Text>Here at Blue CoLab, we focus on the right to know H2O. We hold dear the United Nation’s Sustainable Development Goal (SDG) 6 – ensuring access to clean water and sanitation for all. People should have easy access to clean water. We believe that people need to have the right to know what’s in their water in order for them to make informed decisions.</Text>
             <View style={styles.tabBar}>
                 {infoItems.map((item, index) => (
                     <TouchableOpacity

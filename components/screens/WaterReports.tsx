@@ -3,6 +3,8 @@ import { View, Text, Modal, Pressable, StyleSheet, Platform, Image } from 'react
 import { useWaterReports } from '@/hooks/useWaterReports';
 import { WebView } from 'react-native-webview';
 
+let an = require('@/assets/images/Pace-PLV-water-animated.gif');
+
 export default function WaterReport() {
     const waterReports = useWaterReports();
     const [isModalVisible, setModalVisible] = useState(false);
@@ -27,6 +29,10 @@ export default function WaterReport() {
             <View style={styles.bookContainer}>
                 <Image source={{}} style={styles.bookBackground} />
                 <View style={styles.yearSelector}>
+                    <Text>The Pace University water in Pleasantville is from Ashokan Reservoir in the Catskill Mountains, traveling 91 miles underground aqueducts in order to reach campus. The Croton Reservoir, which is 12 miles away, is our backup source in case of any emergencies or for maintenance activities, dating back to 1842 (by damming the Croton River, making it the first upstate water source). Since we are a federally-recognized water community, Pace is to be responsible for managing their water supply, as well as meeting all the required testing standards.</Text>
+                    
+                    <Image source={an} />
+                    
                     <Text style={styles.bookTitle}>Water Quality Reports</Text>{' '}
                     {/* Updated title for clarity */}
                     <View style={styles.yearGrid}>
