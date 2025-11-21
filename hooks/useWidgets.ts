@@ -48,7 +48,7 @@ export const useWidgets = (): Widget[] => {
         },
         {
             title: 'Welcome!',
-            image: require('@/assets/images/icons/WelcomeIcon.png'),
+            image: require('@/assets/images/icons/Welcome Blue and White.png'),
             screen: React.createElement(Welcome),
         },
         {

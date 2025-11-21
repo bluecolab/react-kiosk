@@ -1,211 +1,271 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableWithoutFeedback,
+    Animated,
+    Easing,
+    Platform,
+    LayoutChangeEvent,
+} from 'react-native';
 
-// This component uses some plain HTML elements (video, div) so it renders as expected
-// on web builds. It will show a looping background water video, a side logo, and a
-// vertically-scrolling credits roll (CSS animation).
-export default function Credits({ durationSeconds = 15 }: { durationSeconds?: number } = {}) {
-    const logoSrc = require('@/assets/images/icons/Blue-CoLab-500-blue.png');
-    const rollRef = useRef<HTMLDivElement | null>(null);
+type CreditsProps = {
+    durationSeconds?: number;
+    onNavigate?: () => void;
+};
 
-    const goToWelcome = () => {
-        try {
-            window.dispatchEvent(
-                new CustomEvent('kiosk-navigate', { detail: { title: 'Welcome' } })
-            );
-        } catch {
-            // fallback: set global flag and reload main UI
-            (window as any).__startScreen = 'Welcome';
+const credits = [
+    { heading: 'Leadership', items: ['John Cronin', 'Leanne Keeley'] },
+    { heading: 'Advisors', items: ['Sasha Cronin'] },
+    {
+        heading: 'React Kiosk',
+        items: [
+            'Robert Bunjaj',
+            'Isaac Lasso Younes',
+            'Lloyd Boadi-Amoah',
+            'Victor Lima',
+            'Kenji Okura',
+        ],
+    },
+    {
+        heading: 'Dashboards',
+        items: [
+            'Kyle Hanson',
+            'Kainaat Babar',
+            "Nicole D'Annunzio",
+            'Sean Scully',
+            'Sasha Breygina',
+            'Alexandra Tejeda',
+            'George Moses',
+            'Victor Lima',
+            'Kenji Okura',
+        ],
+    },
+    {
+        heading: 'Games',
+        items: [
+            'Keathson Lam',
+            'Daniel White',
+            'Jack Sullivan',
+            'Isabella Coraci',
+            'Ian Shimba',
+            'Michael Rourke',
+            'Sebastian Roman',
+            'Kenji Okura',
+        ],
+    },
+    { heading: 'Sonification', items: ['Blue CoLab Team', 'Lulu Moquete', 'Kenji Okura'] },
+    {
+        heading: 'Kiosk Development Teams',
+        items: [
+            'AJ Kopec',
+            'Meryl Mizell',
+            'Sohaib Babar',
+            'Robert Bunjaj',
+            'Nailah Brown',
+            'Josh Connaught',
+            'Stephanie Sicilian',
+            'Jordan Butler',
+            'Keathson Lam',
+            'Sasha Breygina',
+            'Kevin Mendez',
+            'Max Yankowitz',
+            'Anthony Jarama',
+            'Katherine Welsh',
+            'Edmund Diggle',
+            'Isaac Lasso Younes',
+            'Marcus Manning',
+            'Zachary Goldberg',
+            'Michael Rourke',
+            'Erin Sorbella',
+            'Josh Bloom',
+            'Isabella Coraci',
+        ],
+    },
+];
+
+export default function Credits({ durationSeconds = 30, onNavigate }: CreditsProps) {
+    const translateY = useRef(new Animated.Value(0)).current;
+    const [containerHeight, setContainerHeight] = useState(0);
+    const [contentHeight, setContentHeight] = useState(0);
+    const animationRef = useRef<Animated.CompositeAnimation | null>(null);
+
+    const startAnimation = () => {
+        if (!containerHeight || !contentHeight) return;
+
+        // Start below the bottom (containerHeight) and end above the top (-contentHeight)
+        const distance = containerHeight + contentHeight;
+        translateY.setValue(containerHeight);
+
+        const duration = Math.max(
+            1000,
+            durationSeconds * 1000 * (distance / (containerHeight || 1))
+        );
+
+        animationRef.current = Animated.loop(
+            Animated.timing(translateY, {
+                toValue: -contentHeight,
+                duration: duration,
+                easing: Easing.linear,
+                useNativeDriver: true,
+            })
+        );
+        animationRef.current.start();
+    };
+
+    const stopAnimation = () => {
+        if (animationRef.current) {
+            animationRef.current.stop();
+            animationRef.current = null;
         }
     };
 
-    // Restart animation when component mounts so the roll starts from bottom.
     useEffect(() => {
-        const el = rollRef.current;
-        if (!el) return;
-        // trigger reflow to restart animation
-        el.style.animation = 'none';
-        // next frame restore animation
-        requestAnimationFrame(() => {
-            el.style.animation = '';
-        });
-    }, []);
+        // restart when sizes available
+        if (containerHeight && contentHeight) {
+            stopAnimation();
+            startAnimation();
+        }
+        return () => stopAnimation();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [containerHeight, contentHeight, durationSeconds]);
 
-    const credits = [
-        { heading: 'Leadership', items: ['John Cronin', 'Leanne Keeley'] },
-        { heading: 'Advisors', items: ['Sasha Cronin'] },
-        {
-            heading: 'React Kiosk',
-            items: [
-                'Robert Bunjaj',
-                'Isaac Lasso Younes',
-                'Lloyd Boadi-Amoah',
-                'Victor Lima',
-                'Kenji Okura',
-            ],
-        },
-        {
-            heading: 'Dashboards',
-            items: [
-                'Kyle Hanson',
-                'Kainaat Babar',
-                "Nicole D'Annunzio",
-                'Sean Scully',
-                'Sasha Breygina',
-                'Alexandra Tejeda',
-                'George Moses',
-                'Victor Lima',
-                'Kenji Okura',
-            ],
-        },
-        {
-            heading: 'Games',
-            items: [
-                'Keathson Lam',
-                'Daniel White',
-                'Jack Sullivan',
-                'Isabella Coraci',
-                'Ian Shimba',
-                'Michael Rourke',
-                'Sebastian Roman',
-                'Kenji Okura',
-            ],
-        },
-        { heading: 'Sonification', items: ['Blue CoLab Team', 'Lulu Moquete', 'Kenji Okura'] },
-        {
-            heading: 'Kiosk Development Teams',
-            items: [
-                'AJ Kopec',
-                'Meryl Mizell',
-                'Sohaib Babar',
-                'Robert Bunjaj',
-                'Nailah Brown',
-                'Josh Connaught',
-                'Stephanie Sicilian',
-                'Jordan Butler',
-                'Keathson Lam',
-                'Sasha Breygina',
-                'Kevin Mendez',
-                'Max Yankowitz',
-                'Anthony Jarama',
-                'Katherine Welsh',
-                'Edmund Diggle',
-                'Isaac Lasso Younes',
-                'Marcus Manning',
-                'Zachary Goldberg',
-                'Michael Rourke',
-                'Erin Sorbella',
-                'Josh Bloom',
-                'Isabella Coraci',
-            ],
-        },
-    ];
+    // Ensure content starts fully off-screen as soon as we know the container height.
+    // This avoids a brief flash where content is visible before the animation starts.
+    useEffect(() => {
+        if (containerHeight && !animationRef.current) {
+            // position the roll below the visible area
+            translateY.setValue(containerHeight);
+        }
+    }, [containerHeight, translateY]);
+
+    const onContainerLayout = (e: LayoutChangeEvent) => {
+        setContainerHeight(e.nativeEvent.layout.height);
+    };
+
+    const onContentLayout = (e: LayoutChangeEvent) => {
+        setContentHeight(e.nativeEvent.layout.height);
+    };
+
+    const handleNavigate = () => {
+        if (onNavigate) return onNavigate();
+        // fallback for web: dispatch the same custom event used elsewhere
+        try {
+            if (typeof window !== 'undefined') {
+                window.dispatchEvent(
+                    new CustomEvent('kiosk-navigate', { detail: { title: 'Welcome' } })
+                );
+                return;
+            }
+        } catch {
+            /* ignore */
+        }
+    };
 
     return (
-        <div
-            style={{
-                position: 'fixed',
-                inset: 0,
-                width: '100%',
-                height: '100vh',
-                overflow: 'hidden',
-            }}>
-            {/* Keep a translucent overlay so the running background remains visible underneath */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.6))',
-                    zIndex: 1,
-                    pointerEvents: 'none',
-                }}
-            />
+        <TouchableWithoutFeedback onPress={handleNavigate}>
+            <View style={styles.container} onLayout={onContainerLayout}>
+                {/* translucent overlay */}
+                <View style={styles.overlay} pointerEvents="none" />
 
-            <div
-                onClick={goToWelcome}
-                onTouchStart={goToWelcome}
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    pointerEvents: 'auto',
-                    cursor: 'pointer',
-                }}>
-                <div style={{ width: '80%', maxWidth: 900, minWidth: 320 }}>
-                    <div
-                        ref={rollRef}
-                        className="credits-roll"
-                        style={{
-                            color: 'white',
-                            textAlign: 'center',
-                            fontFamily: 'sans-serif',
-                            fontSize: 25,
-                            lineHeight: '1.5rem',
-                            // set CSS variable so animation duration can be customized
-                            ['--credits-duration' as any]: `${durationSeconds}s`,
-                        }}>
-                        <div style={{ marginBottom: 20 }}>
-                            <h1 style={{ margin: 8, fontSize: 45 }}>Kiosk Contributors</h1>
-                        </div>
+                <View style={styles.center} pointerEvents="box-none">
+                    <View style={styles.contentWrapper}>
+                        <Animated.View
+                            onLayout={onContentLayout}
+                            style={[styles.animatedContainer, { transform: [{ translateY }] }]}>
+                            <Text style={styles.title}>Kiosk Contributors</Text>
 
-                        {credits.map((section, i) => (
-                            <div key={i} style={{ marginBottom: 10 }}>
-                                <div style={{ fontWeight: 700, fontSize: 30, marginBottom: 15 }}>
-                                    {section.heading}
-                                </div>
-                                {section.items.map((it: string, k: number) => (
-                                    <div key={k} style={{ opacity: it.startsWith('  ') ? 0.9 : 1 }}>
-                                        {it}
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
+                            {credits.map((section, i) => (
+                                <View key={i} style={styles.section}>
+                                    <Text style={styles.heading}>{section.heading}</Text>
+                                    {section.items.map((it, k) => (
+                                        <Text key={k} style={styles.item}>
+                                            {it}
+                                        </Text>
+                                    ))}
+                                </View>
+                            ))}
 
-                        <div style={{ marginTop: 40, fontStyle: 'italic' }}>
-                            This is a non-exhaustive list — many other contributors, interns, and
-                            students have helped shape the kiosk over the years. Thank you to
-                            everyone who contributed.
-                        </div>
-                    </div>
-                </div>
-
-                <div style={{ position: 'absolute', right: 32, top: '10%', zIndex: 3 }}>
-                    <img
-                        src={logoSrc}
-                        alt="Blue CoLab"
-                        style={{
-                            width: 120,
-                            height: 120,
-                            objectFit: 'contain',
-                            pointerEvents: 'auto',
-                        }}
-                    />
-                </div>
-            </div>
-
-            <style>{`
-                .credits-roll {
-                    display: block;
-                    /* start below the bottom and move upward */
-                    animation: rollUp 30s linear infinite;
-                }
-
-                @keyframes rollUp {
-                    0% { transform: translateY(100%); }
-                    100% { transform: translateY(-120%); }
-                }
-
-                /* reduce text selection and improve readability on touch */
-                .credits-roll, .credits-roll * { user-select: none; }
-            `}</style>
-        </div>
+                            <Text style={styles.footer}>
+                                This is a non-exhaustive list — many other contributors, interns,
+                                and students have helped shape the kiosk over the years. Thank you
+                                to everyone who contributed.
+                            </Text>
+                        </Animated.View>
+                    </View>
+                </View>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        ...Platform.select({ web: { position: 'fixed' as const }, default: {} }),
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        flex: 1,
+        backgroundColor: 'transparent',
+        overflow: 'hidden',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.45)',
+    },
+    center: {
+        zIndex: 2,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 24,
+    },
+    contentWrapper: {
+        width: '80%',
+        maxWidth: 900,
+        minWidth: 320,
+        alignItems: 'center',
+        overflow: 'hidden',
+        height: '60%',
+    },
+    animatedContainer: {
+        width: '100%',
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 36,
+        color: '#fff',
+        marginBottom: 16,
+        fontWeight: '700',
+    },
+    section: {
+        marginBottom: 12,
+        alignItems: 'center',
+    },
+    heading: {
+        fontSize: 22,
+        color: '#fff',
+        fontWeight: '700',
+        marginBottom: 8,
+    },
+    item: {
+        color: '#fff',
+        fontSize: 16,
+        lineHeight: 22,
+    },
+    footer: {
+        marginTop: 24,
+        fontStyle: 'italic',
+        color: '#fff',
+        textAlign: 'center',
+        paddingHorizontal: 8,
+    },
+});
