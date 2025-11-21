@@ -10,6 +10,7 @@ import Videos from '@/components/screens/Videos';
 import WaterReports from '@/components/screens/WaterReports';
 import Weather from '@/components/screens/Weather';
 import Welcome from '@/components/screens/Welcome';
+import Credits from '@/components/screens/Credits';
 
 export interface Widget {
     title: string;
@@ -47,7 +48,7 @@ export const useWidgets = (): Widget[] => {
         },
         {
             title: 'Welcome!',
-            image: require('@/assets/images/icons/WelcomeIcon.png'),
+            image: require('@/assets/images/icons/Welcome Blue and White.png'),
             screen: React.createElement(Welcome),
         },
         {
@@ -74,6 +75,13 @@ export const useWidgets = (): Widget[] => {
             title: 'Videos',
             image: require('@/assets/images/icons/VideosIcon.png'),
             screen: React.createElement(Videos),
+        },
+        {
+            title: 'Credits',
+            image: require('@/assets/images/icons/Colab.png'),
+            screen: React.createElement(Credits),
+            onPress: () =>
+                window.dispatchEvent(new CustomEvent('kiosk-show-credits', { detail: {} })),
         },
     ];
 
