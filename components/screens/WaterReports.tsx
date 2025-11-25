@@ -29,16 +29,34 @@ export default function WaterReport() {
                 <View style={styles.yearSelector}>
                     <Text style={styles.bookTitle}> Pace University Water Quality Reports</Text>{' '}
                     {/* Updated title for clarity */}
-                    <Text style={{ fontSize: 16, marginBottom: 10, color: '#333', textAlign: 'center' }}>
-                        At Pace University, we are committed to providing transparent information about the quality of our water.
-                        Pace itself is known for it's water supply initiatives and sustainability efforts rather than it's role as a water supplier itself.
-                        Specifically in the Pleasantville campus it is considered a "Community Water System" by the EPA, meaning it serves at least 25 people for at least 60 days a year.
-                        Our water is supplied by the Town of Mount Pleasant and is regularly tested to ensure it meets all federal and state water quality standards.
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            marginBottom: 10,
+                            color: '#333',
+                            textAlign: 'center',
+                        }}>
+                        At Pace University, we are committed to providing transparent information
+                        about the quality of our water. Pace itself is known for it's water supply
+                        initiatives and sustainability efforts rather than it's role as a water
+                        supplier itself. Specifically in the Pleasantville campus it is considered a
+                        "Community Water System" by the EPA, meaning it serves at least 25 people
+                        for at least 60 days a year. Our water is supplied by the Town of Mount
+                        Pleasant and is regularly tested to ensure it meets all federal and state
+                        water quality standards.
                     </Text>
-                    <Text style={{ fontSize: 16, marginBottom: 20, color: '#333', textAlign: 'center' }}>
-                        The goal for all water consumers is to be well-aware of the quality of their water and any potential contaminants that may be present.
-                        With the advanced framework brought to you by Blue Colab, we encourage you to explore our annual water quality reports below to learn more about the safety and quality of the water we provide.
-
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            marginBottom: 20,
+                            color: '#333',
+                            textAlign: 'center',
+                        }}>
+                        The goal for all water consumers is to be well-aware of the quality of their
+                        water and any potential contaminants that may be present. With the advanced
+                        framework brought to you by Blue Colab, we encourage you to explore our
+                        annual water quality reports below to learn more about the safety and
+                        quality of the water we provide.
                     </Text>
                     <View style={styles.yearGrid}>
                         {waterReports.map((report, index) => {
@@ -62,7 +80,14 @@ export default function WaterReport() {
                 </View>
             </View>
 
-            <Text style={{ marginTop: 20, fontSize: 18, fontWeight: 'bold', color: '#333', textAlign: 'center' }}>
+            <Text
+                style={{
+                    marginTop: 20,
+                    fontSize: 18,
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center',
+                }}>
                 Water Quality Reports are updated annually in compliance with EPA regulations.
             </Text>
 
