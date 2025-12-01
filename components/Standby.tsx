@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { View, Text, Animated } from 'react-native';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const assetId = require('@/assets/videos/Blue Colab Attraction Loop.mp4');
 
 // Current Time Hook for Standby Screen
 const CurrentTime = () => {
-    const [time, setTime] = React.useState(new Date());
+    const [time, setTime] = useState(new Date());
 
-    React.useEffect(() => {
+    useEffect(() => {
         const interval = setInterval(() => {
             setTime(new Date());
         }, 1000);
@@ -25,7 +25,7 @@ const CurrentTime = () => {
 export default function Standby() {
     const pulseAnim = useRef(new Animated.Value(1)).current;
 
-    React.useEffect(() => {
+    useEffect(() => {
         Animated.loop(
             Animated.sequence([
                 Animated.timing(pulseAnim, {
@@ -75,7 +75,6 @@ export default function Standby() {
             {/* Current Time and Version Bottom Right */}
             <View style={{ position: 'absolute', bottom: 16, right: 16, alignItems: 'flex-end' }}>
                 <CurrentTime />
-                <Text style={{ color: 'white' }}>v2025.9.18.2259</Text>
             </View>
         </Animated.View>
     );

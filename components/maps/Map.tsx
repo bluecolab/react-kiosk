@@ -3,7 +3,6 @@ import { getSiteData } from '@/utils/getSiteData';
 import { parseSiteData } from '@/utils/parseSiteData';
 import React, { useEffect, useState } from 'react';
 
-// @ts-ignore
 import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis } from 'victory';
 
 // Graph component with white background and visible title

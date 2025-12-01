@@ -3,6 +3,7 @@ import Head from 'expo-router/head';
 import { View } from 'react-native';
 import Standby from '@/components/Standby';
 import ScreensWrapper from '@/components/wrapper/ScreensWrapper';
+import Credits from '@/components/screens/Credits';
 import { useConfigs } from '@/hooks/useConfigs';
 
 const assetId = require('@/assets/videos/background.mp4');
@@ -12,8 +13,10 @@ export default function Index() {
 
     // Standby screen
     const [isStandby, setIsStandby] = useState(true);
+    const [showCredits, setShowCredits] = useState(false);
     const [lastActivity, setLastActivity] = useState(Date.now());
     const [standbyTime] = useState(MAX_IDLE_TIME);
+    // index of screen to open when exiting standby (optional)
     const resetInactivity = useCallback(() => {
         setLastActivity(Date.now());
         if (isStandby) {
@@ -22,6 +25,27 @@ export default function Index() {
     }, [isStandby]);
 
     useEffect(() => {
+        const showHandler = () => {
+            setShowCredits(true);
+        };
+
+        const navHandler = () => {
+            try {
+                // hide credits when a navigation event occurs (e.g. Credits -> Welcome)
+                setShowCredits(false);
+            } catch {
+                setShowCredits(false);
+            }
+        };
+
+        window.addEventListener('kiosk-show-credits', showHandler as EventListener);
+        window.addEventListener('kiosk-navigate', navHandler as EventListener);
+
+        // cleanup
+        return () => {
+            window.removeEventListener('kiosk-show-credits', showHandler as EventListener);
+            window.removeEventListener('kiosk-navigate', navHandler as EventListener);
+        };
         const checkInactivity = setInterval(() => {
             if (Date.now() - lastActivity >= standbyTime) {
                 setIsStandby(true);
@@ -82,7 +106,13 @@ export default function Index() {
                     <source src={assetId} type="video/mp4" />
                 </video>
 
-                {isStandby ? <Standby /> : <ScreensWrapper />}
+                {isStandby ? (
+                    <Standby />
+                ) : showCredits ? null : ( // when showing credits, hide the wrapper (carousel + dock)
+                    <ScreensWrapper />
+                )}
+
+                {showCredits ? <Credits /> : null}
             </View>
         </>
     );

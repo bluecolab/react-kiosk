@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import AboutUs from '@/components/screens/AboutUs';
 import DataToMusic from '@/components/screens/DataToMusic';
 import Games from '@/components/screens/Games';
@@ -10,30 +10,26 @@ import Videos from '@/components/screens/Videos';
 import WaterReports from '@/components/screens/WaterReports';
 import Weather from '@/components/screens/Weather';
 import Welcome from '@/components/screens/Welcome';
+import Credits from '@/components/screens/Credits';
 
 export interface Widget {
     title: string;
     image: number;
-    screen: React.ReactNode;
+    screen: ReactNode;
     onPress?: () => void;
 }
 
 export const useWidgets = (): Widget[] => {
     const widgets: Widget[] = [
         {
-            title: 'Welcome!',
-            image: require('@/assets/images/icons/WelcomeIcon.png'),
-            screen: React.createElement(Welcome),
+            title: 'Mobile App',
+            image: require('@/assets/images/icons/MobileIcon.png'),
+            screen: React.createElement(MobileApp),
         },
         {
-            title: 'Water Data',
-            image: require('@/assets/images/icons/PondWaterDataIcon.png'),
-            screen: React.createElement(PondWaterData),
-        },
-        {
-            title: 'Weather',
-            image: require('@/assets/images/icons/WeatherIcon.png'),
-            screen: React.createElement(Weather),
+            title: 'Games',
+            image: require('@/assets/images/icons/GamesIcon.png'),
+            screen: React.createElement(Games),
         },
         {
             title: 'Data to Music',
@@ -41,9 +37,24 @@ export const useWidgets = (): Widget[] => {
             screen: React.createElement(DataToMusic),
         },
         {
-            title: 'Games',
-            image: require('@/assets/images/icons/GamesIcon.png'),
-            screen: React.createElement(Games),
+            title: 'Weather',
+            image: require('@/assets/images/icons/WeatherIcon.png'),
+            screen: React.createElement(Weather),
+        },
+        {
+            title: 'Water Data',
+            image: require('@/assets/images/icons/PondWaterDataIcon.png'),
+            screen: React.createElement(PondWaterData),
+        },
+        {
+            title: 'Welcome!',
+            image: require('@/assets/images/icons/Welcome Blue and White.png'),
+            screen: React.createElement(Welcome),
+        },
+        {
+            title: 'About Us',
+            image: require('@/assets/images/icons/AboutIcon.png'),
+            screen: React.createElement(AboutUs),
         },
         {
             title: 'Right to Know',
@@ -56,11 +67,6 @@ export const useWidgets = (): Widget[] => {
             screen: React.createElement(WaterReports),
         },
         {
-            title: 'Mobile App',
-            image: require('@/assets/images/icons/MobileIcon.png'),
-            screen: React.createElement(MobileApp),
-        },
-        {
             title: 'Photo Gallery',
             image: require('@/assets/images/icons/PhotoGalleryIcon.png'),
             screen: React.createElement(PhotoGallery),
@@ -71,9 +77,11 @@ export const useWidgets = (): Widget[] => {
             screen: React.createElement(Videos),
         },
         {
-            title: 'About Us',
-            image: require('@/assets/images/icons/AboutIcon.png'),
-            screen: React.createElement(AboutUs),
+            title: 'Credits',
+            image: require('@/assets/images/icons/Colab.png'),
+            screen: React.createElement(Credits),
+            onPress: () =>
+                window.dispatchEvent(new CustomEvent('kiosk-show-credits', { detail: {} })),
         },
     ];
 
