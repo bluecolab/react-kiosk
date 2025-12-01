@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, Modal, Pressable, StyleSheet, Platform, Image } from 'react-native';
+import { View, Text, Modal, Pressable, StyleSheet, Platform, Image, Button } from 'react-native';
 import { useWaterReports } from '@/hooks/useWaterReports';
 import { WebView } from 'react-native-webview';
+
+let animated = require('@/assets/images/Pace-PLV-water-animated.gif');
 
 export default function WaterReport() {
     const waterReports = useWaterReports();
     const [isModalVisible, setModalVisible] = useState(false);
+    const [isStoryModalVisible, setIsStoryModalVisible] = useState(false);
     const [pdfUri, setPdfUri] = useState<string | null>(null);
     const [currentTitle, setCurrentTitle] = useState<string | null>(null);
     const [selectedYear, setSelectedYear] = useState<string | null>(null);
@@ -22,12 +25,30 @@ export default function WaterReport() {
         setCurrentTitle(null);
     };
 
+    const openStoryModal = () => {
+        setIsStoryModalVisible(true);
+    };
+
+    const closeStoryModal = () => {
+        setIsStoryModalVisible(false);
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.bookContainer}>
+                <Text
+                    style={{
+                        marginTop: 20,
+                        fontSize: 18,
+                        fontWeight: 'bold',
+                        color: '#333',
+                        textAlign: 'center',
+                    }}>
+                    Water Quality Reports are updated annually in compliance with EPA regulations.
+                </Text>
+
                 <Image source={{}} style={styles.bookBackground} />
                 <View style={styles.yearSelector}>
-                    <Text style={styles.bookTitle}> Pace University Water Quality Reports</Text>{' '}
                     {/* Updated title for clarity */}
                     <Text
                         style={{
@@ -58,6 +79,18 @@ export default function WaterReport() {
                         annual water quality reports below to learn more about the safety and
                         quality of the water we provide.
                     </Text>
+                    <Button
+                        onPress={() => openStoryModal()}
+                        title="Where does our water come from?"
+                    />
+                    <Text
+                        style={{ marginTop: 20, fontSize: 16, color: '#555', textAlign: 'center' }}>
+                        Select a year to view the corresponding Water Quality Report.
+                    </Text>
+                    <Text
+                        style={{ marginTop: 10, fontSize: 16, color: '#777', textAlign: 'center' }}>
+                        (Reports are provided in PDF format.)
+                    </Text>
                     <View style={styles.yearGrid}>
                         {waterReports.map((report, index) => {
                             const year = report.title.match(/\d{4}/)?.[0];
@@ -79,25 +112,6 @@ export default function WaterReport() {
                     </View>
                 </View>
             </View>
-
-            <Text
-                style={{
-                    marginTop: 20,
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    color: '#333',
-                    textAlign: 'center',
-                }}>
-                Water Quality Reports are updated annually in compliance with EPA regulations.
-            </Text>
-
-            <Text style={{ marginTop: 20, fontSize: 16, color: '#555', textAlign: 'center' }}>
-                Select a year to view the corresponding Water Quality Report.
-            </Text>
-
-            <Text style={{ marginTop: 10, fontSize: 14, color: '#777', textAlign: 'center' }}>
-                (Reports are provided in PDF format.)
-            </Text>
 
             <Modal visible={isModalVisible} animationType="slide">
                 <View style={{ flex: 1 }}>
@@ -126,6 +140,42 @@ export default function WaterReport() {
                     )}
                 </View>
             </Modal>
+
+            <Modal visible={isStoryModalVisible} animationType="slide">
+                <View style={{ flex: 1 }}>
+                    <View style={styles.modalHeader}>
+                        <Pressable onPress={closeStoryModal}>
+                            <Text style={styles.backText}>← Back</Text>
+                        </Pressable>
+                        <Text style={styles.modalTitle}>Where does our water come from?</Text>
+                    </View>
+                    <Text style={{ marginHorizontal: 16, marginTop: 16, fontSize: 16 }}>
+                        The Pace University water in Pleasantville is from Ashokan Reservoir in the
+                        Catskill Mountains, traveling 91 miles underground aqueducts in order to
+                        reach campus. The Croton Reservoir, which is 12 miles away, is our backup
+                        source in case of any emergencies or for maintenance activities, dating back
+                        to 1842 (by damming the Croton River, making it the first upstate water
+                        source). Since we are a federally-recognized water community, Pace is to be
+                        responsible for managing their water supply, as well as meeting all the
+                        required testing standards.
+                    </Text>
+                    <View
+                        style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginTop: 16,
+                        }}>
+                        <Image
+                            source={animated}
+                            style={{
+                                width: 300,
+                                height: 400,
+                                resizeMode: 'contain',
+                            }}
+                        />
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }
@@ -142,7 +192,7 @@ const styles = StyleSheet.create({
     bookContainer: {
         width: '80%',
         maxWidth: 800,
-        height: 500,
+        height: 600,
         position: 'relative',
         backgroundColor: '#fff',
         borderRadius: 10,
