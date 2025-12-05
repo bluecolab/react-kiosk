@@ -50,6 +50,7 @@
         "rightToKnow": "We believe you have the right to know.",
         "blueColab": "Blue Colab",
         "description": "We're working to ensure you have the critical information you need about your water quality. Our dedicated team of students, interns, graduate assistants, faculty, and staff are advancing technology, information, and warning systems to make this a reality.",
+        "atPrefix": "At",
         "location": "At our technology lab overlooking the Hudson River, our Choate Pond lab on campus, and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the proposition that you have the",
         "rightToKnowBold": "right-to-know",
         "locationEnd": "the quality of your water before you drink it, swim in it, fish it, or even swamp your canoe.",
@@ -64,7 +65,11 @@
         "realTime": "Real-time",
         "detection": "technological detection of water contaminants is the best defense.",
         "handsOnApproach": "Blue CoLab's Hands-On Approach",
-        "threefoldApproach": "With a three-fold approach to water quality testing, Blue CoLab merges the power of cutting-edge sensors with real-time data collection and AI-driven analysis—making water contamination easier to detect and faster to report."
+        "threefoldApproach": "With a three-fold approach to water quality testing, Blue CoLab merges the power of cutting-edge sensors with real-time data collection and AI-driven analysis—making water contamination easier to detect and faster to report.",
+        "teamWorkPrefix": "They work in a",
+        "teamWorkBold": "team-based environment",
+        "teamWorkSuffix": ", using Blue CoLab’s dedicated labs, instruments, equipment, and servers.",
+        "closingParagraph": "Blue CoLab stands for everything that makes Seidenberg School a special place — harnessing innovation on behalf of society, and providing students with skill-based experiences that lead to a career meaningful to them, and to society."
     },
     "waterReports": {
         "title": "Water Quality Reports are updated annually in compliance with EPA regulations.",

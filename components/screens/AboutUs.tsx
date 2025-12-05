@@ -57,8 +57,8 @@ export default function StoryScreen() {
                     </Text>
 
                     <Text style={{ fontSize: 20, marginBottom: 16, color: '#374151' }}>
-                        At{' '}
-                        <Text style={{ fontWeight: 'bold' }}> {t('aboutScreen.blueColab')} </Text>,{' '}
+                        {t('aboutScreen.atPrefix')}{' '}
+                        <Text style={{ fontWeight: 'bold' }}>{t('aboutScreen.blueColab')}</Text>,{' '}
                         {t('aboutScreen.description')}
                     </Text>
 
@@ -155,8 +155,9 @@ export default function StoryScreen() {
                     marginTop: 20,
                     color: '#374151',
                 }}>
-                They work in a <Text style={{ fontWeight: 'bold' }}>team-based environment</Text>,
-                using Blue CoLab’s dedicated labs, instruments, equipment, and servers.
+                {t('aboutScreen.teamWorkPrefix')}{' '}
+                <Text style={{ fontWeight: 'bold' }}>{t('aboutScreen.teamWorkBold')}</Text>
+                {t('aboutScreen.teamWorkSuffix')}
             </Text>
 
             <Text
@@ -167,9 +168,7 @@ export default function StoryScreen() {
                     marginBottom: 40,
                     color: '#374151',
                 }}>
-                Blue CoLab stands for everything that makes Seidenberg School a special place —
-                harnessing innovation on behalf of society, and providing students with skill-based
-                experiences that lead to a career meaningful to them, and to society.
+                {t('aboutScreen.closingParagraph')}
             </Text>
 
             {/* Closing Statement */}

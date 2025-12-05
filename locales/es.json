@@ -50,6 +50,7 @@
         "rightToKnow": "Creemos que tiene derecho a saberlo.",
         "blueColab": "Blue Colab",
         "description": "Estamos trabajando para asegurar que tenga la información crítica que necesita sobre la calidad de su agua. Nuestro dedicado equipo de estudiantes, pasantes, asistentes de posgrado, facultad y personal están avanzando la tecnología, la información y los sistemas de advertencia para hacer que esto sea una realidad.",
+        "atPrefix": "En",
         "location": "En nuestro laboratorio de tecnología con vistas al río Hudson, nuestro laboratorio de la Piscina Choate en el campus y nuestro laboratorio de datos en el Centro Académico Goldstein, Blue CoLab está dedicado a la proposición de que usted tiene el",
         "rightToKnowBold": "derecho a saber",
         "locationEnd": "la calidad de su agua antes de beberla, nadar en ella, pescar en ella o incluso atascar su canoa.",
@@ -64,7 +65,11 @@
         "realTime": "En tiempo real",
         "detection": "la detección tecnológica de contaminantes del agua es la mejor defensa.",
         "handsOnApproach": "Enfoque Práctico de Blue CoLab",
-        "threefoldApproach": "Con un enfoque triple para las pruebas de calidad del agua, Blue CoLab combina el poder de sensores de vanguardia con la recopilación de datos en tiempo real y análisis impulsado por IA, lo que hace que la contaminación del agua sea más fácil de detectar y más rápida de reportar."
+        "threefoldApproach": "Con un enfoque triple para las pruebas de calidad del agua, Blue CoLab combina el poder de sensores de vanguardia con la recopilación de datos en tiempo real y análisis impulsado por IA, lo que hace que la contaminación del agua sea más fácil de detectar y más rápida de reportar.",
+        "teamWorkPrefix": "Trabajan en un",
+        "teamWorkBold": "entorno basado en equipo",
+        "teamWorkSuffix": ", utilizando los laboratorios, instrumentos, equipos y servidores dedicados de Blue CoLab.",
+        "closingParagraph": "Blue CoLab representa todo lo que hace que la Escuela Seidenberg sea un lugar especial: aprovechar la innovación en beneficio de la sociedad y brindar a los estudiantes experiencias basadas en habilidades que conduzcan a una carrera significativa para ellos y para la sociedad."
     },
     "waterReports": {
         "title": "Los Reportes de Calidad del Agua se actualizan anualmente en cumplimiento con las regulaciones de la EPA.",
