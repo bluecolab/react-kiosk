@@ -70,10 +70,7 @@ export default function WaterReport() {
                         }}>
                         {t('waterReports.goal')}
                     </Text>
-                    <Button
-                        onPress={() => openStoryModal()}
-                        title={t('waterReports.whereWater')}
-                    />
+                    <Button onPress={() => openStoryModal()} title={t('waterReports.whereWater')} />
                     <Text
                         style={{ marginTop: 20, fontSize: 16, color: '#555', textAlign: 'center' }}>
                         {t('waterReports.selectYear')}

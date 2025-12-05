@@ -32,9 +32,7 @@ export default function MobileApp() {
                     paddingLeft: 20,
                     marginRight: 220, // Added to prevent text overlap with QR code
                 }}>
-                <Text style={{ fontSize: 40 }}>
-                    {t('mobileApp.heading')}
-                </Text>
+                <Text style={{ fontSize: 40 }}>{t('mobileApp.heading')}</Text>
                 <Text style={{ fontSize: 22 }}>{t('mobileApp.stayUpdated')}</Text>
                 <Text style={{ fontSize: 22 }}>{t('mobileApp.download')}</Text>
             </View>
