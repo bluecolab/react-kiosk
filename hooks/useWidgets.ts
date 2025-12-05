@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import AboutUs from '@/components/screens/AboutUs';
 import DataToMusic from '@/components/screens/DataToMusic';
 import Games from '@/components/screens/Games';
@@ -20,64 +21,66 @@ export interface Widget {
 }
 
 export const useWidgets = (): Widget[] => {
+    const { t } = useTranslation();
+
     const widgets: Widget[] = [
         {
-            title: 'Mobile App',
+            title: t('widgets.mobileApp'),
             image: require('@/assets/images/icons/MobileIcon.png'),
             screen: React.createElement(MobileApp),
         },
         {
-            title: 'Games',
+            title: t('widgets.games'),
             image: require('@/assets/images/icons/GamesIcon.png'),
             screen: React.createElement(Games),
         },
         {
-            title: 'Data to Music',
+            title: t('widgets.dataToMusic'),
             image: require('@/assets/images/icons/SonificationIcon.png'),
             screen: React.createElement(DataToMusic),
         },
         {
-            title: 'Weather',
+            title: t('widgets.weather'),
             image: require('@/assets/images/icons/WeatherIcon.png'),
             screen: React.createElement(Weather),
         },
         {
-            title: 'Water Data',
+            title: t('widgets.waterData'),
             image: require('@/assets/images/icons/PondWaterDataIcon.png'),
             screen: React.createElement(PondWaterData),
         },
         {
-            title: 'Welcome!',
+            title: t('widgets.welcome'),
             image: require('@/assets/images/icons/Welcome Blue and White.png'),
             screen: React.createElement(Welcome),
         },
         {
-            title: 'About Us',
+            title: t('widgets.aboutUs'),
             image: require('@/assets/images/icons/AboutIcon.png'),
             screen: React.createElement(AboutUs),
         },
         {
-            title: 'Right to Know',
+            title: t('widgets.rightToKnow'),
             image: require('@/assets/images/icons/RTKIcon.png'),
             screen: React.createElement(RightToKnow),
         },
         {
-            title: 'Water Reports',
+            title: t('widgets.waterReports'),
             image: require('@/assets/images/icons/WaterReportsIcon.png'),
             screen: React.createElement(WaterReports),
         },
         {
-            title: 'Photo Gallery',
+            title: t('widgets.photoGallery'),
             image: require('@/assets/images/icons/PhotoGalleryIcon.png'),
             screen: React.createElement(PhotoGallery),
         },
         {
-            title: 'Videos',
+            title: t('widgets.videos'),
             image: require('@/assets/images/icons/VideosIcon.png'),
             screen: React.createElement(Videos),
         },
         {
-            title: 'Credits',
+            title: t('widgets.credits'),
             image: require('@/assets/images/icons/Colab.png'),
             screen: React.createElement(Credits),
             onPress: () =>

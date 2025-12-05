@@ -5,6 +5,7 @@ import Standby from '@/components/Standby';
 import ScreensWrapper from '@/components/wrapper/ScreensWrapper';
 import Credits from '@/components/screens/Credits';
 import { useConfigs } from '@/hooks/useConfigs';
+import '../hooks/i18n';
 
 const assetId = require('@/assets/videos/background.mp4');
 

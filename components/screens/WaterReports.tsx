@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, Modal, Pressable, StyleSheet, Platform, Image, Button } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { useWaterReports } from '@/hooks/useWaterReports';
 import { WebView } from 'react-native-webview';
 
 let animated = require('@/assets/images/Pace-PLV-water-animated.gif');
 
 export default function WaterReport() {
+    const { t } = useTranslation();
     const waterReports = useWaterReports();
     const [isModalVisible, setModalVisible] = useState(false);
     const [isStoryModalVisible, setIsStoryModalVisible] = useState(false);
@@ -44,7 +46,7 @@ export default function WaterReport() {
                         color: '#333',
                         textAlign: 'center',
                     }}>
-                    Water Quality Reports are updated annually in compliance with EPA regulations.
+                    {t('waterReports.title')}
                 </Text>
 
                 <Image source={{}} style={styles.bookBackground} />
@@ -57,14 +59,7 @@ export default function WaterReport() {
                             color: '#333',
                             textAlign: 'center',
                         }}>
-                        At Pace University, we are committed to providing transparent information
-                        about the quality of our water. Pace itself is known for it's water supply
-                        initiatives and sustainability efforts rather than it's role as a water
-                        supplier itself. Specifically in the Pleasantville campus it is considered a
-                        "Community Water System" by the EPA, meaning it serves at least 25 people
-                        for at least 60 days a year. Our water is supplied by the Town of Mount
-                        Pleasant and is regularly tested to ensure it meets all federal and state
-                        water quality standards.
+                        {t('waterReports.description')}
                     </Text>
                     <Text
                         style={{
@@ -73,23 +68,19 @@ export default function WaterReport() {
                             color: '#333',
                             textAlign: 'center',
                         }}>
-                        The goal for all water consumers is to be well-aware of the quality of their
-                        water and any potential contaminants that may be present. With the advanced
-                        framework brought to you by Blue Colab, we encourage you to explore our
-                        annual water quality reports below to learn more about the safety and
-                        quality of the water we provide.
+                        {t('waterReports.goal')}
                     </Text>
                     <Button
                         onPress={() => openStoryModal()}
-                        title="Where does our water come from?"
+                        title={t('waterReports.whereWater')}
                     />
                     <Text
                         style={{ marginTop: 20, fontSize: 16, color: '#555', textAlign: 'center' }}>
-                        Select a year to view the corresponding Water Quality Report.
+                        {t('waterReports.selectYear')}
                     </Text>
                     <Text
                         style={{ marginTop: 10, fontSize: 16, color: '#777', textAlign: 'center' }}>
-                        (Reports are provided in PDF format.)
+                        {t('waterReports.pdfFormat')}
                     </Text>
                     <View style={styles.yearGrid}>
                         {waterReports.map((report, index) => {
@@ -117,7 +108,7 @@ export default function WaterReport() {
                 <View style={{ flex: 1 }}>
                     <View style={styles.modalHeader}>
                         <Pressable onPress={closePdfModal}>
-                            <Text style={styles.backText}>← Back</Text>
+                            <Text style={styles.backText}>{t('waterReports.back')}</Text>
                         </Pressable>
                         <Text style={styles.modalTitle}>{currentTitle}</Text>
                     </View>
@@ -145,19 +136,12 @@ export default function WaterReport() {
                 <View style={{ flex: 1 }}>
                     <View style={styles.modalHeader}>
                         <Pressable onPress={closeStoryModal}>
-                            <Text style={styles.backText}>← Back</Text>
+                            <Text style={styles.backText}>{t('waterReports.back')}</Text>
                         </Pressable>
-                        <Text style={styles.modalTitle}>Where does our water come from?</Text>
+                        <Text style={styles.modalTitle}>{t('waterReports.whereWater')}</Text>
                     </View>
                     <Text style={{ marginHorizontal: 16, marginTop: 16, fontSize: 16 }}>
-                        The Pace University water in Pleasantville is from Ashokan Reservoir in the
-                        Catskill Mountains, traveling 91 miles underground aqueducts in order to
-                        reach campus. The Croton Reservoir, which is 12 miles away, is our backup
-                        source in case of any emergencies or for maintenance activities, dating back
-                        to 1842 (by damming the Croton River, making it the first upstate water
-                        source). Since we are a federally-recognized water community, Pace is to be
-                        responsible for managing their water supply, as well as meeting all the
-                        required testing standards.
+                        {t('waterReports.waterSource')}
                     </Text>
                     <View
                         style={{

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const infoItems = [
     {
@@ -29,6 +30,8 @@ const infoItems = [
 ];
 
 export default function RightToKnow() {
+    const { t } = useTranslation();
+
     const [currentItem, setCurrentItem] = useState(infoItems[0]);
 
     return (
