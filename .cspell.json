@@ -1,4 +1,8 @@
 {
+
+    "dictionaries": ["es-es"],
+    "language": "en,es",
+    
     "ignorePaths": [
         "node_modules/*",
         "dist/*",
