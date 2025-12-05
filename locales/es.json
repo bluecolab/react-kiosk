@@ -5,7 +5,7 @@
         "dataToMusic": "Datos a Música",
         "weather": "Clima",
         "waterData": "Datos del Agua",
-        "welcome": "¡Bienvenido!",
+        "welcome": "¡Bienvenidos!",
         "aboutUs": "Acerca de Nosotros",
         "rightToKnow": "Derecho a Saber",
         "waterReports": "Reportes de Agua",
@@ -45,19 +45,19 @@
         "current": "Idioma Actual"
     },
     "aboutScreen": {
-        "missionTitle": "En la Escuela Seidenberg, creemos que los estudiantes pueden marcar la diferencia hoy, antes de lanzar sus carreras del mañana.",
+        "missionTitle": "En la facultad Seidenberg, creemos que los estudiantes pueden marcar la diferencia hoy, antes de iniciar sus carreras del mañana.",
         "safeWater": "¿Es seguro beber su agua?",
         "rightToKnow": "Creemos que tiene derecho a saberlo.",
         "blueColab": "Blue Colab",
-        "description": "Estamos trabajando para asegurar que tenga la información crítica que necesita sobre la calidad de su agua. Nuestro dedicado equipo de estudiantes, pasantes, asistentes de posgrado, facultad y personal están avanzando la tecnología, la información y los sistemas de advertencia para hacer que esto sea una realidad.",
+        "description": "Estamos trabajando para asegurar que tenga la información importante que necesita sobre la calidad de su agua. Nuestro equipo de estudiantes, pasantes, asistentes de posgrado, facultad y personal están mjeorando la tecnología, la información y los sistemas de advertencia para hacer que esto sea una realidad.",
         "atPrefix": "En",
-        "location": "En nuestro laboratorio de tecnología con vistas al río Hudson, nuestro laboratorio de la Piscina Choate en el campus y nuestro laboratorio de datos en el Centro Académico Goldstein, Blue CoLab está dedicado a la proposición de que usted tiene el",
+        "location": "En nuestro laboratorio de tecnología con vistas al río Hudson, nuestro laboratorio de la laguna 'Choate' en el campus y nuestro laboratorio de datos en el Centro Académico Goldstein, Blue CoLab está dedicado a la misión de que usted tiene el",
         "rightToKnowBold": "derecho a saber",
-        "locationEnd": "la calidad de su agua antes de beberla, nadar en ella, pescar en ella o incluso atascar su canoa.",
+        "locationEnd": "la calidad de su agua antes de beberla, nadar, pescar o incluso undir tu canoa.",
         "waterContaminationRisks": "Riesgos de Contaminación del Agua",
         "contaminationText1": "Es probable que el agua que usa sea segura, pero millones desafortunadamente han encontrado lo contrario. En cuestión de horas, un sorbo de agua contaminada con patógenos puede resultar en una enfermedad grave. Actualmente los laboratorios requieren 24-48 horas para reportar análisis de muestras tomadas semanalmente, o menos.",
         "milwaukee": "Milwaukee (1993)",
-        "milwaukeeText": "400,000 residentes enfermaron y 100 murieron después de beber agua contaminada con criptosporidio.",
+        "milwaukeeText": "400,000 residentes enfermaron y 100 murieron después de beber agua contaminada con cryptosporidium.",
         "hoosickFalls": "Hoosick Falls",
         "newburghNY": "Newburgh, NY",
         "hoosickText": "Durante años, los residentes de Hoosick Falls y Newburgh, NY pueden haber estado expuestos sin saberlo a PFAS altamente tóxicos.",
@@ -69,16 +69,16 @@
         "teamWorkPrefix": "Trabajan en un",
         "teamWorkBold": "entorno basado en equipo",
         "teamWorkSuffix": ", utilizando los laboratorios, instrumentos, equipos y servidores dedicados de Blue CoLab.",
-        "closingParagraph": "Blue CoLab representa todo lo que hace que la Escuela Seidenberg sea un lugar especial: aprovechar la innovación en beneficio de la sociedad y brindar a los estudiantes experiencias basadas en habilidades que conduzcan a una carrera significativa para ellos y para la sociedad."
+        "closingParagraph": "Blue CoLab representa todo lo que hace que la facultad Seidenberg sea un lugar especial: aprovechar la innovación en beneficio de la sociedad y brindar a los estudiantes experiencias basadas en habilidades que conduzcan a una carrera significativa para ellos y para la sociedad."
     },
     "waterReports": {
         "title": "Los Reportes de Calidad del Agua se actualizan anualmente en cumplimiento con las regulaciones de la EPA.",
-        "description": "En la Universidad de Pace, nos comprometemos a proporcionar información transparente sobre la calidad de nuestra agua. Pace es conocida por sus iniciativas de suministro de agua y esfuerzos de sostenibilidad en lugar de su papel como proveedor de agua. Específicamente en el campus de Pleasantville, se considera un \"Sistema de Agua Comunitario\" por la EPA, lo que significa que sirve a al menos 25 personas durante al menos 60 días al año. Nuestro agua es suministrada por la Municipalidad de Mount Pleasant y se prueba regularmente para asegurar que cumple con todos los estándares federales y estatales de calidad del agua.",
+        "description": "En la Universidad Pace, nos comprometemos a proporcionar información transparente sobre la calidad de nuestra agua. Pace es conocida por sus iniciativas de suministro de agua y esfuerzos de sostenibilidad en lugar de su papel como proveedor de agua. Específicamente en el campus de Pleasantville, se considera un \"Sistema de Agua Comunitario\" por la EPA, lo que significa que sirve a al menos 25 personas durante al menos 60 días al año. Nuestro agua es suministrada por la Municipalidad de Mount Pleasant y se prueba regularmente para asegurar que cumple con todos los estándares federales y estatales de calidad del agua.",
         "goal": "El objetivo para todos los consumidores de agua es estar bien informados sobre la calidad de su agua y cualquier contaminante potencial que pueda estar presente. Con el marco avanzado que le proporciona Blue Colab, le recomendamos que explore nuestros informes anuales de calidad del agua a continuación para obtener más información sobre la seguridad y la calidad del agua que proporcionamos.",
         "selectYear": "Seleccione un año para ver el Informe de Calidad del Agua correspondiente.",
         "pdfFormat": "(Los informes se proporcionan en formato PDF.)",
         "whereWater": "¿De dónde viene nuestra agua?",
-        "waterSource": "El agua de la Universidad de Pace en Pleasantville proviene del Embalse de Ashokan en las Montañas Catskill, viajando 91 millas a través de acueductos subterráneos para llegar al campus. El Embalse de Croton, que está a 12 millas de distancia, es nuestra fuente de respaldo en caso de emergencias o para actividades de mantenimiento, que se remonta a 1842 (al represar el río Croton, lo que lo convierte en la primera fuente de agua upstate). Dado que somos una comunidad de agua reconocida federalmente, Pace es responsable de gestionar su suministro de agua, así como de cumplir con todos los estándares de prueba requeridos.",
+        "waterSource": "El agua de la Universidad Pace en Pleasantville proviene del Embalse de Ashokan en las Montañas Catskill, viajando 91 millas a través de acueductos subterráneos para llegar al campus. El Embalse de Croton, que está a 12 millas de distancia, es nuestra fuente de respaldo en caso de emergencias o para actividades de mantenimiento, que se remonta a 1842 (al represar el río Croton, lo que lo convierte en la primera fuente de agua upstate). Dado que somos una comunidad de agua reconocida federalmente, Pace es responsable de gestionar su suministro de agua, así como de cumplir con todos los estándares de prueba requeridos.",
         "back": "← Atrás"
     },
     "mobileApp": {
@@ -98,9 +98,9 @@
         "studentsR2K2023": "De izquierda a derecha, desde arriba: Cece Porter, Lilah McCormack, Louisa Moquete, Sasha Palmer, Meryl Mizell, Sasha Breygina.",
         "textR2K2023": "El primer equipo de Derecho a Saber H2O, dirigido por el Prof. John Cronin, está avanzando el ODS 6: Agua Limpia y Saneamiento al promover un principio simple: el acceso a agua limpia es un derecho humano, al igual que el derecho a saber si su agua es segura. El equipo está desarrollando una petición enfocada en la ONU, recomendaciones de política estadounidense y un sistema de información de agua basado en Pace para hacer que la transparencia de la calidad del agua sea un estándar global.",
         "studentsR2K2024": "De izquierda a derecha, desde arriba: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.",
-        "textR2K2024": "El segundo equipo de Derecho a Saber H2O se basa en la base establecida por la cohorte de 2023, avanzando la creencia de que el derecho humano al agua potable segura debe incluir el derecho a saber si el agua del campus es segura. Con más de 270 millones de personas dependiendo del agua en las más de 25,000 universidades y colegios del mundo, el equipo apunta a crear un modelo impulsado por la tecnología que los campus puedan adoptar. Su trabajo comienza en el campus de Pleasantville de Pace con una campaña de conciencia sobre la calidad del agua, una cumbre con funcionarios locales, un centro de aprendizaje en línea y una encuesta del campus. A continuación, el equipo está desarrollando un sistema de recopilación de datos, herramientas de informes digitales y una función mejorada de alerta de emergencia para problemas de agua. Apoyados por la red de Fellowship del Milenio, estos estudiantes de Seidenberg están preparando herramientas que otras instituciones pueden usar para replicar el modelo.",
+        "textR2K2024": "El segundo equipo de Derecho a Saber H2O se basa en equipo anterior de 2023, avanzando la creencia de que el derecho humano al agua potable segura debe incluir el derecho a saber si el agua del campus es segura. Con más de 270 millones de personas dependiendo del agua en las más de 25,000 universidades y colegios del mundo, el equipo apunta a crear un modelo impulsado por la tecnología que los campus puedan adoptar. Su trabajo comienza en el campus de Pleasantville de Pace con una campaña de conciencia sobre la calidad del agua, una cumbre con funcionarios locales, un centro de aprendizaje en línea y una encuesta del campus. A continuación, el equipo está desarrollando un sistema de recopilación de datos, herramientas de informes digitales y una función mejorada de alerta de emergencia para problemas de agua. Apoyados por la red del Grupo del Milenio, estos estudiantes de Seidenberg están preparando herramientas que otras instituciones pueden usar para replicar el modelo.",
         "studentsR2K2025": "Miembros del equipo de izquierda a derecha, desde arriba: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Prof Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof John Cronin, Dillon Talactac, Caroline Zanuto-Winter y Noor Huda. No aparece: Graig Decembre, Nailah Brown, Skyler Flynn.",
-        "textR2K2025": "En octubre de 2025, 34 estudiantes de la Universidad de Pace fueron seleccionados de más de 60,000 solicitantes globales para unirse a la Fellowship del Milenio de las Naciones Unidas, representando un récord para Pace. La cohorte de este año se destaca no solo por su tamaño sino también por su alcance internacional: por primera vez, Blue CoLab de Pace se asoció con estudiantes de la Universidad de Ciencias Aplicadas Häme de Finlandia, formando un equipo de 19 miembros enfocado en el ODS 6: Agua Limpia y Saneamiento. Su objetivo: desarrollar un plan de acción bilateral para promover el \"derecho a saber qué hay en nuestra agua\", culminando en una propuesta conjunta presentada en las Naciones Unidas durante la visita de la delegación finlandesa a Pace. Esta cohorte trabaja en más de 13 países, abordando problemas de justicia ambiental a educación, equidad de salud y sistemas renovables a través de proyectos dirigidos por estudiantes."
+        "textR2K2025": "En octubre de 2025, 34 estudiantes de la Universidad de Pace fueron seleccionados de más de 60,000 solicitantes globales para unirse a la Fellowship del Milenio de las Naciones Unidas, representando un récord para Pace. El grupo de este año se destaca no solo por su tamaño sino también por su alcance internacional: por primera vez, Blue CoLab de Pace se asoció con estudiantes de la Universidad de Ciencias Aplicadas Häme de Finlandia, formando un equipo de 19 miembros enfocado en el ODS 6: Agua Limpia y Saneamiento. Su objetivo: desarrollar un plan de acción bilateral para promover el \"derecho a saber qué hay en nuestra agua\", culminando en una propuesta conjunta presentada en las Naciones Unidas durante la visita de la delegación finlandesa a Pace. Esta grupo de trabaja representa a más de 13 países, abordando problemas de justicia ambiental a educación, equidad de salud y sistemas renovables a través de proyectos dirigidos por estudiantes."
     },
     "standby": {
         "currentTime": "Hora Actual"
