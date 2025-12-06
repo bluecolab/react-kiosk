@@ -1,8 +1,10 @@
 {
-
-    "dictionaries": ["es-es"],
-    "language": "en,es",
-    
+    "dictionaries": [
+        "es-es"
+    ],
+    "import": [
+        "@cspell/dict-es-es/cspell-ext.json"
+    ],
     "ignorePaths": [
         "node_modules/*",
         "dist/*",
@@ -141,6 +143,7 @@
         "errorlevel",
         "Esopus",
         "FDOM",
+        "federalmente",
         "Fishkill",
         "fluorometric",
         "formazin",
@@ -162,6 +165,7 @@
         "Mamoun",
         "Megaptera",
         "microsiemens",
+        "mjeorando",
         "Moquete",
         "myapp",
         "Nailah",
@@ -200,6 +204,7 @@
         "Talactac",
         "Timelapse",
         "Trachemys",
+        "undir",
         "Valatie",
         "variableparam",
         "Vinni",
