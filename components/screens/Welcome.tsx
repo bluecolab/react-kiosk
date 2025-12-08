@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native'; //, Pressable for future use of Pressable component to toggle Crotter Mode
+import { useTranslation } from 'react-i18next';
 import FeedbackViewer from '../FeedbackViewer';
+import LanguageToggle from '@/components/LanguageToggle';
 
 export default function WelcomeScreen() {
+    const { t } = useTranslation();
     const [isFeedbackVisible, setIsFeedbackVisible] = useState(false); // State to control feedback modal visibility
     const [feedback, setFeedback] = useState(''); // State to hold feedback text input by user
     const [showFeedbackViewer, setShowFeedbackViewer] = useState(false); // State to control feedback viewer modal visibility
@@ -13,7 +16,7 @@ export default function WelcomeScreen() {
 
     const handleSubmitFeedback = () => {
         if (!feedback.trim()) {
-            alert('Please enter some feedback before submitting.');
+            alert(t('feedback.emptyError'));
             return;
         }
 
@@ -48,7 +51,17 @@ export default function WelcomeScreen() {
 
     return (
         <View>
-            <View style={{ position: 'absolute', top: 0, right: 0, zIndex: 1000 }}>
+            <View
+                style={{
+                    position: 'absolute',
+                    top: 10,
+                    right: 10,
+                    zIndex: 1000,
+                    flexDirection: 'row',
+                    gap: 8,
+                    alignItems: 'center',
+                }}>
+                <LanguageToggle />
                 <Pressable
                     onPress={() => setIsFeedbackVisible(true)} // Open feedback modal
                     style={{
@@ -61,7 +74,7 @@ export default function WelcomeScreen() {
                         marginRight: 5,
                     }}>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>
-                        Feedback
+                        {t('feedback.button')}
                     </Text>
                 </Pressable>
             </View>
@@ -93,7 +106,7 @@ export default function WelcomeScreen() {
                                 marginRight: 20,
                                 marginBottom: 20,
                             }}>
-                            Provide Your Feedback
+                            {t('feedback.title')}
                         </Text>
                         {showSuccess && (
                             <View
@@ -109,7 +122,7 @@ export default function WelcomeScreen() {
                                         textAlign: 'center',
                                         fontWeight: 'bold',
                                     }}>
-                                    Thank you! Your feedback has been saved.
+                                    {t('feedback.success')}
                                 </Text>
                             </View>
                         )}
@@ -126,7 +139,7 @@ export default function WelcomeScreen() {
                                 marginBottom: 15,
                                 textAlignVertical: 'top',
                             }}
-                            placeholder="Enter your feedback here..."
+                            placeholder={t('feedback.placeholder')}
                         />
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10 }}>
                             <TouchableOpacity
@@ -136,7 +149,7 @@ export default function WelcomeScreen() {
                                     padding: 10,
                                     borderRadius: 5,
                                 }}>
-                                <Text style={{ color: 'white' }}>Cancel</Text>
+                                <Text style={{ color: 'white' }}>{t('feedback.cancel')}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={handleSubmitFeedback}
@@ -145,7 +158,7 @@ export default function WelcomeScreen() {
                                     padding: 10,
                                     borderRadius: 5,
                                 }}>
-                                <Text style={{ color: 'white' }}>Submit</Text>
+                                <Text style={{ color: 'white' }}>{t('feedback.submit')}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -170,7 +183,8 @@ export default function WelcomeScreen() {
                     marginTop: 40,
                     marginBottom: 30,
                 }}>
-                Welcome to Blue CoLab's Kiosk! {/* Added space for better readability */}
+                {t('widgets.welcome')} to Blue CoLab's Kiosk!{' '}
+                {/* Added space for better readability */}
             </Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>

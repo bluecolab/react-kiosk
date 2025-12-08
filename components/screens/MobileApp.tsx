@@ -1,9 +1,13 @@
 // Yes Yes work in progress - V
 import React from 'react';
 import { View, Image, Text } from 'react-native'; //, Pressable
+import { useTranslation } from 'react-i18next';
+
 const QRPlaceholder = require('@/assets/images/QR Placeholder.png'); // Placeholder image for QR code
 
 export default function MobileApp() {
+    const { t } = useTranslation();
+
     return (
         <View
             style={{
@@ -28,11 +32,9 @@ export default function MobileApp() {
                     paddingLeft: 20,
                     marginRight: 220, // Added to prevent text overlap with QR code
                 }}>
-                <Text style={{ fontSize: 40 }}>
-                    Access our research data and information on the go.
-                </Text>
-                <Text style={{ fontSize: 22 }}>Stay updated with real-time data.</Text>
-                <Text style={{ fontSize: 22 }}>Download our mobile app for better access.</Text>
+                <Text style={{ fontSize: 40 }}>{t('mobileApp.heading')}</Text>
+                <Text style={{ fontSize: 22 }}>{t('mobileApp.stayUpdated')}</Text>
+                <Text style={{ fontSize: 22 }}>{t('mobileApp.download')}</Text>
             </View>
             <View style={{ position: 'absolute', bottom: 20, right: 20 }}>
                 <Image style={{ width: 200, height: 200 }} source={QRPlaceholder} />
