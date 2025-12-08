@@ -1,6 +1,7 @@
+import { constants } from '@/hooks/constants/constants';
 import { Widget } from '@/hooks/useWidgets';
-import { useEffect, useState } from 'react';
-import { Dimensions, Platform, Pressable } from 'react-native';
+import { useEffect } from 'react';
+import { Platform, Pressable } from 'react-native';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -17,23 +18,8 @@ interface DockItemProps {
 }
 
 export function DockItem({ item, index, setIndex, itemSize, animationValue }: DockItemProps) {
-    const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
-
+    const { standardTextSizes } = constants;
     const animatedSize = useSharedValue(animationValue);
-
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window }) => {
-            setScreenWidth(window.width);
-        });
-
-        return () => subscription?.remove();
-    }, []);
-
-    // Calculate responsive font size
-    const getFontSize = () => {
-        if (screenWidth < 1200) return 12; // Tablet
-        return 14; // Desktop/Kiosk
-    };
 
     useEffect(() => {
         animatedSize.value = withSpring(animationValue, { damping: 30, stiffness: 180 });
@@ -100,7 +86,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                         fontWeight: 'bold',
                         width: '100%',
                         textAlign: 'center',
-                        fontSize: getFontSize(),
+                        fontSize: standardTextSizes.widgetLabel,
                         paddingBottom: 5,
                     }}>
                     {item.title}

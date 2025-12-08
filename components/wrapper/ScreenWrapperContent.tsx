@@ -1,3 +1,4 @@
+import { constants } from '@/hooks/constants/constants';
 import { ReactNode } from 'react';
 import { ScrollView, Text } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -19,6 +20,8 @@ export default function ScreenWrapperContent({
     screen,
     contentAreaHeightStyle,
 }: ScreenWrapperContentProps) {
+    const { standardTextSizes } = constants;
+
     return (
         <Animated.View
             style={[
@@ -39,7 +42,7 @@ export default function ScreenWrapperContent({
                     style={{
                         textAlign: 'center',
                         color: 'black',
-                        fontSize: 45,
+                        fontSize: standardTextSizes.title,
                         fontWeight: 'bold',
                         marginBottom: 10,
                     }}>

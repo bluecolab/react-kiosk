@@ -2,9 +2,11 @@ import React from 'react';
 import { Pressable, Text, View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
+import { constants } from '@/hooks/constants/constants';
 
 export default function LanguageToggle() {
     const { t } = useTranslation();
+    const { standardTextSizes } = constants;
     const currentLang = i18n.language || 'en';
 
     const handleChangeLanguage = () => {
@@ -23,7 +25,14 @@ export default function LanguageToggle() {
                 style={styles.button}
                 accessibilityLabel={t('language.description')}
                 accessibilityRole="button">
-                <Text style={styles.text}>{currentLang.toUpperCase()}</Text>
+                <Text
+                    style={{
+                        color: '#fff',
+                        fontWeight: 'bold',
+                        fontSize: standardTextSizes.widgetLabel,
+                    }}>
+                    {currentLang.toUpperCase()}
+                </Text>
             </Pressable>
         </View>
     );
@@ -40,10 +49,5 @@ const styles = StyleSheet.create({
         minWidth: 50,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    text: {
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 12,
     },
 });
