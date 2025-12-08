@@ -40,6 +40,8 @@ const credits = [
             'George Moses',
             'Victor Lima',
             'Kenji Okura',
+            'Chris Rizzi (PurpleAir)',
+            'Mamoun Edfouf (PurpleAir)',
         ],
     },
     {

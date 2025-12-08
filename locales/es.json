@@ -3,7 +3,7 @@
     "mobileApp": "Aplicación Móvil",
     "games": "Juegos",
     "dataToMusic": "Datos a Música",
-    "weather": "Clima",
+    "weather": "Clima y Aire",
     "waterData": "Datos del Agua",
     "welcome": "¡Bienvenidos!",
     "aboutUs": "Acerca de Nosotros",
@@ -104,5 +104,8 @@
   },
   "standby": {
     "currentTime": "Hora Actual"
+  },
+  "weatherWidget": {
+    "aqi": "Índice de Calidad del Aire"
   }
 }
