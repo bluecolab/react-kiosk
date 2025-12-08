@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 
 export default function PondWaterData() {
+    const { t } = useTranslation();
+
     const weather_sensors = {
         odin: {
             label: 'Odin',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/139d29dc18204fa28d1b39ef672c45f5',
         },
         purple: {
-            label: 'Air Quality Index',
+            label: t('weatherWidget.aqi'),
             content: (
                 <View
                     style={{

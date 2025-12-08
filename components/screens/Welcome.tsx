@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native'; //, Pressable for future use of Pressable component to toggle Crotter Mode
 import { useTranslation } from 'react-i18next';
 import FeedbackViewer from '../FeedbackViewer';
-import LanguageToggle from '@/components/LanguageToggle';
 
 export default function WelcomeScreen() {
     const { t } = useTranslation();
@@ -61,7 +60,6 @@ export default function WelcomeScreen() {
                     gap: 8,
                     alignItems: 'center',
                 }}>
-                <LanguageToggle />
                 <Pressable
                     onPress={() => setIsFeedbackVisible(true)} // Open feedback modal
                     style={{

@@ -6,6 +6,7 @@ import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import Dock from './dock/Dock';
+import LanguageToggle from '../LanguageToggle';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
@@ -219,6 +220,14 @@ export default function ScreensWrapper() {
                 widgets={widgets}
             />
 
+            <TouchableOpacity
+                onPress={toggleReachability}
+                style={reachabilityStyles.toggleButtonLeft}>
+                <Text style={reachabilityStyles.toggleIcon}>
+                    <LanguageToggle />
+                </Text>
+            </TouchableOpacity>
+
             {/* Reachability Toggle Button */}
             <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
                 <Text style={reachabilityStyles.toggleIcon}>
@@ -254,5 +263,21 @@ const reachabilityStyles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         color: '#f8f9ff',
+    },
+    toggleButtonLeft: {
+        position: 'absolute',
+        bottom: 20,
+        left: 20,
+        width: 56,
+        height: 56,
+        borderRadius: 27,
+        backgroundColor: 'rgba(119, 205, 226, 0.9)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+        shadowColor: '#171717',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
 });
