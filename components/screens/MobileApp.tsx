@@ -3,7 +3,9 @@ import React from 'react';
 import { View, Image, Text } from 'react-native'; //, Pressable
 import { useTranslation } from 'react-i18next';
 
-const QRPlaceholder = require('@/assets/images/QR Placeholder.png'); // Placeholder image for QR code
+const qriOS = require('@/assets/images/qr-ios.png');
+const qrAndroid = require('@/assets/images/qr-android.png');
+const qrWebapp = require('@/assets/images/qr-webapp.png');
 
 export default function MobileApp() {
     const { t } = useTranslation();
@@ -18,10 +20,10 @@ export default function MobileApp() {
                 position: 'relative', // Added for absolute positioning context
             }}>
             <View style={{ flex: 1, alignItems: 'center' }}>
-                <Image
-                    style={{ width: 300, height: 600 }}
-                    source={require('@/assets/images/icons/MobileNewUI.png')}
-                    alt="Mobile App"
+                <iframe
+                    style={{ width: 300, height: 600, border: 'none' }}
+                    src="https://aquawatchmobile.expo.app"
+                    title="Mobile App"
                 />
             </View>
             <View
@@ -35,9 +37,25 @@ export default function MobileApp() {
                 <Text style={{ fontSize: 40 }}>{t('mobileApp.heading')}</Text>
                 <Text style={{ fontSize: 22 }}>{t('mobileApp.stayUpdated')}</Text>
                 <Text style={{ fontSize: 22 }}>{t('mobileApp.download')}</Text>
-            </View>
-            <View style={{ position: 'absolute', bottom: 20, right: 20 }}>
-                <Image style={{ width: 200, height: 200 }} source={QRPlaceholder} />
+                <View
+                    style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                    }}>
+                    <View style={{ margin: 20 }}>
+                        <Text style={{ fontSize: 22, textAlign: 'center' }}>iOS</Text>
+                        <Image style={{ width: 200, height: 200 }} source={qriOS} />
+                    </View>
+                    <View style={{ margin: 20 }}>
+                        <Text style={{ fontSize: 22, textAlign: 'center' }}>Android</Text>
+                        <Image style={{ width: 200, height: 200 }} source={qrAndroid} />
+                    </View>
+                    <View style={{ margin: 20 }}>
+                        <Text style={{ fontSize: 22, textAlign: 'center' }}>Web App</Text>
+                        <Image style={{ width: 200, height: 200 }} source={qrWebapp} />
+                    </View>
+                </View>
             </View>
         </View>
     );
