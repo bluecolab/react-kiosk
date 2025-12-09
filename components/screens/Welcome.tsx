@@ -58,104 +58,7 @@ export default function WelcomeScreen() {
                     <Text className="text-white font-bold text-xs">{t('feedback.button')}</Text>
                 </Pressable>
             </View>
-
-            <Modal
-                visible={isFeedbackVisible}
-                transparent={true}
-                animationType="slide"
-                onRequestClose={() => setIsFeedbackVisible(false)}>
-                <View
-                    style={{
-                        flex: 2,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    }}>
-                    <View
-                        style={{
-                            backgroundColor: 'white',
-                            padding: 20,
-                            borderRadius: 10,
-                            width: '100%',
-                            maxWidth: 500,
-                        }}>
-                        <Text
-                            style={{
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                                marginRight: 20,
-                                marginBottom: 20,
-                            }}>
-                            {t('feedback.title')}
-                        </Text>
-                        {showSuccess && (
-                            <View
-                                style={{
-                                    backgroundColor: '#4CAF50',
-                                    padding: 10,
-                                    borderRadius: 5,
-                                    marginBottom: 15,
-                                }}>
-                                <Text
-                                    style={{
-                                        color: 'white',
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                    }}>
-                                    {t('feedback.success')}
-                                </Text>
-                            </View>
-                        )}
-                        <TextInput
-                            value={feedback}
-                            onChangeText={setFeedback}
-                            multiline
-                            numberOfLines={4}
-                            style={{
-                                borderWidth: 1,
-                                borderColor: '#ccc',
-                                borderRadius: 5,
-                                padding: 10,
-                                marginBottom: 15,
-                                textAlignVertical: 'top',
-                            }}
-                            placeholder={t('feedback.placeholder')}
-                        />
-                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10 }}>
-                            <TouchableOpacity
-                                onPress={() => setIsFeedbackVisible(false)}
-                                style={{
-                                    backgroundColor: '#ff3b30',
-                                    padding: 10,
-                                    borderRadius: 5,
-                                }}>
-                                <Text style={{ color: 'white' }}>{t('feedback.cancel')}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={handleSubmitFeedback}
-                                style={{
-                                    backgroundColor: '#007AFF',
-                                    padding: 10,
-                                    borderRadius: 5,
-                                }}>
-                                <Text style={{ color: 'white' }}>{t('feedback.submit')}</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </Modal>
-
-            <Modal
-                visible={showFeedbackViewer}
-                transparent={true}
-                animationType="slide"
-                onRequestClose={() => setShowFeedbackViewer(false)}>
-                <View>
-                    <FeedbackViewer setShowFeedbackViewer={setShowFeedbackViewer} />
-                </View>
-            </Modal>
-
-            <Text className="text-center text-2xl font-bold mt-10 mb-8">
+            <Text className="text-center text-h2 font-bold mt-10 mb-8">
                 {t('widgets.welcome')} to Blue CoLab's Kiosk!
             </Text>
 
@@ -169,6 +72,58 @@ export default function WelcomeScreen() {
                     style={{ width: 50, height: 50, alignSelf: 'center', marginTop: 20 }}
                 />
             </Pressable>
+
+            <Modal
+                visible={isFeedbackVisible}
+                transparent={true}
+                animationType="slide"
+                onRequestClose={() => setIsFeedbackVisible(false)}>
+                <View className="flex-1 justify-center items-center bg-black/50">
+                    <View className="bg-white p-5 rounded-xl w-full max-w-[500px]">
+                        <Text className="text-xl font-bold mb-5">{t('feedback.title')}</Text>
+                        {showSuccess && (
+                            <View className="bg-green-600 p-3 rounded mb-4">
+                                <Text className="text-white text-center font-bold">
+                                    {t('feedback.success')}
+                                </Text>
+                            </View>
+                        )}
+                        <TextInput
+                            value={feedback}
+                            onChangeText={setFeedback}
+                            multiline
+                            numberOfLines={4}
+                            className="border border-gray-300 rounded p-3 mb-4 text-base"
+                            placeholder={t('feedback.placeholder')}
+                            style={{ textAlignVertical: 'top' }}
+                        />
+                        <View className="flex-row justify-end gap-3">
+                            <TouchableOpacity
+                                onPress={() => setIsFeedbackVisible(false)}
+                                className="bg-red-500 px-4 py-2 rounded">
+                                <Text className="text-white">{t('feedback.cancel')}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={handleSubmitFeedback}
+                                className="bg-blue-500 px-4 py-2 rounded">
+                                <Text className="text-white">{t('feedback.submit')}</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal
+                visible={showFeedbackViewer}
+                transparent={true}
+                animationType="slide"
+                onRequestClose={() => setShowFeedbackViewer(false)}>
+                <View className="flex-1 justify-center items-center bg-black/50">
+                    <View className="w-full max-w-[600px] bg-white rounded-xl p-5">
+                        <FeedbackViewer setShowFeedbackViewer={setShowFeedbackViewer} />
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }
