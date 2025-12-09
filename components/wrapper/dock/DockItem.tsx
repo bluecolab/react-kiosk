@@ -1,6 +1,6 @@
 import { Widget } from '@/hooks/useWidgets';
-import { useEffect, useState } from 'react';
-import { Dimensions, Platform, Pressable } from 'react-native';
+import { useEffect } from 'react';
+import { Platform, Pressable, Text } from 'react-native';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -17,23 +17,7 @@ interface DockItemProps {
 }
 
 export function DockItem({ item, index, setIndex, itemSize, animationValue }: DockItemProps) {
-    const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
-
     const animatedSize = useSharedValue(animationValue);
-
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window }) => {
-            setScreenWidth(window.width);
-        });
-
-        return () => subscription?.remove();
-    }, []);
-
-    // Calculate responsive font size
-    const getFontSize = () => {
-        if (screenWidth < 1200) return 12; // Tablet
-        return 14; // Desktop/Kiosk
-    };
 
     useEffect(() => {
         animatedSize.value = withSpring(animationValue, { damping: 30, stiffness: 180 });
@@ -92,19 +76,11 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                     { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },
                     sizeStyle,
                 ]}>
-                <Animated.Text
+                <Text
                     ellipsizeMode="tail"
-                    style={{
-                        alignSelf: 'center',
-                        color: 'white',
-                        fontWeight: 'bold',
-                        width: '100%',
-                        textAlign: 'center',
-                        fontSize: getFontSize(),
-                        paddingBottom: 5,
-                    }}>
+                    className="self-center text-white font-bold w-full text-center pb-1 text-widgetLabel">
                     {item.title}
-                </Animated.Text>
+                </Text>
                 <Animated.View
                     style={{
                         width: '100%',

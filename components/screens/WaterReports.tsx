@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Modal, Pressable, StyleSheet, Platform, Image, Button } from 'react-native';
+import { View, Text, Modal, Pressable, Platform, Button } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useWaterReports } from '@/hooks/useWaterReports';
 import { WebView } from 'react-native-webview';
+import { DynamicImage } from '../DynamicImage';
 
 let animated = require('@/assets/images/Pace-PLV-water-animated.gif');
 
@@ -13,7 +14,6 @@ export default function WaterReport() {
     const [isStoryModalVisible, setIsStoryModalVisible] = useState(false);
     const [pdfUri, setPdfUri] = useState<string | null>(null);
     const [currentTitle, setCurrentTitle] = useState<string | null>(null);
-    const [selectedYear, setSelectedYear] = useState<string | null>(null);
 
     const openPdfModal = (uri: string, title: string) => {
         setPdfUri(uri);
@@ -36,226 +36,104 @@ export default function WaterReport() {
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.bookContainer}>
-                <Text
-                    style={{
-                        marginTop: 20,
-                        fontSize: 18,
-                        fontWeight: 'bold',
-                        color: '#333',
-                        textAlign: 'center',
-                    }}>
-                    {t('waterReports.title')}
-                </Text>
-
-                <Image source={{}} style={styles.bookBackground} />
-                <View style={styles.yearSelector}>
-                    {/* Updated title for clarity */}
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            marginBottom: 10,
-                            color: '#333',
-                            textAlign: 'center',
-                        }}>
-                        {t('waterReports.description')}
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            marginBottom: 20,
-                            color: '#333',
-                            textAlign: 'center',
-                        }}>
-                        {t('waterReports.goal')}
-                    </Text>
-                    <Button onPress={() => openStoryModal()} title={t('waterReports.whereWater')} />
-                    <Text
-                        style={{ marginTop: 20, fontSize: 16, color: '#555', textAlign: 'center' }}>
-                        {t('waterReports.selectYear')}
-                    </Text>
-                    <Text
-                        style={{ marginTop: 10, fontSize: 16, color: '#777', textAlign: 'center' }}>
-                        {t('waterReports.pdfFormat')}
-                    </Text>
-                    <View style={styles.yearGrid}>
-                        {waterReports.map((report, index) => {
-                            const year = report.title.match(/\d{4}/)?.[0];
-                            return (
-                                <Pressable
-                                    key={index}
-                                    style={[
-                                        styles.yearButton,
-                                        selectedYear === year && styles.selectedYear,
-                                    ]}
-                                    onPress={() => {
-                                        setSelectedYear(year || null);
-                                        openPdfModal(report.url, report.title);
-                                    }}>
-                                    <Text style={styles.yearText}>{year}</Text>
-                                </Pressable>
-                            );
-                        })}
+        <View className="flex-1 w-full items-center justify-center">
+            <View className=" rounded-xl overflow-hidden">
+                <View className=" rounded-xl flex-row p-4 items-start w-full">
+                    <View className="flex-1 flex flex-col ">
+                        <Text className="text-h2 font-bold text-center mb-3">
+                            {t('waterReports.title')}
+                        </Text>
+                        <Text className="text-body mb-2  text-center">
+                            {t('waterReports.description')}
+                        </Text>
+                        <Text className="text-body mb-5  text-center">
+                            {t('waterReports.goal')}
+                        </Text>
+                        <Button
+                            onPress={() => openStoryModal()}
+                            title={t('waterReports.whereWater')}
+                        />
+                    </View>
+                    <View className="flex-shrink-0 mr-4 w-1/2">
+                        <Text className="text-body  text-center">
+                            {t('waterReports.selectYear')}
+                        </Text>
+                        <Text className=" text-body  text-center">
+                            {t('waterReports.pdfFormat')}
+                        </Text>
+                        <View className="grid grid-cols-3 gap-x-8 p-5">
+                            {waterReports.map((report, index) => {
+                                return (
+                                    <Pressable
+                                        key={index}
+                                        className={`relative bg-white min-h-[160px]  rounded-lg shadow-lg flex flex-col items-center justify-end border-l-8`}
+                                        style={{ marginBottom: 24 }}
+                                        onPress={() => {
+                                            openPdfModal(report.url, report.title);
+                                        }}>
+                                        {/* Book cover image */}
+                                        {report.image && (
+                                            <DynamicImage imgSource={report.image} width={120} />
+                                        )}
+                                        {/* Year label as spine */}
+                                        <Text
+                                            className={`text-button font-bold text-blue-900 text-center`}>
+                                            {report.title}
+                                        </Text>
+                                        {/* Shelf effect */}
+                                        <View className="absolute left-0 bottom-[-8px] w-full h-2 bg-gray-300 rounded-b-lg shadow-md" />
+                                    </Pressable>
+                                );
+                            })}
+                        </View>
                     </View>
                 </View>
             </View>
 
             <Modal visible={isModalVisible} animationType="slide">
-                <View style={{ flex: 1 }}>
-                    <View style={styles.modalHeader}>
+                <View className="flex-1">
+                    <View className="bg-blue-600/90 p-4 flex-row items-center">
                         <Pressable onPress={closePdfModal}>
-                            <Text style={styles.backText}>{t('waterReports.back')}</Text>
+                            <Text className="text-white text-lg mr-3">
+                                {t('waterReports.back')}
+                            </Text>
                         </Pressable>
-                        <Text style={styles.modalTitle}>{currentTitle}</Text>
+                        <Text className="text-white text-xl font-bold">{currentTitle}</Text>
                     </View>
 
                     {pdfUri && Platform.OS === 'web' ? (
-                        <View style={styles.iframeContainer}>
+                        <View className="flex-1 w-full h-full">
                             <iframe
                                 src={`${pdfUri}#toolbar=0`}
-                                style={styles.iframe}
+                                className="w-full h-full"
                                 allowFullScreen
                                 title="PDF Viewer"
                             />
                         </View>
                     ) : (
-                        <WebView
-                            source={{ uri: pdfUri || '' }}
-                            style={styles.webview}
-                            allowsFullscreenVideo
-                        />
+                        <WebView source={{ uri: pdfUri || '' }} allowsFullscreenVideo />
                     )}
                 </View>
             </Modal>
 
             <Modal visible={isStoryModalVisible} animationType="slide">
-                <View style={{ flex: 1 }}>
-                    <View style={styles.modalHeader}>
+                <View className="flex-1">
+                    <View className="bg-blue-600/90 p-4 flex-row items-center">
                         <Pressable onPress={closeStoryModal}>
-                            <Text style={styles.backText}>{t('waterReports.back')}</Text>
+                            <Text className="text-white text-lg mr-3">
+                                {t('waterReports.back')}
+                            </Text>
                         </Pressable>
-                        <Text style={styles.modalTitle}>{t('waterReports.whereWater')}</Text>
+                        <Text className="text-white text-xl font-bold">
+                            {t('waterReports.whereWater')}
+                        </Text>
                     </View>
-                    <Text style={{ marginHorizontal: 16, marginTop: 16, fontSize: 16 }}>
-                        {t('waterReports.waterSource')}
-                    </Text>
-                    <View
-                        style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginTop: 16,
-                        }}>
-                        <Image
-                            source={animated}
-                            style={{
-                                width: 300,
-                                height: 400,
-                                resizeMode: 'contain',
-                            }}
-                        />
+                    <Text className="mx-4 mt-4 text-body">{t('waterReports.waterSource')}</Text>
+                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 16 }}>
+                        <DynamicImage imgSource={animated} width={500} />
                     </View>
                 </View>
             </Modal>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-        backgroundColor: '#f5f5f5',
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    bookContainer: {
-        width: '80%',
-        maxWidth: 800,
-        height: 600,
-        position: 'relative',
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.3,
-        shadowRadius: 10,
-        elevation: 20,
-        overflow: 'hidden',
-    },
-    bookBackground: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
-    },
-    yearSelector: {
-        flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        padding: 20,
-    },
-    bookTitle: {
-        fontSize: 28,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 30,
-        color: '#000080',
-    },
-    yearGrid: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: 15,
-        padding: 20,
-    },
-    yearButton: {
-        backgroundColor: '#f0f0f0',
-        padding: 16,
-        borderRadius: 8,
-        minWidth: 100,
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 3,
-    },
-    selectedYear: {
-        backgroundColor: '#000080',
-    },
-    yearText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#000080',
-    },
-    modalHeader: {
-        backgroundColor: '#6299ffff',
-        padding: 16,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    backText: {
-        color: '#fff',
-        fontSize: 18,
-        marginRight: 12,
-    },
-    modalTitle: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    iframeContainer: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-    },
-    iframe: {
-        width: '100%',
-        height: '100%',
-        // border: 'none',
-    },
-    webview: {
-        flex: 1,
-    },
-});

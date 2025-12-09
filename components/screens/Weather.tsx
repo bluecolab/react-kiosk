@@ -1,40 +1,69 @@
-// Please do check the dimensions on the Kiosk - V
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 export default function PondWaterData() {
-    const water_sensors = {
-        odin: {
+    const { t } = useTranslation();
+
+    const weather_sensors = [
+        {
             label: 'Odin',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/139d29dc18204fa28d1b39ef672c45f5',
         },
-    };
-    const state = water_sensors.odin;
+        {
+            label: 'weatherWidget.aqi',
+            content: (
+                <View className="w-[1500px] h-[800px] flex-row justify-around">
+                    <View className="h-[700px]">
+                        <Text className="text-center text-body">Softball Field</Text>
+                        <iframe
+                            className="border-0 rounded-lg"
+                            height="700"
+                            src="https://bluecolab.github.io/grafana-dashboard-gallery/purple-air-1"
+                        />
+                    </View>
+                    <View className="h-[700px]">
+                        <Text className="text-center text-body">Nature Center</Text>
+                        <iframe
+                            className="border-0 rounded-lg"
+                            height="700"
+                            src="https://bluecolab.github.io/grafana-dashboard-gallery/purple-air-2"
+                        />
+                    </View>
+                </View>
+            ),
+        },
+    ];
+    const [state, setState] = useState<any>(weather_sensors[0]); // default to Odin sensor
 
     return (
         <View>
+            <View className="flex-row flex-wrap justify-center my-2">
+                {weather_sensors.map((item, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300'}`}
+                        onPress={() => setState(item)}>
+                        <Text className="text-button font-bold text-black">{t(item.label)}</Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
+
             {/* Content container */}
-            <View
-                style={{
-                    width: '100%',
-                    maxWidth: 2050, // Max width for larger screens - V
-                    backgroundColor: '#efeff381', // Silver background with transparency #efeff381
-                    marginTop: 20,
-                    borderRadius: 12, // Rounded corners for the container box - V
-                    overflow: 'hidden', // Ensures content respects border radius
-                    padding: 20,
-                    zIndex: 1,
-                    alignItems: 'center', // ensures iframe is centered inside the container
-                }}>
-                <iframe
-                    src={state.URL}
-                    width="1200"
-                    height="750"
-                    style={{
-                        border: 'none',
-                        borderRadius: 8,
-                    }}
-                />
+            <View className="bg-white rounded-xl flex-row p-4 items-start shadow w-full">
+                {typeof state.URL === 'string' ? (
+                    <iframe
+                        src={state.URL}
+                        width="1500"
+                        height="800"
+                        style={{
+                            border: 'none',
+                            borderRadius: 8,
+                        }}
+                    />
+                ) : (
+                    state.content
+                )}
             </View>
         </View>
     );

@@ -31,20 +31,11 @@ export default function ScreenWrapperContent({
                 contentAreaHeightStyle,
             ]}>
             <ScrollView
-                style={{ width: '100%' }}
-                contentContainerStyle={{ alignItems: 'center' }}
+                className="w-full"
+                contentContainerClassName="items-center"
                 showsVerticalScrollIndicator={true}
                 persistentScrollbar={true}>
-                <Text
-                    style={{
-                        textAlign: 'center',
-                        color: 'black',
-                        fontSize: 45,
-                        fontWeight: 'bold',
-                        marginBottom: 10,
-                    }}>
-                    {title}
-                </Text>
+                <Text className="text-center text-black font-bold mb-2 text-title">{title}</Text>
                 {screen}
             </ScrollView>
         </Animated.View>

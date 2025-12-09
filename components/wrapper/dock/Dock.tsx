@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import { Widget } from '@/hooks/useWidgets';
 import { FlatList } from 'react-native-gesture-handler';
 import { DockItem } from './DockItem';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { useState } from 'react';
 
 const GROWTH_RADIUS = 0.5; // how many neighbors are affected
@@ -39,27 +39,7 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
                     opacity: 1,
                 },
             ]}>
-            <View
-                style={{
-                    position: 'absolute',
-                    left: 20,
-                    right: 20,
-                    bottom: 0,
-                    height: 70,
-                    backgroundColor: '#ffffff47',
-                    borderTopLeftRadius: 24,
-                    borderTopRightRadius: 24,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: -4 },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 12,
-                    ...Platform.select({
-                        web: {
-                            boxShadow: '0px -4px 24px 0px rgba(0,0,0,0.25)',
-                        },
-                    }),
-                }}
-            />
+            <View className="absolute left-5 right-5 bottom-0 h-[70px] bg-white/30 rounded-t-3xl shadow-lg" />
 
             <FlatList
                 data={widgets}

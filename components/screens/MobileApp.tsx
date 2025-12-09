@@ -3,41 +3,41 @@ import React from 'react';
 import { View, Image, Text } from 'react-native'; //, Pressable
 import { useTranslation } from 'react-i18next';
 
-const QRPlaceholder = require('@/assets/images/QR Placeholder.png'); // Placeholder image for QR code
+const qriOS = require('@/assets/images/qr-ios.png');
+const qrAndroid = require('@/assets/images/qr-android.png');
+const qrWebapp = require('@/assets/images/qr-webapp.png');
 
 export default function MobileApp() {
     const { t } = useTranslation();
 
     return (
-        <View
-            style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative', // Added for absolute positioning context
-            }}>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <Image
-                    style={{ width: 300, height: 600 }}
-                    source={require('@/assets/images/icons/MobileNewUI.png')}
-                    alt="Mobile App"
-                />
-            </View>
-            <View
-                style={{
-                    flex: 1,
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    paddingLeft: 20,
-                    marginRight: 220, // Added to prevent text overlap with QR code
-                }}>
-                <Text style={{ fontSize: 40 }}>{t('mobileApp.heading')}</Text>
-                <Text style={{ fontSize: 22 }}>{t('mobileApp.stayUpdated')}</Text>
-                <Text style={{ fontSize: 22 }}>{t('mobileApp.download')}</Text>
-            </View>
-            <View style={{ position: 'absolute', bottom: 20, right: 20 }}>
-                <Image style={{ width: 200, height: 200 }} source={QRPlaceholder} />
+        <View className="flex-1 w-full items-center justify-center">
+            <Text className="text-h2 font-bold text-center mb-2">{t('mobileApp.heading')}</Text>
+            <Text className="text-h3 text-center mb-1">{t('mobileApp.stayUpdated')}</Text>
+            <Text className="text-body text-center mb-6">{t('mobileApp.download')}</Text>
+
+            <View className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-6xl">
+                <View className="flex items-center mb-8 md:mb-0">
+                    <iframe
+                        style={{ width: 300, height: 600, border: 'none' }}
+                        src="https://aquawatchmobile.expo.app"
+                        title="Mobile App"
+                    />
+                </View>
+                <View className="flex flex-row items-center justify-center gap-8">
+                    <View className="items-center">
+                        <Text className="text-body text-center mb-2">iOS</Text>
+                        <Image style={{ width: 200, height: 200 }} source={qriOS} />
+                    </View>
+                    <View className="items-center">
+                        <Text className="text-body text-center mb-2">Android</Text>
+                        <Image style={{ width: 200, height: 200 }} source={qrAndroid} />
+                    </View>
+                    <View className="items-center">
+                        <Text className="text-body text-center mb-2">Web App</Text>
+                        <Image style={{ width: 200, height: 200 }} source={qrWebapp} />
+                    </View>
+                </View>
             </View>
         </View>
     );

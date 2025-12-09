@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { DynamicImage } from '@/components/DynamicImage';
 
 const infoItems = [
     {
@@ -32,102 +33,37 @@ export default function RightToKnow() {
     const [currentItem, setCurrentItem] = useState(infoItems[0]);
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>{t('rightToKnow.mainHeading')}</Text>
-            <Text
-                style={{
-                    fontSize: 16,
-                    textAlign: 'center',
-                }}>
-                {t('rightToKnow.introText')}
+        <View>
+            <Text className="text-h2 font-bold mb-4 text-center">
+                {t('rightToKnow.mainHeading')}
             </Text>
-            <View style={styles.tabBar}>
+            <Text className="text-body text-center mb-2">{t('rightToKnow.introText')}</Text>
+            <View className="flex-row flex-wrap justify-center my-2">
                 {infoItems.map((item, index) => (
                     <TouchableOpacity
                         key={index}
-                        style={[
-                            styles.tab,
-                            currentItem.titleKey === item.titleKey && styles.activeTab,
-                        ]}
+                        className={`px-3 py-2 rounded-md m-1 ${currentItem.titleKey === item.titleKey ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setCurrentItem(item)}>
-                        <Text style={styles.tabText}>{t(item.titleKey)}</Text>
+                        <Text className="text-button font-bold text-black">{t(item.titleKey)}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
 
-            <View style={styles.content}>
-                <Text style={styles.title}>{t(currentItem.titleKey)}</Text>
-                <Text style={styles.description}>{t(currentItem.descriptionKey)}</Text>
-                <Image source={currentItem.img} style={styles.image} resizeMode="contain" />
-                <Text style={styles.students}>{t(currentItem.studentsKey)}</Text>
-                <Text style={styles.text}>{t(currentItem.textKey)}</Text>
+            <View className="bg-white rounded-xl flex-row p-4 items-start shadow w-full">
+                <View className="flex-shrink-0 mr-4">
+                    <DynamicImage imgSource={currentItem.img} width={600} />
+                </View>
+                <View className="flex-1 flex flex-col ml-4">
+                    <Text className="text-h2 text-center font-bold mb-2">
+                        {t(currentItem.titleKey)}
+                    </Text>
+                    <Text className="text-h3 text-center mb-2">
+                        {t(currentItem.descriptionKey)}
+                    </Text>
+                    <Text className="text-body">{t(currentItem.textKey)}</Text>
+                    <Text className="text-body mt-4">{t(currentItem.studentsKey)}</Text>
+                </View>
             </View>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%',
-        padding: 16,
-        backgroundColor: '#f0f0f0',
-    },
-    header: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 16,
-        textAlign: 'center',
-    },
-    tabBar: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginVertical: 8,
-        flexWrap: 'wrap',
-    },
-    tab: {
-        paddingHorizontal: 12,
-        paddingVertical: 8,
-        backgroundColor: '#ddd',
-        borderRadius: 6,
-        margin: 4,
-    },
-    activeTab: {
-        backgroundColor: '#55aaffff',
-    },
-    tabText: {
-        fontSize: 25,
-        color: '#000',
-        fontWeight: 'bold',
-    },
-    content: {
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        padding: 16,
-        alignItems: 'center',
-        elevation: 2,
-    },
-    title: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        marginBottom: 8,
-    },
-    description: {
-        fontSize: 25,
-        textAlign: 'center',
-        marginBottom: 10,
-    },
-    image: {
-        height: 500,
-        marginBottom: 20,
-        marginTop: 20,
-    },
-    students: {
-        fontSize: 20,
-        textAlign: 'center',
-    },
-    text: {
-        fontSize: 20,
-        marginTop: 50,
-    },
-});

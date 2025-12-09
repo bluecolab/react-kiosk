@@ -16,9 +16,7 @@ const CurrentTime = () => {
     }, []);
 
     return (
-        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}>
-            {time.toLocaleTimeString()}
-        </Text>
+        <Text className="text-2xl text-white font-bold font-sans">{time.toLocaleTimeString()}</Text>
     );
 };
 
@@ -57,15 +55,7 @@ export default function Standby() {
                 pointerEvents: 'auto',
             }}>
             <video
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    zIndex: -1,
-                }}
+                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
                 autoPlay
                 loop
                 muted>
@@ -73,7 +63,7 @@ export default function Standby() {
             </video>
 
             {/* Current Time and Version Bottom Right */}
-            <View style={{ position: 'absolute', bottom: 16, right: 16, alignItems: 'flex-end' }}>
+            <View className="absolute bottom-4 right-4 items-end">
                 <CurrentTime />
             </View>
         </Animated.View>

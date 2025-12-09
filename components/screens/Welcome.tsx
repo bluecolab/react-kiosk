@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native'; //, Pressable for future use of Pressable component to toggle Crotter Mode
+import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native';
+import { DynamicImage } from '@/components/DynamicImage';
 import { useTranslation } from 'react-i18next';
 import FeedbackViewer from '../FeedbackViewer';
-import LanguageToggle from '@/components/LanguageToggle';
 
 export default function WelcomeScreen() {
     const { t } = useTranslation();
@@ -50,78 +50,40 @@ export default function WelcomeScreen() {
     };
 
     return (
-        <View>
-            <View
-                style={{
-                    position: 'absolute',
-                    top: 10,
-                    right: 10,
-                    zIndex: 1000,
-                    flexDirection: 'row',
-                    gap: 8,
-                    alignItems: 'center',
-                }}>
-                <LanguageToggle />
+        <View className="relative">
+            <View className="absolute top-2 right-2 z-50 flex-row gap-2 items-center">
                 <Pressable
-                    onPress={() => setIsFeedbackVisible(true)} // Open feedback modal
-                    style={{
-                        backgroundColor: '#007AFF',
-                        padding: 10,
-                        borderRadius: 10,
-                        marginTop: 5,
-                        marginBottom: 5,
-                        marginLeft: 5,
-                        marginRight: 5,
-                    }}>
-                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>
-                        {t('feedback.button')}
-                    </Text>
+                    onPress={() => setIsFeedbackVisible(true)}
+                    className="bg-blue-500 px-4 py-2 rounded-xl mt-1 mb-1 ml-1 mr-1">
+                    <Text className="text-white font-bold text-xs">{t('feedback.button')}</Text>
                 </Pressable>
             </View>
+            <Text className="text-center text-h2 font-bold mt-10 mb-8">
+                {t('widgets.welcome')} to Blue CoLab's Kiosk!
+            </Text>
+
+            <View className="flex-row items-start justify-center">
+                <DynamicImage imgSource={Cronin} width={1392.75} />
+            </View>
+
+            <Pressable onPress={() => setShowFeedbackViewer(true)}>
+                <Image
+                    source={crotter}
+                    style={{ width: 50, height: 50, alignSelf: 'center', marginTop: 20 }}
+                />
+            </Pressable>
 
             <Modal
                 visible={isFeedbackVisible}
                 transparent={true}
                 animationType="slide"
                 onRequestClose={() => setIsFeedbackVisible(false)}>
-                <View
-                    style={{
-                        flex: 2,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    }}>
-                    <View
-                        style={{
-                            backgroundColor: 'white',
-                            padding: 20,
-                            borderRadius: 10,
-                            width: '100%',
-                            maxWidth: 500,
-                        }}>
-                        <Text
-                            style={{
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                                marginRight: 20,
-                                marginBottom: 20,
-                            }}>
-                            {t('feedback.title')}
-                        </Text>
+                <View className="flex-1 justify-center items-center bg-black/50">
+                    <View className="bg-white p-5 rounded-xl w-full max-w-[500px]">
+                        <Text className="text-xl font-bold mb-5">{t('feedback.title')}</Text>
                         {showSuccess && (
-                            <View
-                                style={{
-                                    backgroundColor: '#4CAF50',
-                                    padding: 10,
-                                    borderRadius: 5,
-                                    marginBottom: 15,
-                                }}>
-                                <Text
-                                    style={{
-                                        color: 'white',
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                    }}>
+                            <View className="bg-green-600 p-3 rounded mb-4">
+                                <Text className="text-white text-center font-bold">
                                     {t('feedback.success')}
                                 </Text>
                             </View>
@@ -131,34 +93,20 @@ export default function WelcomeScreen() {
                             onChangeText={setFeedback}
                             multiline
                             numberOfLines={4}
-                            style={{
-                                borderWidth: 1,
-                                borderColor: '#ccc',
-                                borderRadius: 5,
-                                padding: 10,
-                                marginBottom: 15,
-                                textAlignVertical: 'top',
-                            }}
+                            className="border border-gray-300 rounded p-3 mb-4 text-base"
                             placeholder={t('feedback.placeholder')}
+                            style={{ textAlignVertical: 'top' }}
                         />
-                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10 }}>
+                        <View className="flex-row justify-end gap-3">
                             <TouchableOpacity
                                 onPress={() => setIsFeedbackVisible(false)}
-                                style={{
-                                    backgroundColor: '#ff3b30',
-                                    padding: 10,
-                                    borderRadius: 5,
-                                }}>
-                                <Text style={{ color: 'white' }}>{t('feedback.cancel')}</Text>
+                                className="bg-red-500 px-4 py-2 rounded">
+                                <Text className="text-white">{t('feedback.cancel')}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={handleSubmitFeedback}
-                                style={{
-                                    backgroundColor: '#007AFF',
-                                    padding: 10,
-                                    borderRadius: 5,
-                                }}>
-                                <Text style={{ color: 'white' }}>{t('feedback.submit')}</Text>
+                                className="bg-blue-500 px-4 py-2 rounded">
+                                <Text className="text-white">{t('feedback.submit')}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -170,33 +118,12 @@ export default function WelcomeScreen() {
                 transparent={true}
                 animationType="slide"
                 onRequestClose={() => setShowFeedbackViewer(false)}>
-                <View>
-                    <FeedbackViewer setShowFeedbackViewer={setShowFeedbackViewer} />
+                <View className="flex-1 justify-center items-center bg-black/50">
+                    <View className="w-full max-w-[600px] bg-white rounded-xl p-5">
+                        <FeedbackViewer setShowFeedbackViewer={setShowFeedbackViewer} />
+                    </View>
                 </View>
             </Modal>
-
-            <Text
-                style={{
-                    textAlign: 'center',
-                    fontSize: 24,
-                    fontWeight: 'bold',
-                    marginTop: 40,
-                    marginBottom: 30,
-                }}>
-                {t('widgets.welcome')} to Blue CoLab's Kiosk!{' '}
-                {/* Added space for better readability */}
-            </Text>
-
-            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                <Image source={Cronin} style={{ width: 1857 * 0.75, height: 1080 * 0.75 }} />
-            </View>
-
-            <Pressable onPress={() => setShowFeedbackViewer(true)}>
-                <Image
-                    source={crotter}
-                    style={{ width: 50, height: 50, alignSelf: 'center', marginTop: 20 }}
-                />
-            </Pressable>
         </View>
     );
 }

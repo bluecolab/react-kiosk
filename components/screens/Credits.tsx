@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
     TouchableWithoutFeedback,
     Animated,
     Easing,
@@ -40,6 +39,8 @@ const credits = [
             'George Moses',
             'Victor Lima',
             'Kenji Okura',
+            'Chris Rizzi (PurpleAir)',
+            'Mamoun Edfouf (PurpleAir)',
         ],
     },
     {
@@ -93,16 +94,12 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
 
     const startAnimation = () => {
         if (!containerHeight || !contentHeight) return;
-
-        // Start below the bottom (containerHeight) and end above the top (-contentHeight)
-        const distance = containerHeight + contentHeight;
         translateY.setValue(containerHeight);
-
+        const distance = containerHeight + contentHeight;
         const duration = Math.max(
             1000,
             durationSeconds * 1000 * (distance / (containerHeight || 1))
         );
-
         animationRef.current = Animated.loop(
             Animated.timing(translateY, {
                 toValue: -contentHeight,
@@ -122,7 +119,6 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
     };
 
     useEffect(() => {
-        // restart when sizes available
         if (containerHeight && contentHeight) {
             stopAnimation();
             startAnimation();
@@ -131,11 +127,8 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [containerHeight, contentHeight, durationSeconds]);
 
-    // Ensure content starts fully off-screen as soon as we know the container height.
-    // This avoids a brief flash where content is visible before the animation starts.
     useEffect(() => {
         if (containerHeight && !animationRef.current) {
-            // position the roll below the visible area
             translateY.setValue(containerHeight);
         }
     }, [containerHeight, translateY]);
@@ -150,7 +143,6 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
 
     const handleNavigate = () => {
         if (onNavigate) return onNavigate();
-        // fallback for web: dispatch the same custom event used elsewhere
         try {
             if (typeof window !== 'undefined') {
                 window.dispatchEvent(
@@ -165,29 +157,46 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
 
     return (
         <TouchableWithoutFeedback onPress={handleNavigate}>
-            <View style={styles.container} onLayout={onContainerLayout}>
+            <View
+                className="flex-1 justify-center items-center overflow-hidden"
+                style={
+                    Platform.OS === 'web'
+                        ? { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }
+                        : undefined
+                }
+                onLayout={onContainerLayout}>
                 {/* translucent overlay */}
-                <View style={styles.overlay} pointerEvents="none" />
+                <View
+                    className="absolute top-0 left-0 right-0 bottom-0 bg-black/45"
+                    pointerEvents="none"
+                />
 
-                <View style={styles.center} pointerEvents="box-none">
-                    <View style={styles.contentWrapper}>
+                <View
+                    className="w-full items-center justify-center px-6 z-10"
+                    pointerEvents="box-none">
+                    <View className="w-4/5 max-w-[900px] min-w-[320px] items-center overflow-hidden h-3/5">
                         <Animated.View
                             onLayout={onContentLayout}
-                            style={[styles.animatedContainer, { transform: [{ translateY }] }]}>
-                            <Text style={styles.title}>Kiosk Contributors</Text>
-
+                            style={[
+                                { transform: [{ translateY }] },
+                                { width: '100%', alignItems: 'center' },
+                            ]}>
+                            <Text className="text-4xl text-white font-bold mb-4">
+                                Kiosk Contributors
+                            </Text>
                             {credits.map((section, i) => (
-                                <View key={i} style={styles.section}>
-                                    <Text style={styles.heading}>{section.heading}</Text>
+                                <View key={i} className="mb-3 items-center">
+                                    <Text className="text-xl text-white font-bold mb-2">
+                                        {section.heading}
+                                    </Text>
                                     {section.items.map((it, k) => (
-                                        <Text key={k} style={styles.item}>
+                                        <Text key={k} className="text-base text-white leading-6">
                                             {it}
                                         </Text>
                                     ))}
                                 </View>
                             ))}
-
-                            <Text style={styles.footer}>
+                            <Text className="mt-6 italic text-white text-center px-2">
                                 This is a non-exhaustive list — many other contributors, interns,
                                 and students have helped shape the kiosk over the years. Thank you
                                 to everyone who contributed.
@@ -199,73 +208,3 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
         </TouchableWithoutFeedback>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        ...Platform.select({ web: { position: 'fixed' as const }, default: {} }),
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        flex: 1,
-        backgroundColor: 'transparent',
-        overflow: 'hidden',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.45)',
-    },
-    center: {
-        zIndex: 2,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 24,
-    },
-    contentWrapper: {
-        width: '80%',
-        maxWidth: 900,
-        minWidth: 320,
-        alignItems: 'center',
-        overflow: 'hidden',
-        height: '60%',
-    },
-    animatedContainer: {
-        width: '100%',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 36,
-        color: '#fff',
-        marginBottom: 16,
-        fontWeight: '700',
-    },
-    section: {
-        marginBottom: 12,
-        alignItems: 'center',
-    },
-    heading: {
-        fontSize: 22,
-        color: '#fff',
-        fontWeight: '700',
-        marginBottom: 8,
-    },
-    item: {
-        color: '#fff',
-        fontSize: 16,
-        lineHeight: 22,
-    },
-    footer: {
-        marginTop: 24,
-        fontStyle: 'italic',
-        color: '#fff',
-        textAlign: 'center',
-        paddingHorizontal: 8,
-    },
-});

@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import About from '@/assets/videos/Blue-CoLab.mp4';
 import Fellowship from '@/assets/videos/fellowship.webm';
 import Sonification from '@/assets/videos/Choate Pond Sonification, Pace 1080.mp4';
 import ClearWaterSail from '@/assets/videos/Clearwater sails.mp4';
+import { useTranslation } from 'react-i18next';
 
 const videos = [
     { src: About, type: 'video/mp4', title: 'Blue CoLab Intro' },
@@ -29,56 +30,27 @@ const VideoComponent: React.FC<{ src: string; type: string }> = ({ src, type }) 
         controls
         controlsList="nodownload noremoteplayback noplaybackrate"
         disablePictureInPicture
-        style={styles.video}>
+        className="rounded-xl shadow-lg">
         <source src={src} type={type} />
         Your browser does not support the video tag.
     </video>
 );
 
 export default function Videos() {
+    const { t } = useTranslation();
     return (
-        <View style={styles.container}>
-            <Text style={styles.heading}>Watch educational videos on water science!</Text>
-            <View style={styles.videoList}>
+        <View className="p-5 items-center">
+            <Text className="text-h2 font-bold mb-5 text-center">
+                {t('videos.watchEducational')}
+            </Text>
+            <View className="flex-row flex-wrap justify-center gap-4">
                 {videos.map((video, index) => (
-                    <View key={index} style={styles.videoBox}>
+                    <View key={index} className="m-2 items-center">
                         <VideoComponent src={video.src} type={video.type} />
-                        <Text style={styles.videoTitle}>{video.title}</Text>
+                        <Text className="mt-2 text-xl text-center">{video.title}</Text>
                     </View>
                 ))}
             </View>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-        alignItems: 'center',
-    },
-    heading: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-    videoList: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: 16,
-    },
-    videoBox: {
-        margin: 10,
-        alignItems: 'center',
-    },
-    video: {
-        borderRadius: 10,
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-    },
-    videoTitle: {
-        marginTop: 8,
-        fontSize: 22,
-        textAlign: 'center',
-    },
-});
