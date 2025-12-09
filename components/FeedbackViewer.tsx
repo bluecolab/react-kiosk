@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Pressable, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import {
     getAllFeedback,
     clearAllFeedback,
@@ -55,42 +55,44 @@ export default function FeedbackViewer({
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.title}>Feedback Submissions ({feedbackList.length})</Text>
-                <View style={styles.buttonRow}>
+        <View className="flex-1 bg-gray-100 p-5">
+            <View className="mb-5">
+                <Text className="text-2xl font-bold mb-4">
+                    Feedback Submissions ({feedbackList.length})
+                </Text>
+                <View className="flex-row flex-wrap gap-2">
                     <Pressable
-                        style={styles.button}
+                        className="bg-blue-500 px-4 py-2 rounded"
                         onPress={() => setRefreshKey((prev) => prev + 1)}>
-                        <Text style={styles.buttonText}>Refresh</Text>
+                        <Text className="text-white font-bold">Refresh</Text>
                     </Pressable>
-                    <Pressable style={styles.button} onPress={handleExportJSON}>
-                        <Text style={styles.buttonText}>Export JSON</Text>
+                    <Pressable className="bg-blue-500 px-4 py-2 rounded" onPress={handleExportJSON}>
+                        <Text className="text-white font-bold">Export JSON</Text>
                     </Pressable>
-                    <Pressable style={styles.button} onPress={handleExportCSV}>
-                        <Text style={styles.buttonText}>Export CSV</Text>
+                    <Pressable className="bg-blue-500 px-4 py-2 rounded" onPress={handleExportCSV}>
+                        <Text className="text-white font-bold">Export CSV</Text>
                     </Pressable>
-                    <Pressable
-                        style={[styles.button, styles.dangerButton]}
-                        onPress={handleClearAll}>
-                        <Text style={styles.buttonText}>Clear All</Text>
+                    <Pressable className="bg-red-500 px-4 py-2 rounded" onPress={handleClearAll}>
+                        <Text className="text-white font-bold">Clear All</Text>
                     </Pressable>
                     <Pressable
-                        style={[styles.button, styles.dangerButton]}
+                        className="bg-red-500 px-4 py-2 rounded"
                         onPress={() => setShowFeedbackViewer(false)}>
-                        <Text style={styles.buttonText}>Close</Text>
+                        <Text className="text-white font-bold">Close</Text>
                     </Pressable>
                 </View>
             </View>
 
-            <ScrollView style={styles.scrollView}>
+            <ScrollView className="flex-1">
                 {feedbackList.length === 0 ? (
-                    <Text style={styles.emptyText}>No feedback submissions yet.</Text>
+                    <Text className="text-center text-gray-500 text-base mt-12">
+                        No feedback submissions yet.
+                    </Text>
                 ) : (
                     feedbackList.map((item, index) => (
-                        <View key={index} style={styles.feedbackItem}>
-                            <Text style={styles.date}>{item.date}</Text>
-                            <Text style={styles.feedbackText}>{item.text}</Text>
+                        <View key={index} className="bg-white p-4 rounded-lg mb-3 shadow">
+                            <Text className="text-xs text-gray-500 mb-2">{item.date}</Text>
+                            <Text className="text-sm text-gray-800">{item.text}</Text>
                         </View>
                     ))
                 )}
@@ -98,65 +100,3 @@ export default function FeedbackViewer({
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5',
-        padding: 20,
-    },
-    header: {
-        marginBottom: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 15,
-    },
-    buttonRow: {
-        flexDirection: 'row',
-        gap: 10,
-        flexWrap: 'wrap',
-    },
-    button: {
-        backgroundColor: '#007AFF',
-        padding: 10,
-        borderRadius: 5,
-    },
-    dangerButton: {
-        backgroundColor: '#ff3b30',
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
-    },
-    scrollView: {
-        flex: 1,
-    },
-    emptyText: {
-        textAlign: 'center',
-        color: '#666',
-        fontSize: 16,
-        marginTop: 50,
-    },
-    feedbackItem: {
-        backgroundColor: 'white',
-        padding: 15,
-        borderRadius: 8,
-        marginBottom: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 2,
-    },
-    date: {
-        fontSize: 12,
-        color: '#666',
-        marginBottom: 8,
-    },
-    feedbackText: {
-        fontSize: 14,
-        color: '#333',
-    },
-});

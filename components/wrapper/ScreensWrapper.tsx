@@ -137,7 +137,7 @@ export default function ScreensWrapper() {
     }, []);
 
     return (
-        <View style={{ flex: 1, position: 'relative' }}>
+        <View className="flex-1 relative">
             <Animated.View
                 style={[
                     {
@@ -220,9 +220,7 @@ export default function ScreensWrapper() {
                 widgets={widgets}
             />
 
-            <TouchableOpacity
-                onPress={toggleReachability}
-                style={reachabilityStyles.toggleButtonLeft}>
+            <TouchableOpacity style={reachabilityStyles.toggleButtonLeft}>
                 <Text style={reachabilityStyles.toggleIcon}>
                     <LanguageToggle />
                 </Text>

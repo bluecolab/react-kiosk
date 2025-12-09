@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native'; //, Pressable for future use of Pressable component to toggle Crotter Mode
+import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native';
+import { DynamicImage } from '@/components/DynamicImage';
 import { useTranslation } from 'react-i18next';
 import FeedbackViewer from '../FeedbackViewer';
 
@@ -49,31 +50,12 @@ export default function WelcomeScreen() {
     };
 
     return (
-        <View>
-            <View
-                style={{
-                    position: 'absolute',
-                    top: 10,
-                    right: 10,
-                    zIndex: 1000,
-                    flexDirection: 'row',
-                    gap: 8,
-                    alignItems: 'center',
-                }}>
+        <View className="relative">
+            <View className="absolute top-2 right-2 z-50 flex-row gap-2 items-center">
                 <Pressable
-                    onPress={() => setIsFeedbackVisible(true)} // Open feedback modal
-                    style={{
-                        backgroundColor: '#007AFF',
-                        padding: 10,
-                        borderRadius: 10,
-                        marginTop: 5,
-                        marginBottom: 5,
-                        marginLeft: 5,
-                        marginRight: 5,
-                    }}>
-                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>
-                        {t('feedback.button')}
-                    </Text>
+                    onPress={() => setIsFeedbackVisible(true)}
+                    className="bg-blue-500 px-4 py-2 rounded-xl mt-1 mb-1 ml-1 mr-1">
+                    <Text className="text-white font-bold text-xs">{t('feedback.button')}</Text>
                 </Pressable>
             </View>
 
@@ -173,20 +155,12 @@ export default function WelcomeScreen() {
                 </View>
             </Modal>
 
-            <Text
-                style={{
-                    textAlign: 'center',
-                    fontSize: 24,
-                    fontWeight: 'bold',
-                    marginTop: 40,
-                    marginBottom: 30,
-                }}>
-                {t('widgets.welcome')} to Blue CoLab's Kiosk!{' '}
-                {/* Added space for better readability */}
+            <Text className="text-center text-2xl font-bold mt-10 mb-8">
+                {t('widgets.welcome')} to Blue CoLab's Kiosk!
             </Text>
 
-            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                <Image source={Cronin} style={{ width: 1857 * 0.75, height: 1080 * 0.75 }} />
+            <View className="flex-row items-start justify-center">
+                <DynamicImage imgSource={Cronin} width={1392.75} />
             </View>
 
             <Pressable onPress={() => setShowFeedbackViewer(true)}>

@@ -1,49 +1,31 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 export default function PondWaterData() {
     const { t } = useTranslation();
 
-    const weather_sensors = {
-        odin: {
+    const weather_sensors = [
+        {
             label: 'Odin',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/139d29dc18204fa28d1b39ef672c45f5',
         },
-        purple: {
-            label: t('weatherWidget.aqi'),
+        {
+            label: 'weatherWidget.aqi',
             content: (
-                <View
-                    style={{
-                        width: 1080,
-                        height: 700,
-                        flexDirection: 'row',
-                        justifyContent: 'space-around',
-                    }}>
-                    <View
-                        style={{
-                            height: 700,
-                        }}>
-                        <Text style={{ textAlign: 'center' }}>Softball Field</Text>
+                <View className="w-[1500px] h-[800px] flex-row justify-around">
+                    <View className="h-[700px]">
+                        <Text className="text-center text-body">Softball Field</Text>
                         <iframe
-                            style={{
-                                border: 'none',
-                                borderRadius: 8,
-                            }}
+                            className="border-0 rounded-lg"
                             height="700"
                             src="https://bluecolab.github.io/grafana-dashboard-gallery/purple-air-1"
                         />
                     </View>
-                    <View
-                        style={{
-                            height: 700,
-                        }}>
-                        <Text style={{ textAlign: 'center' }}>Nature Center</Text>
+                    <View className="h-[700px]">
+                        <Text className="text-center text-body">Nature Center</Text>
                         <iframe
-                            style={{
-                                border: 'none',
-                                borderRadius: 8,
-                            }}
+                            className="border-0 rounded-lg"
                             height="700"
                             src="https://bluecolab.github.io/grafana-dashboard-gallery/purple-air-2"
                         />
@@ -51,53 +33,29 @@ export default function PondWaterData() {
                 </View>
             ),
         },
-    };
-    const [state, setState] = useState<any>(weather_sensors.odin); // default to Odin sensor
+    ];
+    const [state, setState] = useState<any>(weather_sensors[0]); // default to Odin sensor
 
     return (
         <View>
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-start', zIndex: 1 }}>
-                {Object.entries(weather_sensors).map(([key, value]) => {
-                    const isActive = state.label === value.label;
-                    return (
-                        <Text
-                            key={key}
-                            onPress={() => setState(value)}
-                            style={{
-                                backgroundColor: isActive ? '#fff' : '#3b4a6b',
-                                color: isActive ? '#000' : '#fff',
-                                fontWeight: isActive ? 'bold' : 'normal',
-                                paddingVertical: 10,
-                                paddingHorizontal: 20,
-                                borderTopLeftRadius: 10,
-                                borderTopRightRadius: 10,
-                                marginHorizontal: 4,
-                                zIndex: isActive ? 3 : 1,
-                                boxShadow: isActive ? '0px -2px 4px rgba(0,0,0,0.2)' : undefined,
-                                cursor: 'pointer',
-                            }}>
-                            {value.label}
-                        </Text>
-                    );
-                })}
+            <View className="flex-row flex-wrap justify-center my-2">
+                {weather_sensors.map((item, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300'}`}
+                        onPress={() => setState(item)}>
+                        <Text className="text-button font-bold text-black">{t(item.label)}</Text>
+                    </TouchableOpacity>
+                ))}
             </View>
 
             {/* Content container */}
-            <View
-                style={{
-                    width: '100%',
-                    maxWidth: 1200,
-                    backgroundColor: '#fff',
-                    borderRadius: 12,
-                    padding: 20,
-                    zIndex: 1,
-                    alignItems: 'center',
-                }}>
+            <View className="bg-white rounded-xl flex-row p-4 items-start shadow w-full">
                 {typeof state.URL === 'string' ? (
                     <iframe
                         src={state.URL}
-                        width="1080"
-                        height="700"
+                        width="1500"
+                        height="800"
                         style={{
                             border: 'none',
                             borderRadius: 8,

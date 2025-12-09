@@ -14,17 +14,4 @@ export const constants = {
         VIEW_AREA_MARGIN_TOP: 0,
         VIEW_AREA_COLOR: '#efefefff',
     },
-    standardTextSizes: {
-        title: 64,
-        widgetLabel: 14,
-        h1: 48,
-        h2: 32,
-        h3: 24,
-        body: 20,
-        button: 16,
-    },
-    standardDimensions: {
-        height: 700,
-        width: 1200,
-    },
 };

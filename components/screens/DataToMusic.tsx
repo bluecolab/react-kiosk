@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// import InProgress from '@/components/InProgress'; // Placeholder import, not used in final code
 import { ActivityIndicator, View, Text } from 'react-native';
 
 export default function DataToMusic() {
@@ -72,72 +71,33 @@ export default function DataToMusic() {
     };
 
     return (
-        <View
-            style={{
-                width: '100%',
-                maxWidth: 1750, // Adjusted maxWidth to better fit the iframe
-                height: '100%', // Full height to accommodate iframe
-                justifyContent: 'center', // Center content vertically and horizontally
-                backgroundColor: '#fff', // White background for better visibility of iframe content
-                borderRadius: 12, // Rounded corners for the container to match iframe
-                shadowColor: '#000', // Shadow for better visual separation
-                shadowOffset: { width: 0, height: 2 }, // Shadow offset
-                shadowOpacity: 0.3, // Shadow opacity
-                shadowRadius: 4, // Shadow radius
-                elevation: 5, // Elevation for Android shadow effect
-                margin: 1, // Margin around the container
-                padding: 1, // Padding inside the container
-                overflow: 'hidden', // Ensures rounded corners are applied to iframe content as well (on iOS)
-                zIndex: 1, // Ensures the container is above other elements
-                display: 'flex', // Ensures flexbox layout is applied
-                flexDirection: 'column', // Stack children vertically
-                alignItems: 'center', // ensures iframe is centered inside the container horizontally
-            }}>
+        <View className="flex flex-col items-center w-full">
             {serverUp === null && (
-                <View style={{ alignItems: 'center', padding: 20 }}>
+                <View className="items-center p-5">
                     <ActivityIndicator size="large" color="#0077cc" />
-                    <Text style={{ marginTop: 10, fontSize: 16, color: '#666' }}>
+                    <Text className="mt-2 text-base text-gray-500">
                         Checking sonification server status...
                     </Text>
                     {retryCount > 0 && (
-                        <Text style={{ marginTop: 5, fontSize: 14, color: '#999' }}>
+                        <Text className="mt-1 text-sm text-gray-400">
                             Retry attempt {retryCount}/{MAX_RETRIES}
                         </Text>
                     )}
                 </View>
             )}
             {serverUp === false && (
-                <View style={{ padding: 20, alignItems: 'center' }}>
-                    <Text
-                        style={{
-                            color: 'red',
-                            fontWeight: 'bold',
-                            fontSize: 20,
-                            textAlign: 'center',
-                            marginBottom: 10,
-                        }}>
+                <View className="p-5 items-center">
+                    <Text className="text-red-600 font-bold text-body text-center mb-2.5">
                         Sonification server is not reachable
                     </Text>
-                    <Text
-                        style={{
-                            color: '#666',
-                            fontSize: 16,
-                            textAlign: 'center',
-                            marginBottom: 15,
-                        }}>
+                    <Text className="text-gray-500  text-body text-center mb-4">
                         Please ensure the sonification server is running at http://127.0.0.1:5000/
                     </Text>
                     <View
-                        style={{
-                            backgroundColor: '#007AFF',
-                            paddingVertical: 10,
-                            paddingHorizontal: 20,
-                            borderRadius: 5,
-                            cursor: 'pointer',
-                        }}
+                        className="bg-blue-500 py-2 px-5 rounded cursor-pointer  text-body"
                         onStartShouldSetResponder={() => true}
                         onResponderRelease={handleRetry}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>Retry Connection</Text>
+                        <Text className="text-white font-bold">Retry Connection</Text>
                     </View>
                 </View>
             )}
@@ -145,12 +105,8 @@ export default function DataToMusic() {
             <iframe
                 src="http://127.0.0.1:5000/"
                 width="1500"
-                height="750"
-                style={{
-                    border: 'none',
-                    borderRadius: 8,
-                    marginTop: 20,
-                }}
+                height="800"
+                style={{ border: 'none', borderRadius: 8, marginTop: 20 }}
                 title="Sonification Interface"
             />
         </View>

@@ -1,4 +1,3 @@
-import { constants } from '@/hooks/constants/constants';
 import { ReactNode } from 'react';
 import { ScrollView, Text } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -20,8 +19,6 @@ export default function ScreenWrapperContent({
     screen,
     contentAreaHeightStyle,
 }: ScreenWrapperContentProps) {
-    const { standardTextSizes } = constants;
-
     return (
         <Animated.View
             style={[
@@ -34,20 +31,11 @@ export default function ScreenWrapperContent({
                 contentAreaHeightStyle,
             ]}>
             <ScrollView
-                style={{ width: '100%' }}
-                contentContainerStyle={{ alignItems: 'center' }}
+                className="w-full"
+                contentContainerClassName="items-center"
                 showsVerticalScrollIndicator={true}
                 persistentScrollbar={true}>
-                <Text
-                    style={{
-                        textAlign: 'center',
-                        color: 'black',
-                        fontSize: standardTextSizes.title,
-                        fontWeight: 'bold',
-                        marginBottom: 10,
-                    }}>
-                    {title}
-                </Text>
+                <Text className="text-center text-black font-bold mb-2 text-title">{title}</Text>
                 {screen}
             </ScrollView>
         </Animated.View>

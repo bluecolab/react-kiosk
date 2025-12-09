@@ -1,7 +1,6 @@
-import { constants } from '@/hooks/constants/constants';
 import { Widget } from '@/hooks/useWidgets';
 import { useEffect } from 'react';
-import { Platform, Pressable } from 'react-native';
+import { Platform, Pressable, Text } from 'react-native';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -18,7 +17,6 @@ interface DockItemProps {
 }
 
 export function DockItem({ item, index, setIndex, itemSize, animationValue }: DockItemProps) {
-    const { standardTextSizes } = constants;
     const animatedSize = useSharedValue(animationValue);
 
     useEffect(() => {
@@ -78,19 +76,11 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                     { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },
                     sizeStyle,
                 ]}>
-                <Animated.Text
+                <Text
                     ellipsizeMode="tail"
-                    style={{
-                        alignSelf: 'center',
-                        color: 'white',
-                        fontWeight: 'bold',
-                        width: '100%',
-                        textAlign: 'center',
-                        fontSize: standardTextSizes.widgetLabel,
-                        paddingBottom: 5,
-                    }}>
+                    className="self-center text-white font-bold w-full text-center pb-1 text-widgetLabel">
                     {item.title}
-                </Animated.Text>
+                </Text>
                 <Animated.View
                     style={{
                         width: '100%',

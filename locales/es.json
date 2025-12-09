@@ -102,6 +102,18 @@
     "studentsR2K2025": "Miembros del equipo de izquierda a derecha, desde arriba: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Prof Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof John Cronin, Dillon Talactac, Caroline Zanuto-Winter y Noor Huda. No aparece: Graig Decembre, Nailah Brown, Skyler Flynn.",
     "textR2K2025": "En octubre de 2025, 34 estudiantes de la Universidad de Pace fueron seleccionados de más de 60,000 solicitantes globales para unirse a la Fellowship del Milenio de las Naciones Unidas, representando un récord para Pace. El grupo de este año se destaca no solo por su tamaño sino también por su alcance internacional: por primera vez, Blue CoLab de Pace se asoció con estudiantes de la Universidad de Ciencias Aplicadas Häme de Finlandia, formando un equipo de 19 miembros enfocado en el ODS 6: Agua Limpia y Saneamiento. Su objetivo: desarrollar un plan de acción bilateral para promover el \"derecho a saber qué hay en nuestra agua\", culminando en una propuesta conjunta presentada en las Naciones Unidas durante la visita de la delegación finlandesa a Pace. Esta grupo de trabaja representa a más de 13 países, abordando problemas de justicia ambiental a educación, equidad de salud y sistemas renovables a través de proyectos dirigidos por estudiantes."
   },
+  "games": {
+    "playInteractive": "¡Juega juegos interactivos para aprender sobre el agua!",
+    "back": "← Atrás",
+    "created": "Creado por",
+    "play": "¡Jugar!",
+    "jeopardyDesc": "Aprende más sobre el agua mientras te diviertes.",
+    "ccDesc": "El único e inigualable Cronin salta sobre tiburones. Basado en el juego del dinosaurio de Google Chrome.",
+    "sfDesc": "Remake de Flappy Bird."
+  },
+  "videos": {
+    "watchEducational": "Mira videos educativos sobre la ciencia del agua."
+  },
   "standby": {
     "currentTime": "Hora Actual"
   },

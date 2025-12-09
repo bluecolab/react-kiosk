@@ -31,22 +31,12 @@ export default function Index() {
         };
 
         const navHandler = () => {
-            try {
-                // hide credits when a navigation event occurs (e.g. Credits -> Welcome)
-                setShowCredits(false);
-            } catch {
-                setShowCredits(false);
-            }
+            setShowCredits(false);
         };
 
         window.addEventListener('kiosk-show-credits', showHandler as EventListener);
         window.addEventListener('kiosk-navigate', navHandler as EventListener);
 
-        // cleanup
-        return () => {
-            window.removeEventListener('kiosk-show-credits', showHandler as EventListener);
-            window.removeEventListener('kiosk-navigate', navHandler as EventListener);
-        };
         const checkInactivity = setInterval(() => {
             if (Date.now() - lastActivity >= standbyTime) {
                 setIsStandby(true);
@@ -54,7 +44,12 @@ export default function Index() {
             }
         }, 1000);
 
-        return () => clearInterval(checkInactivity);
+        // cleanup both listeners and interval
+        return () => {
+            window.removeEventListener('kiosk-show-credits', showHandler as EventListener);
+            window.removeEventListener('kiosk-navigate', navHandler as EventListener);
+            clearInterval(checkInactivity);
+        };
     }, [lastActivity, standbyTime]);
 
     useEffect(() => {
@@ -89,30 +84,20 @@ export default function Index() {
                 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
             </Head>
 
-            <View style={{ flex: 1, position: 'relative' }}>
+            <View className="flex-1 relative">
                 {/* Background Video (ALWAYS present) */}
                 <video
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        zIndex: -1,
-                    }}
+                    className="absolute top-0 left-0 w-full h-full object-cover -z-10"
                     autoPlay
                     loop
                     muted>
                     <source src={assetId} type="video/mp4" />
                 </video>
-
                 {isStandby ? (
                     <Standby />
                 ) : showCredits ? null : ( // when showing credits, hide the wrapper (carousel + dock)
                     <ScreensWrapper />
                 )}
-
                 {showCredits ? <Credits /> : null}
             </View>
         </>
