@@ -13,21 +13,32 @@ jobs:
         outputs:
             cache-hit: ${{ steps.cache.outputs.cache-hit }}
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
             - name: Setup Node
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: 24.x
-            - name: Log Triggering User
-              run: echo "Build triggered by ${{ github.actor }}"
+
+            - name: Check Node.js and npm version
+              run: |
+                  node --version
+                  npm --version
+
+            - name: Validate package-lock.json
+              run: node scripts/check-package-lock.js
+
             - name: Cache node_modules
               id: cache
               uses: actions/cache@v3
               with:
                   path: ./node_modules
                   key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
             - name: Install dependencies
-              run: npm install
+              run: npm ci
 
     lint:
         runs-on: ubuntu-latest

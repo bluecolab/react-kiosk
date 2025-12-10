@@ -119,5 +119,23 @@
   },
   "weatherWidget": {
     "aqi": "Air Quality Index"
+  },
+  "waterReport": {
+    "2024Button": "2024 Water Report (by Blue CoLab)",
+    "2024Title": "Annual Water Quality Report for 2024 (by Blue CoLab)",
+    "2023Button": "2023 Water Report",
+    "2023Title": "Annual Water Quality Report for 2023",
+    "2022Button": "2022 Water Report",
+    "2022Title": "Annual Water Quality Report for 2022",
+    "2021Button": "2021 Water Report",
+    "2021Title": "Annual Water Quality Report for 2021",
+    "2020Button": "2020 Water Report",
+    "2020Title": "Annual Water Quality Report for 2020",
+    "2019Button": "2019 Water Report",
+    "2019Title": "Annual Water Quality Report for 2019",
+    "2018Button": "2018 Water Report",
+    "2018Title": "Annual Water Quality Report for 2018",
+    "2017Button": "2017 Water Report",
+    "2017Title": "Annual Water Quality Report for 2017"
   }
 }
