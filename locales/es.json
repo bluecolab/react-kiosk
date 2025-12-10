@@ -119,5 +119,23 @@
   },
   "weatherWidget": {
     "aqi": "Índice de Calidad del Aire"
+  },
+  "waterReport": {
+    "2024Button": "Informe de Agua 2024 (por Blue CoLab)",
+    "2024Title": "Informe Anual de Calidad del Agua 2024 (por Blue CoLab)",
+    "2023Button": "Informe de Agua 2023",
+    "2023Title": "Informe Anual de Calidad del Agua 2023",
+    "2022Button": "Informe de Agua 2022",
+    "2022Title": "Informe Anual de Calidad del Agua 2022",
+    "2021Button": "Informe de Agua 2021",
+    "2021Title": "Informe Anual de Calidad del Agua 2021",
+    "2020Button": "Informe de Agua 2020",
+    "2020Title": "Informe Anual de Calidad del Agua 2020",
+    "2019Button": "Informe de Agua 2019",
+    "2019Title": "Informe Anual de Calidad del Agua 2019",
+    "2018Button": "Informe de Agua 2018",
+    "2018Title": "Informe Anual de Calidad del Agua 2018",
+    "2017Button": "Informe de Agua 2017",
+    "2017Title": "Informe Anual de Calidad del Agua 2017"
   }
 }

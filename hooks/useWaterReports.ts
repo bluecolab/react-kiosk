@@ -14,55 +14,52 @@ export const useWaterReports = () => {
     return useMemo(
         () => [
             {
-                buttonText: '2024 Water Report (by Blue CoLab)',
+                buttonText: 'waterReport.2024Button',
                 image: require('@/assets/images/general/2024RR.png'),
-                title: 'Annual Water Quality Report for 2024',
+                title: 'waterReport.2024Title',
                 url: Report2024,
             },
             {
-                buttonText: '2023 Water Report',
+                buttonText: 'waterReport.2023Button',
                 image: require('@/assets/images/general/2023RR.png'),
-                title: 'Annual Water Quality Report for 2023',
+                title: 'waterReport.2023Title',
                 url: Report2023,
             },
             {
-                buttonText: '2022 Water Report',
+                buttonText: 'waterReport.2022Button',
                 image: require('@/assets/images/general/2022RR.png'),
-                title: 'Annual Water Quality Report for 2022',
+                title: 'waterReport.2022Title',
                 url: Report2022,
             },
 
             {
-                buttonText: '2021 Water Report',
+                buttonText: 'waterReport.2021Button',
                 image: require('@/assets/images/general/2021RR.png'),
-                title: 'Annual Water Quality Report for 2021',
+                title: 'waterReport.2021Title',
                 url: Report2021,
             },
             {
-                buttonText: '2020 Water Report',
+                buttonText: 'waterReport.2020Button',
                 image: require('@/assets/images/general/2020RR.png'),
-
-                title: 'Annual Water Quality Report for 2020',
+                title: 'waterReport.2020Title',
                 url: Report2020,
             },
             {
-                buttonText: '2019 Water Report',
+                buttonText: 'waterReport.2019Button',
                 image: require('@/assets/images/general/2019RR.png'),
-
-                title: 'Annual Water Quality Report for 2019',
+                title: 'waterReport.2019Title',
                 url: Report2019,
             },
             {
-                buttonText: '2018 Water Report',
+                buttonText: 'waterReport.2018Button',
                 image: require('@/assets/images/general/2018RR.png'),
-
-                title: 'Annual Water Quality Report for 2018',
+                title: 'waterReport.2018Title',
                 url: Report2018,
             },
             {
-                buttonText: '2017 Water Report',
+                buttonText: 'waterReport.2017Button',
                 image: require('@/assets/images/general/2017RR.png'),
-                title: 'Annual Water Quality Report for 2017',
+                title: 'waterReport.2017Title',
                 url: Report2017,
             },
         ],

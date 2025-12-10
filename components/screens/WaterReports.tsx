@@ -78,7 +78,7 @@ export default function WaterReport() {
                                         {/* Year label as spine */}
                                         <Text
                                             className={`text-button font-bold text-blue-900 text-center`}>
-                                            {report.title}
+                                            {t(report.buttonText)}
                                         </Text>
                                         {/* Shelf effect */}
                                         <View className="absolute left-0 bottom-[-8px] w-full h-2 bg-gray-300 rounded-b-lg shadow-md" />
@@ -98,7 +98,9 @@ export default function WaterReport() {
                                 {t('waterReports.back')}
                             </Text>
                         </Pressable>
-                        <Text className="text-white text-xl font-bold">{currentTitle}</Text>
+                        <Text className="text-white text-xl font-bold">
+                            {t(currentTitle ?? '')}
+                        </Text>
                     </View>
 
                     {pdfUri && Platform.OS === 'web' ? (
