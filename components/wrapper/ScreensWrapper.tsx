@@ -221,9 +221,7 @@ export default function ScreensWrapper() {
             />
 
             <TouchableOpacity style={reachabilityStyles.toggleButtonLeft}>
-                <Text style={reachabilityStyles.toggleIcon}>
-                    <LanguageToggle />
-                </Text>
+                <LanguageToggle />
             </TouchableOpacity>
 
             {/* Reachability Toggle Button */}
