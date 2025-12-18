@@ -42,6 +42,7 @@
         "description": "Cambiar idioma",
         "english": "English",
         "spanish": "Español",
+        "albanian": "Shqip",
         "current": "Idioma Actual"
     },
     "aboutScreen": {

@@ -1,10 +1,6 @@
 {
-    "dictionaries": [
-        "es-es"
-    ],
-    "import": [
-        "@cspell/dict-es-es/cspell-ext.json"
-    ],
+    "dictionaries": ["es-es"],
+    "import": ["@cspell/dict-es-es/cspell-ext.json"],
     "ignorePaths": [
         "node_modules/*",
         "dist/*",
@@ -13,9 +9,11 @@
         "android/*",
         "ios/*",
         ".expo/*",
-        ".vscode/*"
+        ".vscode/*",
+        "locales/sq.json"
     ],
     "ignoreWords": [
+        "Shqip",
         "Pleasantville",
         "okaykenji",
         "Nunito",
@@ -107,9 +105,7 @@
         "Sohaib",
         "Yankowitz",
         "Jarama",
-        "Diggle"
-    ],
-    "words": [
+        "Diggle",
         "Acipenser",
         "Allaben",
         "Alosa",
