@@ -1,0 +1,142 @@
+{
+    "widgets": {
+        "mobileApp": "Aplikacioni Mobil",
+        "games": "Lojëra",
+        "dataToMusic": "Të dhëna në muzikë",
+        "weather": "Moti",
+        "waterData": "Të dhëna të ujit",
+        "welcome": "Mirësevini!",
+        "aboutUs": "Rreth Nesh",
+        "rightToKnow": "E drejta për të ditur",
+        "waterReports": "Raportet e Ujit",
+        "photoGallery": "Galeria e Fotove",
+        "videos": "Video",
+        "credits": "Kreditet"
+    },
+    "feedback": {
+        "button": "Jepni Feedback",
+        "title": "Dërgoni Feedback",
+        "placeholder": "Shkruani feedback-un tuaj këtu...",
+        "success": "Faleminderit për feedback-un tuaj!",
+        "emptyError": "Ju lutemi shkruani diçka para se të dërgoni.",
+        "cancel": "Anulo",
+        "submit": "Dërgo",
+        "noSubmissions": "Ende nuk ka feedback të dërguar.",
+        "submissions": "Feedback të Dërguar"
+    },
+    "feedbackViewer": {
+        "refresh": "Rifresko",
+        "exportJSON": "Eksporto JSON",
+        "exportCSV": "Eksporto CSV",
+        "clearAll": "Pastro të gjitha",
+        "close": "Mbyll",
+        "confirmDelete": "A jeni i sigurt që dëshironi të fshini të gjitha feedback-et?",
+        "emptyFeedback": "Nuk ka feedback për të shfaqur."
+    },
+    "reachability": {
+        "toggle": "Aksesueshmëria",
+        "description": "Ndrysho cilësimet e aksesueshmërisë"
+    },
+    "language": {
+        "toggle": "Gjuha",
+        "description": "Ndrysho gjuhën e ekranit",
+        "english": "English",
+        "spanish": "Español",
+        "albanian": "Shqip",
+        "current": "Gjuha aktuale"
+    },
+    "aboutScreen": {
+        "missionTitle": "Ne Shkollen Seidenberg, ne besojme se studentet mund te bejne nje ndryshim sot, perpara se te nisin karrieren e tyre te neserme. ",
+        "safeWater": "A është uji juaj i sigurt për t'u pirë?",
+        "rightToKnow": "Ne besojmë se keni të drejtën për të ditur.",
+        "blueColab": "Colab Blu",
+        "description": "Ne po punojmë për t'ju siguruar informacionin kritik që ju nevojitet për cilësinë e ujit tuaj. Ekipi ynë i përkushtuar i studentëve, praktikantëve, asistentëve të diplomuar, fakultetit dhe stafit po avancojnë teknologjinë, informacionin dhe sistemet e paralajmërimit për ta bërë këtë një realitet.",
+        "atPrefix": "Në",
+        "location": "Në laboratorin tonë të teknologjisë që shikon lumin Hudson, laboratorin tonë Choate Pond në kampus, dhe laboratorin tonë të të dhënave në Qendrën Akademike Goldstein, Colab Blu është i përkushtuar ndaj propozimit që ju keni",
+        "rightToKnowBold": "të drejtën për të ditur",
+        "locationEnd": "cilësinë e ujit tuaj para se ta pini, të notoni në të, të peshkoni në të, apo madje të notoni me kanoen tuaj.",
+        "waterContaminationRisks": "Rreziqet e kontaminimit të ujit",
+        "contaminationText1": "Ka shumë mundësi që uji që përdorni është i sigurt, por miliona njerëz fatkeqësisht kanë zbuluar të kundërtën. Në një çështje orësh, një gllënjkë e vetme uji të kontaminuar me patogjenë mund të rezultojë në sëmundje serioze. Aktualisht, laboratorët kërkojnë 24 - 48 orë për të raportuar analizat e mostrave të marra javore, ose më pak.",
+        "milwaukee": "Milwaukee (1993)",
+        "milwaukeeText": "400,000 banorë u sëmurën dhe 100 vdiqën pas pirjes së ujit të kontaminuar me cryptosporidium.",
+        "hoosickFalls": "Hoosick Falls",
+        "newburghNY": "Newburgh, NY",
+        "hoosickText": "Uji i pijshëm u kontaminua me PFOA, një kimikat i lidhur me kancerin dhe çrregullimet hormonale.",
+        "globalProblem": "Kontaminimi i ujit është një problem global, duke bërë që miliona njerëz të sëmuren.",
+        "realTime": "Në kohë reale",
+        "detection": "zbulimi teknologjik i kontaminantëve të ujit është mbrojtja më e mirë.",
+        "handsOnApproach": "Qasja praktike e Blue CoLab",
+        "threefoldApproach": "Me një qasje trefishe për testimin e cilësisë së ujit, Blue CoLab bashkon fuqinë e sensorëve të avancuar me mbledhjen e të dhënave në kohë reale dhe analizën e drejtuar nga AI—duke e bërë më të lehtë zbulimin e kontaminimit të ujit dhe raportimin më të shpejtë.",
+        "teamWorkPrefix": "Ata punojnë në një",
+        "teamWorkBold": "mjedis të bazuar në ekip",
+        "teamWorkSuffix": ", duke përdorur laboratorët, instrumentet, pajisjet dhe serverët e dedikuar të Blue CoLab.",
+        "closingParagraph": "Përmes bashkëpunimit me komunitetin tonë të gjerë të Pace, përfshirë fakultetin, studentët, stafin dhe partnerët e industrisë, ne po zhvillojmë zgjidhje inovative për të siguruar që të gjithë të kenë qasje në ujë të pastër dhe të sigurt."
+    },
+    "waterReports": {
+        "title": "Raportet e Cilesise se Ujit perditesohen cdo vit ne perputhje me rregulloret e EPA-se (Agjensia e Mbrojtjes se Mjedisit).",
+        "description": "Në Universitetin Pace, ne jemi të përkushtuar për të ofruar informacion transparent në lidhje me cilësinë e ujit tonë. Pace vetë është i njohur për iniciativat e furnizimit me ujë dhe përpjekjet për qëndrueshmëri sesa për rolin e tij si furnizues uji. Konkretisht në kampusin e Pleasantville konsiderohet një \"Sistem i Ujit të Komunitetit\" nga EPA, që do të thotë se shërben të paktën 25 persona për të paktën 60 ditë në vit. Uji ynë furnizohet nga Qyteti i Mount Pleasant dhe testohet rregullisht për të siguruar që plotëson të gjitha standardet federale dhe shtetërore të cilësisë së ujit.",
+        "goal": "Qëllimi për të gjithë konsumatorët e ujit është të jenë plotësisht të vetëdijshëm për cilësinë e ujit të tyre dhe për çdo kontaminues të mundshëm që mund të jetë i pranishëm. Me kornizën e avancuar që ju ofron Blue Colab, ne ju inkurajojmë të eksploroni raportet tona vjetore të cilësisë së ujit më poshtë për të mësuar më shumë rreth sigurisë dhe cilësisë së ujit që ne ofrojmë.",
+        "selectYear": "Zgjidhni një vit për të parë Raportin përkatës të Cilësisë së Ujit.",
+        "pdfFormat": "(Raportet ofrohen në format PDF.)",
+        "whereWater": "Nga vjen uji ynë?",
+        "waterSource": "Uji i Universitetit Pace në Pleasantville vjen nga Rezervuari Ashokan në Malet Catskill, duke udhëtuar 91 milje nëpër ujësjellës nëntokësorë për të arritur në kampus. Rezervuari Croton, i cili është 12 milje larg, është burimi ynë rezervë në rast të ndonjë emergjence ose për aktivitete mirëmbajtjeje, që daton në vitin 1842 (duke ndërtuar pendën e lumit Croton, duke e bërë atë burimin e parë të ujit nga pjesa e sipërme e shtetit). Meqenëse jemi një komunitet uji i njohur federalisht, Pace është përgjegjës për menaxhimin e furnizimit të tyre me ujë, si dhe për përmbushjen e të gjitha standardeve të kërkuara të testimit.",
+        "back": "← Kthehu"
+    },
+    "mobileApp": {
+        "heading": "Qasje në të dhënat tona kërkimore dhe informacionin gjatë lëvizjes.",
+        "stayUpdated": "Qëndroni të përditësuar me të dhëna në kohë reale.",
+        "download": "Shkarkoni aplikacionin tonë mobil për qasje më të mirë."
+    },
+    "rightToKnow": {
+        "mainHeading": "Kuptoni të Drejtën Tuaj për të Ditur Rreth Cilësisë së Ujit",
+        "introText": "Këtu në Blue CoLab, ne fokusohemi në të drejtën për të ditur H2O. Ne mbajmë të dashur Qëllimin e Zhvillimit të Qëndrueshëm (SDG) 6 të Kombeve të Bashkuara – duke siguruar qasje në ujë të pastër dhe sanitarizim për të gjithë. Njerëzit duhet të kenë qasje të lehtë në ujë të pastër. Ne besojmë se njerëzit duhet të kenë të drejtën për të ditur se çfarë ka në ujin e tyre në mënyrë që të marrin vendime të informuara.",
+        "team2023": "Ekipi 2023",
+        "team2024": "Ekipi 2024",
+        "team2025": "Ekipi 2025",
+        "descriptionR2K2023": "E Drejta për të Ditur H2O - 2023",
+        "descriptionR2K2024": "E Drejta për të Ditur H2O - 2024",
+        "descriptionR2K2025": "E Drejta për të Ditur H2O - 2025",
+        "studentsR2K2023": "Nga e majta në të djathtë, nga lart: Cece Porter, Lilah McCormack, Louisa Moquete, Sasha Palmer, Meryl Mizell, Sasha Breygina.",
+        "textR2K2023": "Ekipi i parë ndonjëherë i E Drejta për të Ditur H2O, i udhëhequr nga Prof. John Cronin, po avancojnë SDG 6: Ujë i Pastër dhe Sanitarizim duke promovuar një parim të thjeshtë: qasja në ujë të pastër është një e drejtë njerëzore—dhe po kështu është e drejta për të ditur nëse uji juaj është i sigurt. Ekipi po zhvillon një peticion të fokusuar në OKB, rekomandime politike për SHBA, dhe një sistem informacioni të ujit të bazuar në Pace për të bërë transparencën e cilësisë së ujit një standard global.",
+        "studentsR2K2024": "Nga e majta në të djathtë, nga lart: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.",
+        "textR2K2024": "Ekipi i dytë ndonjëherë i E Drejta për të Ditur H2O po ndërton mbi bazën e vendosur nga kohorta e 2023, duke avancuar besimin se e drejta njerëzore për ujë të pijshëm të sigurt duhet të përfshijë të drejtën për të ditur nëse uji i kampusit është i sigurt. Me mbi 270 milionë njerëz që mbështeten në ujin në 25,000+ kolegjet dhe universitetet e botës, ekipi synon të krijojë një model të drejtuar nga teknologjia që kampuset kudo mund të adoptojnë. Puna e tyre fillon në kampusin Pleasantville të Pace me një fushatë ndërgjegjësimi për cilësinë e ujit, një samit me zyrtarë lokalë, një qendër mësimi në internet, dhe një sondazh kampusi. Më pas, ekipi po zhvillon një sistem mbledhje të dhënash, mjete raportimi dixhital, dhe një veçori të përmirësuar alarmi emergjent për çështjet e ujit. Të mbështetur nga rrjeti i Millennium Fellowship, këta studentë të Seidenberg po përgatiten mjete që institucione të tjera mund të përdorin për të replikuar modelin.",
+        "studentsR2K2025": "Anëtarët e ekipit nga e majta në të djathtë, nga lart: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Prof Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof John Cronin, Dillon Talactac, Caroline Zanuto-Winter, dhe Noor Huda. Nuk janë në fotografi: Graig Decembre, Nailah Brown, Skyler Flynn.",
+        "textR2K2025": "Në tetor 2025, 34 studentë të Universitetit Pace u zgjodhën—nga mbi 60,000 aplikantë globalë—për t'u bashkuar me Millennium Fellowship të Kombeve të Bashkuara, duke përfaqësuar një rekord të lartë për Pace. Kohorta e këtij viti dallohet jo vetëm për madhësinë e saj por edhe për shtrirjen e saj ndërkombëtare: për herë të parë, Blue CoLab i Pace u bashkëpunua me studentë nga Universiteti i Shkencave të Aplikuara Häme në Finlandë, duke formuar një ekip prej 19 anëtarësh të fokusuar në SDG 6: Ujë i Pastër dhe Sanitarizim. Qëllimi i tyre: të zhvillojnë një plan veprimi dypalësh për të promovuar \"të drejtën për të ditur se çfarë ka në ujin tonë,\" duke kulminuar në një propozim të përbashkët të paraqitur në Kombet e Bashkuara gjatë vizitës së delegacionit finlandez në Pace. Kjo kohortë punon në mbi 13 vende, duke adresuar çështje nga drejtësia mjedisore te arsimi, barazia shëndetësore, dhe sistemet e rinovueshme përmes projekteve të udhëhequra nga studentët."
+    },
+    "games": {
+        "playInteractive": "Luani lojëra interaktive për të mësuar rreth ujit!",
+        "back": "← Kthehu",
+        "created": "Krijuar nga",
+        "play": "Luaj Lojën",
+        "jeopardyDesc": "Mësoni më shumë rreth ujit ndërsa argëtoheni.",
+        "ccDesc": "I vetmi Cronin kërcon mbi peshkaqenët. Bazuar në lojën e dinozaurit të Google Chrome.",
+        "sfDesc": "Riprodhim i lojës Flappy Bird."
+    },
+    "videos": {
+        "watchEducational": "Shikoni video edukative rreth shkencës së ujit!"
+    },
+    "standby": {
+        "currentTime": "Ora Aktuale"
+    },
+    "weatherWidget": {
+        "aqi": "Indeksi i Cilësisë së Ajrit"
+    },
+    "waterReport": {
+        "2024Button": "Raporti i Ujit 2024 (nga Blue CoLab)",
+        "2024Title": "Raporti Vjetor i Cilësisë së Ujit për 2024 (nga Blue CoLab)",
+        "2023Button": "Raporti i Ujit 2023",
+        "2023Title": "Raporti Vjetor i Cilësisë së Ujit për 2023",
+        "2022Button": "Raporti i Ujit 2022",
+        "2022Title": "Raporti Vjetor i Cilësisë së Ujit për 2022",
+        "2021Button": "Raporti i Ujit 2021",
+        "2021Title": "Raporti Vjetor i Cilësisë së Ujit për 2021",
+        "2020Button": "Raporti i Ujit 2020",
+        "2020Title": "Raporti Vjetor i Cilësisë së Ujit për 2020",
+        "2019Button": "Raporti i Ujit 2019",
+        "2019Title": "Raporti Vjetor i Cilësisë së Ujit për 2019",
+        "2018Button": "Raporti i Ujit 2018",
+        "2018Title": "Raporti Vjetor i Cilësisë së Ujit për 2018",
+        "2017Button": "Raporti i Ujit 2017",
+        "2017Title": "Raporti Vjetor i Cilësisë së Ujit për 2017"
+    }
+}

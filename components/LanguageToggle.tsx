@@ -8,7 +8,11 @@ export default function LanguageToggle() {
     const currentLang = i18n.language || 'en';
 
     const handleChangeLanguage = () => {
-        const nextLang = currentLang === 'en' ? 'es' : 'en';
+        const languages = ['en', 'es', 'sq'];
+        const currentIndex = languages.indexOf(currentLang);
+        const nextIndex = (currentIndex + 1) % languages.length;
+        const nextLang = languages[nextIndex];
+
         i18n.changeLanguage(nextLang);
         // Persist to localStorage
         if (typeof window !== 'undefined' && window.localStorage) {

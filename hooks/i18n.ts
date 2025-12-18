@@ -3,10 +3,12 @@ import { initReactI18next } from 'react-i18next';
 import * as Localization from 'expo-localization';
 import en from '@/locales/en.json';
 import es from '@/locales/es.json';
+import sq from '@/locales/sq.json';
 
 const resources = {
     en: { translation: en },
     es: { translation: es },
+    sq: { translation: sq },
 };
 
 // Get saved language from localStorage or device locale
