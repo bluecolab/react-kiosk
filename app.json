@@ -26,7 +26,8 @@
       ],
       "expo-font",
       "expo-web-browser",
-      "expo-localization"
+      "expo-localization",
+      "expo-image"
     ],
     "experiments": {
       "typedRoutes": true,
