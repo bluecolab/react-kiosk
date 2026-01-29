@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/hooks/i18n';
-import '../global.css';
+import '../../global.css';
 
 export default function RootLayout() {
     return (
