@@ -10,7 +10,7 @@
         "ios/*",
         ".expo/*",
         ".vscode/*",
-        "locales/sq.json"
+        "src/locales/sq.json"
     ],
     "ignoreWords": [
         "Shqip",
