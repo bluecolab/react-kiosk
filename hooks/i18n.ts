@@ -5,14 +5,14 @@ import en from '@/locales/en.json';
 import es from '@/locales/es.json';
 import sq from '@/locales/sq.json';
 import geo from '@/locales/geo.json';
-import br from '@/locales/br.json';
+import por from '@/locales/por.json';
 
 const resources = {
     en: { translation: en },
     es: { translation: es },
     sq: { translation: sq },
     geo: { translation: geo },
-    br: { translation: br },
+    por: { translation: por },
 };
 
 // Get saved language from localStorage or device locale
