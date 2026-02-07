@@ -38,7 +38,7 @@
         "description": "Toggle reachability assistance"
     },
     "language": {
-        "toggle": "Language",
+        "Toggle": "Language",
         "Description": "Change language",
         "English": "English",
         "Spanish": "Español",
