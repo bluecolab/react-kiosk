@@ -39,12 +39,12 @@
     },
     "language": {
         "toggle": "Language",
-        "description": "Change language",
-        "english": "English",
-        "spanish": "Español",
-        "albanian": "Shqip",
-        "georgian": "ქართული",
-        "portuguese": "Português",
+        "Description": "Change language",
+        "English": "English",
+        "Spanish": "Español",
+        "Albanian": "Shqip",
+        "Georgian": "ქართული",
+        "Portuguese": "Português",
         "current": "Current Language"
     },
     "aboutScreen": {
