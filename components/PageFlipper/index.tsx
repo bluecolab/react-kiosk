@@ -95,6 +95,7 @@ const PageFlipper = React.forwardRef<PageFlipperInstance, IPageFlipperProps>(
             isPortrait: portrait,
         });
         const isAnimatingRef = useRef(false);
+        const lastFlipRef = useRef<{ time: number; index: number }>({ time: 0, index: -1 });
         const prevBookPage = useRef<BookPageInstance>(null);
         const nextBookPage = useRef<BookPageInstance>(null);
         const portraitBookPage = useRef<PortraitBookInstance>(null);
@@ -309,6 +310,17 @@ const PageFlipper = React.forwardRef<PageFlipperInstance, IPageFlipperProps>(
                         ? state.nextPageIndex
                         : state.pageIndex + index;
 
+                // ignore duplicate/rapid calls that would cause skipping
+                const now = Date.now();
+                if (
+                    now - lastFlipRef.current.time < 800 &&
+                    lastFlipRef.current.index === newIndex
+                ) {
+                    return;
+                }
+                lastFlipRef.current.time = now;
+                lastFlipRef.current.index = newIndex;
+
                 if (newIndex < 0 || newIndex > state.pages.length - 1) {
                     // this if condition theoretically should never occur in the first place, so it could be removed but it's here just in case
                     logger('invalid page');
@@ -461,7 +473,7 @@ const PageFlipper = React.forwardRef<PageFlipperInstance, IPageFlipperProps>(
                                         right={false}
                                         front={current}
                                         back={prev}
-                                        key={`left${pageIndex}`}
+                                        key={`left-${prev.left}-${prev.right}`}
                                         {...bookPageProps}
                                     />
                                 )}
@@ -473,7 +485,7 @@ const PageFlipper = React.forwardRef<PageFlipperInstance, IPageFlipperProps>(
                                         right
                                         front={current}
                                         back={next}
-                                        key={`right${pageIndex}`}
+                                        key={`right-${next.left}-${next.right}`}
                                         {...bookPageProps}
                                     />
                                 )}

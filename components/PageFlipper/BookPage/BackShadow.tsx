@@ -1,13 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Animated, {
-    interpolate,
-    useAnimatedStyle,
-} from 'react-native-reanimated';
+import Animated, { SharedValue, interpolate, useAnimatedStyle } from 'react-native-reanimated';
 import { Gradient } from '../Components/Gradient';
 
 type BackShadowProps = {
-    degrees: Animated.SharedValue<number>;
+    degrees: SharedValue<number>;
     right: boolean;
 };
 
@@ -27,11 +24,7 @@ const BackShadow: React.FC<BackShadowProps> = ({ degrees, right }) => {
     const position = right ? rightPosition : leftPosition;
 
     const animatedStyle = useAnimatedStyle(() => {
-        const opacity = interpolate(
-            Math.abs(degrees.value),
-            [0, 130, 180],
-            [1, 0.5, 0]
-        );
+        const opacity = interpolate(Math.abs(degrees.value), [0, 130, 180], [1, 0.5, 0]);
 
         return {
             opacity,
@@ -46,8 +39,7 @@ const BackShadow: React.FC<BackShadowProps> = ({ degrees, right }) => {
                     zIndex: 4,
                 },
                 animatedStyle,
-            ]}
-        >
+            ]}>
             <Gradient
                 {...position}
                 colors={colors}

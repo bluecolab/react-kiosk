@@ -1,15 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
-import {
-    PanGestureHandler,
-    PanGestureHandlerGestureEvent,
-} from 'react-native-gesture-handler';
+import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler';
 import Animated, {
     Easing,
     Extrapolate,
     interpolate,
     runOnJS,
-    useAnimatedGestureHandler,
+    runOnUI,
     useAnimatedStyle,
     useSharedValue,
     withTiming,
@@ -77,6 +74,7 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
         const x = useSharedValue(0);
         const isMounted = useRef(false);
         const rotateYAsDeg = useSharedValue(0);
+        const isManualTurn = useSharedValue(false);
         const [isDragging, setIsDragging] = useState(false);
         const isDraggingRef = useRef(false);
         const containerWidth = containerSize.width;
@@ -109,21 +107,18 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
             if (onFlipStart && typeof onFlipStart === 'function') {
                 onFlipStart(id);
             }
-            rotateYAsDeg.value = withTiming(
-                right ? 180 : -180,
-                timingConfig,
-                () => {
+
+            // ensure this runs on the UI thread so the gesture worklet
+            // can observe `isManualTurn` before it decides to call onPageFlip
+            runOnUI(() => {
+                'worklet';
+                isManualTurn.value = true;
+                rotateYAsDeg.value = withTiming(right ? 180 : -180, timingConfig, () => {
                     runOnJS(onPageFlip)(id, false);
-                }
-            );
-        }, [
-            onFlipStart,
-            setIsDragging,
-            right,
-            onPageFlip,
-            rotateYAsDeg,
-            setIsAnimating,
-        ]);
+                    isManualTurn.value = false;
+                });
+            })();
+        }, [setIsAnimating, right, onFlipStart, isManualTurn, rotateYAsDeg, onPageFlip]);
 
         React.useImperativeHandle(
             ref,
@@ -150,11 +145,7 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
         const backStyle = useAnimatedStyle(() => {
             const degrees = rotateYAsDeg.value;
             const x = right
-                ? interpolate(
-                      degrees,
-                      [0, 180],
-                      [containerWidth / 2, -containerWidth / 2]
-                  )
+                ? interpolate(degrees, [0, 180], [containerWidth / 2, -containerWidth / 2])
                 : interpolate(degrees, [-180, 0], [containerWidth / 2, 0]);
 
             const w = right
@@ -171,18 +162,8 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
             const degrees = rotateYAsDeg.value;
 
             const w = right
-                ? interpolate(
-                      degrees,
-                      [0, 90],
-                      [containerWidth / 2, 0],
-                      Extrapolate.CLAMP
-                  )
-                : interpolate(
-                      degrees,
-                      [-90, 0],
-                      [0, containerWidth / 2],
-                      Extrapolate.CLAMP
-                  );
+                ? interpolate(degrees, [0, 90], [containerWidth / 2, 0], Extrapolate.CLAMP)
+                : interpolate(degrees, [-90, 0], [0, containerWidth / 2], Extrapolate.CLAMP);
 
             const style: ViewStyle = {
                 zIndex: 1,
@@ -212,9 +193,7 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
                 : interpolate(
                       rotateYAsDeg.value,
                       [-180, 0],
-                      single
-                          ? [0, -containerWidth / 2]
-                          : [-containerWidth / 2, -containerWidth]
+                      single ? [0, -containerWidth / 2] : [-containerWidth / 2, -containerWidth]
                   );
 
             return {
@@ -222,20 +201,20 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
             };
         });
 
-        const onPanGestureHandler = useAnimatedGestureHandler<
-            PanGestureHandlerGestureEvent,
-            { x: number }
-        >({
-            // @ts-ignore
-            onStart: (event, ctx) => {
+        const ctxRef = useRef<{ x: number }>({ x: 0 });
+
+        const onPanGestureHandler = (event: PanGestureHandlerGestureEvent) => {
+            'worklet';
+            if (event.nativeEvent.state === 0) {
+                // onStart
                 if (onPageDragStart && typeof onPageDragStart === 'function') {
                     runOnJS(onPageDragStart)();
                 }
-                ctx.x = x.value;
-            },
-            onActive: (event, ctx) => {
+                ctxRef.current.x = x.value;
+            } else if (event.nativeEvent.state === 1) {
+                // onActive
                 runOnJS(onDrag)(true);
-                x.value = ctx.x + event.translationX;
+                x.value = ctxRef.current.x + event.nativeEvent.translationX;
                 rotateYAsDeg.value = interpolate(
                     x.value,
                     [-containerWidth, 0, containerWidth],
@@ -246,26 +225,29 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
                 if (onPageDrag && typeof onPageDrag === 'function') {
                     runOnJS(onPageDrag)();
                 }
-            },
-            onEnd: (event) => {
+            } else if (event.nativeEvent.state === 5) {
+                // onEnd
                 if (onPageDragEnd && typeof onPageDragEnd === 'function') {
                     runOnJS(onPageDragEnd)();
                 }
-
-                const snapTo = snapPoint(x.value, event.velocityX, pSnapPoints);
+                const snapTo = snapPoint(x.value, event.nativeEvent.velocityX, pSnapPoints);
                 const id = snapTo > 0 ? -1 : snapTo < 0 ? 1 : 0;
                 const degrees = snapTo > 0 ? -180 : snapTo < 0 ? 180 : 0;
                 x.value = snapTo;
+
+                // If a programmatic/manual turn is in progress, ignore gesture flip.
+                if (isManualTurn.value) {
+                    return;
+                }
 
                 if (rotateYAsDeg.value === degrees) {
                     runOnJS(onPageFlip)(id, false);
                 } else {
                     runOnJS(setIsAnimating)(true);
 
-                    const progress =
-                        Math.abs(rotateYAsDeg.value - degrees) / 100;
+                    const progress = Math.abs(rotateYAsDeg.value - degrees) / 100;
                     const duration = clamp(
-                        800 * progress - Math.abs(0.1 * event.velocityX),
+                        800 * progress - Math.abs(0.1 * event.nativeEvent.velocityX),
                         350,
                         1000
                     );
@@ -280,12 +262,14 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
                             if (snapTo === 0) {
                                 runOnJS(onDrag)(false);
                             }
-                            runOnJS(onPageFlip)(id, false);
+                            if (!isManualTurn.value) {
+                                runOnJS(onPageFlip)(id, false);
+                            }
                         }
                     );
                 }
-            },
-        });
+            }
+        };
 
         if (!front || !back) {
             return null;
@@ -297,10 +281,7 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
         const frontUrl = right ? front.right : front.left;
         const backUrl = right ? back.left : back.right;
         return (
-            <PanGestureHandler
-                onGestureEvent={onPanGestureHandler}
-                enabled={gesturesEnabled}
-            >
+            <PanGestureHandler onGestureEvent={onPanGestureHandler} enabled={gesturesEnabled}>
                 <Animated.View style={containerStyle}>
                     {isPressable && (
                         <Pressable
@@ -322,21 +303,11 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
 
                     {/* BACK */}
                     <Animated.View
-                        style={[
-                            styles.pageContainer,
-                            backStyle,
-                            { overflow: 'visible' },
-                        ]}
-                    >
+                        style={[styles.pageContainer, backStyle, { overflow: 'visible' }]}>
                         <View style={styles.pageContainer}>
                             {backUrl ? (
                                 renderPage && (
-                                    <Animated.View
-                                        style={[
-                                            backPageStyle,
-                                            animatedBackPageStyle,
-                                        ]}
-                                    >
+                                    <Animated.View style={[backPageStyle, animatedBackPageStyle]}>
                                         {renderPage(backUrl)}
                                     </Animated.View>
                                 )
@@ -384,12 +355,7 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
                         ) : (
                             <BlankPage />
                         )}
-                        {showSpine && (
-                            <BookSpine
-                                right={right}
-                                containerSize={containerSize}
-                            />
-                        )}
+                        {showSpine && <BookSpine right={right} containerSize={containerSize} />}
                     </Animated.View>
                 </Animated.View>
             </PanGestureHandler>
@@ -400,9 +366,7 @@ const BookPage = React.forwardRef<BookPageInstance, IBookPageProps>(
 export { BookPage };
 
 const BlankPage = () => (
-    <View
-        style={{ ...StyleSheet.absoluteFillObject, backgroundColor: '#fff' }}
-    />
+    <View style={{ ...StyleSheet.absoluteFillObject, backgroundColor: '#fff' }} />
 );
 
 const styles = StyleSheet.create({

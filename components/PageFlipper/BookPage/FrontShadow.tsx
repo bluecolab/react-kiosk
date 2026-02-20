@@ -2,28 +2,20 @@ import React from 'react';
 import Animated, {
     Extrapolate,
     interpolate,
+    SharedValue,
     useAnimatedStyle,
 } from 'react-native-reanimated';
 import { Gradient } from '../Components/Gradient';
 import { transformOrigin } from '../utils/utils';
 
 type FrontShadowProps = {
-    degrees: Animated.SharedValue<number>;
+    degrees: SharedValue<number>;
     viewHeight: number;
     right: boolean;
 };
 
-const FrontShadow: React.FC<FrontShadowProps> = ({
-    degrees,
-    viewHeight,
-    right,
-}) => {
-    const colors = [
-        'rgba(0,0,0,0.0)',
-        'rgba(0,0,0,0.2)',
-        'rgba(0,0,0,0.3)',
-        'rgba(0,0,0,0.6)',
-    ];
+const FrontShadow: React.FC<FrontShadowProps> = ({ degrees, viewHeight, right }) => {
+    const colors = ['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.2)', 'rgba(0,0,0,0.3)', 'rgba(0,0,0,0.6)'];
     const shadowWidth = 40;
 
     const animatedStyle = useAnimatedStyle(() => {
@@ -45,17 +37,10 @@ const FrontShadow: React.FC<FrontShadowProps> = ({
     });
 
     const animatedStyle2 = useAnimatedStyle(() => {
-        const scaleX = interpolate(
-            degrees.value,
-            [-150, 0, 150],
-            [6, 1, 6],
-            Extrapolate.CLAMP
-        );
+        const scaleX = interpolate(degrees.value, [-150, 0, 150], [6, 1, 6], Extrapolate.CLAMP);
 
         return {
-            transform: [
-                ...transformOrigin({ x: -shadowWidth / 2, y: 0 }, [{ scaleX }]),
-            ],
+            transform: transformOrigin({ x: -shadowWidth / 2, y: 0 }, [{ scaleX }]),
         };
     });
 
@@ -68,8 +53,7 @@ const FrontShadow: React.FC<FrontShadowProps> = ({
                     position: 'absolute',
                 },
                 animatedStyle,
-            ]}
-        >
+            ]}>
             <Animated.View
                 style={[
                     {
@@ -77,8 +61,7 @@ const FrontShadow: React.FC<FrontShadowProps> = ({
                         width: shadowWidth,
                     },
                     animatedStyle2,
-                ]}
-            >
+                ]}>
                 <Gradient
                     start={{ x: 1, y: 0 }}
                     end={{ x: 0, y: 0 }}

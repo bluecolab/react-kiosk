@@ -32,25 +32,15 @@ const BookPageBackground: React.FC<IBookPageBackgroundProps> = ({
     return (
         <View style={styles.container}>
             <View style={styles.pageContainer}>
-                {left && renderPage && (
-                    <View style={[leftPageStyle]}>{renderPage(left)}</View>
-                )}
-                {isFirstPage && (
-                    <BookSpine right={false} containerSize={containerSize} />
-                )}
+                {left && renderPage && <View style={[leftPageStyle]}>{renderPage(left)}</View>}
+                {isFirstPage && <BookSpine right={false} containerSize={containerSize} />}
             </View>
             <View style={styles.pageContainer}>
-                {right && renderPage && (
-                    <View style={[rightPageStyle]}>{renderPage(right)}</View>
-                )}
-                {isLastPage && (
-                    <BookSpine right={true} containerSize={containerSize} />
-                )}
+                {right && renderPage && <View style={[rightPageStyle]}>{renderPage(right)}</View>}
+                {isLastPage && <BookSpine right={true} containerSize={containerSize} />}
 
                 {shouldRenderLastPage && renderLastPage && (
-                    <View style={[rightPageStyle, { zIndex: -1 }]}>
-                        {renderLastPage()}
-                    </View>
+                    <View style={[rightPageStyle, { zIndex: -1 }]}>{renderLastPage()}</View>
                 )}
             </View>
         </View>

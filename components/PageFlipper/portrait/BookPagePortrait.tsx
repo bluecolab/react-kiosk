@@ -1,15 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
-import {
-    PanGestureHandler,
-    PanGestureHandlerGestureEvent,
-} from 'react-native-gesture-handler';
+import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler';
 import Animated, {
     Easing,
     Extrapolate,
     interpolate,
     runOnJS,
-    useAnimatedGestureHandler,
+    runOnUI,
+    SharedValue,
     useAnimatedStyle,
     useDerivedValue,
     useSharedValue,
@@ -80,6 +78,7 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
 
         const isMounted = useRef(false);
         const rotateYAsDeg = useSharedValue(0);
+        const isManualTurn = useSharedValue(false);
 
         // might not need this
         // useEffect(() => {
@@ -94,15 +93,17 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
                 if (onFlipStart && typeof onFlipStart === 'function') {
                     onFlipStart(id);
                 }
-                rotateYAsDeg.value = withTiming(
-                    id < 0 ? -180 : 180,
-                    timingConfig,
-                    () => {
+
+                runOnUI(() => {
+                    'worklet';
+                    isManualTurn.value = true;
+                    rotateYAsDeg.value = withTiming(id < 0 ? -180 : 180, timingConfig, () => {
                         runOnJS(onPageFlip)(id, false);
-                    }
-                );
+                        isManualTurn.value = false;
+                    });
+                })();
             },
-            [onFlipStart, onPageFlip, rotateYAsDeg, setIsAnimating]
+            [isManualTurn, onFlipStart, onPageFlip, rotateYAsDeg, setIsAnimating]
         );
 
         React.useImperativeHandle(
@@ -138,32 +139,33 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
             };
         });
 
-        const onPanGestureHandler = useAnimatedGestureHandler<
-            PanGestureHandlerGestureEvent,
-            { x: number }
-        >({
-            // @ts-ignore
-            onStart: (event, ctx) => {
-                ctx.x = x.value;
+        const startX = useSharedValue(0);
+
+        const onPanGestureHandler = (event: PanGestureHandlerGestureEvent) => {
+            'worklet';
+
+            if (event.nativeEvent.state === 1) {
+                // onStart
+                startX.value = x.value;
                 if (onPageDragStart && typeof onPageDragStart === 'function') {
                     runOnJS(onPageDragStart)();
                 }
-            },
-            onActive: (event, ctx) => {
-                const newX = ctx.x + event.translationX;
+            } else if (event.nativeEvent.state === 2) {
+                // onActive
+                const newX = startX.value + event.nativeEvent.translationX;
                 const degrees = getDegreesForX(newX);
                 x.value = newX;
                 rotateYAsDeg.value = degrees;
                 if (onPageDrag && typeof onPageDrag === 'function') {
                     runOnJS(onPageDrag)();
                 }
-            },
-            onEnd: (event) => {
+            } else if (event.nativeEvent.state === 5) {
+                // onEnd
                 if (onPageDragEnd && typeof onPageDragEnd === 'function') {
                     runOnJS(onPageDragEnd)();
                 }
 
-                const snapTo = snapPoint(x.value, event.velocityX, pSnapPoints);
+                const snapTo = snapPoint(x.value, event.nativeEvent.velocityX, pSnapPoints);
                 const id = snapTo > 0 ? -1 : snapTo < 0 ? 1 : 0;
 
                 if (!next && id > 0) {
@@ -176,17 +178,21 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
 
                 const degrees = getDegreesForX(snapTo);
                 x.value = snapTo;
+
+                // If a programmatic/manual turn is in progress, ignore gesture flip.
+                if (isManualTurn.value) {
+                    return;
+                }
+
                 if (rotateYAsDeg.value === degrees) {
                     // already same value
-                    // debugValue('already there');
                     runOnJS(onPageFlip)(id, false);
                 } else {
                     runOnJS(setIsAnimating)(true);
 
-                    const progress =
-                        Math.abs(rotateYAsDeg.value - degrees) / 100;
+                    const progress = Math.abs(rotateYAsDeg.value - degrees) / 100;
                     const duration = clamp(
-                        800 * progress - Math.abs(0.1 * event.velocityX),
+                        800 * progress - Math.abs(0.1 * event.nativeEvent.velocityX),
                         350,
                         1000
                     );
@@ -200,12 +206,14 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
                             if (snapTo === 0) {
                                 //
                             }
-                            runOnJS(onPageFlip)(id, false);
+                            if (!isManualTurn.value) {
+                                runOnJS(onPageFlip)(id, false);
+                            }
                         }
                     );
                 }
-            },
-        });
+            }
+        };
 
         const gesturesEnabled = enabled && !isAnimating;
 
@@ -219,10 +227,7 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
 
         return (
             <Animated.View style={containerStyle}>
-                <PanGestureHandler
-                    onGestureEvent={onPanGestureHandler}
-                    enabled={gesturesEnabled}
-                >
+                <PanGestureHandler onGestureEvent={onPanGestureHandler} enabled={gesturesEnabled}>
                     <Animated.View style={containerStyle}>
                         {isPressable && prev && (
                             <Pressable
@@ -259,11 +264,7 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
                             />
                         )}
                         {current && next ? (
-                            <IPage
-                                page={current}
-                                right={true}
-                                {...iPageProps}
-                            />
+                            <IPage page={current} right={true} {...iPageProps} />
                         ) : (
                             <View style={{ height: '100%', width: '100%' }}>
                                 {renderPage && (
@@ -273,9 +274,7 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
                                 )}
                             </View>
                         )}
-                        {prev && (
-                            <IPage page={prev} right={false} {...iPageProps} />
-                        )}
+                        {prev && <IPage page={prev} right={false} {...iPageProps} />}
                     </Animated.View>
                 </PanGestureHandler>
             </Animated.View>
@@ -286,7 +285,7 @@ const BookPagePortrait = React.forwardRef<PortraitBookInstance, IBookPageProps>(
 type IPageProps = {
     right: boolean;
     page: Page;
-    rotateYAsDeg: Animated.SharedValue<number>;
+    rotateYAsDeg: SharedValue<number>;
     containerWidth: number;
     containerSize: Size;
     getPageStyle: any;
@@ -319,16 +318,8 @@ const IPage: React.FC<IPageProps> = ({
     });
 
     const portraitBackStyle = useAnimatedStyle(() => {
-        const x = interpolate(
-            rotationVal.value,
-            [0, 180],
-            [containerWidth, -containerWidth / 2]
-        );
-        const w = interpolate(
-            rotationVal.value,
-            [0, 180],
-            [0, containerWidth / 2]
-        );
+        const x = interpolate(rotationVal.value, [0, 180], [containerWidth, -containerWidth / 2]);
+        const w = interpolate(rotationVal.value, [0, 180], [0, containerWidth / 2]);
 
         return {
             width: Math.ceil(w),
@@ -380,16 +371,10 @@ const IPage: React.FC<IPageProps> = ({
             style={{
                 ...StyleSheet.absoluteFillObject,
                 zIndex: !right ? 5 : 0,
-            }}
-        >
+            }}>
             {/* BACK */}
             <Animated.View
-                style={[
-                    styles.pageContainer,
-                    portraitBackStyle,
-                    { overflow: 'visible' },
-                ]}
-            >
+                style={[styles.pageContainer, portraitBackStyle, { overflow: 'visible' }]}>
                 <View style={styles.pageContainer}>
                     {renderPage && (
                         <Animated.View
@@ -398,13 +383,9 @@ const IPage: React.FC<IPageProps> = ({
 
                                 {
                                     opacity: 0.2,
-                                    transform: [
-                                        { rotateX: '180deg' },
-                                        { rotateZ: '180deg' },
-                                    ],
+                                    transform: [{ rotateX: '180deg' }, { rotateZ: '180deg' }],
                                 },
-                            ]}
-                        >
+                            ]}>
                             {renderPage(page.left)}
                         </Animated.View>
                     )}
@@ -416,9 +397,7 @@ const IPage: React.FC<IPageProps> = ({
             {/* FRONT */}
             <Animated.View style={[styles.pageContainer, portraitFrontStyle]}>
                 {renderPage && (
-                    <Animated.View style={[frontPageStyle]}>
-                        {renderPage(page.left)}
-                    </Animated.View>
+                    <Animated.View style={[frontPageStyle]}>{renderPage(page.left)}</Animated.View>
                 )}
             </Animated.View>
         </View>

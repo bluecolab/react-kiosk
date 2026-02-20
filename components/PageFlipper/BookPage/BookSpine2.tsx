@@ -1,15 +1,12 @@
 import React from 'react';
-import Animated, {
-    interpolate,
-    useAnimatedStyle,
-} from 'react-native-reanimated';
+import Animated, { interpolate, SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import { Gradient } from '../Components/Gradient';
 import type { Size } from '../types';
 
 export type IBookSpine2Props = {
     right: boolean;
     containerSize: Size;
-    degrees: Animated.SharedValue<number>;
+    degrees: SharedValue<number>;
 };
 
 const shadowColors = [
@@ -43,11 +40,7 @@ const BookSpine2: React.FC<IBookSpine2Props> = ({
     // containerSize,
 }) => {
     const style = useAnimatedStyle(() => {
-        const opacity = interpolate(
-            Math.abs(degrees.value),
-            [0, 150, 180],
-            [0, 0, 0.65]
-        );
+        const opacity = interpolate(Math.abs(degrees.value), [0, 150, 180], [0, 0, 0.65]);
         return {
             opacity,
         };
@@ -85,8 +78,7 @@ const BookSpine2: React.FC<IBookSpine2Props> = ({
                     flexDirection: 'row',
                 },
                 style,
-            ]}
-        >
+            ]}>
             <Gradient
                 {...position1}
                 colors={shadowColors}

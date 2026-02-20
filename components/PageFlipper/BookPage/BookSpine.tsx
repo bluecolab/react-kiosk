@@ -46,8 +46,7 @@ const BookSpine: React.FC<IBookSpineProps> = ({ right, containerSize }) => {
                     opacity: 0.6,
                 },
                 right ? { left: 0 } : { right: 0 },
-            ]}
-        >
+            ]}>
             <Gradient
                 start={{ x: right ? 0 : 1, y: 0 }}
                 end={{ x: right ? 1 : 0, y: 0 }}
