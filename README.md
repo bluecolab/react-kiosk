@@ -85,7 +85,7 @@ Pushing to main automatically start the deployment process. This will take a few
 
 ## Wiki (technical breakdown)
 
-For a technical info see our [wiki](https://github.com/bluecolab/BlueColab_MobileDataViz/wiki/).
+For a technical info see our [wiki](https://github.com/bluecolab/react-kiosk/wiki/).
 
 ## File structure
 
