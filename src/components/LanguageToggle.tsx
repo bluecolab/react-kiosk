@@ -26,6 +26,8 @@ const LANGUAGES = [
     { code: 'en', label: 'EN', flag: '🇺🇸' },
     { code: 'es', label: 'ES', flag: '🇪🇸' },
     { code: 'sq', label: 'SQ', flag: '🇦🇱' },
+    { code: 'geo', label: 'GE', flag: '🇬🇪' },
+    { code: 'por', label: 'PT', flag: '🇵🇹' },
 ];
 
 interface FloatingLanguageButtonProps {
