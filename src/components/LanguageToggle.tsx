@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View, StyleSheet } from 'react-native';
+import { Pressable, Text, View/*, StyleSheet*/ } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
 import Animated, {
@@ -151,6 +151,36 @@ const mainButtonStyles = StyleSheet.create({
     },
 });
 
+/*
+export default function LanguageButton({ active }) {
+  return (
+    <View className="relative h-14 w-14 flex justify-end items-center">
+      
+      <View
+        style={{
+          shadowColor: "#171717",
+          shadowOffset: { width: -0.5, height: 3.5 },
+          shadowOpacity: 0.2,
+          shadowRadius: 3,
+        }}
+        className={`absolute -z-10 h-12 w-12 rounded-full flex justify-center items-center flex-col
+        ${active ? "bg-white/95" : "bg-[#77CDE2E6]"}`}
+      >
+        <Text className="text-base">EN</Text>
+
+        <Text
+          className={`font-medium text-[10px] ${
+            active ? "text-[#333]" : "text-[#f8f9ff]"
+          }`}
+        >
+          EN
+        </Text>
+      </View>
+
+    </View>
+  );
+}
+  */
 const styles = StyleSheet.create({
     mainContainer: {
         position: 'relative',
