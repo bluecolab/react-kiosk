@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View/*, StyleSheet*/ } from 'react-native';
+import { Pressable, Text, View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
 import Animated, {
@@ -127,6 +127,30 @@ export default function LanguageToggle() {
     );
 }
 
+/*
+export const MainButton = ({ flag, label, onPress }: MainButtonProps) => {
+  return (
+    <Pressable
+      onPress={onPress}
+      className="
+        relative
+        w-14 h-[30px] 
+        rounded-full 
+        bg-[#77cde2]/95 
+        justify-center items-center 
+        z-[1]
+      "
+    >
+      {/*Flag*//*}
+      <Text className="text-[20px]">{flag}</Text>
+      {label && (
+        <Text className="absolute bottom-1 right-1 text-[16px] font-bold text-[#f8f9ff]">
+          {label}
+        </Text>
+      )}
+    </Pressable>
+  );
+};*/
 const mainButtonStyles = StyleSheet.create({
     button: {
         zIndex: 1,
