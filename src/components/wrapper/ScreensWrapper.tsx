@@ -239,12 +239,19 @@ export default function ScreensWrapper() {
 // Note: We use a separate effect above for declarative cleanup inside the component scope.
 
 /*
-<View className="absolute bottom-5 right-5 w-14 h-14 rounded-[27px] bg-[#77cde2]/90 justify-center items-center z-[1000]
-style={{
-    shadowColor: "#171717"
-    shadowOffset: { width: 0, height: 2},
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+<Pressable
+  onPress={onPress}
+  className={`
+    absolute bottom-5 ${left ? "left-5" : "right-5"}
+    w-14 h-14 rounded-[27px]
+    bg-[#77cde2]/90
+    justify-center items-center
+    z-[1000]
+    shadow-md
+  `}
+>
+  <Text className="text-[25px] font-bold text-[#f8f9ff]">{icon}</Text>
+</Pressable>
 }}
 */
 const reachabilityStyles = StyleSheet.create({
