@@ -238,6 +238,15 @@ export default function ScreensWrapper() {
 // (placed after component to keep function body focused)
 // Note: We use a separate effect above for declarative cleanup inside the component scope.
 
+/*
+<View className="absolute bottom-5 right-5 w-14 h-14 rounded-[27px] bg-[#77cde2]/90 justify-center items-center z-[1000]
+style={{
+    shadowColor: "#171717"
+    shadowOffset: { width: 0, height: 2},
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+}}
+*/
 const reachabilityStyles = StyleSheet.create({
     toggleButton: {
         position: 'absolute',
