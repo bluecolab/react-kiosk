@@ -1,5 +1,5 @@
 {
-    "dictionaries": ["es-es"],
+    "dictionaries": ["es-es", "ka"],
     "import": ["@cspell/dict-es-es/cspell-ext.json"],
     "ignorePaths": [
         "node_modules/*",
@@ -10,9 +10,11 @@
         "ios/*",
         ".expo/*",
         ".vscode/*",
-        "src/locales/sq.json"
+        "src/locales/*"
     ],
     "ignoreWords": [
+        "br",
+        "Ka-ge",
         "Shqip",
         "Pleasantville",
         "okaykenji",
