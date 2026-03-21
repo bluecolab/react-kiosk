@@ -10,7 +10,7 @@ export default function WelcomeScreen() {
     const [feedback, setFeedback] = useState(''); // State to hold feedback text input by user
     const [showFeedbackViewer, setShowFeedbackViewer] = useState(false); // State to control feedback viewer modal visibility
     const [showSuccess, setShowSuccess] = useState(false); // State to show success message after feedback submission
-    const Cronin = require('@/assets/images/general/fall2025team.jpg');
+    const Cronin = require('@/assets/images/general/spring2026team.jpg');
     const crotter = require('@/assets/images/crotters/Crotter.png');
     let localStorage = window.localStorage; // Access localStorage for Crotter Mode and feedback storage
 
