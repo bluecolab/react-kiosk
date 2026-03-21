@@ -8,6 +8,16 @@ export interface GalleryImage {
 
 export const images: GalleryImage[] = [
     {
+        source: require('@/assets/images/gallery/spring2026team.jpg'),
+        alt: 'Spring2026team',
+    },
+
+    {
+        source: require('@/assets/images/gallery/GaleEpsteinEvent.jpg'),
+        alt: 'Gale Epstein Event',
+    },
+
+    {
         source: require('@/assets/images/gallery/PXL_20240905_185118287.RAW-01.COVER.jpg'),
         alt: 'Pxl 20240905 185118287.Raw 01.Cover',
     },
