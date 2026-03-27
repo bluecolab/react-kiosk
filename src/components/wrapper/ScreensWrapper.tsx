@@ -221,20 +221,19 @@ export default function ScreensWrapper() {
             />
 
             <TouchableOpacity className="absolute bottom-5 left-5 z-50">
-        <LanguageToggle />
-      </TouchableOpacity>
+                <LanguageToggle />
+            </TouchableOpacity>
 
             {/* Reachability Toggle Button */}
-             <TouchableOpacity
-        onPress={toggleReachability}
-        className="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-sky-300/90 justify-center items-center shadow-md z-50"
-      >
-        <Text className="text-white font-bold text-2xl">
-          {isReachabilityActive ? '^' : 'v'}
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
+            <TouchableOpacity
+                onPress={toggleReachability}
+                className="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-sky-300/90 justify-center items-center shadow-md z-50">
+                <Text className="text-white font-bold text-2xl">
+                    {isReachabilityActive ? '^' : 'v'}
+                </Text>
+            </TouchableOpacity>
+        </View>
+    );
 }
 
 // Clean up any pending timeout when component unmounts

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
 import Animated, {
     withDelay,
@@ -58,7 +58,7 @@ const FloatingLanguageButton = ({
     });
 
     return (
-         <AnimatedPressable
+        <AnimatedPressable
             onPress={onPress}
             style={animatedStyles}
             className={`shadow-md w-12 h-12 rounded-full justify-center items-center mb-2 ${
