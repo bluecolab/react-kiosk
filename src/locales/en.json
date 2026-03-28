@@ -38,11 +38,13 @@
         "description": "Toggle reachability assistance"
     },
     "language": {
-        "toggle": "Language",
-        "description": "Change language",
-        "english": "English",
-        "spanish": "Español",
-        "albanian": "Shqip",
+        "Toggle": "Language",
+        "Description": "Change language",
+        "English": "English",
+        "Spanish": "Español",
+        "Albanian": "Shqip",
+        "Georgian": "ქართული",
+        "Portuguese": "Português",
         "current": "Current Language"
     },
     "aboutScreen": {
