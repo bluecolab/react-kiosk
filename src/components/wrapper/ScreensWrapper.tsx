@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { View, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native'; // Fixed extra space in import path
+import { View, Easing, TouchableOpacity, Text } from 'react-native'; // Fixed extra space in import path
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'; // Fixed extra space in import path
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
@@ -220,13 +220,15 @@ export default function ScreensWrapper() {
                 widgets={widgets}
             />
 
-            <TouchableOpacity style={reachabilityStyles.toggleButtonLeft}>
+            <TouchableOpacity className="absolute bottom-5 left-5 z-50">
                 <LanguageToggle />
             </TouchableOpacity>
 
             {/* Reachability Toggle Button */}
-            <TouchableOpacity onPress={toggleReachability} style={reachabilityStyles.toggleButton}>
-                <Text style={reachabilityStyles.toggleIcon}>
+            <TouchableOpacity
+                onPress={toggleReachability}
+                className="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-sky-300/90 justify-center items-center shadow-md z-50">
+                <Text className="text-white font-bold text-2xl">
                     {isReachabilityActive ? '^' : 'v'}
                 </Text>
             </TouchableOpacity>
@@ -237,33 +239,3 @@ export default function ScreensWrapper() {
 // Clean up any pending timeout when component unmounts
 // (placed after component to keep function body focused)
 // Note: We use a separate effect above for declarative cleanup inside the component scope.
-
-const reachabilityStyles = StyleSheet.create({
-    toggleButton: {
-        position: 'absolute',
-        bottom: 20,
-        right: 20,
-        width: 56,
-        height: 56,
-        borderRadius: 27,
-        backgroundColor: 'rgba(119, 205, 226, 0.9)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 1000,
-        shadowColor: '#171717',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-    },
-    toggleIcon: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        color: '#f8f9ff',
-    },
-    toggleButtonLeft: {
-        position: 'absolute',
-        bottom: 20,
-        left: 20,
-        zIndex: 1000,
-    },
-});
