@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
 import Animated, {
@@ -62,15 +62,9 @@ const FloatingLanguageButton = ({
     return (
         <AnimatedPressable
             onPress={onPress}
-            style={animatedStyles}
-            className={`shadow-md w-12 h-12 rounded-full justify-center items-center mb-2 ${
-                isActive ? 'bg-white' : 'bg-[#77cde2e6]'
-            }`}>
+            style={[animatedStyles, styles.shadow, styles.button, isActive && styles.buttonActive]}>
             <Text className="text-lg">{lang.flag}</Text>
-            <Animated.Text
-                className={`absolute bottom-1 right-1 text-xs font-semibold ${
-                    isActive ? 'text-[#333]' : 'text-white'
-                }`}>
+            <Animated.Text style={[styles.content, isActive && styles.contentActive]}>
                 {lang.label}
             </Animated.Text>
         </AnimatedPressable>
@@ -111,13 +105,11 @@ export default function LanguageToggle() {
             <View className="absolute flex flex-col items-center">
                 <AnimatedPressable
                     onPress={handlePress}
-                    className="shadow-md z-10 w-14 h-8 rounded-full bg-[#77cde2f0] justify-center items-center"
+                    style={[styles.shadow, mainButtonStyles.button]}
                     accessibilityLabel={t('language.description')}
                     accessibilityRole="button">
                     <Text className="text-xl">{currentLanguage.flag}</Text>
-                    <Animated.Text
-                        style={plusIconStyle}
-                        className="absolute bottom-1 right-1 text-base font-bold text-white">
+                    <Animated.Text style={[plusIconStyle, mainButtonStyles.content]}>
                         +
                     </Animated.Text>
                 </AnimatedPressable>
@@ -136,3 +128,74 @@ export default function LanguageToggle() {
         </View>
     );
 }
+
+const mainButtonStyles = StyleSheet.create({
+    button: {
+        zIndex: 1,
+        height: 30,
+        width: 56,
+        borderRadius: 100,
+        backgroundColor: 'rgba(119, 205, 226, 0.95)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    content: {
+        fontSize: 16,
+        color: '#f8f9ff',
+        position: 'absolute',
+        bottom: 4,
+        right: 4,
+        fontWeight: 'bold',
+    },
+});
+
+const styles = StyleSheet.create({
+    shadow: {
+        shadowColor: '#171717',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+    },
+    mainContainer: {
+        position: 'relative',
+        height: 56,
+        width: 56,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    buttonContainer: {
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    button: {
+        width: 48,
+        height: 48,
+        backgroundColor: 'rgba(119, 205, 226, 0.9)',
+        position: 'absolute',
+        borderRadius: 100,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonActive: {
+        backgroundColor: '#ffffff',
+    },
+    flag: {
+        fontSize: 18,
+    },
+    content: {
+        fontSize: 12,
+        color: '#f8f9ff',
+        position: 'absolute',
+        bottom: 2,
+        right: 2,
+        fontWeight: '600',
+    },
+    contentActive: {
+        color: '#333333',
+    },
+});
