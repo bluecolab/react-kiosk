@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { DynamicImage } from '@/components/DynamicImage';
 
@@ -40,12 +40,12 @@ export default function RightToKnow() {
             <Text className="text-body text-center mb-2">{t('rightToKnow.introText')}</Text>
             <View className="flex-row flex-wrap justify-center my-2">
                 {infoItems.map((item, index) => (
-                    <TouchableOpacity
+                    <Pressable
                         key={index}
                         className={`px-3 py-2 rounded-md m-1 ${currentItem.titleKey === item.titleKey ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setCurrentItem(item)}>
                         <Text className="text-button font-bold text-black">{t(item.titleKey)}</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                 ))}
             </View>
 

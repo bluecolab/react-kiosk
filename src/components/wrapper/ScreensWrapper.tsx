@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { View, Easing, TouchableOpacity, Text } from 'react-native'; // Fixed extra space in import path
+import { View, Easing, Pressable, Text } from 'react-native'; // Fixed extra space in import path
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'; // Fixed extra space in import path
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
@@ -220,18 +220,18 @@ export default function ScreensWrapper() {
                 widgets={widgets}
             />
 
-            <TouchableOpacity className="absolute bottom-5 left-5 z-50">
+            <Pressable className="absolute bottom-5 left-5 z-50">
                 <LanguageToggle />
-            </TouchableOpacity>
+            </Pressable>
 
             {/* Reachability Toggle Button */}
-            <TouchableOpacity
+            <Pressable
                 onPress={toggleReachability}
                 className="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-sky-300/90 justify-center items-center shadow-md z-50">
                 <Text className="text-white font-bold text-2xl">
                     {isReachabilityActive ? '^' : 'v'}
                 </Text>
-            </TouchableOpacity>
+            </Pressable>
         </View>
     );
 }

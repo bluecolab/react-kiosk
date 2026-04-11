@@ -3,7 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    TouchableOpacity,
+    Pressable,
     Modal,
     Dimensions,
     FlatList,
@@ -45,7 +45,7 @@ export default function PhotoGallery() {
     const renderItem = useCallback(
         ({ item, index }: { item: any; index: number }) => {
             return (
-                <TouchableOpacity onPress={() => open(index)} style={{ margin: itemMargin }}>
+                <Pressable onPress={() => open(index)} style={{ margin: itemMargin }}>
                     <ExpoImage
                         source={item.source}
                         style={{
@@ -59,7 +59,7 @@ export default function PhotoGallery() {
                         transition={200}
                         priority="normal"
                     />
-                </TouchableOpacity>
+                </Pressable>
             );
         },
         [ITEM_WIDTH, ITEM_HEIGHT, open]
@@ -113,12 +113,12 @@ export default function PhotoGallery() {
                     className="flex-1 justify-center items-center"
                     style={{ backgroundColor: 'rgba(0,0,0,0.85)' }}>
                     {/* close on tap outside */}
-                    <TouchableOpacity style={StyleSheet.absoluteFillObject} onPress={close} />
+                    <Pressable style={StyleSheet.absoluteFillObject} onPress={close} />
 
                     <View className="flex-row items-center">
-                        <TouchableOpacity onPress={prev} className="p-5">
+                        <Pressable onPress={prev} className="p-5">
                             <Text className="text-white text-2xl font-bold">‹</Text>
-                        </TouchableOpacity>
+                        </Pressable>
 
                         {selectedIndex !== null && (
                             <ExpoImage
@@ -130,9 +130,9 @@ export default function PhotoGallery() {
                             />
                         )}
 
-                        <TouchableOpacity onPress={next} className="p-5">
+                        <Pressable onPress={next} className="p-5">
                             <Text className="text-white text-2xl font-bold">›</Text>
-                        </TouchableOpacity>
+                        </Pressable>
                     </View>
                 </View>
             </Modal>

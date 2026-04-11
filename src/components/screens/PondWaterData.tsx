@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 
 export default function PondWaterData() {
     const water_sensors = [
@@ -34,12 +34,12 @@ export default function PondWaterData() {
         <View>
             <View className="flex-row flex-wrap justify-center my-2">
                 {water_sensors.map((item, index) => (
-                    <TouchableOpacity
+                    <Pressable
                         key={index}
                         className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setState(item)}>
                         <Text className="text-button font-bold text-black">{item.label}</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                 ))}
             </View>
 

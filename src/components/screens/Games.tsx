@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Text, TouchableOpacity, Modal, Pressable, Platform } from 'react-native';
+import { View, Text, Pressable, Modal, Platform } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { DynamicImage } from '../DynamicImage';
 
@@ -40,12 +40,12 @@ export default function Games() {
 
             <View className="flex-row flex-wrap justify-center my-2">
                 {games.map((item, index) => (
-                    <TouchableOpacity
+                    <Pressable
                         key={index}
                         className={`px-3 py-2 rounded-md m-1 ${currentGame.name === item.name ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setCurrentGame(item)}>
                         <Text className="text-button font-bold text-black">{t(item.name)}</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                 ))}
             </View>
 
