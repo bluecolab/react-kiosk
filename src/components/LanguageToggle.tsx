@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, Text, View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
+import { Entypo } from '@expo/vector-icons';
 import Animated, {
     withDelay,
     interpolate,
@@ -23,17 +24,17 @@ const SPRING_CONFIG = {
 const OFFSET = 60;
 
 const LANGUAGES = [
-    { code: 'en', label: 'EN', flag: '🇺🇸' },
-    { code: 'es', label: 'ES', flag: '🇪🇸' },
-    { code: 'sq', label: 'SQ', flag: '🇦🇱' },
-    { code: 'geo', label: 'GE', flag: '🇬🇪' },
-    { code: 'por', label: 'PT', flag: '🇵🇹' },
+    { code: 'en', label: 'English' },
+    { code: 'es', label: 'Español' },
+    { code: 'sq', label: 'Shqip' },
+    { code: 'geo', label: 'ქართული' },
+    { code: 'por', label: 'Português' },
 ];
 
 interface FloatingLanguageButtonProps {
     isExpanded: SharedValue<boolean>;
     index: number;
-    lang: { code: string; label: string; flag: string };
+    lang: { code: string; label: string };
     isActive: boolean;
     onPress: () => void;
 }
@@ -63,7 +64,6 @@ const FloatingLanguageButton = ({
         <AnimatedPressable
             onPress={onPress}
             style={[animatedStyles, styles.shadow, styles.button, isActive && styles.buttonActive]}>
-            <Text style={styles.flag}>{lang.flag}</Text>
             <Animated.Text style={[styles.content, isActive && styles.contentActive]}>
                 {lang.label}
             </Animated.Text>
@@ -89,9 +89,9 @@ export default function LanguageToggle() {
     };
 
     const plusIconStyle = useAnimatedStyle(() => {
-        const moveValue = interpolate(Number(isExpanded.value), [0, 1], [0, 2]);
+        const moveValue = interpolate(Number(isExpanded.value), [0, 0], [0, 0]);
         const translateValue = withTiming(moveValue);
-        const rotateValue = isExpanded.value ? '45deg' : '0deg';
+        const rotateValue = isExpanded.value ? '0deg' : '0deg';
 
         return {
             transform: [{ translateX: translateValue }, { rotate: withTiming(rotateValue) }],
@@ -108,9 +108,8 @@ export default function LanguageToggle() {
                     style={[styles.shadow, mainButtonStyles.button]}
                     accessibilityLabel={t('language.description')}
                     accessibilityRole="button">
-                    <Text style={mainButtonStyles.flag}>{currentLanguage.flag}</Text>
                     <Animated.Text style={[plusIconStyle, mainButtonStyles.content]}>
-                        +
+                        <Entypo name="globe" size={27} color="#f8f9ff" />
                     </Animated.Text>
                 </AnimatedPressable>
 
@@ -146,9 +145,6 @@ const mainButtonStyles = StyleSheet.create({
     content: {
         fontSize: 16,
         color: '#f8f9ff',
-        position: 'absolute',
-        bottom: 4,
-        right: 4,
         fontWeight: 'bold',
     },
 });
