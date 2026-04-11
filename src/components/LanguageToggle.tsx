@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, Text, View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/hooks/i18n';
+import { Entypo } from '@expo/vector-icons';
 import Animated, {
     withDelay,
     interpolate,
@@ -23,17 +24,17 @@ const SPRING_CONFIG = {
 const OFFSET = 60;
 
 const LANGUAGES = [
-    { code: 'en', label: 'EN', flag: '🇺🇸' },
-    { code: 'es', label: 'ES', flag: '🇪🇸' },
-    { code: 'sq', label: 'SQ', flag: '🇦🇱' },
-    { code: 'geo', label: 'GE', flag: '🇬🇪' },
-    { code: 'por', label: 'PT', flag: '🇵🇹' },
+    { code: 'en', label: 'English' },
+    { code: 'es', label: 'Español' },
+    { code: 'sq', label: 'Shqip' },
+    { code: 'geo', label: 'ქართული' },
+    { code: 'por', label: 'Português' },
 ];
 
 interface FloatingLanguageButtonProps {
     isExpanded: SharedValue<boolean>;
     index: number;
-    lang: { code: string; label: string; flag: string };
+    lang: { code: string; label: string };
     isActive: boolean;
     onPress: () => void;
 }
@@ -63,7 +64,6 @@ const FloatingLanguageButton = ({
         <AnimatedPressable
             onPress={onPress}
             style={[animatedStyles, styles.shadow, styles.button, isActive && styles.buttonActive]}>
-            <Text className="text-lg">{lang.flag}</Text>
             <Animated.Text style={[styles.content, isActive && styles.contentActive]}>
                 {lang.label}
             </Animated.Text>
@@ -89,9 +89,9 @@ export default function LanguageToggle() {
     };
 
     const plusIconStyle = useAnimatedStyle(() => {
-        const moveValue = interpolate(Number(isExpanded.value), [0, 1], [0, 2]);
+        const moveValue = interpolate(Number(isExpanded.value), [0, 0], [0, 0]);
         const translateValue = withTiming(moveValue);
-        const rotateValue = isExpanded.value ? '45deg' : '0deg';
+        const rotateValue = isExpanded.value ? '0deg' : '0deg';
 
         return {
             transform: [{ translateX: translateValue }, { rotate: withTiming(rotateValue) }],
@@ -108,9 +108,8 @@ export default function LanguageToggle() {
                     style={[styles.shadow, mainButtonStyles.button]}
                     accessibilityLabel={t('language.description')}
                     accessibilityRole="button">
-                    <Text className="text-xl">{currentLanguage.flag}</Text>
                     <Animated.Text style={[plusIconStyle, mainButtonStyles.content]}>
-                        +
+                        <Entypo name="globe" size={27} color="#f8f9ff" />
                     </Animated.Text>
                 </AnimatedPressable>
 
@@ -132,7 +131,7 @@ export default function LanguageToggle() {
 const mainButtonStyles = StyleSheet.create({
     button: {
         zIndex: 1,
-        height: 30,
+        height: 56,
         width: 56,
         borderRadius: 100,
         backgroundColor: 'rgba(119, 205, 226, 0.95)',
@@ -143,9 +142,6 @@ const mainButtonStyles = StyleSheet.create({
     content: {
         fontSize: 16,
         color: '#f8f9ff',
-        position: 'absolute',
-        bottom: 4,
-        right: 4,
         fontWeight: 'bold',
     },
 });
@@ -157,22 +153,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 4,
     },
-    mainContainer: {
-        position: 'relative',
-        height: 56,
-        width: 56,
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    buttonContainer: {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
     button: {
-        width: 48,
+        marginLeft: 40,
+        width: 100,
         height: 48,
         backgroundColor: 'rgba(119, 205, 226, 0.9)',
         position: 'absolute',
@@ -184,15 +167,10 @@ const styles = StyleSheet.create({
     buttonActive: {
         backgroundColor: '#ffffff',
     },
-    flag: {
-        fontSize: 18,
-    },
     content: {
-        fontSize: 12,
+        fontSize: 16,
         color: '#f8f9ff',
         position: 'absolute',
-        bottom: 2,
-        right: 2,
         fontWeight: '600',
     },
     contentActive: {
