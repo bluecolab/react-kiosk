@@ -101,8 +101,8 @@ export default function LanguageToggle() {
     const currentLanguage = LANGUAGES.find((l) => l.code === currentLang) || LANGUAGES[0];
 
     return (
-        <View style={styles.mainContainer}>
-            <View style={styles.buttonContainer}>
+        <View className="relative h-14 w-14 justify-end items-center">
+            <View className="absolute flex flex-col items-center">
                 <AnimatedPressable
                     onPress={handlePress}
                     style={[styles.shadow, mainButtonStyles.button]}
@@ -139,9 +139,6 @@ const mainButtonStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    flag: {
-        fontSize: 20,
-    },
     content: {
         fontSize: 16,
         color: '#f8f9ff',
@@ -150,12 +147,24 @@ const mainButtonStyles = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
+    shadow: {
+        shadowColor: '#171717',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+    },
     mainContainer: {
         position: 'relative',
         height: 56,
         width: 56,
         display: 'flex',
         justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    buttonContainer: {
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
     },
     button: {
@@ -167,33 +176,22 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex: -2,
-        flexDirection: 'column',
     },
     buttonActive: {
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    },
-    buttonContainer: {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    shadow: {
-        shadowColor: '#171717',
-        shadowOffset: { width: -0.5, height: 3.5 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
+        backgroundColor: '#ffffff',
     },
     flag: {
-        fontSize: 16,
+        fontSize: 18,
     },
     content: {
+        fontSize: 12,
         color: '#f8f9ff',
-        fontWeight: '500',
-        fontSize: 10,
+        position: 'absolute',
+        bottom: 2,
+        right: 2,
+        fontWeight: '600',
     },
     contentActive: {
-        color: '#333',
+        color: '#333333',
     },
 });
