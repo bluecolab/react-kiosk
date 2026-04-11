@@ -131,7 +131,7 @@ export default function LanguageToggle() {
 const mainButtonStyles = StyleSheet.create({
     button: {
         zIndex: 1,
-        height: 30,
+        height: 56,
         width: 56,
         borderRadius: 100,
         backgroundColor: 'rgba(119, 205, 226, 0.95)',
