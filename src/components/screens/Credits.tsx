@@ -161,7 +161,7 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
                 className="flex-1 justify-center items-center overflow-hidden"
                 style={
                     Platform.OS === 'web'
-                        ? { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }
+                        ? { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }
                         : undefined
                 }
                 onLayout={onContainerLayout}>
