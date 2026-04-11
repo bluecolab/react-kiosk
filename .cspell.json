@@ -1,6 +1,11 @@
 {
-    "dictionaries": ["es-es", "ka"],
-    "import": ["@cspell/dict-es-es/cspell-ext.json"],
+    "dictionaries": [
+        "es-es",
+        "ka"
+    ],
+    "import": [
+        "@cspell/dict-es-es/cspell-ext.json"
+    ],
     "ignorePaths": [
         "node_modules/*",
         "dist/*",
@@ -218,5 +223,9 @@
         "Xander",
         "Younes",
         "Zanuto"
+    ],
+    "words": [
+        "Português",
+        "ქართული"
     ]
 }

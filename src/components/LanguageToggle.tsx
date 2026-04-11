@@ -153,22 +153,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 4,
     },
-    mainContainer: {
-        position: 'relative',
-        height: 56,
-        width: 56,
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    buttonContainer: {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
     button: {
-        width: 48,
+        marginLeft: 40,
+        width: 100,
         height: 48,
         backgroundColor: 'rgba(119, 205, 226, 0.9)',
         position: 'absolute',
@@ -180,15 +167,10 @@ const styles = StyleSheet.create({
     buttonActive: {
         backgroundColor: '#ffffff',
     },
-    flag: {
-        fontSize: 18,
-    },
     content: {
-        fontSize: 12,
+        fontSize: 16,
         color: '#f8f9ff',
         position: 'absolute',
-        bottom: 2,
-        right: 2,
         fontWeight: '600',
     },
     contentActive: {
