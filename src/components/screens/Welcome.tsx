@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Modal, TextInput, Pressable } from 'react-native';
+import { View, Text, Image, Modal, TextInput, Pressable } from 'react-native';
 import { DynamicImage } from '@/components/DynamicImage';
 import { useTranslation } from 'react-i18next';
 import FeedbackViewer from '../FeedbackViewer';
@@ -98,16 +98,16 @@ export default function WelcomeScreen() {
                             style={{ textAlignVertical: 'top' }}
                         />
                         <View className="flex-row justify-end gap-3">
-                            <TouchableOpacity
+                            <Pressable
                                 onPress={() => setIsFeedbackVisible(false)}
                                 className="bg-red-500 px-4 py-2 rounded">
                                 <Text className="text-white">{t('feedback.cancel')}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
+                            </Pressable>
+                            <Pressable
                                 onPress={handleSubmitFeedback}
                                 className="bg-blue-500 px-4 py-2 rounded">
                                 <Text className="text-white">{t('feedback.submit')}</Text>
-                            </TouchableOpacity>
+                            </Pressable>
                         </View>
                     </View>
                 </View>
