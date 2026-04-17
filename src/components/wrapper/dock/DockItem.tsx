@@ -76,11 +76,6 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                     { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },
                     sizeStyle,
                 ]}>
-                <Text
-                    ellipsizeMode="tail"
-                    className="self-center text-white font-bold w-full text-center pb-1 text-widgetLabel">
-                    {item.title}
-                </Text>
                 <Animated.View
                     style={{
                         width: '100%',
@@ -104,6 +99,14 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                     />
                     <Animated.View style={glowStyle} pointerEvents="none" />
                 </Animated.View>
+                <Text
+                    adjustsFontSizeToFit
+                    numberOfLines={2}
+                    minimumFontScale={0.3} // won't shrink below 50% of the original size
+                    ellipsizeMode="tail"
+                    className="self-center text-white font-bold w-full text-center pb-1 text-widgetLabel">
+                    {item.title}
+                </Text>
             </Animated.View>
         </Pressable>
     );
