@@ -1,12 +1,15 @@
 import { Widget } from '@/hooks/useWidgets';
-import { useEffect } from 'react';
-import { Platform, Pressable, Text } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Platform, Pressable, Text, TextProps } from 'react-native';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
     withSpring,
     withTiming,
 } from 'react-native-reanimated';
+
+type OnTextLayoutEvent = Parameters<NonNullable<TextProps['onTextLayout']>>[0];
+type OnLayoutEvent = Parameters<NonNullable<TextProps['onLayout']>>[0];
 
 interface DockItemProps {
     item: Widget;
@@ -18,6 +21,36 @@ interface DockItemProps {
 
 export function DockItem({ item, index, setIndex, itemSize, animationValue }: DockItemProps) {
     const animatedSize = useSharedValue(animationValue);
+    const [isSingleLineTitle, setIsSingleLineTitle] = useState(false);
+    const normalizedTitle = item.title.trim().replace(/\s+/g, ' ');
+    const displayTitle = isSingleLineTitle ? `${normalizedTitle}\n ` : normalizedTitle;
+    const hasMeasuredTitleRef = useRef(false);
+
+    const handleMeasureTitleLayout = (event: OnTextLayoutEvent) => {
+        if (hasMeasuredTitleRef.current) return;
+
+        hasMeasuredTitleRef.current = true;
+        const singleLine = event.nativeEvent.lines.length <= 1;
+        if (singleLine !== isSingleLineTitle) {
+            setIsSingleLineTitle(singleLine);
+        }
+    };
+
+    const handleTitleLayoutFallback = (event: OnLayoutEvent) => {
+        if (Platform.OS !== 'web') return;
+        if (hasMeasuredTitleRef.current) return;
+
+        const { height } = event.nativeEvent.layout;
+        // Web fallback: estimate 1-line vs 2-line using rendered height.
+        const isLikelySingleLine = height <= 22;
+        hasMeasuredTitleRef.current = true;
+        setIsSingleLineTitle(isLikelySingleLine);
+    };
+
+    useEffect(() => {
+        hasMeasuredTitleRef.current = false;
+        setIsSingleLineTitle(false);
+    }, [normalizedTitle]);
 
     useEffect(() => {
         animatedSize.value = withSpring(animationValue, { damping: 30, stiffness: 180 });
@@ -73,14 +106,14 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
             }}>
             <Animated.View
                 style={[
-                    { marginHorizontal: 7, marginBottom: 30, alignSelf: 'flex-end' },
+                    {
+                        marginHorizontal: 7,
+                        marginBottom: 30,
+                        alignSelf: 'flex-end',
+                        position: 'relative',
+                    },
                     sizeStyle,
                 ]}>
-                <Text
-                    ellipsizeMode="tail"
-                    className="self-center text-white font-bold w-full text-center pb-1 text-widgetLabel">
-                    {item.title}
-                </Text>
                 <Animated.View
                     style={{
                         width: '100%',
@@ -104,6 +137,26 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                     />
                     <Animated.View style={glowStyle} pointerEvents="none" />
                 </Animated.View>
+                <Text
+                    adjustsFontSizeToFit
+                    numberOfLines={2}
+                    onTextLayout={handleMeasureTitleLayout}
+                    onLayout={handleTitleLayoutFallback}
+                    minimumFontScale={0.3} // won't shrink below 50% of the original size
+                    ellipsizeMode="tail"
+                    className="text-white font-bold text-center z-1"
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        bottom: -40,
+                        paddingHorizontal: 6,
+                        textShadowColor: 'rgba(0,0,0,0.75)',
+                        textShadowOffset: { width: 0, height: 1 },
+                        textShadowRadius: 2,
+                    }}>
+                    {displayTitle}
+                </Text>
             </Animated.View>
         </Pressable>
     );

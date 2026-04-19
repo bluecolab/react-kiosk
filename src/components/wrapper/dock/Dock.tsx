@@ -8,6 +8,7 @@ import { View } from 'react-native';
 import { useState } from 'react';
 
 const GROWTH_RADIUS = 0.5; // how many neighbors are affected
+const LABEL_OVERHANG = 44; // space for labels that float below icon bounds
 
 interface DockProps {
     dockLocationStyle: { bottom: number };
@@ -33,10 +34,13 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
                     right: 0,
                     zIndex: 10,
                     height:
-                        itemSizeHeight < itemSizeWidth ? itemSizeHeight * 1.5 : itemSizeWidth * 1.5,
+                        (itemSizeHeight < itemSizeWidth
+                            ? itemSizeHeight * 1.6
+                            : itemSizeWidth * 1.6) + LABEL_OVERHANG,
                     justifyContent: 'flex-end', // anchor children to bottom
                     alignItems: 'center',
                     opacity: 1,
+                    overflow: 'visible',
                 },
             ]}>
             <View className="absolute left-5 right-5 bottom-0 h-[70px] bg-white/30 rounded-t-3xl shadow-lg" />
@@ -45,10 +49,13 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
                 data={widgets}
                 keyExtractor={(_, index) => `spacer-${index}`}
                 horizontal
+                removeClippedSubviews={false}
+                style={{ overflow: 'visible' }}
                 contentContainerStyle={{
                     alignItems: 'flex-end', // anchor items to bottom of FlatList
                     height: '100%',
                     paddingHorizontal: 20,
+                    overflow: 'visible',
                 }}
                 renderItem={({ item, index }) => {
                     const distance = Math.abs(selectedIndex - index);

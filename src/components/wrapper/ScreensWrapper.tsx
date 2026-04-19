@@ -39,7 +39,7 @@ export default function ScreensWrapper() {
 
     const dockLocationStyle = useAnimatedStyle(() => {
         return {
-            bottom: dockLocation.value, // Animate dock position
+            bottom: dockLocation.value + 10, // Animate dock position
             transform: [{ translateY: reachabilityOffset.value }],
         };
     });
