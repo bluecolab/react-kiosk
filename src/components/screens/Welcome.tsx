@@ -58,9 +58,6 @@ export default function WelcomeScreen() {
                     <Text className="text-white font-bold text-xs">{t('feedback.button')}</Text>
                 </Pressable>
             </View>
-            <Text className="text-center text-h2 font-bold mt-10 mb-8">
-                {t('widgets.welcome')} to Blue CoLab's Kiosk!
-            </Text>
 
             <View className="flex-row items-start justify-center">
                 <DynamicImage imgSource={Cronin} width={1392.75} />
