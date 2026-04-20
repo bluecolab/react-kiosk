@@ -36,7 +36,9 @@ export default function Games() {
 
     return (
         <View className="flex-1 w-full">
-            <Text className="text-h2 mb-4 text-center font-bold">{t('games.playInteractive')}</Text>
+            <Text className="text-h2 mb-4 text-center font-bold dark:text-white">
+                {t('games.playInteractive')}
+            </Text>
 
             <View className="flex-row flex-wrap justify-center my-2">
                 {games.map((item, index) => (
@@ -44,7 +46,9 @@ export default function Games() {
                         key={index}
                         className={`px-3 py-2 rounded-md m-1 ${currentGame.name === item.name ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setCurrentGame(item)}>
-                        <Text className="text-button font-bold text-black">{t(item.name)}</Text>
+                        <Text className="text-button font-bold text-black dark:text-white">
+                            {t(item.name)}
+                        </Text>
                     </Pressable>
                 ))}
             </View>

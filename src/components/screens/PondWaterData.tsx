@@ -38,13 +38,15 @@ export default function PondWaterData() {
                         key={index}
                         className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setState(item)}>
-                        <Text className="text-button font-bold text-black">{item.label}</Text>
+                        <Text className="text-button font-bold text-black dark:text-white">
+                            {item.label}
+                        </Text>
                     </Pressable>
                 ))}
             </View>
 
             {/* Content container */}
-            <View className="bg-white rounded-xl flex-row p-4 items-start shadow w-full">
+            <View className="bg-white dark:bg-gray-800 rounded-xl flex-row p-4 items-start shadow w-full">
                 {typeof state.URL === 'string' ? (
                     <iframe
                         src={state.URL}

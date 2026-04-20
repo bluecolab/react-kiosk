@@ -11,7 +11,7 @@ export default function RootLayout() {
     useEffect(() => {
         if (typeof window !== 'undefined' && window.localStorage) {
             const saved = window.localStorage.getItem('theme');
-            if (saved === 'dark' || saved === 'light') {
+            if (saved === 'light' || saved === 'dark') {
                 setColorScheme(saved);
             }
         }

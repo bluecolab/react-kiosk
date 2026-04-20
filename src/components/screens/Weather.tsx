@@ -15,7 +15,9 @@ export default function PondWaterData() {
             content: (
                 <View className="w-[1500px] h-[800px] flex-row justify-around">
                     <View className="h-[700px]">
-                        <Text className="text-center text-body">Softball Field</Text>
+                        <Text className="text-center text-body dark:text-white">
+                            Softball Field
+                        </Text>
                         <iframe
                             className="border-0 rounded-lg"
                             height="700"
@@ -23,7 +25,7 @@ export default function PondWaterData() {
                         />
                     </View>
                     <View className="h-[700px]">
-                        <Text className="text-center text-body">Nature Center</Text>
+                        <Text className="text-center text-body dark:text-white">Nature Center</Text>
                         <iframe
                             className="border-0 rounded-lg"
                             height="700"
@@ -44,7 +46,9 @@ export default function PondWaterData() {
                         key={index}
                         className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300'}`}
                         onPress={() => setState(item)}>
-                        <Text className="text-button font-bold text-black">{t(item.label)}</Text>
+                        <Text className="text-button font-bold text-black dark:text-white">
+                            {t(item.label)}
+                        </Text>
                     </Pressable>
                 ))}
             </View>

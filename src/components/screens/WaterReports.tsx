@@ -40,13 +40,13 @@ export default function WaterReport() {
             <View className=" rounded-xl overflow-hidden">
                 <View className=" rounded-xl flex-row p-4 items-start w-full">
                     <View className="flex-1 flex flex-col ">
-                        <Text className="text-h2 font-bold text-center mb-3">
+                        <Text className="text-h2 font-bold text-center mb-3 dark:text-white">
                             {t('waterReports.title')}
                         </Text>
-                        <Text className="text-body mb-2  text-center">
+                        <Text className="text-body mb-2  text-center dark:text-white">
                             {t('waterReports.description')}
                         </Text>
-                        <Text className="text-body mb-5  text-center">
+                        <Text className="text-body mb-5  text-center dark:text-white">
                             {t('waterReports.goal')}
                         </Text>
                         <Button
@@ -55,10 +55,10 @@ export default function WaterReport() {
                         />
                     </View>
                     <View className="flex-shrink-0 mr-4 w-1/2">
-                        <Text className="text-body  text-center">
+                        <Text className="text-body  text-center dark:text-white">
                             {t('waterReports.selectYear')}
                         </Text>
-                        <Text className=" text-body  text-center">
+                        <Text className=" text-body  text-center dark:text-white">
                             {t('waterReports.pdfFormat')}
                         </Text>
                         <View className="grid grid-cols-3 gap-x-8 p-5">
@@ -77,7 +77,7 @@ export default function WaterReport() {
                                         )}
                                         {/* Year label as spine */}
                                         <Text
-                                            className={`text-button font-bold text-blue-900 text-center`}>
+                                            className={`text-button font-bold text-blue-900 dark:text-blue-200 text-center`}>
                                             {t(report.buttonText)}
                                         </Text>
                                         {/* Shelf effect */}
@@ -130,7 +130,9 @@ export default function WaterReport() {
                             {t('waterReports.whereWater')}
                         </Text>
                     </View>
-                    <Text className="mx-4 mt-4 text-body">{t('waterReports.waterSource')}</Text>
+                    <Text className="mx-4 mt-4 text-body dark:text-white">
+                        {t('waterReports.waterSource')}
+                    </Text>
                     <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 16 }}>
                         <DynamicImage imgSource={animated} width={500} />
                     </View>

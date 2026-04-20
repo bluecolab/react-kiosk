@@ -12,9 +12,15 @@ export default function MobileApp() {
 
     return (
         <View className="flex-1 w-full items-center justify-center">
-            <Text className="text-h2 font-bold text-center mb-2">{t('mobileApp.heading')}</Text>
-            <Text className="text-h3 text-center mb-1">{t('mobileApp.stayUpdated')}</Text>
-            <Text className="text-body text-center mb-6">{t('mobileApp.download')}</Text>
+            <Text className="text-h2 font-bold text-center mb-2 dark:text-white">
+                {t('mobileApp.heading')}
+            </Text>
+            <Text className="text-h3 text-center mb-1 dark:text-white">
+                {t('mobileApp.stayUpdated')}
+            </Text>
+            <Text className="text-body text-center mb-6 dark:text-white">
+                {t('mobileApp.download')}
+            </Text>
 
             <View className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-6xl">
                 <View className="flex items-center mb-8 md:mb-0">
@@ -26,15 +32,15 @@ export default function MobileApp() {
                 </View>
                 <View className="flex flex-row items-center justify-center gap-8">
                     <View className="items-center">
-                        <Text className="text-body text-center mb-2">iOS</Text>
+                        <Text className="text-body text-center mb-2 dark:text-white">iOS</Text>
                         <Image style={{ width: 200, height: 200 }} source={qriOS} />
                     </View>
                     <View className="items-center">
-                        <Text className="text-body text-center mb-2">Android</Text>
+                        <Text className="text-body text-center mb-2 dark:text-white">Android</Text>
                         <Image style={{ width: 200, height: 200 }} source={qrAndroid} />
                     </View>
                     <View className="items-center">
-                        <Text className="text-body text-center mb-2">Web App</Text>
+                        <Text className="text-body text-center mb-2 dark:text-white">Web App</Text>
                         <Image style={{ width: 200, height: 200 }} source={qrWebapp} />
                     </View>
                 </View>
