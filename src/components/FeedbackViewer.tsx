@@ -55,7 +55,7 @@ export default function FeedbackViewer({
     };
 
     return (
-        <View className="flex-1 bg-gray-100 p-5">
+        <View className="flex-1 bg-gray-100 p-5 darkMode:bg-gray-800">
             <View className="mb-5">
                 <Text className="text-2xl font-bold mb-4">
                     Feedback Submissions ({feedbackList.length})

@@ -43,7 +43,7 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
                     overflow: 'visible',
                 },
             ]}>
-            <View className="absolute left-5 right-5 bottom-0 h-[70px] bg-white/30 rounded-t-3xl shadow-lg" />
+            <View className="absolute left-5 right-5 bottom-0 h-[70px] bg-white/30 dark:bg-black/40 rounded-t-3xl shadow-lg" />
 
             <FlatList
                 data={widgets}
