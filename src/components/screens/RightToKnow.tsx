@@ -44,7 +44,7 @@ export default function RightToKnow() {
                 {infoItems.map((item, index) => (
                     <Pressable
                         key={index}
-                        className={`px-3 py-2 rounded-md m-1 ${currentItem.titleKey === item.titleKey ? 'bg-blue-400' : 'bg-gray-300'}`}
+                        className={`px-3 py-2 rounded-md m-1 ${currentItem.titleKey === item.titleKey ? 'bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`}
                         onPress={() => setCurrentItem(item)}>
                         <Text className="text-button font-bold text-black dark:text-white">
                             {t(item.titleKey)}

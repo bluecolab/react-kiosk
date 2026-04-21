@@ -36,7 +36,7 @@ export default function PondWaterData() {
                 {water_sensors.map((item, index) => (
                     <Pressable
                         key={index}
-                        className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300'}`}
+                        className={`px-3 py-2 rounded-md m-1 ${state.label === item.label ? 'bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`}
                         onPress={() => setState(item)}>
                         <Text className="text-button font-bold text-black dark:text-white">
                             {item.label}
