@@ -1,0 +1,119 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Export static web (Expo Router) for PR subpath
+        env:
+          REPO: ${{ github.event.repository.name }}
+          PR_NUM: ${{ github.event.pull_request.number }}
+          EXPO_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}
+        run: |
+          npx expo export --platform web
+
+      - name: Deploy dist/ into gh-pages/pr-<number> (git)
+        env:
+          PR_NUM: ${{ github.event.pull_request.number }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          OUT_DIR="dist"
+
+          rm -rf /tmp/site-out
+          cp -a "${OUT_DIR}" /tmp/site-out
+
+          git fetch origin gh-pages:gh-pages || true
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            git switch gh-pages
+          else
+            git switch --orphan gh-pages
+            rm -rf ./*
+          fi
+
+          DEST="pr-${PR_NUM}"
+          rm -rf "${DEST}"
+          mkdir -p "${DEST}"
+          cp -a /tmp/site-out/. "${DEST}/"
+
+          echo "${PR_SHA}" > "${DEST}/.preview-sha"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Deploy preview for PR #${PR_NUM} (${PR_SHA:0:7})"
+          git push origin gh-pages
+
+      - name: Comment preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request.number;
+            const { owner, repo } = context.repo;
+            const url = `https://${owner}.github.io/${repo}/pr-${pr}/`;
+            await github.rest.issues.createComment({
+              owner, repo, issue_number: pr,
+              body: `PR preview deployed: ${url}`
+            });
+
+  cleanup:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Remove preview folder and push
+        env:
+          PR_NUM: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+
+          rm -rf "pr-${PR_NUM}"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to clean."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Remove preview for PR #${PR_NUM}"
+          git push origin gh-pages
