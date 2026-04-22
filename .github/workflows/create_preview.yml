@@ -31,6 +31,32 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Patch app.json baseUrl for PR preview
+        env:
+          REPO: ${{ github.event.repository.name }}          # react-kiosk
+          PR_NUM: ${{ github.event.pull_request.number }}    # 146
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require("fs");
+      
+          const file = "app.json";
+          const raw = fs.readFileSync(file, "utf8");
+          const app = JSON.parse(raw);
+      
+          app.expo ||= {};
+          app.expo.experiments ||= {};
+      
+          // keep your existing flags
+          app.expo.experiments.typedRoutes = true;
+      
+          // IMPORTANT: for project pages previews: /<repo>/pr-<num>
+          app.expo.experiments.baseUrl = `/${process.env.REPO}/pr-${process.env.PR_NUM}`;
+      
+          fs.writeFileSync(file, JSON.stringify(app, null, 2) + "\n");
+          console.log("Patched app.json experiments.baseUrl =", app.expo.experiments.baseUrl);
+          NODE
+
       - name: Export static web (Expo Router) for PR subpath
         env:
           REPO: ${{ github.event.repository.name }}
