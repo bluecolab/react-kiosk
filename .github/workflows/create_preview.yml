@@ -77,6 +77,9 @@ jobs:
           rm -rf /tmp/site-out
           cp -a "${OUT_DIR}" /tmp/site-out
 
+          git reset --hard
+          git clean -fd
+
           git fetch origin gh-pages:gh-pages || true
           if git show-ref --verify --quiet refs/heads/gh-pages; then
             git switch gh-pages
