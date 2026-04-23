@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Modal, Pressable, Platform, Button } from 'react-native';
+import { View, Text, Modal, Pressable, Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useWaterReports } from '@/hooks/useWaterReports';
 import { WebView } from 'react-native-webview';
@@ -38,27 +38,30 @@ export default function WaterReport() {
     return (
         <View className="flex-1 w-full items-center justify-center">
             <View className=" rounded-xl overflow-hidden">
-                <View className=" rounded-xl flex-row p-4 items-start w-full">
+                <View className="bg-white dark:bg-gray-800 rounded-xl flex-row p-4 items-start w-full shadow">
                     <View className="flex-1 flex flex-col ">
-                        <Text className="text-h2 font-bold text-center mb-3">
+                        <Text className="text-h2 font-bold text-center mb-3 dark:text-white">
                             {t('waterReports.title')}
                         </Text>
-                        <Text className="text-body mb-2  text-center">
+                        <Text className="text-body mb-2  text-center dark:text-white">
                             {t('waterReports.description')}
                         </Text>
-                        <Text className="text-body mb-5  text-center">
+                        <Text className="text-body mb-5  text-center dark:text-white">
                             {t('waterReports.goal')}
                         </Text>
-                        <Button
+                        <Pressable
                             onPress={() => openStoryModal()}
-                            title={t('waterReports.whereWater')}
-                        />
+                            className="bg-blue-500 dark:bg-blue-700 rounded-md px-4 py-2 items-center">
+                            <Text className="text-white font-semibold">
+                                {t('waterReports.whereWater')}
+                            </Text>
+                        </Pressable>
                     </View>
                     <View className="flex-shrink-0 mr-4 w-1/2">
-                        <Text className="text-body  text-center">
+                        <Text className="text-body  text-center dark:text-white">
                             {t('waterReports.selectYear')}
                         </Text>
-                        <Text className=" text-body  text-center">
+                        <Text className=" text-body  text-center dark:text-white">
                             {t('waterReports.pdfFormat')}
                         </Text>
                         <View className="grid grid-cols-3 gap-x-8 p-5">
@@ -66,7 +69,7 @@ export default function WaterReport() {
                                 return (
                                     <Pressable
                                         key={index}
-                                        className={`relative bg-white min-h-[160px]  rounded-lg shadow-lg flex flex-col items-center justify-end border-l-8`}
+                                        className={`relative bg-white dark:bg-gray-700 min-h-[160px] rounded-lg shadow-lg flex flex-col items-center justify-end border-l-8`}
                                         style={{ marginBottom: 24 }}
                                         onPress={() => {
                                             openPdfModal(report.url, report.title);
@@ -77,11 +80,11 @@ export default function WaterReport() {
                                         )}
                                         {/* Year label as spine */}
                                         <Text
-                                            className={`text-button font-bold text-blue-900 text-center`}>
+                                            className={`text-button font-bold text-blue-900 dark:text-blue-200 text-center`}>
                                             {t(report.buttonText)}
                                         </Text>
                                         {/* Shelf effect */}
-                                        <View className="absolute left-0 bottom-[-8px] w-full h-2 bg-gray-300 rounded-b-lg shadow-md" />
+                                        <View className="absolute left-0 bottom-[-8px] w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-b-lg shadow-md" />
                                     </Pressable>
                                 );
                             })}
@@ -91,7 +94,7 @@ export default function WaterReport() {
             </View>
 
             <Modal visible={isModalVisible} animationType="slide">
-                <View className="flex-1">
+                <View className="flex-1 bg-white dark:bg-gray-900">
                     <View className="bg-blue-600/90 p-4 flex-row items-center">
                         <Pressable onPress={closePdfModal}>
                             <Text className="text-white text-lg mr-3">
@@ -119,7 +122,7 @@ export default function WaterReport() {
             </Modal>
 
             <Modal visible={isStoryModalVisible} animationType="slide">
-                <View className="flex-1">
+                <View className="flex-1 bg-white dark:bg-gray-900">
                     <View className="bg-blue-600/90 p-4 flex-row items-center">
                         <Pressable onPress={closeStoryModal}>
                             <Text className="text-white text-lg mr-3">
@@ -130,7 +133,9 @@ export default function WaterReport() {
                             {t('waterReports.whereWater')}
                         </Text>
                     </View>
-                    <Text className="mx-4 mt-4 text-body">{t('waterReports.waterSource')}</Text>
+                    <Text className="mx-4 mt-4 text-body dark:text-white">
+                        {t('waterReports.waterSource')}
+                    </Text>
                     <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 16 }}>
                         <DynamicImage imgSource={animated} width={500} />
                     </View>

@@ -75,11 +75,11 @@ export default function DataToMusic() {
             {serverUp === null && (
                 <View className="items-center p-5">
                     <ActivityIndicator size="large" color="#0077cc" />
-                    <Text className="mt-2 text-base text-gray-500">
+                    <Text className="mt-2 text-base text-gray-500 dark:text-gray-300">
                         Checking sonification server status...
                     </Text>
                     {retryCount > 0 && (
-                        <Text className="mt-1 text-sm text-gray-400">
+                        <Text className="mt-1 text-sm text-gray-400 dark:text-gray-300">
                             Retry attempt {retryCount}/{MAX_RETRIES}
                         </Text>
                     )}
@@ -90,7 +90,7 @@ export default function DataToMusic() {
                     <Text className="text-red-600 font-bold text-body text-center mb-2.5">
                         Sonification server is not reachable
                     </Text>
-                    <Text className="text-gray-500  text-body text-center mb-4">
+                    <Text className="text-gray-500 dark:text-gray-300  text-body text-center mb-4">
                         Please ensure the sonification server is running at http://127.0.0.1:5000/
                     </Text>
                     <View

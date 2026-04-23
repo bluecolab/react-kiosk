@@ -35,7 +35,9 @@ export default function ScreenWrapperContent({
                 contentContainerClassName="items-center"
                 showsVerticalScrollIndicator={true}
                 persistentScrollbar={true}>
-                <Text className="text-center text-black font-bold mb-2 text-title">{title}</Text>
+                <Text className="text-center text-black dark:text-white font-bold mb-2 text-title">
+                    {title}
+                </Text>
                 {screen}
             </ScrollView>
         </Animated.View>

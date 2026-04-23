@@ -8,7 +8,7 @@ export default function StoryScreen() {
     return (
         <View className="w-full">
             {/* Title */}
-            <Text className="text-h2 font-bold text-center text-[#002D72] mb-[70px] mt-5">
+            <Text className="text-h2 font-bold text-center text-[#002D72] dark:text-blue-300 mb-[70px] mt-5">
                 {t('aboutScreen.missionTitle')}
             </Text>
 
@@ -29,21 +29,21 @@ export default function StoryScreen() {
 
                 {/* Content Sections */}
                 <View className="flex-1">
-                    <Text className="text-h2 font-bold mb-5 text-[#002D72]">
+                    <Text className="text-h2 font-bold mb-5 text-[#002D72] dark:text-blue-300">
                         {t('aboutScreen.safeWater')}
                     </Text>
 
-                    <Text className="text-h2 mb-[25px] text-[#002D72]">
+                    <Text className="text-h2 mb-[25px] text-[#002D72] dark:text-blue-300">
                         {t('aboutScreen.rightToKnow')}
                     </Text>
 
-                    <Text className="text-body mb-4 text-[#374151]">
+                    <Text className="text-body mb-4 text-[#374151] dark:text-gray-300">
                         {t('aboutScreen.atPrefix')}{' '}
                         <Text className="font-bold">{t('aboutScreen.blueColab')}</Text>,{' '}
                         {t('aboutScreen.description')}
                     </Text>
 
-                    <Text className="text-body mb-4 text-[#374151]">
+                    <Text className="text-body mb-4 text-[#374151] dark:text-gray-300">
                         {t('aboutScreen.location')}{' '}
                         <Text className="font-bold">{t('aboutScreen.rightToKnowBold')}</Text>{' '}
                         {t('aboutScreen.locationEnd')}
@@ -68,24 +68,24 @@ export default function StoryScreen() {
 
                 {/* Content Sections */}
                 <View className="flex-1">
-                    <Text className="text-h2 font-bold mb-5 text-[#002D72]">
+                    <Text className="text-h2 font-bold mb-5 text-[#002D72] dark:text-blue-300">
                         {t('aboutScreen.waterContaminationRisks')}
                     </Text>
 
-                    <Text className="text-body mb-4 text-[#374151]">
+                    <Text className="text-body mb-4 text-[#374151] dark:text-gray-300">
                         {t('aboutScreen.contaminationText1')}
                     </Text>
 
-                    <Text className="text-body mb-4 text-[#374151]">
+                    <Text className="text-body mb-4 text-[#374151] dark:text-gray-300">
                         • In <Text className="font-bold">{t('aboutScreen.milwaukee')}</Text>,{' '}
                         {t('aboutScreen.milwaukeeText')}
                     </Text>
 
-                    <Text className="text-body mb-4 text-[#374151]">
+                    <Text className="text-body mb-4 text-[#374151] dark:text-gray-300">
                         • {t('aboutScreen.hoosickText')}
                     </Text>
 
-                    <Text className="text-body mb-4 text-[#374151]">
+                    <Text className="text-body mb-4 text-[#374151] dark:text-gray-300">
                         {t('aboutScreen.globalProblem')}{' '}
                         <Text className="font-bold">{t('aboutScreen.realTime')}</Text>,{' '}
                         {t('aboutScreen.detection')}
@@ -94,32 +94,32 @@ export default function StoryScreen() {
             </View>
 
             {/* Blue CoLab's Approach */}
-            <Text className="text-h2 text-center font-bold mt-0 text-[#002D72]">
+            <Text className="text-h2 text-center font-bold mt-0 text-[#002D72] dark:text-blue-300">
                 {t('aboutScreen.handsOnApproach')}
             </Text>
 
-            <Text className="text-h3 text-center mt-[30px] text-[#374151]">
+            <Text className="text-h3 text-center mt-[30px] text-[#374151] dark:text-gray-300">
                 {t('aboutScreen.threefoldApproach')}
             </Text>
 
-            <Text className="text-h3 text-center mt-5 text-[#374151]">
+            <Text className="text-h3 text-center mt-5 text-[#374151] dark:text-gray-300">
                 {t('aboutScreen.teamWorkPrefix')}{' '}
                 <Text className="font-bold">{t('aboutScreen.teamWorkBold')}</Text>
                 {t('aboutScreen.teamWorkSuffix')}
             </Text>
 
-            <Text className="text-h3 text-center mt-5 mb-[40px] text-[#374151]">
+            <Text className="text-h3 text-center mt-5 mb-[40px] text-[#374151] dark:text-gray-300">
                 {t('aboutScreen.closingParagraph')}
             </Text>
 
             {/* Closing Statement */}
 
-            <Text className="text-body text-center mt-[30px] text-[#4b5563] italic">
+            <Text className="text-body text-center mt-[30px] text-[#4b5563] dark:text-gray-300 italic">
                 <Text className="font-bold">
                     "All of us at Blue CoLab look forward to seeing you on the team."
                 </Text>
             </Text>
-            <Text className="text-body text-center mt-[15px] text-[#4b5563] italic">
+            <Text className="text-body text-center mt-[15px] text-[#4b5563] dark:text-gray-300 italic">
                 — <Text className="font-bold">John Cronin, Blue CoLab Director</Text> —
             </Text>
         </View>

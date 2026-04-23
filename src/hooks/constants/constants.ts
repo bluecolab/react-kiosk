@@ -6,6 +6,7 @@ export const constants = {
         VIEW_AREA_BORDER_RADIUS: 15,
         VIEW_AREA_MARGIN_TOP: 10,
         VIEW_AREA_COLOR: '#efefefdd',
+        VIEW_AREA_COLOR_DARK: '#1c1c1edd',
     },
     EXPANDED: {
         VIEW_AREA_HEIGHT: 1.0,
@@ -13,5 +14,6 @@ export const constants = {
         VIEW_AREA_BORDER_RADIUS: 0,
         VIEW_AREA_MARGIN_TOP: 0,
         VIEW_AREA_COLOR: '#efefefff',
+        VIEW_AREA_COLOR_DARK: '#1c1c1eff',
     },
 };

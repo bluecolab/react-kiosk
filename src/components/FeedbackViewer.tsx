@@ -55,9 +55,9 @@ export default function FeedbackViewer({
     };
 
     return (
-        <View className="flex-1 bg-gray-100 p-5">
+        <View className="flex-1 bg-gray-100 dark:bg-gray-900 p-5">
             <View className="mb-5">
-                <Text className="text-2xl font-bold mb-4">
+                <Text className="text-2xl font-bold mb-4 dark:text-white">
                     Feedback Submissions ({feedbackList.length})
                 </Text>
                 <View className="flex-row flex-wrap gap-2">
@@ -85,14 +85,20 @@ export default function FeedbackViewer({
 
             <ScrollView className="flex-1">
                 {feedbackList.length === 0 ? (
-                    <Text className="text-center text-gray-500 text-base mt-12">
+                    <Text className="text-center text-gray-500 dark:text-gray-400 text-base mt-12">
                         No feedback submissions yet.
                     </Text>
                 ) : (
                     feedbackList.map((item, index) => (
-                        <View key={index} className="bg-white p-4 rounded-lg mb-3 shadow">
-                            <Text className="text-xs text-gray-500 mb-2">{item.date}</Text>
-                            <Text className="text-sm text-gray-800">{item.text}</Text>
+                        <View
+                            key={index}
+                            className="bg-white dark:bg-gray-800 p-4 rounded-lg mb-3 shadow">
+                            <Text className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                {item.date}
+                            </Text>
+                            <Text className="text-sm text-gray-800 dark:text-gray-100">
+                                {item.text}
+                            </Text>
                         </View>
                     ))
                 )}

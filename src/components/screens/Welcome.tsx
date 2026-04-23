@@ -76,8 +76,10 @@ export default function WelcomeScreen() {
                 animationType="slide"
                 onRequestClose={() => setIsFeedbackVisible(false)}>
                 <View className="flex-1 justify-center items-center bg-black/50">
-                    <View className="bg-white p-5 rounded-xl w-full max-w-[500px]">
-                        <Text className="text-xl font-bold mb-5">{t('feedback.title')}</Text>
+                    <View className="bg-white dark:bg-gray-800 p-5 rounded-xl w-full max-w-[500px]">
+                        <Text className="text-xl font-bold mb-5 dark:text-white">
+                            {t('feedback.title')}
+                        </Text>
                         {showSuccess && (
                             <View className="bg-green-600 p-3 rounded mb-4">
                                 <Text className="text-white text-center font-bold">
@@ -90,7 +92,7 @@ export default function WelcomeScreen() {
                             onChangeText={setFeedback}
                             multiline
                             numberOfLines={4}
-                            className="border border-gray-300 rounded p-3 mb-4 text-base"
+                            className="border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded p-3 mb-4 text-base"
                             placeholder={t('feedback.placeholder')}
                             style={{ textAlignVertical: 'top' }}
                         />
@@ -116,7 +118,7 @@ export default function WelcomeScreen() {
                 animationType="slide"
                 onRequestClose={() => setShowFeedbackViewer(false)}>
                 <View className="flex-1 justify-center items-center bg-black/50">
-                    <View className="w-full max-w-[600px] bg-white rounded-xl p-5">
+                    <View className="w-full max-w-[600px] bg-white dark:bg-gray-900 rounded-xl p-5">
                         <FeedbackViewer setShowFeedbackViewer={setShowFeedbackViewer} />
                     </View>
                 </View>

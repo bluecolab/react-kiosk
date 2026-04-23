@@ -40,14 +40,16 @@ export default function Videos() {
     const { t } = useTranslation();
     return (
         <View className="p-5 items-center">
-            <Text className="text-h2 font-bold mb-5 text-center">
+            <Text className="text-h2 font-bold mb-5 text-center dark:text-white">
                 {t('videos.watchEducational')}
             </Text>
             <View className="flex-row flex-wrap justify-center gap-4">
                 {videos.map((video, index) => (
                     <View key={index} className="m-2 items-center">
                         <VideoComponent src={video.src} type={video.type} />
-                        <Text className="mt-2 text-xl text-center">{video.title}</Text>
+                        <Text className="mt-2 text-xl text-center dark:text-white">
+                            {video.title}
+                        </Text>
                     </View>
                 ))}
             </View>

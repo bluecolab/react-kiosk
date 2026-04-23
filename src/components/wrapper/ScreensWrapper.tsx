@@ -1,16 +1,21 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { View, Easing, Pressable, Text } from 'react-native'; // Fixed extra space in import path
+import { useColorScheme } from 'nativewind';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'; // Fixed extra space in import path
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
 import { useConfigs } from '@/hooks/useConfigs';
 import Dock from './dock/Dock';
-import LanguageToggle from '../LanguageToggle';
+import SettingsToggle from '../SettingsToggle';
 
 export default function ScreensWrapper() {
     const widgets = useWidgets();
     const { SHRUNKEN, EXPANDED } = useConfigs();
+    const { colorScheme } = useColorScheme();
+    const isDark = colorScheme === 'dark';
+    const shrunkenColor = isDark ? SHRUNKEN.VIEW_AREA_COLOR_DARK : SHRUNKEN.VIEW_AREA_COLOR;
+    const expandedColor = isDark ? EXPANDED.VIEW_AREA_COLOR_DARK : EXPANDED.VIEW_AREA_COLOR;
 
     const [index, setIndex] = useState<number>(5);
 
@@ -31,11 +36,19 @@ export default function ScreensWrapper() {
     // Start location when height and width are not yet loaded
     const dockLocation = useSharedValue(0);
     const viewAreaHeight = useSharedValue(0);
-    const viewAreaColor = useSharedValue(SHRUNKEN.VIEW_AREA_COLOR);
+    const viewAreaColor = useSharedValue(shrunkenColor);
     const viewAreaWidth = useSharedValue(0);
     const viewAreaBorderRadius = useSharedValue(SHRUNKEN.VIEW_AREA_BORDER_RADIUS);
     const viewAreaMarginTop = useSharedValue(SHRUNKEN.VIEW_AREA_MARGIN_TOP);
     const reachabilityOffset = useSharedValue(0);
+
+    // Update background color when system color scheme changes
+    useEffect(() => {
+        viewAreaColor.value = withTiming(isExpanded ? expandedColor : shrunkenColor, {
+            duration: 300,
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [colorScheme]);
 
     const dockLocationStyle = useAnimatedStyle(() => {
         return {
@@ -166,10 +179,7 @@ export default function ScreensWrapper() {
                                 window.innerHeight * SHRUNKEN.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
                             );
-                            viewAreaColor.value = withTiming(
-                                SHRUNKEN.VIEW_AREA_COLOR,
-                                defaultAnimationConfig
-                            );
+                            viewAreaColor.value = withTiming(shrunkenColor, defaultAnimationConfig);
                             viewAreaWidth.value = withTiming(
                                 window.innerWidth * SHRUNKEN.VIEW_AREA_WIDTH,
                                 defaultAnimationConfig
@@ -189,10 +199,7 @@ export default function ScreensWrapper() {
                                 window.innerHeight * EXPANDED.VIEW_AREA_HEIGHT,
                                 defaultAnimationConfig
                             );
-                            viewAreaColor.value = withTiming(
-                                EXPANDED.VIEW_AREA_COLOR,
-                                defaultAnimationConfig
-                            );
+                            viewAreaColor.value = withTiming(expandedColor, defaultAnimationConfig);
                             viewAreaWidth.value = withTiming(
                                 window.innerWidth * EXPANDED.VIEW_AREA_WIDTH,
                                 defaultAnimationConfig
@@ -220,8 +227,9 @@ export default function ScreensWrapper() {
                 widgets={widgets}
             />
 
+            {/* Settings Toggle — language & dark mode */}
             <Pressable className="absolute bottom-5 left-5 z-50">
-                <LanguageToggle />
+                <SettingsToggle />
             </Pressable>
 
             {/* Reachability Toggle Button */}

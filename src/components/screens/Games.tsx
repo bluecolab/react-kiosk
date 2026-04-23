@@ -36,28 +36,32 @@ export default function Games() {
 
     return (
         <View className="flex-1 w-full">
-            <Text className="text-h2 mb-4 text-center font-bold">{t('games.playInteractive')}</Text>
+            <Text className="text-h2 mb-4 text-center font-bold dark:text-white">
+                {t('games.playInteractive')}
+            </Text>
 
             <View className="flex-row flex-wrap justify-center my-2">
                 {games.map((item, index) => (
                     <Pressable
                         key={index}
-                        className={`px-3 py-2 rounded-md m-1 ${currentGame.name === item.name ? 'bg-blue-400' : 'bg-gray-300'}`}
+                        className={`px-3 py-2 rounded-md m-1 ${currentGame.name === item.name ? 'bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`}
                         onPress={() => setCurrentGame(item)}>
-                        <Text className="text-button font-bold text-black">{t(item.name)}</Text>
+                        <Text className="text-button font-bold text-black dark:text-white">
+                            {t(item.name)}
+                        </Text>
                     </Pressable>
                 ))}
             </View>
 
-            <View className="bg-white rounded-xl flex-row p-4 items-start shadow w-full">
+            <View className="bg-white dark:bg-gray-800 rounded-xl flex-row p-4 items-start shadow w-full">
                 <View className="flex-1 flex flex-col ml-4 items-center h-full">
-                    <Text className="text-h2 text-center font-bold mb-2">
+                    <Text className="text-h2 text-center font-bold mb-2 dark:text-white">
                         {t(currentGame.name)}
                     </Text>
-                    <Text className="text-body text-center mb-2">
+                    <Text className="text-body text-center mb-2 dark:text-white">
                         {t(currentGame.descriptionKey)}
                     </Text>
-                    <Text className="text-body text-center">
+                    <Text className="text-body text-center dark:text-white">
                         {t('games.created')}: {currentGame.creator}
                     </Text>
                     <Pressable
