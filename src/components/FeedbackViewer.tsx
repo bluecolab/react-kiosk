@@ -90,9 +90,15 @@ export default function FeedbackViewer({
                     </Text>
                 ) : (
                     feedbackList.map((item, index) => (
-                        <View key={index} className="bg-white dark:bg-gray-800 p-4 rounded-lg mb-3 shadow">
-                            <Text className="text-xs text-gray-500 dark:text-gray-400 mb-2">{item.date}</Text>
-                            <Text className="text-sm text-gray-800 dark:text-gray-100">{item.text}</Text>
+                        <View
+                            key={index}
+                            className="bg-white dark:bg-gray-800 p-4 rounded-lg mb-3 shadow">
+                            <Text className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                {item.date}
+                            </Text>
+                            <Text className="text-sm text-gray-800 dark:text-gray-100">
+                                {item.text}
+                            </Text>
                         </View>
                     ))
                 )}
