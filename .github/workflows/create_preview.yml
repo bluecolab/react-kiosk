@@ -1,148 +1,148 @@
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
+    pull_request:
+        types: [opened, synchronize, reopened, closed]
 
 permissions:
-  contents: write
-  pull-requests: write
+    contents: write
+    pull-requests: write
 
 concurrency:
-  group: pr-preview-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+    group: pr-preview-${{ github.event.pull_request.number }}
+    cancel-in-progress: true
 
 jobs:
-  deploy-preview:
-    if: github.event.action != 'closed'
-    runs-on: ubuntu-latest
+    deploy-preview:
+        if: github.event.action != 'closed'
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout PR code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
+        steps:
+            - name: Checkout PR code
+              uses: actions/checkout@v6.0.2
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24.x
-          cache: npm
+            - name: Setup Node
+              uses: actions/setup-node@v6.3.0
+              with:
+                  node-version: 24.x
+                  cache: npm
 
-      - name: Install
-        run: npm ci
+            - name: Install
+              run: npm ci
 
-      - name: Patch app.json baseUrl for PR preview
-        env:
-          REPO: ${{ github.event.repository.name }}          # react-kiosk
-          PR_NUM: ${{ github.event.pull_request.number }}    # 146
-        run: |
-          set -euo pipefail
-          node - <<'NODE'
-          const fs = require("fs");
-      
-          const file = "app.json";
-          const raw = fs.readFileSync(file, "utf8");
-          const app = JSON.parse(raw);
-      
-          app.expo ||= {};
-          app.expo.experiments ||= {};
-      
-          // keep your existing flags
-          app.expo.experiments.typedRoutes = true;
-      
-          // IMPORTANT: for project pages previews: /<repo>/pr-<num>
-          app.expo.experiments.baseUrl = `/${process.env.REPO}/pr-${process.env.PR_NUM}`;
-      
-          fs.writeFileSync(file, JSON.stringify(app, null, 2) + "\n");
-          console.log("Patched app.json experiments.baseUrl =", app.expo.experiments.baseUrl);
-          NODE
+            - name: Patch app.json baseUrl for PR preview
+              env:
+                  REPO: ${{ github.event.repository.name }} # react-kiosk
+                  PR_NUM: ${{ github.event.pull_request.number }} # 146
+              run: |
+                  set -euo pipefail
+                  node - <<'NODE'
+                  const fs = require("fs");
 
-      - name: Export static web (Expo Router) for PR subpath
-        env:
-          REPO: ${{ github.event.repository.name }}
-          PR_NUM: ${{ github.event.pull_request.number }}
-          EXPO_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}
-        run: |
-          npx expo export --platform web
+                  const file = "app.json";
+                  const raw = fs.readFileSync(file, "utf8");
+                  const app = JSON.parse(raw);
 
-      - name: Deploy dist/ into gh-pages/pr-<number> (git)
-        env:
-          PR_NUM: ${{ github.event.pull_request.number }}
-          PR_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          set -euo pipefail
+                  app.expo ||= {};
+                  app.expo.experiments ||= {};
 
-          OUT_DIR="dist"
+                  // keep your existing flags
+                  app.expo.experiments.typedRoutes = true;
 
-          rm -rf /tmp/site-out
-          cp -a "${OUT_DIR}" /tmp/site-out
+                  // IMPORTANT: for project pages previews: /<repo>/pr-<num>
+                  app.expo.experiments.baseUrl = `/${process.env.REPO}/pr-${process.env.PR_NUM}`;
 
-          git reset --hard
-          git clean -fd
+                  fs.writeFileSync(file, JSON.stringify(app, null, 2) + "\n");
+                  console.log("Patched app.json experiments.baseUrl =", app.expo.experiments.baseUrl);
+                  NODE
 
-          git fetch origin gh-pages:gh-pages || true
-          if git show-ref --verify --quiet refs/heads/gh-pages; then
-            git switch gh-pages
-          else
-            git switch --orphan gh-pages
-            rm -rf ./*
-          fi
+            - name: Export static web (Expo Router) for PR subpath
+              env:
+                  REPO: ${{ github.event.repository.name }}
+                  PR_NUM: ${{ github.event.pull_request.number }}
+                  EXPO_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}
+              run: |
+                  npx expo export --platform web
 
-          DEST="pr-${PR_NUM}"
-          rm -rf "${DEST}"
-          mkdir -p "${DEST}"
-          cp -a /tmp/site-out/. "${DEST}/"
+            - name: Deploy dist/ into gh-pages/pr-<number> (git)
+              env:
+                  PR_NUM: ${{ github.event.pull_request.number }}
+                  PR_SHA: ${{ github.event.pull_request.head.sha }}
+              run: |
+                  set -euo pipefail
 
-          echo "${PR_SHA}" > "${DEST}/.preview-sha"
+                  OUT_DIR="dist"
 
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to deploy."
-            exit 0
-          fi
+                  rm -rf /tmp/site-out
+                  cp -a "${OUT_DIR}" /tmp/site-out
 
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "Deploy preview for PR #${PR_NUM} (${PR_SHA:0:7})"
-          git push origin gh-pages
+                  git reset --hard
+                  git clean -fd
 
-      - name: Comment preview URL
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const pr = context.payload.pull_request.number;
-            const { owner, repo } = context.repo;
-            const url = `https://${owner}.github.io/${repo}/pr-${pr}/`;
-            await github.rest.issues.createComment({
-              owner, repo, issue_number: pr,
-              body: `PR preview deployed: ${url}`
-            });
+                  git fetch origin gh-pages:gh-pages || true
+                  if git show-ref --verify --quiet refs/heads/gh-pages; then
+                    git switch gh-pages
+                  else
+                    git switch --orphan gh-pages
+                    rm -rf ./*
+                  fi
 
-  cleanup:
-    if: github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout gh-pages
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          fetch-depth: 0
+                  DEST="pr-${PR_NUM}"
+                  rm -rf "${DEST}"
+                  mkdir -p "${DEST}"
+                  cp -a /tmp/site-out/. "${DEST}/"
 
-      - name: Remove preview folder and push
-        env:
-          PR_NUM: ${{ github.event.pull_request.number }}
-        run: |
-          set -euo pipefail
+                  echo "${PR_SHA}" > "${DEST}/.preview-sha"
 
-          rm -rf "pr-${PR_NUM}"
+                  git add -A
+                  if git diff --cached --quiet; then
+                    echo "No changes to deploy."
+                    exit 0
+                  fi
 
-          git add -A
-          if git diff --cached --quiet; then
-            echo "Nothing to clean."
-            exit 0
-          fi
+                  git config user.name  "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git commit -m "Deploy preview for PR ${PR_NUM} (${PR_SHA:0:7})"
+                  git push origin gh-pages
 
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "Remove preview for PR #${PR_NUM}"
-          git push origin gh-pages
+            - name: Comment preview URL
+              uses: actions/github-script@v9.0.0
+              with:
+                  script: |
+                      const pr = context.payload.pull_request.number;
+                      const { owner, repo } = context.repo;
+                      const url = `https://${owner}.github.io/${repo}/pr-${pr}/`;
+                      await github.rest.issues.createComment({
+                        owner, repo, issue_number: pr,
+                        body: `PR preview deployed: ${url} (may take a minute to be live)`
+                      });
+
+    cleanup:
+        if: github.event.action == 'closed'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout gh-pages
+              uses: actions/checkout@v6.0.2
+              with:
+                  ref: gh-pages
+                  fetch-depth: 0
+
+            - name: Remove preview folder and push
+              env:
+                  PR_NUM: ${{ github.event.pull_request.number }}
+              run: |
+                  set -euo pipefail
+
+                  rm -rf "pr-${PR_NUM}"
+
+                  git add -A
+                  if git diff --cached --quiet; then
+                    echo "Nothing to clean."
+                    exit 0
+                  fi
+
+                  git config user.name  "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git commit -m "Remove preview for PR #${PR_NUM}"
+                  git push origin gh-pages
