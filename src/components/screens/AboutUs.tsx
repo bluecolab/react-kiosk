@@ -12,6 +12,12 @@ export default function StoryScreen() {
                 {t('aboutScreen.missionTitle')}
             </Text>
 
+                <View className="flex-1">
+                    <Text className="text-h2 font-bold mb-5 text-[#002D72]">
+                        {t('aboutScreen.theGEC')}
+                    </Text>
+                </View>
+
             <View className="flex-row-reverse items-start mb-8">
                 {/* Left Image */}
                 <Image

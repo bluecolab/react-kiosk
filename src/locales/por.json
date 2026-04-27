@@ -51,10 +51,10 @@
         "missionTitle": "Na Escola Seidenberg, acreditamos que os estudantes podem fazer a diferença hoje, antes de lançarem suas carreiras de amanhã.",
         "safeWater": "Sua água é segura para beber?",
         "rightToKnow": "Acreditamos que você tem o direito de saber.",
-        "blueColab": "Blue Colab",
+        "blueColab": "Gale Epstein Center",
         "description": "Estamos trabalhando para garantir que você tenha as informações essenciais sobre a qualidade da sua água. Nossa equipe dedicada de estudantes, estagiários, assistentes de pós-graduação, professores e funcionários está avançando em tecnologia, informação e sistemas de alerta para tornar isso realidade.",
         "atPrefix": "No",
-        "location": "Em nosso laboratório de tecnologia com vista para o Rio Hudson, nosso laboratório da lagoa Choate no campus e nosso laboratório de dados no Centro Acadêmico Goldstein, o Blue CoLab se dedica à proposição de que você tem o",
+        "location": "Em nosso laboratório de tecnologia com vista para o Rio Hudson, nosso laboratório da lagoa Choate no campus e nosso laboratório de dados no Centro Acadêmico Goldstein, o Gale Epstein Center se dedica à proposição de que você tem o",
         "rightToKnowBold": "direito de saber",
         "locationEnd": "a qualidade da sua água antes de bebê-la, nadar nela, pescar ou até virar sua canoa.",
         "waterContaminationRisks": "Riscos de Contaminação da Água",
@@ -68,16 +68,16 @@
         "realTime": "Tempo real",
         "detection": "a detecção tecnológica de contaminantes na água é a melhor defesa.",
         "handsOnApproach": "Abordagem Prática do Blue CoLab",
-        "threefoldApproach": "Com uma abordagem tripla para testes de qualidade da água, o Blue CoLab combina o poder de sensores de última geração com coleta de dados em tempo real e análise orientada por IA  tornando a contaminação da água mais fácil de detectar e mais rápida de reportar.",
+        "threefoldApproach": "Com uma abordagem tripla para testes de qualidade da água, o Gale Epstein Center combina o poder de sensores de última geração com coleta de dados em tempo real e análise orientada por IA  tornando a contaminação da água mais fácil de detectar e mais rápida de reportar.",
         "teamWorkPrefix": "Eles trabalham em um",
         "teamWorkBold": "ambiente de equipe",
-        "teamWorkSuffix": ", usando os laboratórios dedicados, instrumentos, equipamentos e servidores do Blue CoLab.",
-        "closingParagraph": "O Blue CoLab representa tudo o que torna a Escola Seidenberg um lugar especial  aproveitando a inovação em benefício da sociedade e proporcionando aos estudantes experiências baseadas em habilidades que levam a uma carreira significativa para eles e para a sociedade."
+        "teamWorkSuffix": ", usando os laboratórios dedicados, instrumentos, equipamentos e servidores do Gale Epstein Center.",
+        "closingParagraph": "O Gale Epstein Center representa tudo o que torna a Escola Seidenberg um lugar especial  aproveitando a inovação em benefício da sociedade e proporcionando aos estudantes experiências baseadas em habilidades que levam a uma carreira significativa para eles e para a sociedade."
     },
     "waterReports": {
         "title": "Os Relatórios de Qualidade da Água são atualizados anualmente em conformidade com as regulamentações da EPA.",
         "description": "Na Universidade Pace, estamos comprometidos em fornecer informações transparentes sobre a qualidade da nossa água. A Pace é conhecida por suas iniciativas de abastecimento de água e esforços de sustentabilidade, em vez de seu papel como fornecedor de água. Especificamente no campus de Pleasantville, é considerado um \"Sistema Comunitário de Água\" pela EPA, o que significa que atende pelo menos 25 pessoas por pelo menos 60 dias por ano. Nossa água é fornecida pela Cidade de Mount Pleasant e é testada regularmente para garantir que atenda a todos os padrões federais e estaduais de qualidade da água.",
-        "goal": "O objetivo para todos os consumidores de água é estar bem informados sobre a qualidade da sua água e quaisquer contaminantes potenciais que possam estar presentes. Com a estrutura avançada oferecida pelo Blue Colab, encorajamos você a explorar nossos relatórios anuais de qualidade da água abaixo para saber mais sobre a segurança e qualidade da água que fornecemos.",
+        "goal": "O objetivo para todos os consumidores de água é estar bem informados sobre a qualidade da sua água e quaisquer contaminantes potenciais que possam estar presentes. Com a estrutura avançada oferecida pelo Gale Epstein Center, encorajamos você a explorar nossos relatórios anuais de qualidade da água abaixo para saber mais sobre a segurança e qualidade da água que fornecemos.",
         "selectYear": "Selecione um ano para visualizar o Relatório de Qualidade da Água correspondente.",
         "pdfFormat": "(Os relatórios são fornecidos em formato PDF.)",
         "whereWater": "De onde vem nossa água?",
@@ -91,7 +91,7 @@
     },
     "rightToKnow": {
         "mainHeading": "Entenda Seu Direito de Saber Sobre a Qualidade da Água",
-        "introText": "Aqui no Blue CoLab, focamos no direito de saber H2O. Nós valorizamos o Objetivo de Desenvolvimento Sustentável (ODS) 6 das Nações Unidas, garantindo acesso à água limpa e saneamento básico para todos. Em nossa Organização, defendemos que cada pessoa tenha o direito de saber o que há em sua água, permitindo que tomem decisões informadas.",        "team2023": "Equipe 2023",
+        "introText": "Aqui no Gale Epstein Center, focamos no direito de saber H2O. Nós valorizamos o Objetivo de Desenvolvimento Sustentável (ODS) 6 das Nações Unidas, garantindo acesso à água limpa e saneamento básico para todos. Em nossa Organização, defendemos que cada pessoa tenha o direito de saber o que há em sua água, permitindo que tomem decisões informadas.",        "team2023": "Equipe 2023",
         "team2024": "Equipe 2024",
         "team2025": "Equipe 2025",
         "descriptionR2K2023": "Direito de Saber H2O - 2023",
@@ -102,7 +102,7 @@
         "studentsR2K2024": "Da esquerda para a direita, de cima: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.",
         "textR2K2024": "A segunda equipe Right-to-Know H2O construiu sobre a base estabelecida pela turma de 2023, avançando a crença de que o direito humano à água potável segura deve incluir o direito de saber se a água do campus é segura. Com mais de 270 milhões de pessoas dependendo da água em mais de 25.000 faculdades e universidades do mundo, a equipe criou um modelo orientado por tecnologia que campi em todos os lugares possam adotar. Seu trabalho começou no campus de Pleasantville da Pace com uma campanha de conscientização sobre a qualidade da água, uma cúpula com autoridades locais, um centro de aprendizado online e um levantamento no campus. Em seguida, a equipe desenvolveu um sistema de coleta de dados, ferramentas de relatório digital e um recurso aprimorado de alerta de emergência para problemas de água. Apoiados pela rede Millennium Fellowship, esses estudantes de Seidenberg prepararam ferramentas que outras instituições podem usar para replicar o modelo.",
         "studentsR2K2025": "Membros da equipe da esquerda para a direita, de cima: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Profa. Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof. John Cronin, Dillon Talactac, Caroline Zanuto-Winter e Noor Huda. Não fotografados: Graig Decembre, Nailah Brown, Skyler Flynn.",
-        "textR2K2025": "Em outubro de 2025, 34 estudantes da Universidade Pace foram selecionados  entre mais de 60.000 candidatos globais  para ingressar na Millennium Fellowship das Nações Unidas, representando um recorde para a Pace. A turma deste ano se destaca não apenas pelo tamanho, mas também pelo alcance internacional: pela primeira vez, o Blue CoLab da Pace fez parceria com estudantes da Universidade de Ciências Aplicadas Häme da Finlândia, formando uma equipe de 19 membros focada no ODS 6: Água Limpa e Saneamento. Seu objetivo: desenvolver um plano de ação bilateral para promover o \"direito de saber o que há em nossa água\", culminando em uma proposta conjunta apresentada nas Nações Unidas durante a visita da delegação finlandesa à Pace. Esta turma trabalha em mais de 13 países, abordando questões desde justiça ambiental até educação, equidade em saúde e sistemas renováveis através de projetos liderados por estudantes."
+        "textR2K2025": "Em outubro de 2025, 34 estudantes da Universidade Pace foram selecionados  entre mais de 60.000 candidatos globais  para ingressar na Millennium Fellowship das Nações Unidas, representando um recorde para a Pace. A turma deste ano se destaca não apenas pelo tamanho, mas também pelo alcance internacional: pela primeira vez, o Gale Epstein Center da Pace fez parceria com estudantes da Universidade de Ciências Aplicadas Häme da Finlândia, formando uma equipe de 19 membros focada no ODS 6: Água Limpa e Saneamento. Seu objetivo: desenvolver um plano de ação bilateral para promover o \"direito de saber o que há em nossa água\", culminando em uma proposta conjunta apresentada nas Nações Unidas durante a visita da delegação finlandesa à Pace. Esta turma trabalha em mais de 13 países, abordando questões desde justiça ambiental até educação, equidade em saúde e sistemas renováveis através de projetos liderados por estudantes."
     },
     "games": {
         "playInteractive": "Jogue jogos interativos para aprender sobre água!",
@@ -123,8 +123,8 @@
         "aqi": "Índice de Qualidade do Ar"
     },
     "waterReport": {
-        "2024Button": "Relatório da Água 2024 (por Blue CoLab)",
-        "2024Title": "Relatório Anual de Qualidade da Água para 2024 (por Blue CoLab)",
+        "2024Button": "Relatório da Água 2024 (por Gale Epstein Center)",
+        "2024Title": "Relatório Anual de Qualidade da Água para 2024 (por Gale Epstein Center)",
         "2023Button": "Relatório da Água 2023",
         "2023Title": "Relatório Anual de Qualidade da Água para 2023",
         "2022Button": "Relatório da Água 2022",
