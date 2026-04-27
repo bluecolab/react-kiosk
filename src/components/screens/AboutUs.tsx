@@ -12,12 +12,6 @@ export default function StoryScreen() {
                 {t('aboutScreen.missionTitle')}
             </Text>
 
-                <View className="flex-1">
-                    <Text className="text-h2 font-bold mb-5 text-[#002D72]">
-                        {t('aboutScreen.theGEC')}
-                    </Text>
-                </View>
-
             <View className="flex-row-reverse items-start mb-8">
                 {/* Left Image */}
                 <Image
@@ -45,8 +39,10 @@ export default function StoryScreen() {
 
                     <Text className="text-body mb-4 text-[#374151]">
                         {t('aboutScreen.atPrefix')}{' '}
+                        <Text className="font-bold">{t('aboutScreen.theGEC')}</Text>,{' '}
+                        <Text className="text-body mb-4">{t('aboutScreen.description')}</Text>{' '}
                         <Text className="font-bold">{t('aboutScreen.blueColab')}</Text>,{' '}
-                        {t('aboutScreen.description')}
+                        {t('aboutScreen.descriptionCont.')}
                     </Text>
 
                     <Text className="text-body mb-4 text-[#374151]">
