@@ -51,10 +51,12 @@
         "missionTitle": "At Seidenberg School, we believe students can make a difference today, before they launch their careers of tomorrow.",
         "safeWater": "Is your water safe to drink?",
         "rightToKnow": "We believe you have the right to know.",
-        "blueColab": "Blue Colab",
-        "description": "We're working to ensure you have the critical information you need about your water quality. Our dedicated team of students, interns, graduate assistants, faculty, and staff are advancing technology, information, and warning systems to make this a reality.",
+        "theGEC": "the Gale Epstein Center",
+        "blueColab": "Blue CoLab",
+        "description": "we're working to ensure you have the critical information you need about your water quality. Within our center we have the",
+        "descriptionCont.": "a hands-on lab where our dedicated team of students, interns, graduate assistants, faculty, and staff are advancing technology, information, and warning systems to make this a reality.",
         "atPrefix": "At",
-        "location": "At our technology lab overlooking the Hudson River, our Choate Pond lab on campus, and our data lab in the Goldstein Academic Center, Blue CoLab is dedicated to the proposition that you have the",
+        "location": "At our technology lab overlooking the Hudson River, our Choate Pond lab on campus, and our data lab in the Goldstein Academic Center, the Gale Epstein Center is dedicated to the proposition that you have the",
         "rightToKnowBold": "right-to-know",
         "locationEnd": "the quality of your water before you drink it, swim in it, fish it, or even swamp your canoe.",
         "waterContaminationRisks": "Water Contamination Risks",
@@ -67,17 +69,17 @@
         "globalProblem": "Water contamination is a global problem, making millions of people ill.",
         "realTime": "Real-time",
         "detection": "technological detection of water contaminants is the best defense.",
-        "handsOnApproach": "Blue CoLab's Hands-On Approach",
-        "threefoldApproach": "With a three-fold approach to water quality testing, Blue CoLab merges the power of cutting-edge sensors with real-time data collection and AI-driven analysis—making water contamination easier to detect and faster to report.",
+        "handsOnApproach": "Gale Epstein Center's Hands-On Approach",
+        "threefoldApproach": "With a three-fold approach to water quality testing, Gale Epstein Center merges the power of cutting-edge sensors with real-time data collection and AI-driven analysis—making water contamination easier to detect and faster to report.",
         "teamWorkPrefix": "They work in a",
         "teamWorkBold": "team-based environment",
-        "teamWorkSuffix": ", using Blue CoLab’s dedicated labs, instruments, equipment, and servers.",
-        "closingParagraph": "Blue CoLab stands for everything that makes Seidenberg School a special place — harnessing innovation on behalf of society, and providing students with skill-based experiences that lead to a career meaningful to them, and to society."
+        "teamWorkSuffix": ", using the Gale Epstein Center's dedicated labs, instruments, equipment, and servers.",
+        "closingParagraph": "The Gale Epstein Center stands for everything that makes Seidenberg School a special place — harnessing innovation on behalf of society, and providing students with skill-based experiences that lead to a career meaningful to them, and to society."
     },
     "waterReports": {
         "title": "Water Quality Reports are updated annually in compliance with EPA regulations.",
         "description": "At Pace University, we are committed to providing transparent information about the quality of our water. Pace itself is known for it's water supply initiatives and sustainability efforts rather than it's role as a water supplier itself. Specifically in the Pleasantville campus it is considered a \"Community Water System\" by the EPA, meaning it serves at least 25 people for at least 60 days a year. Our water is supplied by the Town of Mount Pleasant and is regularly tested to ensure it meets all federal and state water quality standards.",
-        "goal": "The goal for all water consumers is to be well-aware of the quality of their water and any potential contaminants that may be present. With the advanced framework brought to you by Blue Colab, we encourage you to explore our annual water quality reports below to learn more about the safety and quality of the water we provide.",
+        "goal": "The goal for all water consumers is to be well-aware of the quality of their water and any potential contaminants that may be present. With the advanced framework brought to you by the Gale Epstein Center, we encourage you to explore our annual water quality reports below to learn more about the safety and quality of the water we provide.",
         "selectYear": "Select a year to view the corresponding Water Quality Report.",
         "pdfFormat": "(Reports are provided in PDF format.)",
         "whereWater": "Where does our water come from?",
@@ -91,7 +93,7 @@
     },
     "rightToKnow": {
         "mainHeading": "Understand Your Right to Know About Water Quality",
-        "introText": "Here at Blue CoLab, we focus on the right to know H2O. We hold dear the United Nation's Sustainable Development Goal (SDG) 6 – ensuring access to clean water and sanitation for all. People should have easy access to clean water. We believe that people need to have the right to know what's in their water in order for them to make informed decisions.",
+        "introText": "Here at the Gale Epstein Center, we focus on the right to know H2O. We hold dear the United Nation's Sustainable Development Goal (SDG) 6 – ensuring access to clean water and sanitation for all. People should have easy access to clean water. We believe that people need to have the right to know what's in their water in order for them to make informed decisions.",
         "team2023": "2023 Team",
         "team2024": "2024 Team",
         "team2025": "2025 Team",
@@ -103,7 +105,7 @@
         "studentsR2K2024": "Left to right, from the top: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.",
         "textR2K2024": "The second-ever Right-to-Know H2O team is building on the foundation set by the 2023 cohort, advancing the belief that the human right to safe drinking water must include the right to know if campus water is safe. With over 270 million people relying on water at the world's 25,000+ colleges and universities, the team aims to create a technology-driven model that campuses everywhere can adopt. Their work begins at Pace's Pleasantville campus with a water-quality awareness campaign, a summit with local officials, an online learning hub, and a campus survey. Next, the team is developing a data-collection system, digital reporting tools, and an enhanced emergency alert feature for water issues. Supported by the Millennium Fellowship network, these Seidenberg students are preparing tools that other institutions can use to replicate the model.",
         "studentsR2K2025": "Team members left to right, from the top: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Prof Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof John Cronin, Dillon Talactac, Caroline Zanuto-Winter, and Noor Huda. Not pictured: Graig Decembre, Nailah Brown, Skyler Flynn.",
-        "textR2K2025": "In October 2025, 34 Pace University students were selected—out of over 60,000 global applicants—to join the United Nations Millennium Fellowship, representing a record high for Pace. This year's cohort stands out not only for its size but also for its international reach: for the first time, Pace's Blue CoLab partnered with students from Finland's Häme University of Applied Sciences, forming a 19-member team focused on SDG 6: Clean Water and Sanitation. Their goal: to develop a bilateral action plan to promote the \"right to know what's in our water,\" culminating in a joint proposal presented at the United Nations during the Finnish delegation's visit to Pace. This cohort works across over 13 countries, tackling issues from environmental justice to education, health equity, and renewable systems through student-led projects."
+        "textR2K2025": "In October 2025, 34 Pace University students were selected—out of over 60,000 global applicants—to join the United Nations Millennium Fellowship, representing a record high for Pace. This year's cohort stands out not only for its size but also for its international reach: for the first time, Pace's Gale Epstein Center partnered with students from Finland's Häme University of Applied Sciences, forming a 19-member team focused on SDG 6: Clean Water and Sanitation. Their goal: to develop a bilateral action plan to promote the \"right to know what's in our water,\" culminating in a joint proposal presented at the United Nations during the Finnish delegation's visit to Pace. This cohort works across over 13 countries, tackling issues from environmental justice to education, health equity, and renewable systems through student-led projects."
     },
     "games": {
         "playInteractive": "Play interactive games to learn about water!",
@@ -124,8 +126,8 @@
         "aqi": "Air Quality Index"
     },
     "waterReport": {
-        "2024Button": "2024 Water Report (by Blue CoLab)",
-        "2024Title": "Annual Water Quality Report for 2024 (by Blue CoLab)",
+        "2024Button": "2024 Water Report (by the Gale Epstein Center)",
+        "2024Title": "Annual Water Quality Report for 2024 (by the Gale Epstein Center)",
         "2023Button": "2023 Water Report",
         "2023Title": "Annual Water Quality Report for 2023",
         "2022Button": "2022 Water Report",

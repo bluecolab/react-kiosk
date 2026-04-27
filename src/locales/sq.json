@@ -51,8 +51,10 @@
         "missionTitle": "Ne Shkollen Seidenberg, ne besojme se studentet mund te bejne nje ndryshim sot, perpara se te nisin karrieren e tyre te neserme. ",
         "safeWater": "A është uji juaj i sigurt për t'u pirë?",
         "rightToKnow": "Ne besojmë se keni të drejtën për të ditur.",
+        "theGEC": "Gale Epstein Center",
         "blueColab": "Colab Blu",
-        "description": "Ne po punojmë për t'ju siguruar informacionin kritik që ju nevojitet për cilësinë e ujit tuaj. Ekipi ynë i përkushtuar i studentëve, praktikantëve, asistentëve të diplomuar, fakultetit dhe stafit po avancojnë teknologjinë, informacionin dhe sistemet e paralajmërimit për ta bërë këtë një realitet.",
+        "description": "ne po punojmë për t'u siguruar që ju të keni informacionin kritik që ju nevojitet në lidhje me cilësinë e ujit tuaj. Brenda qendrës sonë ne kemi",
+        "descriptionCont.": "një laborator praktik ku ekipi ynë i përkushtuar i studentëve, praktikantëve, asistentëve të diplomuar, fakultetit dhe stafit po përparojnë teknologjinë, informacionin dhe sistemet e paralajmërimit për ta bërë këtë realitet.",
         "atPrefix": "Në",
         "location": "Në laboratorin tonë të teknologjisë që shikon lumin Hudson, laboratorin tonë Choate Pond në kampus, dhe laboratorin tonë të të dhënave në Qendrën Akademike Goldstein, Colab Blu është i përkushtuar ndaj propozimit që ju keni",
         "rightToKnowBold": "të drejtën për të ditur",
@@ -67,17 +69,17 @@
         "globalProblem": "Kontaminimi i ujit është një problem global, duke bërë që miliona njerëz të sëmuren.",
         "realTime": "Në kohë reale",
         "detection": "zbulimi teknologjik i kontaminantëve të ujit është mbrojtja më e mirë.",
-        "handsOnApproach": "Qasja praktike e Blue CoLab",
-        "threefoldApproach": "Me një qasje trefishe për testimin e cilësisë së ujit, Blue CoLab bashkon fuqinë e sensorëve të avancuar me mbledhjen e të dhënave në kohë reale dhe analizën e drejtuar nga AI—duke e bërë më të lehtë zbulimin e kontaminimit të ujit dhe raportimin më të shpejtë.",
+        "handsOnApproach": "Qasja praktike e Gale Epstein Center",
+        "threefoldApproach": "Me një qasje trefishe për testimin e cilësisë së ujit, Gale Epstein Center bashkon fuqinë e sensorëve të avancuar me mbledhjen e të dhënave në kohë reale dhe analizën e drejtuar nga AI—duke e bërë më të lehtë zbulimin e kontaminimit të ujit dhe raportimin më të shpejtë.",
         "teamWorkPrefix": "Ata punojnë në një",
         "teamWorkBold": "mjedis të bazuar në ekip",
-        "teamWorkSuffix": ", duke përdorur laboratorët, instrumentet, pajisjet dhe serverët e dedikuar të Blue CoLab.",
+        "teamWorkSuffix": ", duke përdorur laboratorët, instrumentet, pajisjet dhe serverët e dedikuar të Gale Epstein Center.",
         "closingParagraph": "Përmes bashkëpunimit me komunitetin tonë të gjerë të Pace, përfshirë fakultetin, studentët, stafin dhe partnerët e industrisë, ne po zhvillojmë zgjidhje inovative për të siguruar që të gjithë të kenë qasje në ujë të pastër dhe të sigurt."
     },
     "waterReports": {
         "title": "Raportet e Cilesise se Ujit perditesohen cdo vit ne perputhje me rregulloret e EPA-se (Agjensia e Mbrojtjes se Mjedisit).",
         "description": "Në Universitetin Pace, ne jemi të përkushtuar për të ofruar informacion transparent në lidhje me cilësinë e ujit tonë. Pace vetë është i njohur për iniciativat e furnizimit me ujë dhe përpjekjet për qëndrueshmëri sesa për rolin e tij si furnizues uji. Konkretisht në kampusin e Pleasantville konsiderohet një \"Sistem i Ujit të Komunitetit\" nga EPA, që do të thotë se shërben të paktën 25 persona për të paktën 60 ditë në vit. Uji ynë furnizohet nga Qyteti i Mount Pleasant dhe testohet rregullisht për të siguruar që plotëson të gjitha standardet federale dhe shtetërore të cilësisë së ujit.",
-        "goal": "Qëllimi për të gjithë konsumatorët e ujit është të jenë plotësisht të vetëdijshëm për cilësinë e ujit të tyre dhe për çdo kontaminues të mundshëm që mund të jetë i pranishëm. Me kornizën e avancuar që ju ofron Blue Colab, ne ju inkurajojmë të eksploroni raportet tona vjetore të cilësisë së ujit më poshtë për të mësuar më shumë rreth sigurisë dhe cilësisë së ujit që ne ofrojmë.",
+        "goal": "Qëllimi për të gjithë konsumatorët e ujit është të jenë plotësisht të vetëdijshëm për cilësinë e ujit të tyre dhe për çdo kontaminues të mundshëm që mund të jetë i pranishëm. Me kornizën e avancuar që ju ofron Gale Epstein Center, ne ju inkurajojmë të eksploroni raportet tona vjetore të cilësisë së ujit më poshtë për të mësuar më shumë rreth sigurisë dhe cilësisë së ujit që ne ofrojmë.",
         "selectYear": "Zgjidhni një vit për të parë Raportin përkatës të Cilësisë së Ujit.",
         "pdfFormat": "(Raportet ofrohen në format PDF.)",
         "whereWater": "Nga vjen uji ynë?",
@@ -91,7 +93,7 @@
     },
     "rightToKnow": {
         "mainHeading": "Kuptoni të Drejtën Tuaj për të Ditur Rreth Cilësisë së Ujit",
-        "introText": "Këtu në Blue CoLab, ne fokusohemi në të drejtën për të ditur H2O. Ne mbajmë të dashur Qëllimin e Zhvillimit të Qëndrueshëm (SDG) 6 të Kombeve të Bashkuara – duke siguruar qasje në ujë të pastër dhe sanitarizim për të gjithë. Njerëzit duhet të kenë qasje të lehtë në ujë të pastër. Ne besojmë se njerëzit duhet të kenë të drejtën për të ditur se çfarë ka në ujin e tyre në mënyrë që të marrin vendime të informuara.",
+        "introText": "Këtu në Gale Epstein Center, ne fokusohemi në të drejtën për të ditur H2O. Ne mbajmë të dashur Qëllimin e Zhvillimit të Qëndrueshëm (SDG) 6 të Kombeve të Bashkuara – duke siguruar qasje në ujë të pastër dhe sanitarizim për të gjithë. Njerëzit duhet të kenë qasje të lehtë në ujë të pastër. Ne besojmë se njerëzit duhet të kenë të drejtën për të ditur se çfarë ka në ujin e tyre në mënyrë që të marrin vendime të informuara.",
         "team2023": "Ekipi 2023",
         "team2024": "Ekipi 2024",
         "team2025": "Ekipi 2025",
@@ -103,7 +105,7 @@
         "studentsR2K2024": "Nga e majta në të djathtë, nga lart: Ian Shimba, Isabella Coraci, Lizi Imedashvili, Sebastian Roman, Phoenix Ellrodt, Victor Lima, Charles Metayer.",
         "textR2K2024": "Ekipi i dytë ndonjëherë i E Drejta për të Ditur H2O po ndërton mbi bazën e vendosur nga kohorta e 2023, duke avancuar besimin se e drejta njerëzore për ujë të pijshëm të sigurt duhet të përfshijë të drejtën për të ditur nëse uji i kampusit është i sigurt. Me mbi 270 milionë njerëz që mbështeten në ujin në 25,000+ kolegjet dhe universitetet e botës, ekipi synon të krijojë një model të drejtuar nga teknologjia që kampuset kudo mund të adoptojnë. Puna e tyre fillon në kampusin Pleasantville të Pace me një fushatë ndërgjegjësimi për cilësinë e ujit, një samit me zyrtarë lokalë, një qendër mësimi në internet, dhe një sondazh kampusi. Më pas, ekipi po zhvillon një sistem mbledhje të dhënash, mjete raportimi dixhital, dhe një veçori të përmirësuar alarmi emergjent për çështjet e ujit. Të mbështetur nga rrjeti i Millennium Fellowship, këta studentë të Seidenberg po përgatiten mjete që institucione të tjera mund të përdorin për të replikuar modelin.",
         "studentsR2K2025": "Anëtarët e ekipit nga e majta në të djathtë, nga lart: Isaac Lasso Younes, Silas Gonzalez; Mamoun Edfouf, Prof Leanne Keeley, Phoenix Ellrodt, Lizi Imedashvilli, Kiley Cosgrove, Prof John Cronin, Dillon Talactac, Caroline Zanuto-Winter, dhe Noor Huda. Nuk janë në fotografi: Graig Decembre, Nailah Brown, Skyler Flynn.",
-        "textR2K2025": "Në tetor 2025, 34 studentë të Universitetit Pace u zgjodhën—nga mbi 60,000 aplikantë globalë—për t'u bashkuar me Millennium Fellowship të Kombeve të Bashkuara, duke përfaqësuar një rekord të lartë për Pace. Kohorta e këtij viti dallohet jo vetëm për madhësinë e saj por edhe për shtrirjen e saj ndërkombëtare: për herë të parë, Blue CoLab i Pace u bashkëpunua me studentë nga Universiteti i Shkencave të Aplikuara Häme në Finlandë, duke formuar një ekip prej 19 anëtarësh të fokusuar në SDG 6: Ujë i Pastër dhe Sanitarizim. Qëllimi i tyre: të zhvillojnë një plan veprimi dypalësh për të promovuar \"të drejtën për të ditur se çfarë ka në ujin tonë,\" duke kulminuar në një propozim të përbashkët të paraqitur në Kombet e Bashkuara gjatë vizitës së delegacionit finlandez në Pace. Kjo kohortë punon në mbi 13 vende, duke adresuar çështje nga drejtësia mjedisore te arsimi, barazia shëndetësore, dhe sistemet e rinovueshme përmes projekteve të udhëhequra nga studentët."
+        "textR2K2025": "Në tetor 2025, 34 studentë të Universitetit Pace u zgjodhën—nga mbi 60,000 aplikantë globalë—për t'u bashkuar me Millennium Fellowship të Kombeve të Bashkuara, duke përfaqësuar një rekord të lartë për Pace. Kohorta e këtij viti dallohet jo vetëm për madhësinë e saj por edhe për shtrirjen e saj ndërkombëtare: për herë të parë, Gale Epstein Center i Pace u bashkëpunua me studentë nga Universiteti i Shkencave të Aplikuara Häme në Finlandë, duke formuar një ekip prej 19 anëtarësh të fokusuar në SDG 6: Ujë i Pastër dhe Sanitarizim. Qëllimi i tyre: të zhvillojnë një plan veprimi dypalësh për të promovuar \"të drejtën për të ditur se çfarë ka në ujin tonë,\" duke kulminuar në një propozim të përbashkët të paraqitur në Kombet e Bashkuara gjatë vizitës së delegacionit finlandez në Pace. Kjo kohortë punon në mbi 13 vende, duke adresuar çështje nga drejtësia mjedisore te arsimi, barazia shëndetësore, dhe sistemet e rinovueshme përmes projekteve të udhëhequra nga studentët."
     },
     "games": {
         "playInteractive": "Luani lojëra interaktive për të mësuar rreth ujit!",
@@ -124,8 +126,8 @@
         "aqi": "Indeksi i Cilësisë së Ajrit"
     },
     "waterReport": {
-        "2024Button": "Raporti i Ujit 2024 (nga Blue CoLab)",
-        "2024Title": "Raporti Vjetor i Cilësisë së Ujit për 2024 (nga Blue CoLab)",
+        "2024Button": "Raporti i Ujit 2024 (nga Gale Epstein Center)",
+        "2024Title": "Raporti Vjetor i Cilësisë së Ujit për 2024 (nga Gale Epstein Center)",
         "2023Button": "Raporti i Ujit 2023",
         "2023Title": "Raporti Vjetor i Cilësisë së Ujit për 2023",
         "2022Button": "Raporti i Ujit 2022",
