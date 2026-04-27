@@ -41,7 +41,7 @@ export default function StoryScreen() {
                         {t('aboutScreen.atPrefix')}{' '}
                         <Text className="font-bold">{t('aboutScreen.theGEC')}</Text>,{' '}
                         <Text className="text-body mb-4">{t('aboutScreen.description')}</Text>{' '}
-                        <Text className="font-bold">{t('aboutScreen.blueColab')}</Text>,{' '}
+                        <Text className="font-bold">{t('aboutScreen.blueColab')}</Text>:{' '}
                         {t('aboutScreen.descriptionCont.')}
                     </Text>
 
