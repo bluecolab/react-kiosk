@@ -711,7 +711,7 @@ function AttractionLoopInner() {
                     position: 'relative',
                     zIndex: 3,
                 }}>
-                Press start to begin
+                Press anywhere to begin
             </p>
 
             {/* ── Live clock — bottom-right ── */}
