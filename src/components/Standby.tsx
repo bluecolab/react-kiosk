@@ -1,24 +1,7 @@
 import * as React from 'react';
-import { View, Text, Animated } from 'react-native';
-import { useEffect, useRef, useState } from 'react';
-const assetId = require('@/assets/videos/Blue Colab Attraction Loop.mp4');
-
-// Current Time Hook for Standby Screen
-const CurrentTime = () => {
-    const [time, setTime] = useState(new Date());
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-        <Text className="text-2xl text-white font-bold font-sans">{time.toLocaleTimeString()}</Text>
-    );
-};
+import { Animated } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { AttractionLoopAnimation } from '@/components/AttractionLoopAnimation';
 
 export default function Standby() {
     const pulseAnim = useRef(new Animated.Value(1)).current;
@@ -54,18 +37,7 @@ export default function Standby() {
                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 pointerEvents: 'auto',
             }}>
-            <video
-                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-                autoPlay
-                loop
-                muted>
-                <source src={assetId} type="video/mp4" />
-            </video>
-
-            {/* Current Time and Version Bottom Right */}
-            <View className="absolute bottom-4 right-4 items-end">
-                <CurrentTime />
-            </View>
+            <AttractionLoopAnimation />
         </Animated.View>
     );
 }
