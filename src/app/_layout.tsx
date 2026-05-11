@@ -5,15 +5,8 @@ import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 import '../../global.css';
 
-export const featureFlags = {
-    newsFeed: false,
-};
-
 export default function RootLayout() {
     const { setColorScheme } = useColorScheme();
-
-    const newsFeed = useGlobalSearchParams();
-    featureFlags.newsFeed = newsFeed.newsFeed === 'true';
 
     useEffect(() => {
         if (typeof window !== 'undefined' && window.localStorage) {
