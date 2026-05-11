@@ -15,6 +15,7 @@ export interface News {
     id: number;
     title: string;
     date: string;
+    text: string;
     link?: string;
 }
 
@@ -23,17 +24,25 @@ const news = [
         id: 1,
         title: 'Special: Caroline Zanuto-Winter to be Valedictorian Speaker',
         date: 'May 6, 2026',
+        text: 'Blah blah blah',
     },
     {
         id: 2,
         title: 'Silas Gonzalez, Lizi Imedashvili, and Victor Lima awarded Project Planet 2025–2026 Grant',
         date: 'April 6, 2026',
+        text: 'Blah blah blah',
     },
     {
         id: 3,
         title: 'Pace University Celebrates Launch of Gale Epstein Center for Technology, Policy and the Environment',
         date: 'March 2, 2026',
-        // link: 'https://www.pace.edu/news/press-release-pace-university-celebrates-launch-of-gale-epstein-center-technology-policy-and',
+        text: 'Blah blah blah',
+    },
+    {
+        id: 4,
+        title: 'San Miguel Academy in Newburgh, NY Students visit Gale Epstein Center',
+        date: 'April 21, 2026',
+        text: 'Blah blah blah',
     },
 ];
 
@@ -134,12 +143,8 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
                     </View>
 
                     <View className="flex-1 w-full h-full">
-                        <iframe
-                            src={`${currentNewsItem?.link}#toolbar=0`}
-                            className="w-full h-full"
-                            allowFullScreen
-                            title="PDF Viewer"
-                        />
+                        <Text>{currentNewsItem?.date}</Text>
+                        <Text>{currentNewsItem?.text}</Text>
                     </View>
                 </View>
             </Modal>

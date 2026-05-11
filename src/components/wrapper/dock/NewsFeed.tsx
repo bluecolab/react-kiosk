@@ -31,7 +31,7 @@ export function NewsFeed({ openModal, news }: { openModal: (key: number) => void
                             userSelect: 'none',
                             cursor: item.link ? 'pointer' : 'default',
                         }}
-                        onClick={() => item.link && openModal(item.id)}>
+                        onClick={() => item.text && openModal(item.id)}>
                         <b>{item.date}</b> - {item.title}
                     </span>
                 ))}
