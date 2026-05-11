@@ -7,7 +7,6 @@ import { DockItem } from './DockItem';
 import { Modal, Text, Pressable, View } from 'react-native';
 import { useState } from 'react';
 import { NewsFeed } from './NewsFeed';
-import { featureFlags } from '@/app/_layout';
 
 const GROWTH_RADIUS = 0.5; // how many neighbors are affected
 const LABEL_OVERHANG = 44; // space for labels that float below icon bounds
@@ -50,9 +49,6 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
     const [selectedIndex, setSelectedIndex] = useState(5);
     const itemSizeWidth = (width / widgets.length) * 0.8; // 80% of the space allocated
     const itemSizeHeight = height * 0.14; // 14% of the height allocated
-
-    const newsEnabled = featureFlags.newsFeed;
-
     const [isModalVisible, setModalVisible] = useState(false);
     const [currentNewsItem, setCurrentNewsItem] = useState<News | null>(null);
 
@@ -124,31 +120,29 @@ const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps
                 }}
             />
 
-            {newsEnabled && <NewsFeed openModal={openModal} news={news} />}
+            <NewsFeed openModal={openModal} news={news} />
 
-            {newsEnabled && (
-                <Modal visible={isModalVisible} animationType="slide">
-                    <View className="flex-1 bg-white dark:bg-gray-900">
-                        <View className="bg-blue-600/90 p-4 flex-row items-center">
-                            <Pressable onPress={closeModal}>
-                                <Text className="text-white text-lg mr-3">Back </Text>
-                            </Pressable>
-                            <Text className="text-white text-xl font-bold">
-                                {currentNewsItem?.title}
-                            </Text>
-                        </View>
-
-                        <View className="flex-1 w-full h-full">
-                            <iframe
-                                src={`${currentNewsItem?.link}#toolbar=0`}
-                                className="w-full h-full"
-                                allowFullScreen
-                                title="PDF Viewer"
-                            />
-                        </View>
+            <Modal visible={isModalVisible} animationType="slide">
+                <View className="flex-1 bg-white dark:bg-gray-900">
+                    <View className="bg-blue-600/90 p-4 flex-row items-center">
+                        <Pressable onPress={closeModal}>
+                            <Text className="text-white text-lg mr-3">Back </Text>
+                        </Pressable>
+                        <Text className="text-white text-xl font-bold">
+                            {currentNewsItem?.title}
+                        </Text>
                     </View>
-                </Modal>
-            )}
+
+                    <View className="flex-1 w-full h-full">
+                        <iframe
+                            src={`${currentNewsItem?.link}#toolbar=0`}
+                            className="w-full h-full"
+                            allowFullScreen
+                            title="PDF Viewer"
+                        />
+                    </View>
+                </View>
+            </Modal>
         </Animated.View>
     );
 };
