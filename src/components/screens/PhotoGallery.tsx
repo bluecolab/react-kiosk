@@ -113,7 +113,7 @@ export default function PhotoGallery() {
                     className="flex-1 justify-center items-center"
                     style={{ backgroundColor: 'rgba(0,0,0,0.85)' }}>
                     {/* close on tap outside */}
-                    <Pressable style={StyleSheet.absoluteFillObject} onPress={close} />
+                    <Pressable style={StyleSheet.absoluteFill} onPress={close} />
 
                     <View className="flex-row items-center">
                         <Pressable onPress={prev} className="p-5">

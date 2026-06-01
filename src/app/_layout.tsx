@@ -1,4 +1,4 @@
-import { Stack, useGlobalSearchParams } from 'expo-router';
+import { Stack } from 'expo-router';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/hooks/i18n';
 import { useColorScheme } from 'nativewind';
