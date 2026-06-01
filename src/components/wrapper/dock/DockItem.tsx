@@ -132,10 +132,15 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                         style={{
                             width: '100%',
                             height: '100%',
-                            resizeMode: 'contain',
+                        }}
+                        resizeMode="contain"
+                    />
+                    <Animated.View
+                        style={{
+                            pointerEvents: 'none',
+                            ...glowStyle,
                         }}
                     />
-                    <Animated.View style={glowStyle} pointerEvents="none" />
                 </Animated.View>
                 <Text
                     adjustsFontSizeToFit

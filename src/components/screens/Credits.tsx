@@ -168,12 +168,16 @@ export default function Credits({ durationSeconds = 30, onNavigate }: CreditsPro
                 {/* translucent overlay */}
                 <View
                     className="absolute top-0 left-0 right-0 bottom-0 bg-black/45"
-                    pointerEvents="none"
+                    style={{
+                        pointerEvents: 'none',
+                    }}
                 />
 
                 <View
                     className="w-full items-center justify-center px-6 z-10"
-                    pointerEvents="box-none">
+                    style={{
+                        pointerEvents: 'box-none',
+                    }}>
                     <View className="w-4/5 max-w-[900px] min-w-[320px] items-center overflow-hidden h-3/5">
                         <Animated.View
                             onLayout={onContentLayout}
