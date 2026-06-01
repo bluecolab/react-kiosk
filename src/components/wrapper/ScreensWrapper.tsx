@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { View, Easing, Pressable, Text } from 'react-native'; // Fixed extra space in import path
+import { View, Easing, Pressable, Text } from 'react-native';
 import { useColorScheme } from 'nativewind';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'; // Fixed extra space in import path
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useWidgets } from '@/hooks/useWidgets';
 import ScreenWrapperContent from './ScreenWrapperContent';
 import ExpandButton from './ExpandButton';
@@ -167,7 +167,7 @@ export default function ScreensWrapper() {
                 <ScreenWrapperContent
                     title={widgets[index].title}
                     screen={widgets[index].screen}
-                    contentAreaHeightStyle={contentAreaHeightStyle}
+                    contentAreaHeightStyle={contentAreaHeightStyle as any}
                 />
 
                 <ExpandButton
@@ -220,7 +220,7 @@ export default function ScreensWrapper() {
 
             {/* Dock Component */}
             <Dock
-                dockLocationStyle={dockLocationStyle}
+                dockLocationStyle={dockLocationStyle as any}
                 width={window.innerWidth}
                 height={window.innerHeight}
                 setIndex={setIndex}
