@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View, StyleSheet } from 'react-native';
 import i18n from '@/hooks/i18n';
-import { Entypo } from '@expo/vector-icons';
+import Entypo from '@react-native-vector-icons/entypo';
 import { useColorScheme } from 'nativewind';
 import Animated, {
     withDelay,
