@@ -33,7 +33,7 @@ export default function PondWaterData() {
         },
 
         {
-            label: 'Skadi Purpleair',
+            label: 'Skadi Purple Air',
             URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/73ea1839409a47f49b05127b3b5cad2a',
         },
     ];
