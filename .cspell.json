@@ -13,7 +13,6 @@
         "src/locales/*"
     ],
     "ignoreWords": [
-        "Skadi",
         "Wordmark",
         "br",
         "Ka-ge",
