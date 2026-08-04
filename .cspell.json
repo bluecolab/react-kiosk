@@ -1,11 +1,6 @@
 {
-    "dictionaries": [
-        "es-es",
-        "ka"
-    ],
-    "import": [
-        "@cspell/dict-es-es/cspell-ext.json"
-    ],
+    "dictionaries": ["es-es", "ka"],
+    "import": ["@cspell/dict-es-es/cspell-ext.json"],
     "ignorePaths": [
         "node_modules/*",
         "dist/*",
@@ -204,6 +199,7 @@
         "scripta",
         "Shimba",
         "sipedon",
+        "skadi",
         "Skyler",
         "splashyfish",
         "sponsa",
@@ -225,11 +221,5 @@
         "Younes",
         "Zanuto"
     ],
-    "words": [
-        "Entypo",
-        "Gottesman",
-        "Passaic",
-        "Português",
-        "ქართული"
-    ]
+    "words": ["Entypo", "Gottesman", "Passaic", "Português", "ქართული"]
 }
