@@ -27,6 +27,15 @@ export default function PondWaterData() {
             label: 'Albany',
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/1ca141bf9a394c86b9103c1812ec9b28?orgId=1&from=now-2d&to=now&refresh=15m',
         },
+        {
+            label: 'Njord PurpleAir',
+            URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/74cfc60b7bae4a0793daa7a4d2581401',
+        },
+
+        {
+            label: 'Skadi Purpleair',
+            URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/73ea1839409a47f49b05127b3b5cad2a',
+        },
     ];
     const [state, setState] = useState<any>(water_sensors[0]); // default to first sensor
 
