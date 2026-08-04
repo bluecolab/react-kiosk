@@ -28,7 +28,7 @@ export default function PondWaterData() {
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/1ca141bf9a394c86b9103c1812ec9b28?orgId=1&from=now-2d&to=now&refresh=15m',
         },
         {
-            label: 'Njord PurpleAir',
+            label: 'Njord Purple Air',
             URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/74cfc60b7bae4a0793daa7a4d2581401',
         },
 
