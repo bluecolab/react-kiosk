@@ -11,29 +11,13 @@ export default function PondWaterData() {
             URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/139d29dc18204fa28d1b39ef672c45f5',
         },
         {
-            label: 'weatherWidget.aqi',
-            content: (
-                <View className="w-[1500px] h-[800px] flex-row justify-around">
-                    <View className="h-[700px]">
-                        <Text className="text-center text-body dark:text-white">
-                            Softball Field
-                        </Text>
-                        <iframe
-                            className="border-0 rounded-lg"
-                            height="700"
-                            src="https://bluecolab.github.io/grafana-dashboard-gallery/purple-air-1"
-                        />
-                    </View>
-                    <View className="h-[700px]">
-                        <Text className="text-center text-body dark:text-white">Nature Center</Text>
-                        <iframe
-                            className="border-0 rounded-lg"
-                            height="700"
-                            src="https://bluecolab.github.io/grafana-dashboard-gallery/purple-air-2"
-                        />
-                    </View>
-                </View>
-            ),
+            label: 'Njord Purple Air',
+            URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/74cfc60b7bae4a0793daa7a4d2581401',
+        },
+
+        {
+            label: 'Skadi Purple Air',
+            URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/73ea1839409a47f49b05127b3b5cad2a',
         },
     ];
     const [state, setState] = useState<any>(weather_sensors[0]); // default to Odin sensor
