@@ -27,7 +27,7 @@ export default function MobileApp() {
                     <View className="flex items-center mb-8 md:mb-0">
                         <iframe
                             style={{ width: 300, height: 600, border: 'none' }}
-                            src="https://aquawatchmobile.expo.app"
+                            src="https://pace-environmental-observatory.expo.app/"
                             title="Mobile App"
                         />
                     </View>

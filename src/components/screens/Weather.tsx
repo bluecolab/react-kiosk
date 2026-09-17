@@ -8,16 +8,16 @@ export default function PondWaterData() {
     const weather_sensors = [
         {
             label: 'Odin',
-            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/139d29dc18204fa28d1b39ef672c45f5',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/a7650075b40145ff95085bf75bc4d0b5',
         },
         {
             label: 'Njord Purple Air',
-            URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/74cfc60b7bae4a0793daa7a4d2581401',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/274f6fb0903b46cea4f9ed57163d5d24',
         },
 
         {
             label: 'Skadi Purple Air',
-            URL: 'https://colabtest01.pace.edu/grafana/public-dashboards/73ea1839409a47f49b05127b3b5cad2a',
+            URL: 'https://colabprod01.pace.edu/grafana/public-dashboards/61fbf92eb544422880ac1c493c9737f7',
         },
     ];
     const [state, setState] = useState<any>(weather_sensors[0]); // default to Odin sensor
