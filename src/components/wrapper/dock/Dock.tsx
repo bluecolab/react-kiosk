@@ -5,9 +5,11 @@ import { Widget } from '@/hooks/useWidgets';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { DockItem } from './DockItem';
 import { Modal, Text, Pressable, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NewsFeed } from './NewsFeed';
 import { DynamicImage } from '@/components/DynamicImage';
+// Copy of the feed baked into the build, shown until (or if) the live fetch works.
+import bundledNews from '@/assets/images/news/news.json';
 
 const GROWTH_RADIUS = 0.5; // how many neighbors are affected
 const LABEL_OVERHANG = 44; // space for labels that float below icon bounds
@@ -22,39 +24,106 @@ export interface News {
     author?: string;
 }
 
-const news = [
-    {
-        id: 1,
-        title: 'Special: Caroline Zanuto-Winter to be Valedictorian Speaker',
-        date: 'May 6, 2026',
-        text: `Congrats Caroline! Didn't have a formal write up for this one, but we are all happy and proud of you! Not just for getting that 4.0 but for being you.`,
-        author: 'Anonymous',
-    },
-    {
-        id: 2,
-        title: 'San Miguel Academy in Newburgh, NY Students visit Gale Epstein Center',
-        date: 'April 21, 2026',
-        image: require('@/assets/images/news/san miguel and st benedict copy.jpg'),
-        text: `Twenty-eight students from San Miguel Academy in Newburgh, NY and St. Benedict’s Preparatory School in Newark, NJ. joined the staff of Seidenberg’s Gale Epstein Center on April 21 to conduct their first Student Environmental Congress in the Gottesman Room on the Pleasantville campus. The day’s theme was the Future of Urban Rivers. In the morning, students presented their research on the water quality, aquatic life, and pollution of their home rivers, the Passaic in NJ and the Hudson in NY. The afternoon session was dedicated to five working groups that developed and then presented their far-reaching recommendations for making urban rivers sustainable. “The day was an inspiration,” said Lizi Imedashvili, the Center’s project manager and an organizer of the event. “These students, from some of the nation’s toughest neighborhoods, rose up with an optimism and vision that should grab the attention of every environmental decision maker in America.”`,
-        author: 'John Cronin',
-    },
-    {
-        id: 3,
-        title: 'Silas Gonzalez, Lizi Imedashvili, and Victor Lima awarded Project Planet 2025–2026 Grant',
-        date: 'April 6, 2026',
-        image: require('@/assets/images/news/Silas, Lizi, Victor copy.jpg'),
-        text: `Seidenberg students Silas Gonzalez, Lizi Imedashvili and Victor Lima (L to R) were awarded a Project Planet grant for their proposal to develop a business incubator for the Gale Epstein Center for Technology, Policy and the Environment. Speed Emissions, a vehicle inspection company located in Buford, Georgia, sponsors the annual contest at Pace. Of the sixty -three proposals submitted by Pace students this year, five grants of $6,000 were awarded. The Seidenberg team’s grant totaled $12,000 thanks to matching funds from Gale Epstein. Silas explained, "Our goal is to fulfill the public's right to know the environmental conditions in which they live by making Blue CoLab's information systems and tools available to schools, libraries, and local governments."`,
-        author: 'John Cronin',
-    },
-    {
-        id: 4,
-        title: 'Pace University Celebrates Launch of Gale Epstein Center for Technology, Policy and the Environment',
-        date: 'March 2, 2026',
-        image: require('@/assets/images/news/article-hero-gale-epstein-center.webp'),
-        text: `Pace University celebrated the ribbon cutting and official inauguration of the Gale Epstein Center for Technology, Policy and the Environment at the Seidenberg School of Computer Science and Information Systems on March 2, 2026. Made possible by a transformative gift from philanthropist and business leader Gale Epstein, it expands on Blue CoLab work in real-time water monitoring and environmental information systems. Its guiding principle is that informed decision-making about public health requires access to timely, accurate information about environmental conditions.`,
-        author: 'Pace University',
-    },
-];
+/* ------------------------------------------------------------------ */
+/* News feed: loaded at runtime from news.json instead of hard coded.  */
+/* To post news: on GitHub, upload the photo to                        */
+/* src/assets/images/news/ and add an entry to news.json in the same   */
+/* folder. The kiosk picks it up within 15 minutes, no rebuild.        */
+/* ------------------------------------------------------------------ */
+
+const NEWS_BASE_URL =
+    process.env.EXPO_PUBLIC_NEWS_BASE_URL ??
+    'https://raw.githubusercontent.com/bluecolab/react-kiosk/main/src/assets/images/news/';
+
+const NEWS_REFRESH_MS = 15 * 60 * 1000; // re-check every 15 minutes
+
+/** Shape of one entry in news.json. */
+interface NewsEntry {
+    id: number;
+    title: string;
+    /** ISO date, e.g. "2026-05-06" */
+    date: string;
+    text: string;
+    author?: string;
+    link?: string;
+    /** File name next to news.json, or a full https:// URL */
+    image?: string;
+}
+
+function isNewsEntry(x: unknown): x is NewsEntry {
+    const n = x as NewsEntry;
+    return (
+        !!n &&
+        typeof n.id === 'number' &&
+        typeof n.title === 'string' &&
+        typeof n.date === 'string' &&
+        typeof n.text === 'string'
+    );
+}
+
+function formatNewsDate(iso: string): string {
+    const [y, m, d] = iso.split('-').map(Number);
+    if (!y || !m || !d) return iso; // not ISO: show as written
+    // Local date, so "2026-05-06" never shows as May 5.
+    return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
+}
+
+function newsImageSource(image?: string) {
+    if (!image) return undefined;
+    const uri = /^https?:\/\//.test(image) ? image : NEWS_BASE_URL + encodeURIComponent(image);
+    return { uri };
+}
+
+/** Validates raw JSON and converts it to what NewsFeed renders: newest first. */
+function toNews(data: unknown): News[] {
+    if (!Array.isArray(data)) return [];
+    return data
+        .filter(isNewsEntry)
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .map((n) => ({
+            id: n.id,
+            title: n.title,
+            date: formatNewsDate(n.date),
+            text: n.text,
+            author: n.author,
+            link: n.link,
+            image: newsImageSource(n.image),
+        }));
+}
+
+function useNews(): News[] {
+    const [news, setNews] = useState<News[]>(() => toNews(bundledNews));
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const load = async () => {
+            try {
+                // Cache-buster so the kiosk doesn't keep a stale copy.
+                const res = await fetch(`${NEWS_BASE_URL}news.json?t=${Date.now()}`);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const items = toNews(await res.json());
+                if (!cancelled && items.length > 0) setNews(items);
+            } catch (e) {
+                // Offline or bad JSON: keep whatever is already showing.
+                console.warn('News feed refresh failed:', e);
+            }
+        };
+
+        load();
+        const timer = setInterval(load, NEWS_REFRESH_MS);
+        return () => {
+            cancelled = true;
+            clearInterval(timer);
+        };
+    }, []);
+
+    return news;
+}
 
 interface DockProps {
     dockLocationStyle: { bottom: number };
@@ -65,6 +134,7 @@ interface DockProps {
 }
 
 const Dock = ({ dockLocationStyle, width, height, setIndex, widgets }: DockProps) => {
+    const news = useNews();
     const [selectedIndex, setSelectedIndex] = useState(5);
     const itemSizeWidth = (width / widgets.length) * 0.8; // 80% of the space allocated
     const itemSizeHeight = height * 0.14; // 14% of the height allocated
