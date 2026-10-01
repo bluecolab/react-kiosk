@@ -33,7 +33,7 @@ export interface News {
 
 const NEWS_BASE_URL =
     process.env.EXPO_PUBLIC_NEWS_BASE_URL ??
-    'https://raw.githubusercontent.com/bluecolab/react-kiosk/main/src/assets/images/news/';
+    'https://raw.githubusercontent.com/bluecolab/react-kiosk/refs/heads/main/assets/images/news/';
 
 const NEWS_REFRESH_MS = 15 * 60 * 1000; // re-check every 15 minutes
 
