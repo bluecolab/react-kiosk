@@ -21,5 +21,10 @@
         "editor.formatOnSave": true,
         "prettier.useTabs": false
     },
-    "githubPullRequests.remotes": ["origin"]
+    "githubPullRequests.remotes": [
+        "origin"
+    ],
+    "files.associations": {
+        "plyconfig.json": "jsonc"
+    }
 }
