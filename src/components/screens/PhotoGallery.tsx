@@ -14,7 +14,11 @@ import { images } from '@/hooks/useGalleryImages';
 
 export default function PhotoGallery() {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [currentPage, setCurrentPage] = useState(0);
     const { width: W, height: H } = Dimensions.get('window');
+    const pageSize = 6;
+    const pageCount = Math.ceil(images.length / pageSize);
+    const pageImages = images.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
 
     const open = useCallback((i: number) => setSelectedIndex(i), []);
     const close = useCallback(() => setSelectedIndex(null), []);
@@ -45,7 +49,9 @@ export default function PhotoGallery() {
     const renderItem = useCallback(
         ({ item, index }: { item: any; index: number }) => {
             return (
-                <Pressable onPress={() => open(index)} style={{ margin: itemMargin }}>
+                <Pressable
+                    onPress={() => open(currentPage * pageSize + index)}
+                    style={{ margin: itemMargin }}>
                     <ExpoImage
                         source={item.source}
                         style={{
@@ -62,7 +68,7 @@ export default function PhotoGallery() {
                 </Pressable>
             );
         },
-        [ITEM_WIDTH, ITEM_HEIGHT, open]
+        [ITEM_WIDTH, ITEM_HEIGHT, currentPage, open, pageSize]
     );
 
     const getItemLayout = useCallback(
@@ -94,18 +100,36 @@ export default function PhotoGallery() {
     return (
         <View className="flex-1">
             <FlatList
-                data={images}
+                data={pageImages}
                 keyExtractor={keyExtractor}
                 numColumns={numColumns}
                 contentContainerStyle={{ padding: containerPadding, alignItems: 'center' }}
                 renderItem={renderItem}
-                initialNumToRender={8}
-                maxToRenderPerBatch={8}
+                initialNumToRender={pageSize}
+                maxToRenderPerBatch={pageSize}
                 windowSize={5}
                 removeClippedSubviews
                 getItemLayout={getItemLayout}
                 showsVerticalScrollIndicator={false}
             />
+
+            <View className="flex-row items-center justify-center gap-6 pb-4">
+                <Pressable
+                    onPress={() => setCurrentPage((page) => page - 1)}
+                    disabled={currentPage === 0}
+                    className="rounded-md bg-gray-200 px-4 py-2"
+                    style={{ opacity: currentPage === 0 ? 0.45 : 1 }}>
+                    <Text>Previous</Text>
+                </Pressable>
+                <Text>{`Page ${currentPage + 1} of ${pageCount}`}</Text>
+                <Pressable
+                    onPress={() => setCurrentPage((page) => page + 1)}
+                    disabled={currentPage >= pageCount - 1}
+                    className="rounded-md bg-gray-200 px-4 py-2"
+                    style={{ opacity: currentPage >= pageCount - 1 ? 0.45 : 1 }}>
+                    <Text>Next</Text>
+                </Pressable>
+            </View>
 
             {/* Lightbox Modal */}
             <Modal visible={selectedIndex !== null} transparent onRequestClose={close}>
