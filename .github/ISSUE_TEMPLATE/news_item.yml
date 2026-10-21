@@ -1,0 +1,64 @@
+name: News Item Creation
+description: File a request for a news item to be added to the kiosk news feed.
+title: "[News item]: "
+labels: ["to be reviewed"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill out this form to add a story to the kiosk's news feed. A team member will review it and add it to `assets/images/news/news.json`.
+
+  - type: input
+    id: news-title
+    attributes:
+      label: What is the title?
+      description: This is the headline that appears in the feed.
+      placeholder: "Pace students visit the Gale Epstein Center"
+    validations:
+      required: true
+
+  - type: input
+    id: news-author
+    attributes:
+      label: Who is the author?
+      description: The name shown under the post. Use "Anonymous" if there isn't one.
+      placeholder: John Cronin
+    validations:
+      required: true
+
+  - type: input
+    id: news-date
+    attributes:
+      label: What is the date of the news?
+      description: Use the format YYYY-MM-DD. The feed is sorted newest first by this date.
+      placeholder: "2026-10-21"
+    validations:
+      required: true
+
+  - type: textarea
+    id: news-detail
+    attributes:
+      label: What are the details?
+      description: The body of the post, written as plain text.
+      placeholder: Write the story here. Please don't add formatting (bold, links, lists); the kiosk doesn't support Markdown yet.
+    validations:
+      required: true
+
+  - type: input
+    id: news-link
+    attributes:
+      label: Link to the full story
+      description: Optional. A web address for readers who want to learn more.
+      placeholder: https://www.pace.edu/news/...
+    validations:
+      required: false
+
+  - type: upload
+    id: news-image
+    attributes:
+      label: Upload image
+      description: Optional. One photo for the post (PNG, JPG or WebP, up to 10 MB).
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.webp"
