@@ -146,7 +146,11 @@ export default function PhotoGallery() {
 
                         {selectedIndex !== null && (
                             <ExpoImage
-                                source={images[selectedIndex].source}
+                                source={
+                                    Array.isArray(images[selectedIndex].source)
+                                        ? images[selectedIndex].source[0]
+                                        : images[selectedIndex].source
+                                }
                                 style={{ borderRadius: 10, width: W * 0.8, height: H * 0.8 }}
                                 contentFit="contain"
                                 transition={200}

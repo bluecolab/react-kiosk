@@ -8,8 +8,10 @@ export function DynamicImage({ imgSource, width }: { imgSource: any; width: numb
         let isMounted = true;
         if (typeof imgSource === 'number') {
             // For require() images
-            const { width: w, height: h } = Image.resolveAssetSource(imgSource);
-            if (w && h && isMounted) setImgHeight((width * h) / w);
+            const assetSource = Image.resolveAssetSource(imgSource);
+            if (assetSource?.width && assetSource.height && isMounted) {
+                setImgHeight((width * assetSource.height) / assetSource.width);
+            }
         } else if (imgSource?.uri) {
             Image.getSize(imgSource.uri, (w, h) => {
                 if (w && h && isMounted) setImgHeight((width * h) / w);
