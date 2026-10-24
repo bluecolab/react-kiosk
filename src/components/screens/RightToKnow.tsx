@@ -155,11 +155,7 @@ export default function RightToKnow() {
             </View>
 
             {/* Full-screen viewer: big photo, caption underneath, large touch targets. */}
-            <Modal
-                visible={openPhoto !== null}
-                transparent
-                animationType="fade"
-                onRequestClose={close}>
+            <Modal visible={openPhoto !== null} transparent animationType="fade" onRequestClose={close}>
                 <View className="flex-1 bg-black/90 items-center justify-center">
                     <Pressable onPress={close} className="absolute top-8 right-8 p-4 z-10">
                         <Text className="text-white text-4xl font-bold">✕</Text>
