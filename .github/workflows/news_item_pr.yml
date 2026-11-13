@@ -1,0 +1,142 @@
+name: Create News Item PR
+run-name: 'News item PR for issue #${{ github.event.issue.number }}'
+
+# Runs when a team member adds the "news-item" label to a News Item Creation issue.
+# Adding the label is the approval step: only people with triage access or higher can
+# add labels, so issues opened by anyone else can't commit to the repo on their own.
+# To redo a news item after editing the issue, remove the label and add it again.
+on:
+    issues:
+        types: [labeled]
+
+permissions:
+    contents: write
+    pull-requests: write
+    issues: write
+
+concurrency:
+    group: news-item-${{ github.event.issue.number }}
+    cancel-in-progress: false
+
+jobs:
+    create-news-pr:
+        if: github.event.label.name == 'news-item' && github.event.issue.state == 'open'
+        runs-on: ubuntu-latest
+        env:
+            # Issue text goes in through environment variables, never straight into a
+            # script, so nothing typed in the issue can run as a command.
+            ISSUE_NUMBER: ${{ github.event.issue.number }}
+            BRANCH: news/issue-${{ github.event.issue.number }}
+            BASE_BRANCH: ${{ github.event.repository.default_branch }}
+            GH_TOKEN: ${{ github.token }}
+
+        steps:
+            - name: Checkout default branch
+              uses: actions/checkout@v6.0.2
+
+            - name: Setup Node
+              uses: actions/setup-node@v6.3.0
+              with:
+                  node-version: 24.x
+
+            - name: Add the issue to news.json
+              env:
+                  ISSUE_BODY: ${{ github.event.issue.body }}
+                  ISSUE_DATE: ${{ github.event.issue.created_at }}
+              run: |
+                  if ! node scripts/create-news-item.mjs > "$RUNNER_TEMP/news-output.txt" 2> "$RUNNER_TEMP/news-error.txt"; then
+                      cat "$RUNNER_TEMP/news-error.txt" >&2
+                      exit 1
+                  fi
+                  cat "$RUNNER_TEMP/news-output.txt"
+
+            - name: Validate news.json
+              run: |
+                  if ! node scripts/validate-news.mjs 2> "$RUNNER_TEMP/news-error.txt"; then
+                      cat "$RUNNER_TEMP/news-error.txt" >&2
+                      exit 1
+                  fi
+
+            - name: Commit to the news branch
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git switch -C "$BRANCH"
+                  git add assets/images/news/
+                  if git diff --cached --quiet; then
+                      echo "The script didn't change any files." | tee "$RUNNER_TEMP/news-error.txt"
+                      exit 1
+                  fi
+                  git commit -m "Add news item from issue #${ISSUE_NUMBER}"
+                  # The branch belongs to this workflow, so it's rebuilt from scratch each run.
+                  git push --force origin "$BRANCH"
+
+            - name: Open or update the pull request
+              id: pr
+              env:
+                  ISSUE_TITLE: ${{ github.event.issue.title }}
+                  REPOSITORY: ${{ github.repository }}
+              run: |
+                  # Everything after the first line of the script's output is the new entry.
+                  entry=$(tail -n +2 "$RUNNER_TEMP/news-output.txt")
+                  {
+                      echo "Adds a news item to the kiosk feed from issue #${ISSUE_NUMBER}: ${ISSUE_TITLE}"
+                      echo
+                      echo "Closes #${ISSUE_NUMBER}"
+                      echo
+                      echo "### New entry in \`assets/images/news/news.json\`"
+                      echo
+                      echo '```json'
+                      echo "$entry"
+                      echo '```'
+                      echo
+                      echo "### Before merging"
+                      echo
+                      echo "- [ ] Title, author, date and text are correct and free of typos"
+                      echo "- [ ] The image (if any) looks right in \`assets/images/news/\`"
+                      echo
+                      echo "To change something, edit the issue, then remove and re-add the \`news-item\` label. This PR will update."
+                  } > "$RUNNER_TEMP/pr-body.md"
+
+                  existing=$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url // empty')
+                  if [ -n "$existing" ]; then
+                      gh pr edit "$existing" --body-file "$RUNNER_TEMP/pr-body.md"
+                      echo "url=$existing" >> "$GITHUB_OUTPUT"
+                      echo "action=updated" >> "$GITHUB_OUTPUT"
+                  else
+                      url=$(gh pr create \
+                          --base "$BASE_BRANCH" \
+                          --head "$BRANCH" \
+                          --title "Add news item from issue #${ISSUE_NUMBER}" \
+                          --body-file "$RUNNER_TEMP/pr-body.md")
+                      echo "url=$url" >> "$GITHUB_OUTPUT"
+                      echo "action=created" >> "$GITHUB_OUTPUT"
+                  fi
+
+            - name: Comment on the issue
+              env:
+                  PR_URL: ${{ steps.pr.outputs.url }}
+                  PR_ACTION: ${{ steps.pr.outputs.action }}
+              run: |
+                  gh issue comment "$ISSUE_NUMBER" --body \
+                      "Thanks! A pull request was ${PR_ACTION} for this news item: ${PR_URL}. The post goes live once it's reviewed and merged."
+
+            - name: Comment on the issue if something went wrong
+              if: failure()
+              env:
+                  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+              run: |
+                  {
+                      echo "This news item couldn't be added yet."
+                      echo
+                      if [ -s "$RUNNER_TEMP/news-error.txt" ]; then
+                          echo '```'
+                          cat "$RUNNER_TEMP/news-error.txt"
+                          echo '```'
+                          echo
+                      fi
+                      echo "Please edit the issue to fix this. A team member will then remove and re-add the \`news-item\` label to try again."
+                      echo
+                      echo "Details: ${RUN_URL}"
+                  } > "$RUNNER_TEMP/failure-comment.md"
+                  gh issue comment "$ISSUE_NUMBER" --body-file "$RUNNER_TEMP/failure-comment.md"
