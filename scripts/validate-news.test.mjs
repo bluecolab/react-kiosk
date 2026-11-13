@@ -57,7 +57,7 @@ test('catches the same issue added twice', () => {
         { ...good, sourceIssue: 5 },
         { ...good, id: 2, sourceIssue: 5 },
     ]);
-    assert.ok(problems.some((p) => /#5 was added more than once/.test(p)));
+    assert.ok(problems.some((p) => /#5 was added more than once/.test(p))); 
 });
 
 test('reports a file that is not valid JSON', async () => {
