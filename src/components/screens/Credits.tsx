@@ -20,11 +20,14 @@ const credits = [
     {
         heading: 'React Kiosk',
         items: [
+            'Victor Lima',
+            'Kenji Okura',
+            'Aman Matin',
+            'Alex Sullivan',
+            'Silas Gonzalez',
             'Robert Bunjaj',
             'Isaac Lasso Younes',
             'Lloyd Boadi-Amoah',
-            'Victor Lima',
-            'Kenji Okura',
         ],
     },
     {
@@ -86,7 +89,7 @@ const credits = [
     },
 ];
 
-export default function Credits({ durationSeconds = 30, onNavigate }: CreditsProps) {
+export default function Credits({ durationSeconds = 12, onNavigate }: CreditsProps) {
     const translateY = useRef(new Animated.Value(0)).current;
     const [containerHeight, setContainerHeight] = useState(0);
     const [contentHeight, setContentHeight] = useState(0);
