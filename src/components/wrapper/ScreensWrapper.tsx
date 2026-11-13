@@ -161,6 +161,8 @@ export default function ScreensWrapper() {
                         bottom: 0,
                         alignItems: 'center',
                         width: '100%',
+                        zIndex: 10,
+                        pointerEvents: 'box-none',
                     },
                     reachabilityStyle,
                 ]}>

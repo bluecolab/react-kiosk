@@ -13,6 +13,16 @@ export const images: GalleryImage[] = [
     },
 
     {
+        source: require('@/assets/images/gallery/R2K2025-waterwalk-1.jpg'),
+        alt: 'The Water Walk team in October 2025',
+    },
+
+    {
+        source: require('@/assets/images/gallery/R2K2025-waterwalk-2.jpg'),
+        alt: 'The Water Walk across Pace University in October 2025',
+    },
+
+    {
         source: require('@/assets/images/gallery/GaleEpsteinEvent.jpg'),
         alt: 'Gale Epstein Event',
     },
