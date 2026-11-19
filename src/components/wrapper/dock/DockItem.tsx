@@ -1,6 +1,7 @@
 import { Widget } from '@/hooks/useWidgets';
 import { useEffect, useRef, useState } from 'react';
 import { Platform, Pressable, Text, TextProps } from 'react-native';
+import { useColorScheme } from 'nativewind';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -21,6 +22,8 @@ interface DockItemProps {
 
 export function DockItem({ item, index, setIndex, itemSize, animationValue }: DockItemProps) {
     const animatedSize = useSharedValue(animationValue);
+    const { colorScheme } = useColorScheme();
+    const iconSource = colorScheme === 'dark' && item.darkImage ? item.darkImage : item.image;
     const [isSingleLineTitle, setIsSingleLineTitle] = useState(false);
     const normalizedTitle = item.title.trim().replace(/\s+/g, ' ');
     const displayTitle = isSingleLineTitle ? `${normalizedTitle}\n ` : normalizedTitle;
@@ -128,7 +131,7 @@ export function DockItem({ item, index, setIndex, itemSize, animationValue }: Do
                         overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
                     }}>
                     <Animated.Image
-                        source={item.image}
+                        source={iconSource}
                         style={{
                             width: '100%',
                             height: '100%',

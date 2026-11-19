@@ -237,7 +237,7 @@ export default function ScreensWrapper() {
             {/* Reachability Toggle Button */}
             <Pressable
                 onPress={toggleReachability}
-                className="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-sky-300/90 justify-center items-center shadow-md z-50">
+                className="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-sky-300/90 dark:bg-blue-900/90 justify-center items-center shadow-md z-50">
                 <Text className="text-white font-bold text-2xl">
                     {isReachabilityActive ? '^' : 'v'}
                 </Text>
