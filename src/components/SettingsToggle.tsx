@@ -39,10 +39,11 @@ interface LangOptionProps {
     index: number;
     lang: { code: string; label: string };
     isActive: boolean;
+    isDark: boolean;
     onPress: () => void;
 }
 
-function LangOption({ langOpen, index, lang, isActive, onPress }: LangOptionProps) {
+function LangOption({ langOpen, index, lang, isActive, isDark, onPress }: LangOptionProps) {
     const style = useAnimatedStyle(() => ({
         transform: [
             { translateX: withSpring(langOpen.value ? LANG_OFFSET * index : 0, SPRING_CONFIG) },
@@ -53,7 +54,13 @@ function LangOption({ langOpen, index, lang, isActive, onPress }: LangOptionProp
     return (
         <AnimatedPressable
             onPress={onPress}
-            style={[style, styles.shadow, styles.langButton, isActive && styles.langButtonActive]}>
+            style={[
+                style,
+                styles.shadow,
+                styles.langButton,
+                isDark && styles.navy,
+                isActive && styles.langButtonActive,
+            ]}>
             <Text style={[styles.langText, isActive && styles.langTextActive]}>{lang.label}</Text>
         </AnimatedPressable>
     );
@@ -117,6 +124,7 @@ export default function SettingsToggle() {
                         index={idx + 1}
                         lang={lang}
                         isActive={currentLang === lang.code}
+                        isDark={isDark}
                         onPress={() => handleChangeLanguage(lang.code)}
                     />
                 ))}
@@ -124,7 +132,7 @@ export default function SettingsToggle() {
                     onPress={() => {
                         langOpen.value = !langOpen.value;
                     }}
-                    style={[styles.shadow, styles.subButton]}
+                    style={[styles.shadow, styles.subButton, isDark && styles.navy]}
                     accessibilityLabel="Select language"
                     accessibilityRole="button">
                     <Entypo name="globe" size={24} color="#f8f9ff" />
@@ -134,7 +142,13 @@ export default function SettingsToggle() {
             {/* Level 1: theme toggle button */}
             <AnimatedPressable
                 onPress={handleToggleTheme}
-                style={[themeStyle, styles.shadow, styles.subButton, styles.absoluteBase]}
+                style={[
+                    themeStyle,
+                    styles.shadow,
+                    styles.subButton,
+                    isDark && styles.navy,
+                    styles.absoluteBase,
+                ]}
                 accessibilityLabel={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                 accessibilityRole="button">
                 <Text style={styles.subIcon}>{isDark ? '\u2600' : '\u263e'}</Text>
@@ -143,7 +157,7 @@ export default function SettingsToggle() {
             {/* Main settings gear button */}
             <AnimatedPressable
                 onPress={handleToggleSettings}
-                style={[styles.shadow, styles.mainButton]}
+                style={[styles.shadow, styles.mainButton, isDark && styles.navy]}
                 accessibilityLabel="Settings"
                 accessibilityRole="button">
                 <Entypo name="cog" size={27} color="#f8f9ff" />
@@ -197,6 +211,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(119, 205, 226, 0.9)',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    /** Dark mode: same navy as the dark dock icons (#1E3A8A). */
+    navy: {
+        backgroundColor: 'rgba(30, 58, 138, 0.95)',
     },
     langButtonActive: {
         backgroundColor: '#ffffff',

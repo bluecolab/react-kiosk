@@ -54,7 +54,7 @@ export default function WelcomeScreen() {
             <View className="absolute top-2 right-2 z-50 flex-row gap-2 items-center">
                 <Pressable
                     onPress={() => setIsFeedbackVisible(true)}
-                    className="bg-blue-500 px-4 py-2 rounded-xl mt-1 mb-1 ml-1 mr-1">
+                    className="bg-blue-500 dark:bg-blue-900 px-4 py-2 rounded-xl mt-1 mb-1 ml-1 mr-1">
                     <Text className="text-white font-bold text-xs">{t('feedback.button')}</Text>
                 </Pressable>
             </View>
@@ -104,7 +104,7 @@ export default function WelcomeScreen() {
                             </Pressable>
                             <Pressable
                                 onPress={handleSubmitFeedback}
-                                className="bg-blue-500 px-4 py-2 rounded">
+                                className="bg-blue-500 dark:bg-blue-900 px-4 py-2 rounded">
                                 <Text className="text-white">{t('feedback.submit')}</Text>
                             </Pressable>
                         </View>
